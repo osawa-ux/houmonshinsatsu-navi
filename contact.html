@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 
 </head>
@@ -106,7 +107,7 @@
 
       <p style="font-size:12px;color:#888;margin-bottom:12px;">ご入力いただいた個人情報は、お問い合わせへの対応および訪問診療クリニックのご紹介のみに使用し、第三者に提供することはありません。<a href="/about.html">運営者情報</a></p>
 
-      <button type="submit" style="background:#1a6e3c;color:#fff;border:none;padding:14px 48px;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;">送信する</button>
+      <button type="submit" style="background:#1a6e3c;color:#fff;border:none;padding:14px 48px;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;" onclick="gev('click_contact',{form_type:'general'})">送信する</button>
     </form>
   </div>
 

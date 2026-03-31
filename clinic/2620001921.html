@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "京都府", "item": "https://zaitakuclinic-navi.com/pref/kyoto.html"}, {"@type": "ListItem", "position": 3, "name": "京田辺市", "item": "https://zaitakuclinic-navi.com/pref/kyoto/京田辺市.html"}, {"@type": "ListItem", "position": 4, "name": "川東整形外科", "item": "https://zaitakuclinic-navi.com/clinic/2620001921.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "川東整形外科", "url": "https://zaitakuclinic-navi.com/clinic/2620001921.html", "address": {"@type": "PostalAddress", "postalCode": "610-0341", "streetAddress": "京都府京田辺市薪茶屋前３１", "addressLocality": "京田辺市", "addressRegion": "京都府", "addressCountry": "JP"}, "telephone": "0774-64-7211", "geo": {"@type": "GeoCoordinates", "latitude": 34.8282601, "longitude": 135.7575814}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 2.7, "reviewCount": 14}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0774647211" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0774-64-7211 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0774647211" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2620001921',page_type:'detail'})">📞 0774-64-7211 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

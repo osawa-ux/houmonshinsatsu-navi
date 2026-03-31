@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "和歌山県", "item": "https://zaitakuclinic-navi.com/pref/wakayama.html"}, {"@type": "ListItem", "position": 3, "name": "有田市", "item": "https://zaitakuclinic-navi.com/pref/wakayama/有田市.html"}, {"@type": "ListItem", "position": 4, "name": "萬谷医院", "item": "https://zaitakuclinic-navi.com/clinic/2123000000.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "萬谷医院", "url": "https://zaitakuclinic-navi.com/clinic/2123000000.html", "address": {"@type": "PostalAddress", "postalCode": "649-0316", "streetAddress": "和歌山県有田市宮崎町２３７", "addressLocality": "有田市", "addressRegion": "和歌山県", "addressCountry": "JP"}, "telephone": "0737-83-2411", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqJlEvgiNYl1EKOI4KF5eFPB9RhJV0ojAYjbvlk98t0o_gGe3C2Se4Fh7e8vyeLR3CsPPW9cyQO5xumKUZmebtgixE7eIDgD5ePi1DjPn7EwR5fazZsNHCuaC-RLYkWNhEuHN8g=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 34.0793204, "longitude": 135.1147972}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.6, "reviewCount": 12}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0737832411" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0737-83-2411 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0737832411" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2123000000',page_type:'detail'})">📞 0737-83-2411 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

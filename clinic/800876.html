@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "宮城県", "item": "https://zaitakuclinic-navi.com/pref/miyagi.html"}, {"@type": "ListItem", "position": 3, "name": "石巻市", "item": "https://zaitakuclinic-navi.com/pref/miyagi/石巻市.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人社団　上石内科クリニック", "item": "https://zaitakuclinic-navi.com/clinic/800876.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人社団　上石内科クリニック", "url": "https://zaitakuclinic-navi.com/clinic/800876.html", "address": {"@type": "PostalAddress", "postalCode": "986-0871", "streetAddress": "宮城県石巻市清水町１丁目７－１２", "addressLocality": "石巻市", "addressRegion": "宮城県", "addressCountry": "JP"}, "telephone": "0225-22-2602", "geo": {"@type": "GeoCoordinates", "latitude": 38.4375578, "longitude": 141.295617}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 2, "reviewCount": 2}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0225222602" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0225-22-2602 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0225222602" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'800876',page_type:'detail'})">📞 0225-22-2602 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

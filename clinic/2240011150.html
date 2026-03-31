@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "三重県", "item": "https://zaitakuclinic-navi.com/pref/mie.html"}, {"@type": "ListItem", "position": 3, "name": "伊賀市", "item": "https://zaitakuclinic-navi.com/pref/mie/伊賀市.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人　紀平医院", "item": "https://zaitakuclinic-navi.com/clinic/2240011150.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人　紀平医院", "url": "https://zaitakuclinic-navi.com/clinic/2240011150.html", "address": {"@type": "PostalAddress", "postalCode": "519-1402", "streetAddress": "三重県伊賀市柘植町２０３３－２", "addressLocality": "伊賀市", "addressRegion": "三重県", "addressCountry": "JP"}, "telephone": "0595-45-5475", "geo": {"@type": "GeoCoordinates", "latitude": 34.8389453, "longitude": 136.2406362}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0595455475" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0595-45-5475 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0595455475" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2240011150',page_type:'detail'})">📞 0595-45-5475 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

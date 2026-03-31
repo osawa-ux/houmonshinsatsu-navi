@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "茨城県", "item": "https://zaitakuclinic-navi.com/pref/ibaraki.html"}, {"@type": "ListItem", "position": 3, "name": "ひたちなか市", "item": "https://zaitakuclinic-navi.com/pref/ibaraki/ひたちなか市.html"}, {"@type": "ListItem", "position": 4, "name": "山﨑クリニック", "item": "https://zaitakuclinic-navi.com/clinic/208661113.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "山﨑クリニック", "url": "https://zaitakuclinic-navi.com/clinic/208661113.html", "address": {"@type": "PostalAddress", "postalCode": "311-1241", "streetAddress": "茨城県ひたちなか市赤坂１２３９１番地", "addressLocality": "ひたちなか市", "addressRegion": "茨城県", "addressCountry": "JP"}, "telephone": "029-263-3621", "geo": {"@type": "GeoCoordinates", "latitude": 36.3534985, "longitude": 140.5975056}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 2.9, "reviewCount": 8}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0292633621" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 029-263-3621 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0292633621" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'208661113',page_type:'detail'})">📞 029-263-3621 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

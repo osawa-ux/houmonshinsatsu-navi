@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "香川県", "item": "https://zaitakuclinic-navi.com/pref/kagawa.html"}, {"@type": "ListItem", "position": 3, "name": "高松市", "item": "https://zaitakuclinic-navi.com/pref/kagawa/高松市.html"}, {"@type": "ListItem", "position": 4, "name": "四宮医院", "item": "https://zaitakuclinic-navi.com/clinic/2370501630.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "四宮医院", "url": "https://zaitakuclinic-navi.com/clinic/2370501630.html", "address": {"@type": "PostalAddress", "postalCode": "761-0445", "streetAddress": "香川県高松市西植田町１５４０", "addressLocality": "高松市", "addressRegion": "香川県", "addressCountry": "JP"}, "telephone": "087-849-1122", "sameAs": "http://kenshin-db.niph.go.jp/kenshin/", "geo": {"@type": "GeoCoordinates", "latitude": 34.2440782, "longitude": 134.0868628}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 1, "reviewCount": 2}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0878491122" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 087-849-1122 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0878491122" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2370501630',page_type:'detail'})">📞 087-849-1122 に電話する</a></div>
   <p style="margin:8px 0;"><a href="http://kenshin-db.niph.go.jp/kenshin/" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "山口県", "item": "https://zaitakuclinic-navi.com/pref/yamaguchi.html"}, {"@type": "ListItem", "position": 3, "name": "下関市", "item": "https://zaitakuclinic-navi.com/pref/yamaguchi/下関市.html"}, {"@type": "ListItem", "position": 4, "name": "勝山クリニック", "item": "https://zaitakuclinic-navi.com/clinic/2353128750.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "勝山クリニック", "url": "https://zaitakuclinic-navi.com/clinic/2353128750.html", "address": {"@type": "PostalAddress", "postalCode": "751-0883", "streetAddress": "山口県下関市大字田倉　２２１－１１", "addressLocality": "下関市", "addressRegion": "山口県", "addressCountry": "JP"}, "telephone": "083-256-8868", "sameAs": "http://katsuyamaclinic.com", "geo": {"@type": "GeoCoordinates", "latitude": 34.0130803, "longitude": 130.9745208}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 1, "reviewCount": 1}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0832568868" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 083-256-8868 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0832568868" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2353128750',page_type:'detail'})">📞 083-256-8868 に電話する</a></div>
   <p style="margin:8px 0;"><a href="http://katsuyamaclinic.com" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

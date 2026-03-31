@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "長野県", "item": "https://zaitakuclinic-navi.com/pref/nagano.html"}, {"@type": "ListItem", "position": 3, "name": "大町市", "item": "https://zaitakuclinic-navi.com/pref/nagano/大町市.html"}, {"@type": "ListItem", "position": 4, "name": "菊地クリニック", "item": "https://zaitakuclinic-navi.com/clinic/2206107620.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "菊地クリニック", "url": "https://zaitakuclinic-navi.com/clinic/2206107620.html", "address": {"@type": "PostalAddress", "postalCode": "398-0004", "streetAddress": "長野県大町市常盤３５１２ー１６", "addressLocality": "大町市", "addressRegion": "長野県", "addressCountry": "JP"}, "telephone": "0261-21-2580", "geo": {"@type": "GeoCoordinates", "latitude": 36.4714616, "longitude": 137.8465817}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.8, "reviewCount": 5}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0261212580" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0261-21-2580 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0261212580" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2206107620',page_type:'detail'})">📞 0261-21-2580 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

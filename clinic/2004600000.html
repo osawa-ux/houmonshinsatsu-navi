@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "奈良県", "item": "https://zaitakuclinic-navi.com/pref/nara.html"}, {"@type": "ListItem", "position": 3, "name": "奈良市", "item": "https://zaitakuclinic-navi.com/pref/nara/奈良市.html"}, {"@type": "ListItem", "position": 4, "name": "森田診療所", "item": "https://zaitakuclinic-navi.com/clinic/2004600000.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "森田診療所", "url": "https://zaitakuclinic-navi.com/clinic/2004600000.html", "address": {"@type": "PostalAddress", "postalCode": "631-0034", "streetAddress": "奈良県奈良市学園南１－２－１", "addressLocality": "奈良市", "addressRegion": "奈良県", "addressCountry": "JP"}, "telephone": "0742-45-0603", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqmtJXGpC31GRQ3sovQq7ndZdzuYJiq4EI7ncy3TU8kJ23KoA7tFMdGIA5KtROkYfko4DLOWPqehUBHpoZaTxWa7XWEcPDcxc6IyfgSy8JoDPDz6BV1Kl1qAExgBfl9ek1LL23cpA=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 34.6971623, "longitude": 135.752456}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 1, "reviewCount": 1}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0742450603" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0742-45-0603 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0742450603" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2004600000',page_type:'detail'})">📞 0742-45-0603 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

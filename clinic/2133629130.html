@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "東京都", "item": "https://zaitakuclinic-navi.com/pref/tokyo.html"}, {"@type": "ListItem", "position": 3, "name": "杉並区", "item": "https://zaitakuclinic-navi.com/pref/tokyo/杉並区.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人社団健光会　松本整形外科", "item": "https://zaitakuclinic-navi.com/clinic/2133629130.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人社団健光会　松本整形外科", "url": "https://zaitakuclinic-navi.com/clinic/2133629130.html", "address": {"@type": "PostalAddress", "postalCode": "166-0002", "streetAddress": "東京都杉並区高円寺北３－９－１１", "addressLocality": "杉並区", "addressRegion": "東京都", "addressCountry": "JP"}, "telephone": "03-3337-6864", "geo": {"@type": "GeoCoordinates", "latitude": 35.7068147, "longitude": 139.6462306}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 2.9, "reviewCount": 16}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0333376864" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 03-3337-6864 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0333376864" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2133629130',page_type:'detail'})">📞 03-3337-6864 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

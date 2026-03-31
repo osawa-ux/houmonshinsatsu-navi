@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "福島県", "item": "https://zaitakuclinic-navi.com/pref/fukushima.html"}, {"@type": "ListItem", "position": 3, "name": "二本松市", "item": "https://zaitakuclinic-navi.com/pref/fukushima/二本松市.html"}, {"@type": "ListItem", "position": 4, "name": "みうら内科クリニック", "item": "https://zaitakuclinic-navi.com/clinic/0720000299.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "みうら内科クリニック", "url": "https://zaitakuclinic-navi.com/clinic/0720000299.html", "address": {"@type": "PostalAddress", "postalCode": "964-0806", "streetAddress": "福島県二本松市羽石１１０－６", "addressLocality": "二本松市", "addressRegion": "福島県", "addressCountry": "JP"}, "telephone": "0243-22-5706", "sameAs": "https://plumestone.jp", "geo": {"@type": "GeoCoordinates", "latitude": 37.583336, "longitude": 140.429635}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 2.9, "reviewCount": 15}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0243225706" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0243-22-5706 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0243225706" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'0720000299',page_type:'detail'})">📞 0243-22-5706 に電話する</a></div>
   <p style="margin:8px 0;"><a href="https://plumestone.jp" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

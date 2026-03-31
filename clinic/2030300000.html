@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "和歌山県", "item": "https://zaitakuclinic-navi.com/pref/wakayama.html"}, {"@type": "ListItem", "position": 3, "name": "和歌山市", "item": "https://zaitakuclinic-navi.com/pref/wakayama/和歌山市.html"}, {"@type": "ListItem", "position": 4, "name": "しおじやすひさクリニック", "item": "https://zaitakuclinic-navi.com/clinic/2030300000.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "しおじやすひさクリニック", "url": "https://zaitakuclinic-navi.com/clinic/2030300000.html", "address": {"@type": "PostalAddress", "postalCode": "640-8425", "streetAddress": "和歌山県和歌山市松江北７－６－６", "addressLocality": "和歌山市", "addressRegion": "和歌山県", "addressCountry": "JP"}, "telephone": "073-455-1600", "geo": {"@type": "GeoCoordinates", "latitude": 34.251594, "longitude": 135.1278109}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 2.7, "reviewCount": 7}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0734551600" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 073-455-1600 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0734551600" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2030300000',page_type:'detail'})">📞 073-455-1600 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

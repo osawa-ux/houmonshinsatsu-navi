@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "大阪府", "item": "https://zaitakuclinic-navi.com/pref/osaka.html"}, {"@type": "ListItem", "position": 3, "name": "交野市", "item": "https://zaitakuclinic-navi.com/pref/osaka/交野市.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人みのり会　藤の街クリニック", "item": "https://zaitakuclinic-navi.com/clinic/2270135010.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人みのり会　藤の街クリニック", "url": "https://zaitakuclinic-navi.com/clinic/2270135010.html", "address": {"@type": "PostalAddress", "postalCode": "576-0022", "streetAddress": "大阪府交野市藤が尾四丁目３番１５号", "addressLocality": "交野市", "addressRegion": "大阪府", "addressCountry": "JP"}, "telephone": "072-892-9500", "geo": {"@type": "GeoCoordinates", "latitude": 34.771357, "longitude": 135.6751355}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.8, "reviewCount": 17}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0728929500" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 072-892-9500 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0728929500" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2270135010',page_type:'detail'})">📞 072-892-9500 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

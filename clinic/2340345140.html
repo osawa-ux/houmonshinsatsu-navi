@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "広島県", "item": "https://zaitakuclinic-navi.com/pref/hiroshima.html"}, {"@type": "ListItem", "position": 3, "name": "広島市中区", "item": "https://zaitakuclinic-navi.com/pref/hiroshima/広島市中区.html"}, {"@type": "ListItem", "position": 4, "name": "むろもとクリニック", "item": "https://zaitakuclinic-navi.com/clinic/2340345140.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "むろもとクリニック", "url": "https://zaitakuclinic-navi.com/clinic/2340345140.html", "address": {"@type": "PostalAddress", "postalCode": "730-0051", "streetAddress": "広島県広島市中区大手町１丁目１－２０　相生橋ビル５Ｆ", "addressLocality": "広島市中区", "addressRegion": "広島県", "addressCountry": "JP"}, "telephone": "082-248-8817", "geo": {"@type": "GeoCoordinates", "latitude": 34.3956028, "longitude": 132.4550807}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0822488817" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 082-248-8817 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0822488817" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2340345140',page_type:'detail'})">📞 082-248-8817 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

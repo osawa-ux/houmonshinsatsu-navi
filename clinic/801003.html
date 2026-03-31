@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "宮城県", "item": "https://zaitakuclinic-navi.com/pref/miyagi.html"}, {"@type": "ListItem", "position": 3, "name": "大崎市", "item": "https://zaitakuclinic-navi.com/pref/miyagi/大崎市.html"}, {"@type": "ListItem", "position": 4, "name": "髙橋医院", "item": "https://zaitakuclinic-navi.com/clinic/801003.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "髙橋医院", "url": "https://zaitakuclinic-navi.com/clinic/801003.html", "address": {"@type": "PostalAddress", "postalCode": "989-6143", "streetAddress": "宮城県大崎市古川中里２丁目２－２５", "addressLocality": "大崎市", "addressRegion": "宮城県", "addressCountry": "JP"}, "telephone": "0229-22-0791", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwep1UnfC9ADv2FM1imeqDj02ixyTRoMGmdNn5DqS0Ne3XwljlnjYzejBUcdKoGA94PEf0jTaXBhprj2Gyq1RrWV3e44gnlaALBSwncDNfHsSS6GXnLOxMC3JVVBa33lGhOgPL8p4mw=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 38.57009660000001, "longitude": 140.9597833}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4.3, "reviewCount": 44}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0229220791" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0229-22-0791 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0229220791" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'801003',page_type:'detail'})">📞 0229-22-0791 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

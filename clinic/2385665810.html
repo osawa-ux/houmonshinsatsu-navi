@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "愛媛県", "item": "https://zaitakuclinic-navi.com/pref/ehime.html"}, {"@type": "ListItem", "position": 3, "name": "伊予市", "item": "https://zaitakuclinic-navi.com/pref/ehime/伊予市.html"}, {"@type": "ListItem", "position": 4, "name": "古川医院", "item": "https://zaitakuclinic-navi.com/clinic/2385665810.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "古川医院", "url": "https://zaitakuclinic-navi.com/clinic/2385665810.html", "address": {"@type": "PostalAddress", "postalCode": "791-3203", "streetAddress": "愛媛県伊予市中山町出渕２－１２８", "addressLocality": "伊予市", "addressRegion": "愛媛県", "addressCountry": "JP"}, "telephone": "089-967-0043", "geo": {"@type": "GeoCoordinates", "latitude": 33.64105869999999, "longitude": 132.7107566}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0899670043" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 089-967-0043 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0899670043" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2385665810',page_type:'detail'})">📞 089-967-0043 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

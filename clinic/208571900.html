@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "茨城県", "item": "https://zaitakuclinic-navi.com/pref/ibaraki.html"}, {"@type": "ListItem", "position": 3, "name": "潮来市", "item": "https://zaitakuclinic-navi.com/pref/ibaraki/潮来市.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人社団ゆびきたすユビキタスクリニックＨＩＮＯＤＥ", "item": "https://zaitakuclinic-navi.com/clinic/208571900.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人社団ゆびきたすユビキタスクリニックＨＩＮＯＤＥ", "url": "https://zaitakuclinic-navi.com/clinic/208571900.html", "address": {"@type": "PostalAddress", "postalCode": "311-2423", "streetAddress": "茨城県潮来市日の出４丁目１－１４", "addressLocality": "潮来市", "addressRegion": "茨城県", "addressCountry": "JP"}, "telephone": "0299-94-8008", "geo": {"@type": "GeoCoordinates", "latitude": 35.9338629, "longitude": 140.5745376}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 2.3, "reviewCount": 3}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0299948008" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0299-94-8008 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0299948008" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'208571900',page_type:'detail'})">📞 0299-94-8008 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

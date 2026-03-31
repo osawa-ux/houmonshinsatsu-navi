@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "静岡県", "item": "https://zaitakuclinic-navi.com/pref/shizuoka.html"}, {"@type": "ListItem", "position": 3, "name": "沼津市", "item": "https://zaitakuclinic-navi.com/pref/shizuoka/沼津市.html"}, {"@type": "ListItem", "position": 4, "name": "白石医院", "item": "https://zaitakuclinic-navi.com/clinic/2225607730.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "白石医院", "url": "https://zaitakuclinic-navi.com/clinic/2225607730.html", "address": {"@type": "PostalAddress", "postalCode": "410-0866", "streetAddress": "静岡県沼津市市道町１２－２５", "addressLocality": "沼津市", "addressRegion": "静岡県", "addressCountry": "JP"}, "telephone": "055-951-5829", "geo": {"@type": "GeoCoordinates", "latitude": 35.0976704, "longitude": 138.8491397}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 5, "reviewCount": 4}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0559515829" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 055-951-5829 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0559515829" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2225607730',page_type:'detail'})">📞 055-951-5829 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

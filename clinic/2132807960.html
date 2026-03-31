@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "東京都", "item": "https://zaitakuclinic-navi.com/pref/tokyo.html"}, {"@type": "ListItem", "position": 3, "name": "世田谷区", "item": "https://zaitakuclinic-navi.com/pref/tokyo/世田谷区.html"}, {"@type": "ListItem", "position": 4, "name": "加藤医院", "item": "https://zaitakuclinic-navi.com/clinic/2132807960.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "加藤医院", "url": "https://zaitakuclinic-navi.com/clinic/2132807960.html", "address": {"@type": "PostalAddress", "postalCode": "155-0031", "streetAddress": "東京都世田谷区北沢２－２２－１１", "addressLocality": "世田谷区", "addressRegion": "東京都", "addressCountry": "JP"}, "telephone": "４１-２-１４０１", "image": "https://lh3.googleusercontent.com/places/ANXAkqFpGc_SZIMOjhsxJsmlMmgdm3oMxgOOzyZ_4-3KRCpnFTE61uNl7oECSWdLvCHjhzFXvbPfZkGufNnjZAHzse1N4ixQuhuwgKU=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 35.6611183, "longitude": 139.6657475}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4.2, "reviewCount": 28}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:４１２１４０１" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 ４１-２-１４０１ に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:４１２１４０１" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2132807960',page_type:'detail'})">📞 ４１-２-１４０１ に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

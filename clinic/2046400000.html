@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "和歌山県", "item": "https://zaitakuclinic-navi.com/pref/wakayama.html"}, {"@type": "ListItem", "position": 3, "name": "和歌山市", "item": "https://zaitakuclinic-navi.com/pref/wakayama/和歌山市.html"}, {"@type": "ListItem", "position": 4, "name": "宮本医院", "item": "https://zaitakuclinic-navi.com/clinic/2046400000.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "宮本医院", "url": "https://zaitakuclinic-navi.com/clinic/2046400000.html", "address": {"@type": "PostalAddress", "postalCode": "641-0051", "streetAddress": "和歌山県和歌山市西高松１－５－３６", "addressLocality": "和歌山市", "addressRegion": "和歌山県", "addressCountry": "JP"}, "telephone": "073-424-2096", "sameAs": "http://js-miyamoto-iin.jp/", "geo": {"@type": "GeoCoordinates", "latitude": 34.2081609, "longitude": 135.1712243}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3, "reviewCount": 5}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0734242096" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 073-424-2096 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0734242096" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2046400000',page_type:'detail'})">📞 073-424-2096 に電話する</a></div>
   <p style="margin:8px 0;"><a href="http://js-miyamoto-iin.jp/" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

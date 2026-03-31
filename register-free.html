@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 
 </head>
@@ -72,11 +73,11 @@
 
   <!-- フロー選択カード -->
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;">
-    <div id="card-existing" onclick="showSection('existing')" style="background:white;border:2px solid #1a6e3c;border-radius:10px;padding:24px;box-shadow:0 2px 6px rgba(0,0,0,0.08);cursor:pointer;">
+    <div id="card-existing" onclick="showSection('existing');gev('start_free_edit',{form_type:'existing'})" style="background:white;border:2px solid #1a6e3c;border-radius:10px;padding:24px;box-shadow:0 2px 6px rgba(0,0,0,0.08);cursor:pointer;">
       <div style="font-size:13px;color:#888;margin-bottom:6px;">すでに掲載されている医療機関の方</div>
       <div style="font-weight:bold;color:#1a6e3c;font-size:16px;">掲載情報の修正・追加はこちら &rarr;</div>
     </div>
-    <div id="card-new" onclick="showSection('new')" style="background:white;border:2px solid #ccc;border-radius:10px;padding:24px;box-shadow:0 2px 6px rgba(0,0,0,0.08);cursor:pointer;">
+    <div id="card-new" onclick="showSection('new');gev('start_free_edit',{form_type:'new'})" style="background:white;border:2px solid #ccc;border-radius:10px;padding:24px;box-shadow:0 2px 6px rgba(0,0,0,0.08);cursor:pointer;">
       <div style="font-size:13px;color:#888;margin-bottom:6px;">まだ掲載されていない医療機関の方</div>
       <div style="font-weight:bold;color:#555;font-size:16px;">新規掲載のお申し込みはこちら &rarr;</div>
     </div>
@@ -270,7 +271,7 @@
 
         <p style="font-size:12px;color:#888;margin-bottom:12px;">ご入力いただいた個人情報は、掲載情報の整備および当サービスに関するご連絡のみに使用し、第三者に提供することはありません。<a href="/about.html">運営者情報</a></p>
 
-        <button type="submit" style="background:#1a6e3c;color:#fff;border:none;padding:14px 48px;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;">修正申請を送信する</button>
+        <button type="submit" style="background:#1a6e3c;color:#fff;border:none;padding:14px 48px;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;" onclick="gev('submit_free_edit',{form_type:'existing'})">修正申請を送信する</button>
       </form>
     </div>
   </div>
@@ -401,7 +402,7 @@
 
         <p style="font-size:12px;color:#888;margin-bottom:12px;">ご入力いただいた個人情報は、掲載情報の整備および当サービスに関するご連絡のみに使用し、第三者に提供することはありません。<a href="/about.html">運営者情報</a></p>
 
-        <button type="submit" style="background:#2a5a8c;color:#fff;border:none;padding:14px 48px;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;">新規掲載を申し込む</button>
+        <button type="submit" style="background:#2a5a8c;color:#fff;border:none;padding:14px 48px;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;" onclick="gev('submit_free_edit',{form_type:'new'})">新規掲載を申し込む</button>
       </form>
     </div>
   </div>

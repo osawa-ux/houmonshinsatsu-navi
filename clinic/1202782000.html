@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "千葉県", "item": "https://zaitakuclinic-navi.com/pref/chiba.html"}, {"@type": "ListItem", "position": 3, "name": "佐倉市", "item": "https://zaitakuclinic-navi.com/pref/chiba/佐倉市.html"}, {"@type": "ListItem", "position": 4, "name": "みやけクリニック", "item": "https://zaitakuclinic-navi.com/clinic/1202782000.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "みやけクリニック", "url": "https://zaitakuclinic-navi.com/clinic/1202782000.html", "address": {"@type": "PostalAddress", "postalCode": "285-0845", "streetAddress": "千葉県佐倉市西志津３－２－２", "addressLocality": "佐倉市", "addressRegion": "千葉県", "addressCountry": "JP"}, "telephone": "043-460-0303", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq2RuA5IrOQWqzrqiD7WDbNlDuhd6HTx5q2FsIVItkCQiWB4R4ildf87cSXObdoBHlbxc0LaGuCB9xV0KqKOYSgyR2sSjFSaXsQm6RHBy6H2rh0TmkNR1SLIXy6O_4yUrOF-BME=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 35.7124208, "longitude": 140.1384073}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.6, "reviewCount": 33}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0434600303" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 043-460-0303 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0434600303" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'1202782000',page_type:'detail'})">📞 043-460-0303 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "長野県", "item": "https://zaitakuclinic-navi.com/pref/nagano.html"}, {"@type": "ListItem", "position": 3, "name": "長野市", "item": "https://zaitakuclinic-navi.com/pref/nagano/長野市.html"}, {"@type": "ListItem", "position": 4, "name": "長野市国民健康保険中条診療所", "item": "https://zaitakuclinic-navi.com/clinic/2206621100.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "長野市国民健康保険中条診療所", "url": "https://zaitakuclinic-navi.com/clinic/2206621100.html", "address": {"@type": "PostalAddress", "postalCode": "381-3203", "streetAddress": "長野県長野市中条２６２６番地", "addressLocality": "長野市", "addressRegion": "長野県", "addressCountry": "JP"}, "telephone": "026-267-2010", "geo": {"@type": "GeoCoordinates", "latitude": 36.6118995, "longitude": 138.0359413}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0262672010" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 026-267-2010 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0262672010" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2206621100',page_type:'detail'})">📞 026-267-2010 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

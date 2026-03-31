@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "宮城県", "item": "https://zaitakuclinic-navi.com/pref/miyagi.html"}, {"@type": "ListItem", "position": 3, "name": "宮城郡七ヶ浜町", "item": "https://zaitakuclinic-navi.com/pref/miyagi/宮城郡七ヶ浜町.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人　かしま田園クリニック", "item": "https://zaitakuclinic-navi.com/clinic/800920.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人　かしま田園クリニック", "url": "https://zaitakuclinic-navi.com/clinic/800920.html", "address": {"@type": "PostalAddress", "postalCode": "985-0812", "streetAddress": "宮城県宮城郡七ヶ浜町松ヶ浜字謡１３７ー２０", "addressLocality": "宮城郡七ヶ浜町", "addressRegion": "宮城県", "addressCountry": "JP"}, "telephone": "022-357-7531", "geo": {"@type": "GeoCoordinates", "latitude": 38.291091, "longitude": 141.0466486}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 2.5, "reviewCount": 18}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0223577531" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 022-357-7531 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0223577531" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'800920',page_type:'detail'})">📞 022-357-7531 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

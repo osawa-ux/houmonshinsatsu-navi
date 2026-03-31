@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "茨城県", "item": "https://zaitakuclinic-navi.com/pref/ibaraki.html"}, {"@type": "ListItem", "position": 3, "name": "行方市", "item": "https://zaitakuclinic-navi.com/pref/ibaraki/行方市.html"}, {"@type": "ListItem", "position": 4, "name": "釼持外科", "item": "https://zaitakuclinic-navi.com/clinic/208570440.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "釼持外科", "url": "https://zaitakuclinic-navi.com/clinic/208570440.html", "address": {"@type": "PostalAddress", "postalCode": "311-3832", "streetAddress": "茨城県行方市麻生", "addressLocality": "行方市", "addressRegion": "茨城県", "addressCountry": "JP"}, "telephone": "0299-72-0805", "geo": {"@type": "GeoCoordinates", "latitude": 35.9888732, "longitude": 140.4890195}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.7, "reviewCount": 6}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0299720805" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0299-72-0805 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0299720805" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'208570440',page_type:'detail'})">📞 0299-72-0805 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

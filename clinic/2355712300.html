@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "山口県", "item": "https://zaitakuclinic-navi.com/pref/yamaguchi.html"}, {"@type": "ListItem", "position": 3, "name": "山口市", "item": "https://zaitakuclinic-navi.com/pref/yamaguchi/山口市.html"}, {"@type": "ListItem", "position": 4, "name": "河端内科医院", "item": "https://zaitakuclinic-navi.com/clinic/2355712300.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "河端内科医院", "url": "https://zaitakuclinic-navi.com/clinic/2355712300.html", "address": {"@type": "PostalAddress", "postalCode": "754-0002", "streetAddress": "山口県山口市小郡下郷８４３－１０", "addressLocality": "山口市", "addressRegion": "山口県", "addressCountry": "JP"}, "telephone": "083-972-3820", "geo": {"@type": "GeoCoordinates", "latitude": 34.102621, "longitude": 131.395482}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4.6, "reviewCount": 30}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0839723820" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 083-972-3820 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0839723820" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2355712300',page_type:'detail'})">📞 083-972-3820 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

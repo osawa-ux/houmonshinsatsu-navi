@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "京都府", "item": "https://zaitakuclinic-navi.com/pref/kyoto.html"}, {"@type": "ListItem", "position": 3, "name": "京都市山科区", "item": "https://zaitakuclinic-navi.com/pref/kyoto/京都市山科区.html"}, {"@type": "ListItem", "position": 4, "name": "紀田クリニック", "item": "https://zaitakuclinic-navi.com/clinic/2620001111.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "紀田クリニック", "url": "https://zaitakuclinic-navi.com/clinic/2620001111.html", "address": {"@type": "PostalAddress", "postalCode": "607-8077", "streetAddress": "京都府京都市山科区音羽沢町３５番地", "addressLocality": "京都市山科区", "addressRegion": "京都府", "addressCountry": "JP"}, "telephone": "075-501-5337", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqOBcYANypbxUsE_FYwuT3ouo_CEfB18ZuUsYb_i6jStJIoojfw-xnbyyI7S4OarqrKk8rQMLS6ei_F7qJuEQc1uEYlW71QuZwAmS55C2KJdkjarYkCqjDdwSW6RN1H_0C3H4ddeg=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 34.9874932, "longitude": 135.8205782}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.7, "reviewCount": 16}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0755015337" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 075-501-5337 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0755015337" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2620001111',page_type:'detail'})">📞 075-501-5337 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

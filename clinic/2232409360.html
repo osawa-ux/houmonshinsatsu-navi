@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "愛知県", "item": "https://zaitakuclinic-navi.com/pref/aichi.html"}, {"@type": "ListItem", "position": 3, "name": "名古屋市北区", "item": "https://zaitakuclinic-navi.com/pref/aichi/名古屋市北区.html"}, {"@type": "ListItem", "position": 4, "name": "鈴木医院", "item": "https://zaitakuclinic-navi.com/clinic/2232409360.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "鈴木医院", "url": "https://zaitakuclinic-navi.com/clinic/2232409360.html", "address": {"@type": "PostalAddress", "postalCode": "462-0831", "streetAddress": "愛知県名古屋市北区城東町４丁目８４番地", "addressLocality": "名古屋市北区", "addressRegion": "愛知県", "addressCountry": "JP"}, "telephone": "052-981-2282", "geo": {"@type": "GeoCoordinates", "latitude": 35.1950293, "longitude": 136.9199961}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 5, "reviewCount": 10}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0529812282" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 052-981-2282 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0529812282" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2232409360',page_type:'detail'})">📞 052-981-2282 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

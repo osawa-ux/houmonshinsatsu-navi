@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "山口県", "item": "https://zaitakuclinic-navi.com/pref/yamaguchi.html"}, {"@type": "ListItem", "position": 3, "name": "下関市", "item": "https://zaitakuclinic-navi.com/pref/yamaguchi/下関市.html"}, {"@type": "ListItem", "position": 4, "name": "小田医院", "item": "https://zaitakuclinic-navi.com/clinic/2356002170.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "小田医院", "url": "https://zaitakuclinic-navi.com/clinic/2356002170.html", "address": {"@type": "PostalAddress", "postalCode": "750-0421", "streetAddress": "山口県下関市豊田町殿敷１８１０番地", "addressLocality": "下関市", "addressRegion": "山口県", "addressCountry": "JP"}, "telephone": "083-766-0344", "geo": {"@type": "GeoCoordinates", "latitude": 34.2035024, "longitude": 131.0793871}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.3, "reviewCount": 4}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0837660344" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 083-766-0344 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0837660344" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2356002170',page_type:'detail'})">📞 083-766-0344 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

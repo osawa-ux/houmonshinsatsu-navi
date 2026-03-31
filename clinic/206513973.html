@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "山形県", "item": "https://zaitakuclinic-navi.com/pref/yamagata.html"}, {"@type": "ListItem", "position": 3, "name": "上山市", "item": "https://zaitakuclinic-navi.com/pref/yamagata/上山市.html"}, {"@type": "ListItem", "position": 4, "name": "北村医院", "item": "https://zaitakuclinic-navi.com/clinic/206513973.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "北村医院", "url": "https://zaitakuclinic-navi.com/clinic/206513973.html", "address": {"@type": "PostalAddress", "postalCode": "999-3134", "streetAddress": "山形県上山市矢来", "addressLocality": "上山市", "addressRegion": "山形県", "addressCountry": "JP"}, "telephone": "023-695-5000", "geo": {"@type": "GeoCoordinates", "latitude": 38.1499065, "longitude": 140.2726529}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.6, "reviewCount": 10}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0236955000" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 023-695-5000 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0236955000" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'206513973',page_type:'detail'})">📞 023-695-5000 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

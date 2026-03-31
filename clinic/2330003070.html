@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "岡山県", "item": "https://zaitakuclinic-navi.com/pref/okayama.html"}, {"@type": "ListItem", "position": 3, "name": "新見市", "item": "https://zaitakuclinic-navi.com/pref/okayama/新見市.html"}, {"@type": "ListItem", "position": 4, "name": "新見市高瀬診療所", "item": "https://zaitakuclinic-navi.com/clinic/2330003070.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "新見市高瀬診療所", "url": "https://zaitakuclinic-navi.com/clinic/2330003070.html", "address": {"@type": "PostalAddress", "postalCode": "719-2802", "streetAddress": "岡山県新見市神郷高瀬１２２６番地", "addressLocality": "新見市", "addressRegion": "岡山県", "addressCountry": "JP"}, "telephone": "0867-93-5070", "geo": {"@type": "GeoCoordinates", "latitude": 35.0865833, "longitude": 133.3209}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0867935070" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0867-93-5070 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0867935070" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2330003070',page_type:'detail'})">📞 0867-93-5070 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

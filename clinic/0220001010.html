@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "青森県", "item": "https://zaitakuclinic-navi.com/pref/aomori.html"}, {"@type": "ListItem", "position": 3, "name": "弘前市", "item": "https://zaitakuclinic-navi.com/pref/aomori/弘前市.html"}, {"@type": "ListItem", "position": 4, "name": "梅村医院", "item": "https://zaitakuclinic-navi.com/clinic/0220001010.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "梅村医院", "url": "https://zaitakuclinic-navi.com/clinic/0220001010.html", "address": {"@type": "PostalAddress", "postalCode": "036-8316", "streetAddress": "青森県弘前市石渡１丁目１番地６", "addressLocality": "弘前市", "addressRegion": "青森県", "addressCountry": "JP"}, "telephone": "0172-32-3593", "image": "https://lh3.googleusercontent.com/places/ANXAkqE9lfS66hs7kCgN8Bv8nX_e2uftPDSjYLufxfEv2GcpfkjnGED3Z0bBgkkFjvB96Y3czX3iHoDM4mjiFs1XlK5aqBmPrV8nRO0=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 40.6264065, "longitude": 140.4544233}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.6, "reviewCount": 8}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0172323593" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0172-32-3593 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0172323593" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'0220001010',page_type:'detail'})">📞 0172-32-3593 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

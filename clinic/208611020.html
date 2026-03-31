@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "茨城県", "item": "https://zaitakuclinic-navi.com/pref/ibaraki.html"}, {"@type": "ListItem", "position": 3, "name": "つくば市", "item": "https://zaitakuclinic-navi.com/pref/ibaraki/つくば市.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人根本クリニック", "item": "https://zaitakuclinic-navi.com/clinic/208611020.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人根本クリニック", "url": "https://zaitakuclinic-navi.com/clinic/208611020.html", "address": {"@type": "PostalAddress", "postalCode": "300-2651", "streetAddress": "茨城県つくば市鬼ケ窪１１０８", "addressLocality": "つくば市", "addressRegion": "茨城県", "addressCountry": "JP"}, "telephone": "029-847-0550", "image": "https://lh3.googleusercontent.com/places/ANXAkqEYVCQzFvQmY-GBcIapcoalHT08_T3XiheSdNuMaQ06YWHuycaG05e49Ags-q8L1OlHtVgv1MuJdCrqSi7MAJGWVIeXKC4di0w=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 36.084091, "longitude": 140.0477646}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4, "reviewCount": 1}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0298470550" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 029-847-0550 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0298470550" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'208611020',page_type:'detail'})">📞 029-847-0550 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

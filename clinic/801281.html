@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "宮城県", "item": "https://zaitakuclinic-navi.com/pref/miyagi.html"}, {"@type": "ListItem", "position": 3, "name": "仙台市太白区", "item": "https://zaitakuclinic-navi.com/pref/miyagi/仙台市太白区.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人社団　興野内科医院", "item": "https://zaitakuclinic-navi.com/clinic/801281.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人社団　興野内科医院", "url": "https://zaitakuclinic-navi.com/clinic/801281.html", "address": {"@type": "PostalAddress", "postalCode": "982-0821", "streetAddress": "宮城県仙台市太白区松が丘８－１０", "addressLocality": "仙台市太白区", "addressRegion": "宮城県", "addressCountry": "JP"}, "telephone": "022-229-6868", "geo": {"@type": "GeoCoordinates", "latitude": 38.2425284, "longitude": 140.8499607}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.2, "reviewCount": 6}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0222296868" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 022-229-6868 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0222296868" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'801281',page_type:'detail'})">📞 022-229-6868 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

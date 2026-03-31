@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "茨城県", "item": "https://zaitakuclinic-navi.com/pref/ibaraki.html"}, {"@type": "ListItem", "position": 3, "name": "土浦市", "item": "https://zaitakuclinic-navi.com/pref/ibaraki/土浦市.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人鶴翔会鶴町医院", "item": "https://zaitakuclinic-navi.com/clinic/208590316.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人鶴翔会鶴町医院", "url": "https://zaitakuclinic-navi.com/clinic/208590316.html", "address": {"@type": "PostalAddress", "postalCode": "300-0043", "streetAddress": "茨城県土浦市中央１－１－１１", "addressLocality": "土浦市", "addressRegion": "茨城県", "addressCountry": "JP"}, "telephone": "029-821-2368", "geo": {"@type": "GeoCoordinates", "latitude": 36.0812922, "longitude": 140.2004304}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.9, "reviewCount": 16}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0298212368" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 029-821-2368 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0298212368" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'208590316',page_type:'detail'})">📞 029-821-2368 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

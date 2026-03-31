@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "青森県", "item": "https://zaitakuclinic-navi.com/pref/aomori.html"}, {"@type": "ListItem", "position": 3, "name": "青森市", "item": "https://zaitakuclinic-navi.com/pref/aomori/青森市.html"}, {"@type": "ListItem", "position": 4, "name": "菊田クリニック", "item": "https://zaitakuclinic-navi.com/clinic/0220000070.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "菊田クリニック", "url": "https://zaitakuclinic-navi.com/clinic/0220000070.html", "address": {"@type": "PostalAddress", "postalCode": "030-0801", "streetAddress": "青森県青森市新町二丁目８－２８", "addressLocality": "青森市", "addressRegion": "青森県", "addressCountry": "JP"}, "telephone": "017-721-3303", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq2W9na4gaenR7PNsJrgpfi6CHA9rNfY6vqdblJyu9GMDJ5qVpHg1hxkFASOfWvTnarVWiD4CWKK2w2o1bBIg3WRBtT8M5xQTRxBkPA9pB7kddvAC_FrN_2Ajn3rHBt7pvm2rIO=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 40.8251779, "longitude": 140.7438546}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.6, "reviewCount": 7}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0177213303" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 017-721-3303 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0177213303" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'0220000070',page_type:'detail'})">📞 017-721-3303 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

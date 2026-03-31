@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "新潟県", "item": "https://zaitakuclinic-navi.com/pref/niigata.html"}, {"@type": "ListItem", "position": 3, "name": "三条市", "item": "https://zaitakuclinic-navi.com/pref/niigata/三条市.html"}, {"@type": "ListItem", "position": 4, "name": "田中内科クリニック", "item": "https://zaitakuclinic-navi.com/clinic/SISNX00032.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "田中内科クリニック", "url": "https://zaitakuclinic-navi.com/clinic/SISNX00032.html", "address": {"@type": "PostalAddress", "postalCode": "955-0092", "streetAddress": "新潟県三条市須頃２－１０１－１", "addressLocality": "三条市", "addressRegion": "新潟県", "addressCountry": "JP"}, "telephone": "0256-32-8101", "geo": {"@type": "GeoCoordinates", "latitude": 37.6448013, "longitude": 138.9405455}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0256328101" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0256-32-8101 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0256328101" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'SISNX00032',page_type:'detail'})">📞 0256-32-8101 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

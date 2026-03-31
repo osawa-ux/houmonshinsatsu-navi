@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "福島県", "item": "https://zaitakuclinic-navi.com/pref/fukushima.html"}, {"@type": "ListItem", "position": 3, "name": "伊達市", "item": "https://zaitakuclinic-navi.com/pref/fukushima/伊達市.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人伊藤皮フ科クリニック", "item": "https://zaitakuclinic-navi.com/clinic/0720001595.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人伊藤皮フ科クリニック", "url": "https://zaitakuclinic-navi.com/clinic/0720001595.html", "address": {"@type": "PostalAddress", "postalCode": "960-0418", "streetAddress": "福島県伊達市岡前２０－１", "addressLocality": "伊達市", "addressRegion": "福島県", "addressCountry": "JP"}, "telephone": "024-551-1121", "sameAs": "http://itou-hifu.jp", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepeKrzryFIfZ_BUA7v6B_gLT8lj-qlMPfJ2PH4UbBYuCSvkSjW3TI2b5-z_Vf4fpVj9p6tiZV45q9zYQlbclXXJgN6OfnXm5I5bm7o-USb8QpaLCSLas_BRBVdqqzMaxlGcsT0p=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 37.82221150000001, "longitude": 140.5049977}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.5, "reviewCount": 31}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0245511121" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 024-551-1121 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0245511121" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'0720001595',page_type:'detail'})">📞 024-551-1121 に電話する</a></div>
   <p style="margin:8px 0;"><a href="http://itou-hifu.jp" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

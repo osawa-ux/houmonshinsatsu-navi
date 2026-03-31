@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "愛媛県", "item": "https://zaitakuclinic-navi.com/pref/ehime.html"}, {"@type": "ListItem", "position": 3, "name": "大洲市", "item": "https://zaitakuclinic-navi.com/pref/ehime/大洲市.html"}, {"@type": "ListItem", "position": 4, "name": "浦岡医院", "item": "https://zaitakuclinic-navi.com/clinic/2385901000.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "浦岡医院", "url": "https://zaitakuclinic-navi.com/clinic/2385901000.html", "address": {"@type": "PostalAddress", "postalCode": "795-0012", "streetAddress": "愛媛県大洲市大洲８７７番地", "addressLocality": "大洲市", "addressRegion": "愛媛県", "addressCountry": "JP"}, "telephone": "0893-24-2026", "geo": {"@type": "GeoCoordinates", "latitude": 33.5076846, "longitude": 132.541906}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0893242026" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0893-24-2026 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0893242026" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2385901000',page_type:'detail'})">📞 0893-24-2026 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

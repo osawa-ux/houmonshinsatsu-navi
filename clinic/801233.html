@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "宮城県", "item": "https://zaitakuclinic-navi.com/pref/miyagi.html"}, {"@type": "ListItem", "position": 3, "name": "白石市", "item": "https://zaitakuclinic-navi.com/pref/miyagi/白石市.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人社団えんどうクリニック", "item": "https://zaitakuclinic-navi.com/clinic/801233.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人社団えんどうクリニック", "url": "https://zaitakuclinic-navi.com/clinic/801233.html", "address": {"@type": "PostalAddress", "postalCode": "989-0228", "streetAddress": "宮城県白石市兎作４０－１", "addressLocality": "白石市", "addressRegion": "宮城県", "addressCountry": "JP"}, "telephone": "0224-26-3888", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepWM5fPV8G2cgoJGKJgL03GwV4G-nufgVdy-AFjmtoofiu8dvflGJZVmcu0Q_VmZPgG8Y_e9eND5q234Fz3wz7AzlFOAOwrA8zjfoC8J7eOtEq44GLglUtbVD2n9NJWNS4hhoVUyA=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 38.0017147, "longitude": 140.6255916}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3, "reviewCount": 7}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0224263888" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0224-26-3888 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0224263888" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'801233',page_type:'detail'})">📞 0224-26-3888 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

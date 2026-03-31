@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "北海道", "item": "https://zaitakuclinic-navi.com/pref/hokkaido.html"}, {"@type": "ListItem", "position": 3, "name": "小樽市", "item": "https://zaitakuclinic-navi.com/pref/hokkaido/小樽市.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人社団　高村内科医院", "item": "https://zaitakuclinic-navi.com/clinic/2010021420.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人社団　高村内科医院", "url": "https://zaitakuclinic-navi.com/clinic/2010021420.html", "address": {"@type": "PostalAddress", "postalCode": "047-0046", "streetAddress": "北海道小樽市赤岩１－１５－１４", "addressLocality": "小樽市", "addressRegion": "北海道", "addressCountry": "JP"}, "telephone": "0134-23-8141", "geo": {"@type": "GeoCoordinates", "latitude": 43.220972, "longitude": 140.992502}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.8, "reviewCount": 5}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0134238141" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0134-23-8141 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0134238141" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2010021420',page_type:'detail'})">📞 0134-23-8141 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

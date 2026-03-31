@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "岐阜県", "item": "https://zaitakuclinic-navi.com/pref/gifu.html"}, {"@type": "ListItem", "position": 3, "name": "山県市", "item": "https://zaitakuclinic-navi.com/pref/gifu/山県市.html"}, {"@type": "ListItem", "position": 4, "name": "なりみやクリニック", "item": "https://zaitakuclinic-navi.com/clinic/1632001455.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "なりみやクリニック", "url": "https://zaitakuclinic-navi.com/clinic/1632001455.html", "address": {"@type": "PostalAddress", "postalCode": "501-2105", "streetAddress": "岐阜県山県市高富１６１４", "addressLocality": "山県市", "addressRegion": "岐阜県", "addressCountry": "JP"}, "telephone": "0581-22-1213", "geo": {"@type": "GeoCoordinates", "latitude": 35.4980777, "longitude": 136.7886809}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0581221213" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0581-22-1213 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0581221213" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'1632001455',page_type:'detail'})">📞 0581-22-1213 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

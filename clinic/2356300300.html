@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "山口県", "item": "https://zaitakuclinic-navi.com/pref/yamaguchi.html"}, {"@type": "ListItem", "position": 3, "name": "長門市", "item": "https://zaitakuclinic-navi.com/pref/yamaguchi/長門市.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人天野内科胃腸科医院", "item": "https://zaitakuclinic-navi.com/clinic/2356300300.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人天野内科胃腸科医院", "url": "https://zaitakuclinic-navi.com/clinic/2356300300.html", "address": {"@type": "PostalAddress", "postalCode": "759-4101", "streetAddress": "山口県長門市東深川２０１０－１", "addressLocality": "長門市", "addressRegion": "山口県", "addressCountry": "JP"}, "telephone": "0837-22-6703", "geo": {"@type": "GeoCoordinates", "latitude": 34.3667763, "longitude": 131.1795495}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4.3, "reviewCount": 3}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0837226703" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0837-22-6703 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0837226703" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2356300300',page_type:'detail'})">📞 0837-22-6703 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

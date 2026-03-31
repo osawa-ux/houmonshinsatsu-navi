@@ -27,6 +27,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 
 </head>
@@ -201,6 +202,7 @@
   <!-- 申込フォーム -->
   <h2 id="apply">有料プランのお申し込み・掲載情報の登録</h2>
   <p style="margin-bottom:16px;color:#444;">以下のフォームにご記入ください。内容を確認の上、担当者よりご連絡いたします。</p>
+  <script>gev('start_paid_application');</script>
 
   <form action="https://formspree.io/f/maqppend" method="POST" id="premiumForm">
     <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
@@ -299,7 +301,7 @@
 
     <p style="font-size:12px;color:#888;margin-bottom:12px;">ご入力いただいた情報は、有料プランのご案内・掲載情報の更新および当サービスに関するご連絡のみに使用し、第三者に提供することはありません。<a href="/terms.html">利用規約</a></p>
 
-    <button type="submit" style="background:#2a5a8c;color:#fff;border:none;padding:14px 48px;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;">申し込む</button>
+    <button type="submit" style="background:#2a5a8c;color:#fff;border:none;padding:14px 48px;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;" onclick="gev('submit_paid_application')">申し込む</button>
   </form>
 
   <p style="margin-top:24px;"><a href="/">&larr; トップページに戻る</a></p>

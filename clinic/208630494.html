@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "茨城県", "item": "https://zaitakuclinic-navi.com/pref/ibaraki.html"}, {"@type": "ListItem", "position": 3, "name": "常総市", "item": "https://zaitakuclinic-navi.com/pref/ibaraki/常総市.html"}, {"@type": "ListItem", "position": 4, "name": "中島医科歯科クリニック", "item": "https://zaitakuclinic-navi.com/clinic/208630494.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "中島医科歯科クリニック", "url": "https://zaitakuclinic-navi.com/clinic/208630494.html", "address": {"@type": "PostalAddress", "postalCode": "300-2712", "streetAddress": "茨城県常総市曲田５５０－１", "addressLocality": "常総市", "addressRegion": "茨城県", "addressCountry": "JP"}, "telephone": "0297-42-0666", "geo": {"@type": "GeoCoordinates", "latitude": 36.0954787, "longitude": 139.9951047}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4.4, "reviewCount": 12}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0297420666" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0297-42-0666 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0297420666" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'208630494',page_type:'detail'})">📞 0297-42-0666 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

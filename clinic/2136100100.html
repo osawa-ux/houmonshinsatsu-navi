@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "東京都", "item": "https://zaitakuclinic-navi.com/pref/tokyo.html"}, {"@type": "ListItem", "position": 3, "name": "中野区", "item": "https://zaitakuclinic-navi.com/pref/tokyo/中野区.html"}, {"@type": "ListItem", "position": 4, "name": "クリニック中野", "item": "https://zaitakuclinic-navi.com/clinic/2136100100.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "クリニック中野", "url": "https://zaitakuclinic-navi.com/clinic/2136100100.html", "address": {"@type": "PostalAddress", "postalCode": "164-0002", "streetAddress": "東京都中野区新井４－２１－２", "addressLocality": "中野区", "addressRegion": "東京都", "addressCountry": "JP"}, "telephone": "03-3383-3530", "geo": {"@type": "GeoCoordinates", "latitude": 35.7035878, "longitude": 139.6674893}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 1.6, "reviewCount": 8}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0333833530" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 03-3383-3530 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0333833530" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2136100100',page_type:'detail'})">📞 03-3383-3530 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

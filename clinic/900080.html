@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "宮城県", "item": "https://zaitakuclinic-navi.com/pref/miyagi.html"}, {"@type": "ListItem", "position": 3, "name": "仙台市宮城野区", "item": "https://zaitakuclinic-navi.com/pref/miyagi/仙台市宮城野区.html"}, {"@type": "ListItem", "position": 4, "name": "湯村医院", "item": "https://zaitakuclinic-navi.com/clinic/900080.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "湯村医院", "url": "https://zaitakuclinic-navi.com/clinic/900080.html", "address": {"@type": "PostalAddress", "postalCode": "983-0821", "streetAddress": "宮城県仙台市宮城野区岩切字若宮前８２－１", "addressLocality": "仙台市宮城野区", "addressRegion": "宮城県", "addressCountry": "JP"}, "telephone": "022-255-8011", "image": "https://lh3.googleusercontent.com/places/ANXAkqHpP6xpZZ7V1BUqv6ZNIoHhhxGcJ9G3rHsipAfKtBZv4inLrefJ9wZIaVyfWVF3m1jthAlHzXa9aihZkw0uv-wn-WYU_BS5R8k=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 38.3057469, "longitude": 140.9501826}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.5, "reviewCount": 19}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0222558011" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 022-255-8011 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0222558011" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'900080',page_type:'detail'})">📞 022-255-8011 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

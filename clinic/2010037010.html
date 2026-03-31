@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "北海道", "item": "https://zaitakuclinic-navi.com/pref/hokkaido.html"}, {"@type": "ListItem", "position": 3, "name": "札幌市清田区", "item": "https://zaitakuclinic-navi.com/pref/hokkaido/札幌市清田区.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人社団平郁会　札幌在宅クリニックそよ風", "item": "https://zaitakuclinic-navi.com/clinic/2010037010.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人社団平郁会　札幌在宅クリニックそよ風", "url": "https://zaitakuclinic-navi.com/clinic/2010037010.html", "address": {"@type": "PostalAddress", "postalCode": "004-0841", "streetAddress": "北海道札幌市清田区清田一条四丁目５ー５２", "addressLocality": "札幌市清田区", "addressRegion": "北海道", "addressCountry": "JP"}, "telephone": "011-888-0808", "geo": {"@type": "GeoCoordinates", "latitude": 42.9984589, "longitude": 141.4419634}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4, "reviewCount": 4}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0118880808" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 011-888-0808 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0118880808" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2010037010',page_type:'detail'})">📞 011-888-0808 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

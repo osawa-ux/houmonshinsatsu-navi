@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "千葉県", "item": "https://zaitakuclinic-navi.com/pref/chiba.html"}, {"@type": "ListItem", "position": 3, "name": "八千代市", "item": "https://zaitakuclinic-navi.com/pref/chiba/八千代市.html"}, {"@type": "ListItem", "position": 4, "name": "まるやまクリニック", "item": "https://zaitakuclinic-navi.com/clinic/1200189900.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "まるやまクリニック", "url": "https://zaitakuclinic-navi.com/clinic/1200189900.html", "address": {"@type": "PostalAddress", "postalCode": "276-0046", "streetAddress": "千葉県八千代市大和田新田３８１－２", "addressLocality": "八千代市", "addressRegion": "千葉県", "addressCountry": "JP"}, "telephone": "047-480-3800", "sameAs": "https://yachinishi_clinic.com", "geo": {"@type": "GeoCoordinates", "latitude": 35.7238843, "longitude": 140.0944144}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 5, "reviewCount": 3}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0474803800" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 047-480-3800 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0474803800" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'1200189900',page_type:'detail'})">📞 047-480-3800 に電話する</a></div>
   <p style="margin:8px 0;"><a href="https://yachinishi_clinic.com" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

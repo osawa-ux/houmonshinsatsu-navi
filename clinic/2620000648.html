@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "京都府", "item": "https://zaitakuclinic-navi.com/pref/kyoto.html"}, {"@type": "ListItem", "position": 3, "name": "京都市中京区", "item": "https://zaitakuclinic-navi.com/pref/kyoto/京都市中京区.html"}, {"@type": "ListItem", "position": 4, "name": "モリタニ　クリニック", "item": "https://zaitakuclinic-navi.com/clinic/2620000648.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "モリタニ　クリニック", "url": "https://zaitakuclinic-navi.com/clinic/2620000648.html", "address": {"@type": "PostalAddress", "postalCode": "604-8071", "streetAddress": "京都府京都市中京区寺町三条下ル永楽町２２４とーべえビル４Ｆ", "addressLocality": "京都市中京区", "addressRegion": "京都府", "addressCountry": "JP"}, "telephone": "075-212-0005", "geo": {"@type": "GeoCoordinates", "latitude": 35.008551, "longitude": 135.766857}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.8, "reviewCount": 19}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0752120005" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 075-212-0005 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0752120005" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2620000648',page_type:'detail'})">📞 075-212-0005 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

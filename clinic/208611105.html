@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "茨城県", "item": "https://zaitakuclinic-navi.com/pref/ibaraki.html"}, {"@type": "ListItem", "position": 3, "name": "つくば市", "item": "https://zaitakuclinic-navi.com/pref/ibaraki/つくば市.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人中川医院", "item": "https://zaitakuclinic-navi.com/clinic/208611105.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人中川医院", "url": "https://zaitakuclinic-navi.com/clinic/208611105.html", "address": {"@type": "PostalAddress", "postalCode": "300-3264", "streetAddress": "茨城県つくば市篠崎２２７２－１", "addressLocality": "つくば市", "addressRegion": "茨城県", "addressCountry": "JP"}, "telephone": "029-864-7760", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepVyZ_yzyZJ0W0VUcI7JELQoiV7fEMR7a63MGmhSRTYvnboemikUiCbfAT9glZgoQLGIDYA8jlxzVftV2ldaWzo82gfDsap08eWnR0ukNyfD4-tMFL8wkt6KK2bwTir_Q8Fp82ma7ojKCOX=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 36.1379462, "longitude": 140.057392}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.5, "reviewCount": 33}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0298647760" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 029-864-7760 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0298647760" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'208611105',page_type:'detail'})">📞 029-864-7760 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

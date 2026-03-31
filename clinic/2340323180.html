@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "広島県", "item": "https://zaitakuclinic-navi.com/pref/hiroshima.html"}, {"@type": "ListItem", "position": 3, "name": "広島市中区", "item": "https://zaitakuclinic-navi.com/pref/hiroshima/広島市中区.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人　ケーエスワイ　立町クリニック", "item": "https://zaitakuclinic-navi.com/clinic/2340323180.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人　ケーエスワイ　立町クリニック", "url": "https://zaitakuclinic-navi.com/clinic/2340323180.html", "address": {"@type": "PostalAddress", "postalCode": "730-0032", "streetAddress": "広島県広島市中区立町２－２　立町中央ビル　６Ｆ", "addressLocality": "広島市中区", "addressRegion": "広島県", "addressCountry": "JP"}, "telephone": "082-247-0555", "sameAs": "http://tatemachi-clinic.jp/", "geo": {"@type": "GeoCoordinates", "latitude": 34.3940665, "longitude": 132.4611005}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.2, "reviewCount": 46}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0822470555" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 082-247-0555 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0822470555" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2340323180',page_type:'detail'})">📞 082-247-0555 に電話する</a></div>
   <p style="margin:8px 0;"><a href="http://tatemachi-clinic.jp/" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

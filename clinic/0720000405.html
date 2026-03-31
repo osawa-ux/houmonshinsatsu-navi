@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "福島県", "item": "https://zaitakuclinic-navi.com/pref/fukushima.html"}, {"@type": "ListItem", "position": 3, "name": "福島市", "item": "https://zaitakuclinic-navi.com/pref/fukushima/福島市.html"}, {"@type": "ListItem", "position": 4, "name": "生協いいの診療所", "item": "https://zaitakuclinic-navi.com/clinic/0720000405.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "生協いいの診療所", "url": "https://zaitakuclinic-navi.com/clinic/0720000405.html", "address": {"@type": "PostalAddress", "postalCode": "960-1301", "streetAddress": "福島県福島市飯野町字後川２７－２", "addressLocality": "福島市", "addressRegion": "福島県", "addressCountry": "JP"}, "telephone": "024-562-4120", "geo": {"@type": "GeoCoordinates", "latitude": 37.6557772, "longitude": 140.5334211}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3, "reviewCount": 7}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0245624120" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 024-562-4120 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0245624120" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'0720000405',page_type:'detail'})">📞 024-562-4120 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

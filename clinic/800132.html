@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "宮城県", "item": "https://zaitakuclinic-navi.com/pref/miyagi.html"}, {"@type": "ListItem", "position": 3, "name": "仙台市青葉区", "item": "https://zaitakuclinic-navi.com/pref/miyagi/仙台市青葉区.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人社団　千葉クリニック", "item": "https://zaitakuclinic-navi.com/clinic/800132.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人社団　千葉クリニック", "url": "https://zaitakuclinic-navi.com/clinic/800132.html", "address": {"@type": "PostalAddress", "postalCode": "981-0935", "streetAddress": "宮城県仙台市青葉区三条町１１－２６", "addressLocality": "仙台市青葉区", "addressRegion": "宮城県", "addressCountry": "JP"}, "telephone": "022-275-7333", "sameAs": "http://www.chiba-clinic.or.jp/index.html", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwernVI3HEzkA4gcZd6kK6tALQS0xJArB0fv33zUT-KpKitkrAzV_Bb4v9gI6BN5b8FqDI-3XC32dneaqNW4c2hdOl_94lUuLqFTp0ChCBbMi8tbAK1nPo8zFl5JEw-ImaTK8r0o4Tg=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 38.2814801, "longitude": 140.8528264}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.2, "reviewCount": 15}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0222757333" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 022-275-7333 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0222757333" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'800132',page_type:'detail'})">📞 022-275-7333 に電話する</a></div>
   <p style="margin:8px 0;"><a href="http://www.chiba-clinic.or.jp/index.html" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

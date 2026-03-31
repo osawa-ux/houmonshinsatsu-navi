@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "山梨県", "item": "https://zaitakuclinic-navi.com/pref/yamanashi.html"}, {"@type": "ListItem", "position": 3, "name": "南巨摩郡南部町", "item": "https://zaitakuclinic-navi.com/pref/yamanashi/南巨摩郡南部町.html"}, {"@type": "ListItem", "position": 4, "name": "佐野医院", "item": "https://zaitakuclinic-navi.com/clinic/2190001038.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "佐野医院", "url": "https://zaitakuclinic-navi.com/clinic/2190001038.html", "address": {"@type": "PostalAddress", "postalCode": "409-2305", "streetAddress": "山梨県南巨摩郡南部町内船７２０２", "addressLocality": "南巨摩郡南部町", "addressRegion": "山梨県", "addressCountry": "JP"}, "telephone": "0556-64-3125", "geo": {"@type": "GeoCoordinates", "latitude": 35.2813176, "longitude": 138.4670876}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 5, "reviewCount": 1}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0556643125" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0556-64-3125 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0556643125" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2190001038',page_type:'detail'})">📞 0556-64-3125 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

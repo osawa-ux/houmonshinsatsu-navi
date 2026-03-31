@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "長野県", "item": "https://zaitakuclinic-navi.com/pref/nagano.html"}, {"@type": "ListItem", "position": 3, "name": "須坂市", "item": "https://zaitakuclinic-navi.com/pref/nagano/須坂市.html"}, {"@type": "ListItem", "position": 4, "name": "下鳥内科クリニック", "item": "https://zaitakuclinic-navi.com/clinic/2206633480.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "下鳥内科クリニック", "url": "https://zaitakuclinic-navi.com/clinic/2206633480.html", "address": {"@type": "PostalAddress", "postalCode": "382-0047", "streetAddress": "長野県須坂市大字幸高字苅屋２７８番地", "addressLocality": "須坂市", "addressRegion": "長野県", "addressCountry": "JP"}, "telephone": "026-215-2777", "geo": {"@type": "GeoCoordinates", "latitude": 36.6394164, "longitude": 138.2859859}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 5, "reviewCount": 3}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0262152777" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 026-215-2777 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0262152777" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2206633480',page_type:'detail'})">📞 026-215-2777 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

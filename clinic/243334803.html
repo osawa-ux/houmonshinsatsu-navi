@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "熊本県", "item": "https://zaitakuclinic-navi.com/pref/kumamoto.html"}, {"@type": "ListItem", "position": 3, "name": "熊本市東区", "item": "https://zaitakuclinic-navi.com/pref/kumamoto/熊本市東区.html"}, {"@type": "ListItem", "position": 4, "name": "田中内科クリニック", "item": "https://zaitakuclinic-navi.com/clinic/243334803.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "田中内科クリニック", "url": "https://zaitakuclinic-navi.com/clinic/243334803.html", "address": {"@type": "PostalAddress", "postalCode": "861-8043", "streetAddress": "熊本県熊本市東区戸島西３ー２ー３５", "addressLocality": "熊本市東区", "addressRegion": "熊本県", "addressCountry": "JP"}, "telephone": "096-388-1122", "geo": {"@type": "GeoCoordinates", "latitude": 32.8141552, "longitude": 130.780219}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0963881122" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 096-388-1122 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0963881122" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'243334803',page_type:'detail'})">📞 096-388-1122 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

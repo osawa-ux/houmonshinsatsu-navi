@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "福島県", "item": "https://zaitakuclinic-navi.com/pref/fukushima.html"}, {"@type": "ListItem", "position": 3, "name": "郡山市", "item": "https://zaitakuclinic-navi.com/pref/fukushima/郡山市.html"}, {"@type": "ListItem", "position": 4, "name": "矢内クリニック", "item": "https://zaitakuclinic-navi.com/clinic/0720001111.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "矢内クリニック", "url": "https://zaitakuclinic-navi.com/clinic/0720001111.html", "address": {"@type": "PostalAddress", "postalCode": "963-0702", "streetAddress": "福島県郡山市緑ヶ丘東３－１－４", "addressLocality": "郡山市", "addressRegion": "福島県", "addressCountry": "JP"}, "telephone": "024-942-0871", "geo": {"@type": "GeoCoordinates", "latitude": 37.38298, "longitude": 140.435248}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 3.6, "reviewCount": 8}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0249420871" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 024-942-0871 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0249420871" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'0720001111',page_type:'detail'})">📞 024-942-0871 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

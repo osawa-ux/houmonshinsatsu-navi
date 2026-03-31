@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "千葉県", "item": "https://zaitakuclinic-navi.com/pref/chiba.html"}, {"@type": "ListItem", "position": 3, "name": "習志野市", "item": "https://zaitakuclinic-navi.com/pref/chiba/習志野市.html"}, {"@type": "ListItem", "position": 4, "name": "和奏クリニック", "item": "https://zaitakuclinic-navi.com/clinic/1226497000.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "和奏クリニック", "url": "https://zaitakuclinic-navi.com/clinic/1226497000.html", "address": {"@type": "PostalAddress", "postalCode": "275-0026", "streetAddress": "千葉県習志野市谷津６－６－７", "addressLocality": "習志野市", "addressRegion": "千葉県", "addressCountry": "JP"}, "telephone": "047-405-2680", "geo": {"@type": "GeoCoordinates", "latitude": 35.6901247, "longitude": 140.0080862}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0474052680" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 047-405-2680 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0474052680" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'1226497000',page_type:'detail'})">📞 047-405-2680 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

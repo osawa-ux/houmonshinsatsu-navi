@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "愛知県", "item": "https://zaitakuclinic-navi.com/pref/aichi.html"}, {"@type": "ListItem", "position": 3, "name": "名古屋市西区", "item": "https://zaitakuclinic-navi.com/pref/aichi/名古屋市西区.html"}, {"@type": "ListItem", "position": 4, "name": "フレンズクリニック", "item": "https://zaitakuclinic-navi.com/clinic/2232309680.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "フレンズクリニック", "url": "https://zaitakuclinic-navi.com/clinic/2232309680.html", "address": {"@type": "PostalAddress", "postalCode": "451-0043", "streetAddress": "愛知県名古屋市西区新道１－２１－５", "addressLocality": "名古屋市西区", "addressRegion": "愛知県", "addressCountry": "JP"}, "telephone": "052-938-6301", "geo": {"@type": "GeoCoordinates", "latitude": 35.183445, "longitude": 136.8870089}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 5, "reviewCount": 2}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0529386301" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 052-938-6301 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0529386301" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2232309680',page_type:'detail'})">📞 052-938-6301 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

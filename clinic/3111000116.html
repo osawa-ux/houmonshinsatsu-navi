@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "鳥取県", "item": "https://zaitakuclinic-navi.com/pref/tottori.html"}, {"@type": "ListItem", "position": 3, "name": "米子市", "item": "https://zaitakuclinic-navi.com/pref/tottori/米子市.html"}, {"@type": "ListItem", "position": 4, "name": "たなか内科クリニック", "item": "https://zaitakuclinic-navi.com/clinic/3111000116.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "たなか内科クリニック", "url": "https://zaitakuclinic-navi.com/clinic/3111000116.html", "address": {"@type": "PostalAddress", "postalCode": "689-3544", "streetAddress": "鳥取県米子市浦津２２２番地１７", "addressLocality": "米子市", "addressRegion": "鳥取県", "addressCountry": "JP"}, "telephone": "0859-37-0700", "geo": {"@type": "GeoCoordinates", "latitude": 35.4243574, "longitude": 133.3778909}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 2.3, "reviewCount": 11}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0859370700" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 0859-37-0700 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0859370700" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'3111000116',page_type:'detail'})">📞 0859-37-0700 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

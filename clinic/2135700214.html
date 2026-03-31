@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "東京都", "item": "https://zaitakuclinic-navi.com/pref/tokyo.html"}, {"@type": "ListItem", "position": 3, "name": "杉並区", "item": "https://zaitakuclinic-navi.com/pref/tokyo/杉並区.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人社団ひさゆい会　在宅ケアクリニック杉並南部", "item": "https://zaitakuclinic-navi.com/clinic/2135700214.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人社団ひさゆい会　在宅ケアクリニック杉並南部", "url": "https://zaitakuclinic-navi.com/clinic/2135700214.html", "address": {"@type": "PostalAddress", "postalCode": "168-0073", "streetAddress": "東京都杉並区下高井戸２－１９－１８", "addressLocality": "杉並区", "addressRegion": "東京都", "addressCountry": "JP"}, "telephone": "03-6304-3109", "geo": {"@type": "GeoCoordinates", "latitude": 35.66937619999999, "longitude": 139.6398495}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 5, "reviewCount": 1}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0363043109" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 03-6304-3109 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0363043109" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2135700214',page_type:'detail'})">📞 03-6304-3109 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

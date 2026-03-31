@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "埼玉県", "item": "https://zaitakuclinic-navi.com/pref/saitama.html"}, {"@type": "ListItem", "position": 3, "name": "さいたま市見沼区", "item": "https://zaitakuclinic-navi.com/pref/saitama/さいたま市見沼区.html"}, {"@type": "ListItem", "position": 4, "name": "小野田クリニック", "item": "https://zaitakuclinic-navi.com/clinic/1121331000.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "小野田クリニック", "url": "https://zaitakuclinic-navi.com/clinic/1121331000.html", "address": {"@type": "PostalAddress", "postalCode": "337-0053", "streetAddress": "埼玉県さいたま市見沼区大和田町１－９３７－１", "addressLocality": "さいたま市見沼区", "addressRegion": "埼玉県", "addressCountry": "JP"}, "telephone": "048-812-7071", "geo": {"@type": "GeoCoordinates", "latitude": 35.9258631, "longitude": 139.6472121}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 2.6, "reviewCount": 24}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0488127071" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 048-812-7071 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0488127071" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'1121331000',page_type:'detail'})">📞 048-812-7071 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "岡山県", "item": "https://zaitakuclinic-navi.com/pref/okayama.html"}, {"@type": "ListItem", "position": 3, "name": "岡山市北区", "item": "https://zaitakuclinic-navi.com/pref/okayama/岡山市北区.html"}, {"@type": "ListItem", "position": 4, "name": "ゆうクリニック", "item": "https://zaitakuclinic-navi.com/clinic/2330009930.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "ゆうクリニック", "url": "https://zaitakuclinic-navi.com/clinic/2330009930.html", "address": {"@type": "PostalAddress", "postalCode": "700-0903", "streetAddress": "岡山県岡山市北区幸町１－７大田ビル３階", "addressLocality": "岡山市北区", "addressRegion": "岡山県", "addressCountry": "JP"}, "telephone": "086-225-0375", "geo": {"@type": "GeoCoordinates", "latitude": 34.6624699, "longitude": 133.9202265}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4.4, "reviewCount": 17}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0862250375" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 086-225-0375 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0862250375" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2330009930',page_type:'detail'})">📞 086-225-0375 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

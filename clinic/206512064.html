@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "山形県", "item": "https://zaitakuclinic-navi.com/pref/yamagata.html"}, {"@type": "ListItem", "position": 3, "name": "上山市", "item": "https://zaitakuclinic-navi.com/pref/yamagata/上山市.html"}, {"@type": "ListItem", "position": 4, "name": "原田眼科医院", "item": "https://zaitakuclinic-navi.com/clinic/206512064.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "原田眼科医院", "url": "https://zaitakuclinic-navi.com/clinic/206512064.html", "address": {"@type": "PostalAddress", "postalCode": "999-3153", "streetAddress": "山形県上山市十日町", "addressLocality": "上山市", "addressRegion": "山形県", "addressCountry": "JP"}, "telephone": "023-672-0017", "geo": {"@type": "GeoCoordinates", "latitude": 38.1582049, "longitude": 140.2789938}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4, "reviewCount": 1}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0236720017" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 023-672-0017 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0236720017" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'206512064',page_type:'detail'})">📞 023-672-0017 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>

@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "三重県", "item": "https://zaitakuclinic-navi.com/pref/mie.html"}, {"@type": "ListItem", "position": 3, "name": "津市", "item": "https://zaitakuclinic-navi.com/pref/mie/津市.html"}, {"@type": "ListItem", "position": 4, "name": "まきのクリニック", "item": "https://zaitakuclinic-navi.com/clinic/2240002300.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "まきのクリニック", "url": "https://zaitakuclinic-navi.com/clinic/2240002300.html", "address": {"@type": "PostalAddress", "postalCode": "514-2106", "streetAddress": "三重県津市美里町足坂１６５－２", "addressLocality": "津市", "addressRegion": "三重県", "addressCountry": "JP"}, "telephone": "059-279-5111", "geo": {"@type": "GeoCoordinates", "latitude": 34.7162757, "longitude": 136.3957658}}</script>
@@ -58,7 +59,7 @@
   </table>
 
   
-  <div style="margin:16px 0;"><a href="tel:0592795111" class="cta-btn cta-btn-primary" style="font-size:1em;">📞 059-279-5111 に電話する</a></div>
+  <div style="margin:16px 0;"><a href="tel:0592795111" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2240002300',page_type:'detail'})">📞 059-279-5111 に電話する</a></div>
   
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>
