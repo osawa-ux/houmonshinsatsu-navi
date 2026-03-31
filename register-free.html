@@ -632,20 +632,44 @@ initAreaPicker('area-picker-new', 'visit_area_new');
   }
   window.clearSelection = clearSelection;
 
-  // --- Form submit: edit ---
-  function handleFormSubmit(formId, btnDefaultText) {
-    var form = document.getElementById(formId);
+  // --- Form submit: Supabase API 経由で保存 ---
+  var API_URL = 'https://zaitaku-members.vercel.app/api/registration';
+
+  function collectFormData(form, requestType) {
+    var fd = new FormData(form);
+    var obj = { request_type: requestType };
+    fd.forEach(function(v, k) {
+      if (k === 'diseases' || k === 'procedures') {
+        if (!obj[k]) obj[k] = [];
+        obj[k].push(v);
+      } else {
+        obj[k] = v;
+      }
+    });
+    // rename form fields to API fields
+    obj.contact_name = obj.name || '';
+    obj.contact_email = obj.email || '';
+    obj.contact_role = obj.role || '';
+    if (requestType === 'edit') {
+      obj.visit_areas = obj.visit_area_edit || '';
+    } else {
+      obj.visit_areas = obj.visit_area_new || '';
+    }
+    return obj;
+  }
+
+  function submitToAPI(form, requestType, btnDefaultText) {
     if (!form) return;
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       var btn = form.querySelector('button[type="submit"]');
       btn.disabled = true;
       btn.textContent = '送信中...';
-      var data = new FormData(form);
-      fetch(form.action, {
+      var payload = collectFormData(form, requestType);
+      fetch(API_URL, {
         method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       }).then(function(res) {
         if (res.ok) {
           window.location.href = '/register-thanks.html';
@@ -662,7 +686,7 @@ initAreaPicker('area-picker-new', 'visit_area_new');
     });
   }
 
-  handleFormSubmit('editForm', '修正申請を送信する');
+  submitToAPI(document.getElementById('editForm'), 'edit', '修正申請を送信する');
 
   // --- 新規掲載: 医療機関番号の重複チェック ---
   var kikanInput = document.getElementById('new-kikan-cd');
@@ -696,24 +720,23 @@ initAreaPicker('area-picker-new', 'visit_area_new');
     });
   }
 
-  // 新規フォーム: 重複時は送信ブロック
+  // 新規フォーム: 重複時は送信ブロック + API送信
   var newForm = document.getElementById('newForm');
   if (newForm) {
     newForm.addEventListener('submit', function(e) {
+      e.preventDefault();
       if (kikanDuplicate) {
-        e.preventDefault();
         alert('この医療機関番号は既に掲載されています。掲載情報の修正は「既に掲載されている医療機関の方」からお手続きください。');
         return;
       }
-      e.preventDefault();
       var btn = newForm.querySelector('button[type="submit"]');
       btn.disabled = true;
       btn.textContent = '送信中...';
-      var data = new FormData(newForm);
-      fetch(newForm.action, {
+      var payload = collectFormData(newForm, 'new');
+      fetch(API_URL, {
         method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       }).then(function(res) {
         if (res.ok) {
           window.location.href = '/register-thanks.html';
@@ -729,8 +752,6 @@ initAreaPicker('area-picker-new', 'visit_area_new');
       });
     });
   }
-
-  handleFormSubmit('editForm', '修正申請を送信する');
 })();
 </script>
 <footer>
