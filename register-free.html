@@ -672,7 +672,7 @@ initAreaPicker('area-picker-new', 'visit_area_new');
         body: JSON.stringify(payload)
       }).then(function(res) {
         if (res.ok) {
-          window.location.href = '/register-thanks.html';
+          window.location.href = '/register-thanks.html?type=' + requestType;
         } else {
           btn.disabled = false;
           btn.textContent = btnDefaultText;
@@ -739,7 +739,7 @@ initAreaPicker('area-picker-new', 'visit_area_new');
         body: JSON.stringify(payload)
       }).then(function(res) {
         if (res.ok) {
-          window.location.href = '/register-thanks.html';
+          window.location.href = '/register-thanks.html?type=new';
         } else {
           btn.disabled = false;
           btn.textContent = '新規掲載を申し込む';
