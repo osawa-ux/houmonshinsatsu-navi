@@ -185,7 +185,7 @@
 
         <!-- 2. 役職 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">役職</label>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">役職 <span style="font-weight:normal;color:#999;font-size:13px;">任意</span></label>
           <select name="role" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;">
             <option value="">選択してください</option>
             <option value="director">院長</option>
@@ -199,8 +199,8 @@
 
         <!-- 3. 訪問エリア -->
         <div style="margin-bottom:20px;" id="area-picker-edit">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">訪問エリア</label>
-          <p style="font-size:12px;color:#888;margin-bottom:8px;">実際に訪問可能な市区町村を選択してください（複数選択可）。入力するとケアマネジャーからの検索で見つかりやすくなります。</p>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">訪問エリア <span style="font-weight:normal;color:#999;font-size:13px;">任意・おすすめ</span></label>
+          <p style="font-size:12px;color:#888;margin-bottom:8px;">訪問可能な市区町村を選択してください（複数選択可）。ケアマネジャーからの検索で見つかりやすくなります。</p>
           <select class="area-pref-select" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;margin-bottom:8px;">
             <option value="">都道府県を選択</option>
           </select>
@@ -213,7 +213,7 @@
 
         <!-- 4. 対応疾患 -->
         <div style="margin-bottom:20px;">
-          <label style="display:block;font-weight:bold;margin-bottom:8px;">対応疾患（複数選択可）</label>
+          <label style="display:block;font-weight:bold;margin-bottom:8px;">対応疾患 <span style="font-weight:normal;color:#999;font-size:13px;">任意・複数選択可</span></label>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;">
             <label style="font-size:14px;cursor:pointer;padding:4px 0;"><input type="checkbox" name="diseases" value="がん・緩和ケア" style="margin-right:6px;">がん・緩和ケア</label>
             <label style="font-size:14px;cursor:pointer;padding:4px 0;"><input type="checkbox" name="diseases" value="認知症" style="margin-right:6px;">認知症</label>
@@ -232,7 +232,7 @@
 
         <!-- 5. 医療処置 -->
         <div style="margin-bottom:20px;">
-          <label style="display:block;font-weight:bold;margin-bottom:8px;">対応可能な医療処置（複数選択可）</label>
+          <label style="display:block;font-weight:bold;margin-bottom:8px;">対応可能な医療処置 <span style="font-weight:normal;color:#999;font-size:13px;">任意・複数選択可</span></label>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;">
             <label style="font-size:14px;cursor:pointer;padding:4px 0;"><input type="checkbox" name="procedures" value="点滴" style="margin-right:6px;">点滴</label>
             <label style="font-size:14px;cursor:pointer;padding:4px 0;"><input type="checkbox" name="procedures" value="胃ろう" style="margin-right:6px;">胃ろう</label>
@@ -258,14 +258,15 @@
 
         <!-- 6. 特徴・強み -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">特徴・強み（80字以内）</label>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">特徴・強み <span style="font-weight:normal;color:#999;font-size:13px;">任意・80字以内</span></label>
           <input type="text" name="feature" maxlength="80" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;" placeholder="例: 緩和ケアと看取り対応に力を入れています">
-          <p style="font-size:12px;color:#888;margin-top:4px;">一覧ページで表示される短い紹介文です。</p>
+          <p style="font-size:12px;color:#888;margin-top:4px;">一覧ページのクリニック名の下に表示されます。</p>
         </div>
 
         <!-- 7. その他修正内容 -->
         <div style="margin-bottom:24px;">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;color:#666;">その他修正内容（上記に当てはまらない内容があればご記入ください）</label>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;color:#666;">その他 <span style="font-weight:normal;color:#999;font-size:13px;">任意</span></label>
+          <p style="font-size:12px;color:#888;margin-bottom:4px;">上記に当てはまらない修正内容や、医療機関番号がわからない場合のご連絡にご利用ください。</p>
           <textarea name="other_changes" rows="2" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;" placeholder=""></textarea>
         </div>
 
@@ -285,13 +286,25 @@
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         <input type="hidden" name="type" value="new_registration">
 
-        <!-- 1. 医療機関番号（必須） -->
+        <!-- 1. 医療機関番号 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">医療機関番号（10桁） <span style="color:#c00;">*</span></label>
-          <input type="text" name="official_kikan_cd" id="new-kikan-cd" required pattern="[0-9]{10}" maxlength="10"
-            style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;" placeholder="例: 1413810991">
-          <p style="font-size:12px;color:#888;margin-top:4px;">保険医療機関コード10桁を入力してください。診療報酬の請求書類や地方厚生局の指定一覧で確認できます。</p>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">保険医療機関コード（10桁） <span style="color:#c00;">*</span></label>
+          <input type="text" name="official_kikan_cd" id="new-kikan-cd" pattern="[0-9]{10}" maxlength="10"
+            style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;" placeholder="例: 1413810991" inputmode="numeric">
           <div id="kikan-cd-check" style="margin-top:6px;font-size:13px;"></div>
+          <details style="margin-top:8px;font-size:13px;color:#666;">
+            <summary style="cursor:pointer;color:#1a6e3c;">保険医療機関コードとは？／わからない場合</summary>
+            <div style="margin-top:8px;padding:12px;background:#f9f9f9;border-radius:6px;line-height:1.8;">
+              <p style="margin:0 0 8px;">保険医療機関コード（機関番号）は、保険診療を行う医療機関に付与される10桁の番号です。</p>
+              <p style="margin:0 0 8px;"><strong>確認方法:</strong></p>
+              <ul style="margin:0 0 8px;padding-left:20px;">
+                <li>レセプト（診療報酬請求書）の左上</li>
+                <li><a href="https://www.iryou.teikyouseido.mhlw.go.jp/znk-web/" target="_blank" rel="noopener" style="color:#1a6e3c;">医療情報ネット（厚労省）</a>でクリニック名を検索</li>
+                <li>各地方厚生局の保険医療機関一覧</li>
+              </ul>
+              <p style="margin:0;color:#888;">どうしてもわからない場合は空欄のまま送信し、下の備考欄にその旨をご記入ください。事務局にて確認いたします。</p>
+            </div>
+          </details>
         </div>
 
         <!-- 2. クリニック名・電話番号 -->
@@ -396,8 +409,9 @@
 
         <!-- 9. その他 -->
         <div style="margin-bottom:24px;">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;color:#666;">その他（上記に当てはまらない内容があればご記入ください）</label>
-          <textarea name="note" rows="2" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;" placeholder=""></textarea>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;color:#666;">その他 <span style="font-weight:normal;color:#999;font-size:13px;">任意</span></label>
+          <p style="font-size:12px;color:#888;margin-bottom:4px;">保険医療機関コードがわからない場合や、その他ご連絡事項があればこちらにご記入ください。</p>
+          <textarea name="note" rows="2" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;" placeholder="例: 医療機関番号がわかりません / 開業準備中です"></textarea>
         </div>
 
         <p style="font-size:12px;color:#888;margin-bottom:12px;">ご入力いただいた個人情報は、掲載情報の整備および当サービスに関するご連絡のみに使用し、第三者に提供することはありません。<a href="/about.html">運営者情報</a></p>
