@@ -288,7 +288,7 @@
 
         <!-- 1. 医療機関番号 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">保険医療機関コード（10桁） <span style="color:#c00;">*</span></label>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">保険医療機関コード（10桁） <span style="font-weight:normal;color:#999;font-size:13px;">任意・わかる範囲で</span></label>
           <input type="text" name="official_kikan_cd" id="new-kikan-cd" pattern="[0-9]{10}" maxlength="10"
             style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;" placeholder="例: 1413810991" inputmode="numeric">
           <div id="kikan-cd-check" style="margin-top:6px;font-size:13px;"></div>
@@ -329,7 +329,7 @@
 
         <!-- 4. 役職 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">役職</label>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">役職 <span style="font-weight:normal;color:#999;font-size:13px;">任意</span></label>
           <select name="role" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;">
             <option value="">選択してください</option>
             <option value="director">院長</option>
@@ -343,8 +343,8 @@
 
         <!-- 5. 訪問エリア -->
         <div style="margin-bottom:20px;" id="area-picker-new">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">訪問エリア</label>
-          <p style="font-size:12px;color:#888;margin-bottom:8px;">実際に訪問可能な市区町村を選択してください（複数選択可）。入力するとケアマネジャーからの検索で見つかりやすくなります。</p>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">訪問エリア <span style="font-weight:normal;color:#999;font-size:13px;">任意・おすすめ</span></label>
+          <p style="font-size:12px;color:#888;margin-bottom:8px;">訪問可能な市区町村を選択してください（複数選択可）。ケアマネジャーからの検索で見つかりやすくなります。</p>
           <select class="area-pref-select" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;margin-bottom:8px;">
             <option value="">都道府県を選択</option>
           </select>
@@ -357,7 +357,7 @@
 
         <!-- 6. 対応疾患 -->
         <div style="margin-bottom:20px;">
-          <label style="display:block;font-weight:bold;margin-bottom:8px;">対応疾患（複数選択可）</label>
+          <label style="display:block;font-weight:bold;margin-bottom:8px;">対応疾患 <span style="font-weight:normal;color:#999;font-size:13px;">任意・複数選択可</span></label>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;">
             <label style="font-size:14px;cursor:pointer;padding:4px 0;"><input type="checkbox" name="diseases" value="がん・緩和ケア" style="margin-right:6px;">がん・緩和ケア</label>
             <label style="font-size:14px;cursor:pointer;padding:4px 0;"><input type="checkbox" name="diseases" value="認知症" style="margin-right:6px;">認知症</label>
@@ -376,7 +376,7 @@
 
         <!-- 7. 医療処置 -->
         <div style="margin-bottom:20px;">
-          <label style="display:block;font-weight:bold;margin-bottom:8px;">対応可能な医療処置（複数選択可）</label>
+          <label style="display:block;font-weight:bold;margin-bottom:8px;">対応可能な医療処置 <span style="font-weight:normal;color:#999;font-size:13px;">任意・複数選択可</span></label>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;">
             <label style="font-size:14px;cursor:pointer;padding:4px 0;"><input type="checkbox" name="procedures" value="点滴" style="margin-right:6px;">点滴</label>
             <label style="font-size:14px;cursor:pointer;padding:4px 0;"><input type="checkbox" name="procedures" value="胃ろう" style="margin-right:6px;">胃ろう</label>
@@ -402,9 +402,9 @@
 
         <!-- 8. 特徴・強み -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">特徴・強み（80字以内）</label>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">特徴・強み <span style="font-weight:normal;color:#999;font-size:13px;">任意・80字以内</span></label>
           <input type="text" name="feature" maxlength="80" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;" placeholder="例: 神経難病や医療依存度の高い患者さんにも対応しています">
-          <p style="font-size:12px;color:#888;margin-top:4px;">一覧ページで表示される短い紹介文です。</p>
+          <p style="font-size:12px;color:#888;margin-top:4px;">一覧ページのクリニック名の下に表示されます。</p>
         </div>
 
         <!-- 9. その他 -->
