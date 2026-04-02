@@ -326,9 +326,10 @@
       <textarea name="message" rows="3" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;" placeholder="その他ご不明な点があればご記入ください"></textarea>
     </div>
 
-    <p style="font-size:12px;color:#888;margin-bottom:12px;">ご入力いただいた情報は、有料プランのご案内・掲載情報の更新および当サービスに関するご連絡のみに使用し、第三者に提供することはありません。<a href="/terms.html">利用規約</a></p>
+    <p style="font-size:12px;color:#888;margin-bottom:4px;">ご入力いただいた情報は、有料プランのご案内・掲載情報の更新および当サービスに関するご連絡のみに使用し、第三者に提供することはありません。<a href="/terms.html">利用規約</a></p>
+    <p style="font-size:12px;color:#888;margin-bottom:12px;">※ この時点では決済は発生しません。お申し込み後、事務局から詳細をご案内します。</p>
 
-    <button type="submit" style="background:#2a5a8c;color:#fff;border:none;padding:14px 48px;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;" onclick="gev('submit_paid_application')">申し込む</button>
+    <button type="submit" style="background:#2a5a8c;color:#fff;border:none;padding:14px 48px;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;" onclick="gev('submit_paid_application')">有料プランを申し込む</button>
   </form>
 
   <p style="margin-top:24px;"><a href="/">&larr; トップページに戻る</a></p>
@@ -451,12 +452,12 @@
         window.location.href = '/premium-thanks.html';
       } else {
         btn.disabled = false;
-        btn.textContent = '詳細を相談する';
+        btn.textContent = '有料プランを申し込む';
         alert('送信に失敗しました。しばらくしてから再度お試しください。');
       }
     }).catch(function() {
       btn.disabled = false;
-      btn.textContent = '詳細を相談する';
+      btn.textContent = '有料プランを申し込む';
       alert('送信に失敗しました。ネットワーク接続をご確認ください。');
     });
   });
