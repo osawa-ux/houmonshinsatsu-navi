@@ -14,6 +14,6 @@
 
 ### 将来 secrets を追加する場合
 
-- 原本: `C:\Users\Motoi\OneDrive\個人用 Vault\.secrets\houmonshinsatsu-navi\`
-- 実行用: `C:\Users\Motoi\.secrets\houmonshinsatsu-navi\`
+- 原本: `C:\Users\volzs\OneDrive\個人用 Vault\.secrets\houmonshinsatsu-navi\`
+- 実行用: `C:\Users\volzs\.secrets\houmonshinsatsu-navi\`
 - `.env`, `credentials*.json`, `token*.json`, `*.p12`, `*.pem` などの秘密情報は Git に入れない
