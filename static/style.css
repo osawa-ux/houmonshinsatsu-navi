@@ -43,7 +43,10 @@ h2 { font-size: 1.15em; color: #333; margin: 24px 0 12px; border-left: 4px solid
 
 /* クリニックカード */
 .clinic-list { display: grid; gap: 16px; }
-.clinic-card { background: white; border-radius: 10px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); border-left: 4px solid #1a6e3c; display: flex; gap: 14px; }
+.clinic-card { background: white; border-radius: 10px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); border-left: 4px solid #1a6e3c; display: flex; gap: 14px; position: relative; cursor: pointer; transition: box-shadow 0.2s; }
+.clinic-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.clinic-name a::after { content: ''; position: absolute; inset: 0; }
+.clinic-tel a, .clinic-card a[href^="http"] { position: relative; z-index: 1; }
 .clinic-photo { flex-shrink: 0; width: 140px; height: 105px; border-radius: 6px; object-fit: cover; background: #f0f0f0; }
 .clinic-info { flex: 1; min-width: 0; }
 .clinic-name { font-size: 1.05em; font-weight: bold; color: #1a6e3c; margin-bottom: 4px; }
