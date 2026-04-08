@@ -12,8 +12,13 @@
 - Formspree のフォーム ID は公開情報として扱う（秘密ではない）
 - サイト生成は `MyPython/build_site.py` で行い、secrets は MyPython 側で管理する
 
-### 将来 secrets を追加する場合
+### Secrets 探索ルール
 
-- 原本: `C:\Users\volzs\OneDrive\個人用 Vault\.secrets\houmonshinsatsu-navi\`
-- 実行用: `C:\Users\volzs\.secrets\houmonshinsatsu-navi\`
+secret / token / API key が必要なとき、いきなり新規発行を提案しない。次の順で確認する:
+
+1. `%USERPROFILE%\.secrets\houmonshinsatsu-navi\`
+2. `%USERPROFILE%\OneDrive\個人用 Vault\.secrets\houmonshinsatsu-navi\`
+3. それでも見つからない場合のみ、ユーザー確認または新規発行
+
+- secret の実値は表示しない
 - `.env`, `credentials*.json`, `token*.json`, `*.p12`, `*.pem` などの秘密情報は Git に入れない
