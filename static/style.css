@@ -93,24 +93,27 @@ h2 { font-size: 1.15em; color: #333; margin: 32px 0 14px; border-left: 4px solid
 .blog-desc { font-size: 0.9em; color: #555; }
 
 /* フッター */
-footer { background: #333; color: #ccc; padding: 32px 16px; margin-top: 48px; font-size: 0.85em; padding-bottom: 80px; line-height: 1.8; }
-footer a { color: #bbb; }
-footer a:hover { color: #fff; }
-.footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 24px; }
-.footer-about p { margin: 6px 0; color: #aaa; }
-.footer-about small { color: #888; }
-.footer-nav-group { margin-bottom: 8px; }
-.footer-nav-group a { display: inline-block; margin-right: 16px; margin-bottom: 4px; }
-.footer-copyright { background: #333; margin: 0; padding: 0 16px 24px; text-align: center; font-size: 0.8em; color: #777; }
-.footer-pref-links { max-width: 1100px; margin: 20px auto 0; padding-top: 20px; border-top: 1px solid #555; }
-.footer-pref-title { font-weight: bold; color: #ddd; margin-bottom: 12px; font-size: 0.95em; }
-.footer-pref-region { margin-bottom: 10px; line-height: 2.2; }
-.footer-pref-label { display: inline-block; color: #aaa; font-size: 0.8em; margin-right: 8px; min-width: 70px; }
+footer { background: #2d2d2d; color: #aaa; padding: 40px 16px 0; margin-top: 48px; font-size: 0.85em; line-height: 1.7; }
+footer a { color: #aaa; text-decoration: none; }
+footer a:hover { color: #ddd; }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; padding-bottom: 28px; }
+.footer-about { flex-shrink: 0; }
+.footer-site-name { font-size: 1.15em; font-weight: bold; color: #eee; margin-bottom: 6px; }
+.footer-about p { color: #888; font-size: 0.9em; margin: 0; }
+.footer-nav { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 0.9em; }
+.footer-pref-links { max-width: 1100px; margin: 0 auto; padding: 20px 0; border-top: 1px solid #444; }
+.footer-pref-title { color: #999; margin-bottom: 10px; font-size: 0.85em; font-weight: normal; }
+.footer-pref-region { margin-bottom: 6px; line-height: 2; font-size: 0.82em; }
+.footer-pref-label { display: inline-block; color: #777; font-size: 0.85em; margin-right: 6px; min-width: 65px; }
 .footer-pref-item { white-space: nowrap; }
-.footer-pref-item::after { content: '|'; color: #666; margin: 0 6px; }
+.footer-pref-item::after { content: '|'; color: #555; margin: 0 5px; }
 .footer-pref-item:last-child::after { content: ''; margin: 0; }
-.footer-pref-item a { color: #bbb; }
-.footer-pref-item a:hover { color: #fff; }
+.footer-pref-item a { color: #888; }
+.footer-pref-item a:hover { color: #ccc; }
+.footer-bottom { max-width: 1100px; margin: 0 auto; padding: 16px 0 80px; border-top: 1px solid #444; display: flex; justify-content: space-between; align-items: center; font-size: 0.8em; color: #666; }
+.footer-legal a { color: #777; margin-right: 16px; }
+.footer-legal a:hover { color: #bbb; }
+.footer-copyright { color: #666; }
 
 /* 固定CTAバー */
 .fixed-cta { position: fixed; bottom: 0; left: 0; right: 0; background: #1a6e3c; padding: 10px 16px; display: flex; justify-content: center; gap: 12px; z-index: 1000; box-shadow: 0 -2px 8px rgba(0,0,0,0.15); }
@@ -216,7 +219,8 @@ footer a:hover { color: #fff; }
     .clinic-tel a { display: block; text-align: center; padding: 12px; font-size: 1.05em; }
     .cta-btn { display: block; width: 100%; margin: 6px 0; }
     .guide-card { padding: 16px; }
-    .footer-inner { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; gap: 16px; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
     .top-check-grid { grid-template-columns: 1fr; }
     .top-hero h1 { font-size: 1.15em; }
 }
@@ -227,7 +231,7 @@ footer a:hover { color: #fff; }
     h1 { font-size: 1.6em; }
     .pref-link { padding: 8px 18px; }
     .clinic-list { grid-template-columns: 1fr; }
-    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .footer-nav { justify-content: flex-end; }
     .fixed-cta { display: none; }
     .top-journey-grid { grid-template-columns: 1fr 1fr; }
     .top-hero h1 { font-size: 1.5em; }
