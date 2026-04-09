@@ -100,7 +100,9 @@ footer a:hover { color: #ddd; }
 .footer-about { flex-shrink: 0; }
 .footer-site-name { font-size: 1.15em; font-weight: bold; color: #eee; margin-bottom: 6px; }
 .footer-about p { color: #888; font-size: 0.9em; margin: 0; }
-.footer-nav { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 0.9em; }
+.footer-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0; font-size: 0.9em; }
+.footer-nav a { padding: 4px 0; }
+.footer-nav a + a::before { content: '|'; color: #555; margin: 0 14px; font-size: 0.8em; }
 .footer-pref-links { max-width: 1100px; margin: 0 auto; padding: 20px 0; border-top: 1px solid #444; }
 .footer-pref-title { color: #999; margin-bottom: 10px; font-size: 0.85em; font-weight: normal; }
 .footer-pref-region { margin-bottom: 6px; line-height: 2; font-size: 0.82em; }
@@ -110,8 +112,10 @@ footer a:hover { color: #ddd; }
 .footer-pref-item:last-child::after { content: ''; margin: 0; }
 .footer-pref-item a { color: #888; }
 .footer-pref-item a:hover { color: #ccc; }
-.footer-bottom { max-width: 1100px; margin: 0 auto; padding: 16px 0 80px; border-top: 1px solid #444; display: flex; justify-content: space-between; align-items: center; font-size: 0.8em; color: #666; }
-.footer-legal a { color: #777; margin-right: 16px; }
+.footer-bottom { max-width: 1100px; margin: 0 auto; padding: 16px 0 80px; border-top: 1px solid #444; text-align: center; font-size: 0.8em; color: #666; }
+.footer-legal { display: block; margin-bottom: 8px; }
+.footer-legal a { color: #777; }
+.footer-legal a + a::before { content: '·'; margin: 0 12px; color: #555; }
 .footer-legal a:hover { color: #bbb; }
 .footer-copyright { color: #666; }
 
@@ -220,7 +224,7 @@ footer a:hover { color: #ddd; }
     .cta-btn { display: block; width: 100%; margin: 6px 0; }
     .guide-card { padding: 16px; }
     .footer-inner { flex-direction: column; gap: 16px; }
-    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    .footer-nav a + a::before { margin: 0 10px; }
     .top-check-grid { grid-template-columns: 1fr; }
     .top-hero h1 { font-size: 1.15em; }
 }
