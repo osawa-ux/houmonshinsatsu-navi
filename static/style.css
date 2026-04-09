@@ -99,6 +99,42 @@ footer a { color: #aaa; }
 .fixed-cta .fc-tel { background: #e67e22; }
 .fixed-cta .fc-web { background: rgba(255,255,255,0.15); }
 
+/* ガイドページ */
+.guide-article { max-width: 800px; margin: 0 auto; }
+.guide-article p { margin: 12px 0; line-height: 1.8; }
+.guide-article ul, .guide-article ol { margin: 12px 0 12px 24px; line-height: 1.8; }
+.guide-article li { margin-bottom: 6px; }
+.guide-article h2 { margin-top: 32px; }
+.guide-article h3 { font-size: 1.05em; color: #1a6e3c; margin: 20px 0 8px; }
+.guide-lead { font-size: 1.05em; color: #555; margin-bottom: 24px; line-height: 1.8; }
+.guide-toc { background: #f0f7f2; border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; }
+.guide-toc p { font-weight: bold; margin-bottom: 8px; font-size: 0.95em; }
+.guide-toc ol { margin: 0 0 0 20px; font-size: 0.9em; }
+.guide-toc li { margin-bottom: 4px; }
+.guide-toc a { color: #1a6e3c; }
+.guide-cta { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 10px; padding: 20px; margin: 28px 0; text-align: center; }
+.guide-cta p { margin-bottom: 10px; font-size: 0.95em; }
+.guide-cta .cta-btn { font-size: 1em; }
+.guide-disclaimer { background: #f5f5f5; border-radius: 8px; padding: 16px; margin-top: 32px; font-size: 0.85em; color: #666; line-height: 1.7; }
+.guide-disclaimer p { margin: 6px 0; }
+.guide-meta { font-size: 0.85em; color: #888; margin-bottom: 20px; }
+.guide-cards { display: grid; gap: 16px; margin: 20px 0; }
+.guide-card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); border-left: 4px solid #1a6e3c; transition: box-shadow 0.2s; }
+.guide-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.guide-card h3 { margin: 0 0 6px; font-size: 1.05em; }
+.guide-card h3 a { color: #1a6e3c; }
+.guide-card p { font-size: 0.9em; color: #555; margin: 0; }
+.guide-related { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); margin-top: 24px; }
+.guide-related h2 { margin-top: 0; }
+.guide-related ul { margin: 8px 0 0 20px; }
+.guide-related li { margin-bottom: 6px; }
+.guide-area-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.guide-area-links a { display: inline-block; padding: 8px 16px; background: white; border: 1px solid #1a6e3c; border-radius: 20px; font-size: 0.9em; color: #1a6e3c; transition: all 0.2s; }
+.guide-area-links a:hover { background: #1a6e3c; color: white; text-decoration: none; }
+.guide-faq dt { font-weight: bold; margin-top: 16px; padding-left: 24px; position: relative; }
+.guide-faq dt::before { content: 'Q.'; position: absolute; left: 0; color: #1a6e3c; font-weight: bold; }
+.guide-faq dd { margin: 6px 0 0 24px; padding-left: 0; }
+
 /* === レスポンシブ: スマホ（デフォルト〜768px）=== */
 @media (max-width: 768px) {
     .header-inner { flex-direction: column; text-align: center; gap: 4px; }
