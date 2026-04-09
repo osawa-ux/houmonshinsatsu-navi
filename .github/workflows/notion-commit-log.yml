@@ -54,7 +54,7 @@ jobs:
           def classify_type(msg):
               """変更種別をコミットメッセージから推定"""
               m = msg.lower()
-              if m.startswith("feat") or "新設" in msg or "追加" in msg or "新機能" in msg:
+              if m.startswith("feat") or m.startswith("add") or "新設" in msg or "追加" in msg or "新機能" in msg:
                   return "feat"
               if m.startswith("fix") or "修正" in msg or "復元" in msg or "修復" in msg:
                   return "fix"
@@ -84,7 +84,8 @@ jobs:
                 "患者", "家族", "FAQ", "問い合わせ", "contact",
                 "register", "登録", "premium", "有料", "nearby",
                 "カード", "card", "導線", "体験", "GA4", "イベント計測"], "ユーザー向け"),
-              (["ブログ", "blog", "記事", "コンテンツ"], "コンテンツ"),
+              (["ブログ", "blog", "記事", "コンテンツ",
+                "中立化", "中立性"], "コンテンツ"),
               (["footer", "フッター", "copyright", "spacing", "余白",
                 "レイアウト", "可読性", "微調整", "配置", "間隔",
                 "行間", "中央配置"], "見た目のみ"),
@@ -142,6 +143,7 @@ jobs:
               (["CI", "hook", "pre-commit", "Actions",
                 "中立性チェック", "neutrality"], "CI/hook整備"),
               (["ガイド", "guide", "患者", "家族"], "ガイド記事"),
+              (["ブログ", "blog", "記事", "中立化", "中立性"], "ブログ記事"),
               (["about", "運営者"], "aboutページ"),
               (["register", "登録", "フォーム"], "登録フォーム"),
               (["premium", "有料", "プラン"], "有料プラン"),
