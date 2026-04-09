@@ -115,8 +115,10 @@ footer a { color: #aaa; }
 .guide-cta { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 10px; padding: 20px; margin: 28px 0; text-align: center; }
 .guide-cta p { margin-bottom: 10px; font-size: 0.95em; }
 .guide-cta .cta-btn { font-size: 1em; }
-.guide-disclaimer { background: #f5f5f5; border-radius: 8px; padding: 16px; margin-top: 32px; font-size: 0.85em; color: #666; line-height: 1.7; }
-.guide-disclaimer p { margin: 6px 0; }
+.guide-disclaimer { background: #f5f5f5; border-radius: 8px; padding: 20px 24px; margin-top: 32px; font-size: 0.85em; color: #666; line-height: 1.8; }
+.guide-disclaimer p { margin: 0 0 10px; }
+.guide-disclaimer p:last-child { margin-bottom: 0; }
+.guide-disclaimer strong { color: #555; }
 .guide-meta { font-size: 0.85em; color: #888; margin-bottom: 20px; }
 .guide-cards { display: grid; gap: 16px; margin: 20px 0; }
 .guide-card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); border-left: 4px solid #1a6e3c; transition: box-shadow 0.2s; }
@@ -131,9 +133,15 @@ footer a { color: #aaa; }
 .guide-area-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
 .guide-area-links a { display: inline-block; padding: 8px 16px; background: white; border: 1px solid #1a6e3c; border-radius: 20px; font-size: 0.9em; color: #1a6e3c; transition: all 0.2s; }
 .guide-area-links a:hover { background: #1a6e3c; color: white; text-decoration: none; }
-.guide-faq dt { font-weight: bold; margin-top: 16px; padding-left: 24px; position: relative; }
-.guide-faq dt::before { content: 'Q.'; position: absolute; left: 0; color: #1a6e3c; font-weight: bold; }
-.guide-faq dd { margin: 6px 0 0 24px; padding-left: 0; }
+/* FAQ */
+.guide-faq dt { font-weight: bold; font-size: 1em; margin-top: 0; padding: 0 0 0 32px; position: relative; line-height: 1.6; color: #222; }
+.guide-faq dt::before { content: 'Q.'; position: absolute; left: 0; color: #1a6e3c; font-weight: bold; font-size: 1.05em; }
+.guide-faq dd { margin: 8px 0 0 0; padding: 0 0 0 32px; position: relative; line-height: 1.8; color: #444; }
+.guide-faq dd::before { content: 'A.'; position: absolute; left: 0; color: #e67e22; font-weight: bold; font-size: 1.05em; }
+.guide-faq .faq-item, .guide-faq dt + dd { margin-bottom: 0; }
+/* 各Q&Aセットの区切り: dtの前にスペース＋線 */
+.guide-faq dt ~ dt { margin-top: 20px; padding-top: 20px; border-top: 1px solid #e8e8e8; }
+/* 最初のdtには上線を入れない — dt ~ dt で2個目以降のみ対象 */
 
 /* === レスポンシブ: スマホ（デフォルト〜768px）=== */
 @media (max-width: 768px) {
