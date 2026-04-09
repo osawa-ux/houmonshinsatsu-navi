@@ -22,12 +22,12 @@ jobs:
         env:
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          INPUT_BACKFILL: ${{ github.event.inputs.backfill_count }}
         run: |
           python3 << 'PYEOF'
           import json, os, subprocess, sys
           from urllib.request import Request, urlopen
           from urllib.error import HTTPError, URLError
-          from datetime import timezone
 
           API_KEY = os.environ.get("NOTION_API_KEY", "")
           DB_ID = os.environ.get("NOTION_DATABASE_ID", "")
@@ -115,5 +115,3 @@ jobs:
           if errors > 0 and success == 0:
               sys.exit(1)
           PYEOF
-        env:
-          INPUT_BACKFILL: ${{ github.event.inputs.backfill_count }}
