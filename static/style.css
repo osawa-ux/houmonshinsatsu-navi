@@ -166,11 +166,14 @@ footer a { color: #aaa; }
 /* トップ: 状況から探す */
 .top-journey { margin-bottom: 32px; }
 .top-journey h2 { font-size: 1.1em; }
-.top-journey-grid { display: grid; gap: 12px; margin-top: 14px; }
-.top-journey-card { display: block; padding: 18px 20px; background: white; border-radius: 10px; border-left: 4px solid #1a6e3c; box-shadow: 0 2px 6px rgba(0,0,0,0.08); text-decoration: none; color: #333; transition: box-shadow 0.2s; }
-.top-journey-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); text-decoration: none; }
-.top-journey-card strong { display: block; font-size: 1em; color: #1a6e3c; margin-bottom: 4px; }
-.top-journey-card span { font-size: 0.88em; color: #666; }
+.top-journey-grid { display: grid; gap: 14px; margin-top: 14px; }
+.top-journey-card { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 20px; background: white; border-radius: 10px; border-left: 4px solid #1a6e3c; box-shadow: 0 2px 6px rgba(0,0,0,0.08); text-decoration: none; color: #333; transition: box-shadow 0.2s, transform 0.15s; }
+.top-journey-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.15); transform: translateY(-1px); text-decoration: none; }
+.top-journey-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.top-journey-card strong { font-size: 1.05em; color: #1a6e3c; }
+.top-journey-desc { font-size: 0.85em; color: #888; line-height: 1.5; }
+.top-journey-arrow { font-size: 1.2em; color: #1a6e3c; flex-shrink: 0; opacity: 0.6; transition: opacity 0.2s; }
+.top-journey-card:hover .top-journey-arrow { opacity: 1; }
 
 /* トップ: 検索導線 */
 .top-search-section { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 12px; padding: 24px 20px; margin-bottom: 28px; text-align: center; }
