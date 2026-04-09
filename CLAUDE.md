@@ -45,7 +45,7 @@ secret / token / API key が必要なとき、いきなり新規発行を提案�
 - 記事作成・更新時: `python check_neutrality.py --all` を実行
 - build_site.py 実行時: 禁止語が含まれていると自動でビルドが停止する
 - git commit 時: pre-commit hook が自動で検査する
-- 禁止語リスト: `横浜ホームクリニック`, `yokohama-home.clinic`, `大澤基`
+- 禁止語リスト: `横浜ホームクリニック`, `yokohama-home.clinic`, `大澤基`, `当院`, `当クリニック`, `昭和大学横浜市北部病院`
 
 ### pre-commit hook セットアップ
 
