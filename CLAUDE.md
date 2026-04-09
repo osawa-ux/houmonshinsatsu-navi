@@ -58,3 +58,10 @@ powershell tools/install_hooks.ps1   # PowerShell
 ```
 
 hook 本体は `tools/hooks/pre-commit` にリポジトリ管理されている。
+
+### CI（GitHub Actions）
+
+blog/ guide/ の変更を含む push / PR で GitHub Actions が禁止語チェックを自動実行する。
+ローカル hook をすり抜けた場合（hook 未設置、`--no-verify` 使用等）でも CI で検出される。
+
+チェック体制: **ローカル pre-commit hook + CI の二重チェック**
