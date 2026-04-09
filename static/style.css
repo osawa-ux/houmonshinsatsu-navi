@@ -101,7 +101,7 @@ footer a:hover { color: #fff; }
 .footer-about small { color: #888; }
 .footer-nav-group { margin-bottom: 8px; }
 .footer-nav-group a { display: inline-block; margin-right: 16px; margin-bottom: 4px; }
-.footer-copyright { max-width: 1100px; margin: 20px auto 0; padding-top: 16px; border-top: 1px solid #555; text-align: center; font-size: 0.8em; color: #777; }
+.footer-copyright { background: #333; margin: 0; padding: 0 16px 24px; text-align: center; font-size: 0.8em; color: #777; }
 .footer-pref-links { max-width: 1100px; margin: 20px auto 0; padding-top: 20px; border-top: 1px solid #555; }
 .footer-pref-title { font-weight: bold; color: #ddd; margin-bottom: 12px; font-size: 0.95em; }
 .footer-pref-region { margin-bottom: 10px; line-height: 2.2; }
