@@ -80,12 +80,11 @@ jobs:
               payload = {
                   "parent": {"database_id": DB_ID},
                   "properties": {
-                      "Name": {"title": [{"text": {"content": c["message"]}}]},
-                      "Commit ID": {"rich_text": [{"text": {"content": c["hash"][:7]}}]},
-                      "Date": {"date": {"start": c["date"]}},
-                      "Repository": {"rich_text": [{"text": {"content": repo}}]},
-                      "Files Changed": {"number": c["files_changed"]},
-                      "Author": {"rich_text": [{"text": {"content": c["author"]}}]},
+                      "コミットメッセージ": {"title": [{"text": {"content": c["message"]}}]},
+                      "コミットID": {"rich_text": [{"text": {"content": c["hash"][:7]}}]},
+                      "日時": {"date": {"start": c["date"]}},
+                      "リポジトリ": {"select": {"name": repo}},
+                      "変更ファイル数": {"number": c["files_changed"]},
                   }
               }
               data = json.dumps(payload).encode()
