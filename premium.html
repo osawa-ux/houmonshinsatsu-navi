@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://zaitakuclinic-navi.com/premium.html">
   <meta property="og:image" content="https://zaitakuclinic-navi.com/static/ogp.png">
-  <meta property="og:site_name" content="訪問診療所ナビ">
+  <meta property="og:site_name" content="在宅クリニックナビ">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="有料プラン | 在宅クリニックナビ">
@@ -38,6 +38,8 @@
       <div class="site-subtitle">全国の在宅医療クリニック検索</div>
     </div>
     <div class="header-right">
+      <a href="/guide/" style="color:#fff;text-decoration:none;font-size:0.85em;">患者さん・ご家族の方へ</a>
+      <span style="margin:0 6px;opacity:0.5;">|</span>
       <a href="/for-clinics.html" style="color:#fff;text-decoration:none;font-size:0.85em;">医療機関の方へ</a>
       <span style="margin:0 6px;opacity:0.5;">|</span>
       <a href="/about.html" style="color:#fff;text-decoration:none;font-size:0.85em;">運営者情報</a>
@@ -196,7 +198,7 @@
         <td style="padding:10px 12px;">決済完了後の日割り返金は行いません。月途中の解約でも返金はありません。ただし、当社都合でサービス提供が困難となった場合は、未経過期間分について返金または代替措置を行います。</td>
       </tr>
     </table>
-    <p style="margin-top:12px;font-size:12px;color:#888;">詳細は<a href="/tokushoho.html">特定商取引法に基づく表記</a>および<a href="/terms.html">利用規約</a>をご確認ください。</p>
+    <p style="margin-top:12px;font-size:12px;color:#888;">詳細は<a href="/listing-terms.html">医療機関向け掲載規約</a>および<a href="/tokushoho.html">特定商取引法に基づく表記</a>をご確認ください。</p>
   </div>
 
   <!-- FAQ -->
@@ -328,7 +330,26 @@
       <textarea name="message" rows="3" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;" placeholder="その他ご不明な点があればご記入ください"></textarea>
     </div>
 
-    <p style="font-size:12px;color:#888;margin-bottom:4px;">ご入力いただいた情報は、有料プランのご案内・掲載情報の更新および当サービスに関するご連絡のみに使用し、第三者に提供することはありません。<a href="/terms.html">利用規約</a></p>
+    <div style="background:#f8f5ed;border:1px solid #e0d8c8;border-radius:8px;padding:16px;margin-bottom:16px;">
+      <p style="font-weight:bold;font-size:14px;color:#555;margin-bottom:8px;">お申し込み前にご確認ください</p>
+      <ul style="font-size:13px;color:#666;margin:0 0 0 16px;line-height:1.8;">
+        <li>月額33,000円（税込）</li>
+        <li>当社承認後、翌月1日から掲載・課金開始</li>
+        <li>毎月自動更新</li>
+        <li>解約は掲載終了希望月の前月末まで</li>
+        <li>日割返金なし</li>
+      </ul>
+      <p style="font-size:12px;color:#888;margin-top:8px;">詳細は<a href="/listing-terms.html">医療機関向け掲載規約</a>をご確認ください。</p>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;">
+        <input type="checkbox" name="agree_listing_terms" required style="margin-top:3px;accent-color:#2a5a8c;">
+        <span style="font-size:13px;color:#555;"><a href="/listing-terms.html" target="_blank">医療機関向け掲載規約</a>の内容（料金・課金開始日・更新・解約条件）を確認し、同意のうえ申し込みます。</span>
+      </label>
+    </div>
+
+    <p style="font-size:12px;color:#888;margin-bottom:4px;">ご入力いただいた情報は、有料プランのご案内・掲載情報の更新および当サービスに関するご連絡のみに使用し、第三者に提供することはありません。</p>
     <p style="font-size:12px;color:#888;margin-bottom:12px;">※ この時点では決済は発生しません。お申し込み後、事務局から詳細をご案内します。</p>
 
     <button type="submit" style="background:#2a5a8c;color:#fff;border:none;padding:14px 48px;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;" onclick="gev('submit_paid_application')">有料プランを申し込む</button>
