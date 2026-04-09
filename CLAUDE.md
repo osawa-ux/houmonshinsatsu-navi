@@ -22,3 +22,39 @@ secret / token / API key が必要なとき、いきなり新規発行を提案�
 
 - secret の実値は表示しない
 - `.env`, `credentials*.json`, `token*.json`, `*.p12`, `*.pem` などの秘密情報は Git に入れない
+
+## ポータル中立性ルール
+
+在宅クリニックナビは中立的なポータルサイトであり、特定クリニックの宣伝サイトではない。
+
+### 禁止事項
+- `/blog/` `/guide/` 配下で特定クリニック名（横浜ホームクリニック等）を出さない
+- 特定クリニックの電話番号・公式サイトURLを記事内に掲載しない
+- JSON-LD の author/publisher に特定クリニック名を入れない
+- canonical を外部ドメイン（yokohama-home.clinic 等）に向けない
+
+### 許可される表記
+- 運営者情報ページ（about.html）での運営主体の明示
+- クリニック個別ページ（/clinic/）での各クリニック情報の掲載
+
+### 記事の著者・監修表記
+- `在宅クリニックナビ編集部` または `在宅クリニックナビ` を使う
+- 個人名を監修者として入れない（YMYL対策で必要になった場合は別途検討）
+
+### チェック手順
+- 記事作成・更新時: `python check_neutrality.py --all` を実行
+- build_site.py 実行時: 禁止語が含まれていると自動でビルドが停止する
+- git commit 時: pre-commit hook が自動で検査する
+- 禁止語リスト: `横浜ホームクリニック`, `yokohama-home.clinic`, `大澤基`
+
+### pre-commit hook セットアップ
+
+clone / 別PC で作業を始めるときに一度だけ実行する:
+
+```bash
+bash tools/install_hooks.sh      # Git Bash / WSL
+# または
+powershell tools/install_hooks.ps1   # PowerShell
+```
+
+hook 本体は `tools/hooks/pre-commit` にリポジトリ管理されている。
