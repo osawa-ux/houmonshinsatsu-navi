@@ -25,7 +25,7 @@ jobs:
           INPUT_BACKFILL: ${{ github.event.inputs.backfill_count }}
         run: |
           python3 << 'PYEOF'
-          import json, os, subprocess, sys
+          import json, os, re, subprocess, sys
           from urllib.request import Request, urlopen
           from urllib.error import HTTPError, URLError
 
@@ -42,9 +42,185 @@ jobs:
               "Notion-Version": "2022-06-28",
           }
 
-          # --- 重複チェック: 既に記録済みのコミットIDを取得 ---
+          # ============================================================
+          # 分類ルール定義
+          # ============================================================
+
+          def classify_type(msg):
+              """変更種別をコミットメッセージから推定"""
+              m = msg.lower()
+              if m.startswith("feat") or "新設" in msg or "追加" in msg or "新機能" in msg:
+                  return "feat"
+              if m.startswith("fix") or "修正" in msg or "復元" in msg or "修復" in msg:
+                  return "fix"
+              if m.startswith("improve") or "改善" in msg or "改修" in msg:
+                  return "improve"
+              if m.startswith("refactor") or "リファクタ" in msg:
+                  return "refactor"
+              if m.startswith("docs") or "README" in msg or "CLAUDE.md" in msg:
+                  return "docs"
+              if any(k in m for k in ["ci:", "ci/", "hook", "workflow", "actions", "logging",
+                                       "automation", "自動記録", "自動化"]):
+                  return "ops"
+              if any(k in msg for k in ["ガイド", "ブログ", "記事", "guide", "blog"]):
+                  return "content"
+              if m.startswith("update") or m.startswith("chore"):
+                  return "chore"
+              return "chore"
+
+          # --- 影響範囲の判定キーワード ---
+          _SCOPE_RULES = [
+              # (キーワードリスト, 影響範囲)
+              (["CI", "hook", "pre-commit", "workflow", "Actions", "Notion",
+                "自動記録", "重複チェック", "logging", "automation"], "開発基盤"),
+              (["build_site", "データ統合", "kouseikyoku", "expansion",
+                "geocod", "座標", "データ分離", "secrets", ".env"], "内部運用"),
+              (["トップページ", "top", "検索", "search", "ガイド", "guide",
+                "患者", "家族", "FAQ", "問い合わせ", "contact",
+                "register", "登録", "premium", "有料", "nearby",
+                "カード", "card", "導線", "体験", "GA4", "イベント計測"], "ユーザー向け"),
+              (["ブログ", "blog", "記事", "コンテンツ"], "コンテンツ"),
+              (["footer", "フッター", "copyright", "spacing", "余白",
+                "レイアウト", "可読性", "微調整", "配置", "間隔",
+                "行間", "中央配置"], "見た目のみ"),
+          ]
+
+          def classify_scope(msg):
+              """影響範囲をコミットメッセージから推定"""
+              for keywords, scope in _SCOPE_RULES:
+                  if any(k.lower() in msg.lower() for k in keywords):
+                      return scope
+              return "内部運用"
+
+          # --- 重要度の判定 ---
+          _HIGH_KEYWORDS = [
+              "feat:", "新設", "新機能", "MVPへ改修", "ハイブリッド型",
+              "全ページに反映", "サイト再生成", "site rebuild",
+              "データ統合", "再統合", "復元",
+              "API送信に切替", "根本修正", "事故防止",
+              "ガイドページ新設", "ガイド5本追加",
+          ]
+          _LOW_KEYWORDS = [
+              "微調整", "微修正", "文言修正", "レイアウト",
+              "可読性", "余白", "行間", "間隔", "配置",
+              "copyright", "spacing", "フッター調整",
+              "secrets パス", "CLAUDE.md",
+          ]
+
+          def classify_importance(msg, change_type, scope):
+              """重要度をコミットメッセージ・種別・影響範囲から総合判定"""
+              if any(k in msg for k in _HIGH_KEYWORDS):
+                  return "高"
+              if any(k in msg for k in _LOW_KEYWORDS):
+                  return "低"
+              if scope == "見た目のみ":
+                  return "低"
+              if change_type == "feat":
+                  return "高"
+              if change_type in ("ops", "docs"):
+                  return "中"
+              if scope == "開発基盤":
+                  return "中"
+              if change_type == "fix":
+                  return "中"
+              if change_type == "improve" and scope == "ユーザー向け":
+                  return "中"
+              return "中"
+
+          # --- 親テーマの推定 ---
+          _THEME_RULES = [
+              (["トップページ", "top", "ハイブリッド", "MVP",
+                "状況から探す", "検索"], "トップページ改善"),
+              (["footer", "フッター", "copyright"], "フッター調整"),
+              (["Notion", "開発ログ", "自動記録", "バックフィル",
+                "重複チェック"], "Notion開発ログ"),
+              (["CI", "hook", "pre-commit", "Actions",
+                "中立性チェック", "neutrality"], "CI/hook整備"),
+              (["ガイド", "guide", "患者", "家族"], "ガイド記事"),
+              (["about", "運営者"], "aboutページ"),
+              (["register", "登録", "フォーム"], "登録フォーム"),
+              (["premium", "有料", "プラン"], "有料プラン"),
+              (["clinic詳細", "クリニックカード", "カード"], "クリニック詳細"),
+              (["SEO", "内部リンク", "クロール", "インデックス"], "SEO改善"),
+              (["GA4", "イベント計測", "analytics"], "アナリティクス"),
+              (["build_site", "site rebuild", "再生成",
+                "データ統合", "kouseikyoku", "expansion",
+                "geocod", "座標"], "データ・ビルド"),
+              (["CLAUDE.md", "secrets", ".env"], "開発設定"),
+              (["FAQ", "免責"], "FAQ・免責"),
+              (["横浜HC", "脳神経HC", "データ分離", "バッジ"], "個別クリニック対応"),
+          ]
+
+          def classify_theme(msg):
+              """親テーマをコミットメッセージから推定"""
+              for keywords, theme in _THEME_RULES:
+                  if any(k.lower() in msg.lower() for k in keywords):
+                      return theme
+              return "その他"
+
+          def classify(msg):
+              """コミットメッセージから4分類を一括推定"""
+              change_type = classify_type(msg)
+              scope = classify_scope(msg)
+              importance = classify_importance(msg, change_type, scope)
+              theme = classify_theme(msg)
+              return {
+                  "重要度": importance,
+                  "変更種別": change_type,
+                  "影響範囲": scope,
+                  "親テーマ": theme,
+              }
+
+          # ============================================================
+          # Notion DBプロパティの自動追加
+          # ============================================================
+
+          def ensure_db_properties():
+              """必要なselectプロパティがDBに無ければ追加"""
+              req = Request(
+                  f"https://api.notion.com/v1/databases/{DB_ID}",
+                  headers=HEADERS, method="GET",
+              )
+              try:
+                  resp = urlopen(req)
+                  db = json.loads(resp.read().decode())
+              except (HTTPError, URLError) as e:
+                  print(f"::warning::Failed to read DB schema: {e}")
+                  return False
+
+              existing = set(db.get("properties", {}).keys())
+              new_props = {}
+              for name in ["重要度", "変更種別", "影響範囲", "親テーマ"]:
+                  if name not in existing:
+                      new_props[name] = {"select": {}}
+
+              if not new_props:
+                  print("DB properties already exist")
+                  return True
+
+              print(f"Adding DB properties: {list(new_props.keys())}")
+              payload = {"properties": new_props}
+              data = json.dumps(payload).encode()
+              req = Request(
+                  f"https://api.notion.com/v1/databases/{DB_ID}",
+                  data=data, headers=HEADERS, method="PATCH",
+              )
+              try:
+                  urlopen(req)
+                  print("DB properties added successfully")
+                  return True
+              except HTTPError as e:
+                  body = e.read().decode() if e.fp else ""
+                  print(f"::warning::Failed to add DB properties: {e.code} {body[:200]}")
+                  return False
+
+          ensure_db_properties()
+
+          # ============================================================
+          # 重複チェック: 既に記録済みのコミットIDを取得
+          # ============================================================
+
           def get_existing_commit_ids():
-              """Notion DBから既存のコミットIDを全件取得"""
               ids = set()
               start_cursor = None
               while True:
@@ -82,11 +258,13 @@ jobs:
           existing_ids = get_existing_commit_ids()
           print(f"Existing records in Notion: {len(existing_ids)}")
 
-          # --- コミット数の決定 ---
+          # ============================================================
+          # コミット取得・フィルタ
+          # ============================================================
+
           backfill = os.environ.get("INPUT_BACKFILL", "").strip()
           count = int(backfill) if backfill.isdigit() and int(backfill) > 0 else 1
 
-          # git log 取得
           fmt = "%H%n%s%n%aI%n%an"
           result = subprocess.run(
               ["git", "log", f"-{count}", f"--format={fmt}"],
@@ -94,7 +272,6 @@ jobs:
           )
           lines = result.stdout.strip().split("\n")
 
-          # 4行ごとにパース
           commits = []
           for i in range(0, len(lines), 4):
               if i + 3 < len(lines):
@@ -109,7 +286,6 @@ jobs:
               print("No commits to log")
               sys.exit(0)
 
-          # 重複除外
           new_commits = [c for c in commits if c["hash"][:7] not in existing_ids]
           skipped = len(commits) - len(new_commits)
           if skipped > 0:
@@ -119,7 +295,7 @@ jobs:
               print("All commits already recorded")
               sys.exit(0)
 
-          # 変更ファイル数を取得
+          # 変更ファイル数
           for c in new_commits:
               r = subprocess.run(
                   ["git", "diff", "--name-only", f"{c['hash']}~1", c["hash"]],
@@ -129,10 +305,15 @@ jobs:
 
           repo = os.environ.get("GITHUB_REPOSITORY", "unknown")
 
-          # Notion API にページを作成（古い順に）
+          # ============================================================
+          # Notion API にページ作成
+          # ============================================================
+
           success = 0
           errors = 0
           for c in reversed(new_commits):
+              cls = classify(c["message"])
+
               payload = {
                   "parent": {"database_id": DB_ID},
                   "properties": {
@@ -141,6 +322,10 @@ jobs:
                       "日時": {"date": {"start": c["date"]}},
                       "リポジトリ": {"select": {"name": repo}},
                       "変更ファイル数": {"number": c["files_changed"]},
+                      "重要度": {"select": {"name": cls["重要度"]}},
+                      "変更種別": {"select": {"name": cls["変更種別"]}},
+                      "影響範囲": {"select": {"name": cls["影響範囲"]}},
+                      "親テーマ": {"select": {"name": cls["親テーマ"]}},
                   }
               }
               data = json.dumps(payload).encode()
@@ -149,8 +334,9 @@ jobs:
                   data=data, headers=HEADERS, method="POST",
               )
               try:
-                  resp = urlopen(req)
-                  print(f"OK: {c['hash'][:7]} — {c['message']}")
+                  urlopen(req)
+                  tag = f"[{cls['重要度']}][{cls['変更種別']}][{cls['影響範囲']}] {cls['親テーマ']}"
+                  print(f"OK: {c['hash'][:7]} — {c['message']}  >> {tag}")
                   success += 1
               except HTTPError as e:
                   body = e.read().decode() if e.fp else ""
