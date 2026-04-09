@@ -85,8 +85,11 @@ h2 { font-size: 1.15em; color: #333; margin: 32px 0 14px; border-left: 4px solid
 
 /* ブログカード */
 .blog-list { display: grid; gap: 16px; }
-.blog-card { background: white; border-radius: 8px; padding: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+.blog-card { background: white; border-radius: 8px; padding: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); position: relative; cursor: pointer; transition: box-shadow 0.2s; }
+.blog-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.blog-card:focus-within { box-shadow: 0 0 0 3px rgba(26,110,60,0.3); }
 .blog-title { font-size: 1em; font-weight: bold; color: #1a6e3c; margin-bottom: 6px; }
+.blog-title a::after { content: ''; position: absolute; inset: 0; }
 .blog-desc { font-size: 0.9em; color: #555; }
 
 /* フッター */
@@ -122,10 +125,12 @@ footer a { color: #aaa; }
 .guide-disclaimer strong { color: #555; }
 .guide-meta { font-size: 0.85em; color: #888; margin-bottom: 20px; }
 .guide-cards { display: grid; gap: 16px; margin: 20px 0; }
-.guide-card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); border-left: 4px solid #1a6e3c; transition: box-shadow 0.2s; }
+.guide-card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); border-left: 4px solid #1a6e3c; transition: box-shadow 0.2s; position: relative; cursor: pointer; }
 .guide-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.guide-card:focus-within { box-shadow: 0 0 0 3px rgba(26,110,60,0.3); }
 .guide-card h3 { margin: 0 0 6px; font-size: 1.05em; }
 .guide-card h3 a { color: #1a6e3c; }
+.guide-card h3 a::after { content: ''; position: absolute; inset: 0; }
 .guide-card p { font-size: 0.9em; color: #555; margin: 0; }
 .guide-related { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); margin-top: 24px; }
 .guide-related h2 { margin-top: 0; }
