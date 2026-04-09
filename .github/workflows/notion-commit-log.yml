@@ -36,7 +36,53 @@ jobs:
               print("::error::NOTION_API_KEY or NOTION_DATABASE_ID is not set")
               sys.exit(1)
 
-          # コミット数の決定
+          HEADERS = {
+              "Authorization": f"Bearer {API_KEY}",
+              "Content-Type": "application/json",
+              "Notion-Version": "2022-06-28",
+          }
+
+          # --- 重複チェック: 既に記録済みのコミットIDを取得 ---
+          def get_existing_commit_ids():
+              """Notion DBから既存のコミットIDを全件取得"""
+              ids = set()
+              start_cursor = None
+              while True:
+                  payload = {
+                      "filter": {
+                          "property": "リポジトリ",
+                          "select": {"equals": os.environ.get("GITHUB_REPOSITORY", "")}
+                      },
+                      "page_size": 100,
+                  }
+                  if start_cursor:
+                      payload["start_cursor"] = start_cursor
+                  data = json.dumps(payload).encode()
+                  req = Request(
+                      f"https://api.notion.com/v1/databases/{DB_ID}/query",
+                      data=data, headers=HEADERS, method="POST",
+                  )
+                  try:
+                      resp = urlopen(req)
+                      result = json.loads(resp.read().decode())
+                  except (HTTPError, URLError) as e:
+                      print(f"::warning::Failed to query existing records: {e}")
+                      return ids
+                  for page in result.get("results", []):
+                      props = page.get("properties", {})
+                      cid_prop = props.get("コミットID", {})
+                      rt = cid_prop.get("rich_text", [])
+                      if rt:
+                          ids.add(rt[0].get("text", {}).get("content", ""))
+                  if not result.get("has_more"):
+                      break
+                  start_cursor = result.get("next_cursor")
+              return ids
+
+          existing_ids = get_existing_commit_ids()
+          print(f"Existing records in Notion: {len(existing_ids)}")
+
+          # --- コミット数の決定 ---
           backfill = os.environ.get("INPUT_BACKFILL", "").strip()
           count = int(backfill) if backfill.isdigit() and int(backfill) > 0 else 1
 
@@ -48,7 +94,7 @@ jobs:
           )
           lines = result.stdout.strip().split("\n")
 
-          # 4行ごとにパース（hash, subject, date, author）
+          # 4行ごとにパース
           commits = []
           for i in range(0, len(lines), 4):
               if i + 3 < len(lines):
@@ -63,8 +109,18 @@ jobs:
               print("No commits to log")
               sys.exit(0)
 
+          # 重複除外
+          new_commits = [c for c in commits if c["hash"][:7] not in existing_ids]
+          skipped = len(commits) - len(new_commits)
+          if skipped > 0:
+              print(f"Skipping {skipped} already-recorded commits")
+
+          if not new_commits:
+              print("All commits already recorded")
+              sys.exit(0)
+
           # 変更ファイル数を取得
-          for c in commits:
+          for c in new_commits:
               r = subprocess.run(
                   ["git", "diff", "--name-only", f"{c['hash']}~1", c["hash"]],
                   capture_output=True, text=True
@@ -76,7 +132,7 @@ jobs:
           # Notion API にページを作成（古い順に）
           success = 0
           errors = 0
-          for c in reversed(commits):
+          for c in reversed(new_commits):
               payload = {
                   "parent": {"database_id": DB_ID},
                   "properties": {
@@ -90,13 +146,7 @@ jobs:
               data = json.dumps(payload).encode()
               req = Request(
                   "https://api.notion.com/v1/pages",
-                  data=data,
-                  headers={
-                      "Authorization": f"Bearer {API_KEY}",
-                      "Content-Type": "application/json",
-                      "Notion-Version": "2022-06-28",
-                  },
-                  method="POST",
+                  data=data, headers=HEADERS, method="POST",
               )
               try:
                   resp = urlopen(req)
@@ -110,7 +160,7 @@ jobs:
                   print(f"::warning::Network error for {c['hash'][:7]}: {e.reason}")
                   errors += 1
 
-          print(f"\nDone: {success} logged, {errors} errors")
+          print(f"\nDone: {success} logged, {skipped} skipped, {errors} errors")
           if errors > 0 and success == 0:
               sys.exit(1)
           PYEOF
