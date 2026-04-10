@@ -221,26 +221,6 @@ jobs:
                   print(f"::warning::Failed to add DB properties: {e.code} {body[:200]}")
                   return False
 
-          # --- DB診断: 全プロパティ一覧を出力 ---
-          def dump_db_schema():
-              req = Request(
-                  f"https://api.notion.com/v1/databases/{DB_ID}",
-                  headers=HEADERS, method="GET",
-              )
-              try:
-                  resp = urlopen(req)
-                  db = json.loads(resp.read().decode())
-              except (HTTPError, URLError) as e:
-                  print(f"::warning::Failed to read DB schema: {e}")
-                  return
-              props = db.get("properties", {})
-              print(f"=== DB Properties ({len(props)}) ===")
-              for name, conf in sorted(props.items()):
-                  ptype = conf.get("type", "?")
-                  print(f"  {name} ({ptype})")
-              print("=== end ===")
-          dump_db_schema()
-
           ensure_db_properties()
 
           # ============================================================
