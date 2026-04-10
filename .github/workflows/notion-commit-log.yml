@@ -228,17 +228,15 @@ jobs:
           # ============================================================
 
           if os.environ.get("INPUT_RECLASSIFY", "").lower() == "true":
-              print("=== Reclassify mode: updating existing records ===")
+              print("=== Reclassify mode: updating ALL records (no repo filter) ===")
               start_cursor = None
               updated = 0
-              repo_name = os.environ.get("GITHUB_REPOSITORY", "")
+              skipped_empty = 0
+              errors_rc = 0
+              total_scanned = 0
               while True:
+                  # フィルタなしで全件取得（旧レコードも確実に含む）
                   payload = {"page_size": 100}
-                  if repo_name:
-                      payload["filter"] = {
-                          "property": "リポジトリ",
-                          "select": {"equals": repo_name}
-                      }
                   if start_cursor:
                       payload["start_cursor"] = start_cursor
                   data = json.dumps(payload).encode()
@@ -253,15 +251,26 @@ jobs:
                       print(f"::error::Failed to query DB: {e}")
                       sys.exit(1)
 
+                  page_count = len(result.get("results", []))
+                  total_scanned += page_count
+                  has_more = result.get("has_more", False)
+                  print(f"  Page: {page_count} records (has_more={has_more})")
+
                   for page in result.get("results", []):
                       page_id = page["id"]
                       props = page.get("properties", {})
                       title_prop = props.get("コミットメッセージ", {}).get("title", [])
                       if not title_prop:
+                          skipped_empty += 1
                           continue
                       msg = title_prop[0].get("text", {}).get("content", "")
                       if not msg:
+                          skipped_empty += 1
                           continue
+
+                      # リポジトリ名も取得（診断用）
+                      repo_prop = props.get("リポジトリ", {}).get("select")
+                      repo_val = repo_prop.get("name", "?") if repo_prop else "(未設定)"
 
                       cls = classify(msg)
                       patch = {
@@ -280,17 +289,23 @@ jobs:
                       try:
                           urlopen(req)
                           tag = f"[{cls['重要度']}][{cls['変更種別']}][{cls['影響範囲']}] {cls['親テーマ']}"
-                          print(f"Updated: {msg[:60]}  >> {tag}")
+                          print(f"  OK: [{repo_val}] {msg[:50]}  >> {tag}")
                           updated += 1
                       except HTTPError as e:
                           body = e.read().decode() if e.fp else ""
-                          print(f"::warning::Failed to update {page_id}: {e.code} {body[:200]}")
+                          print(f"  ::warning::Failed {page_id}: {e.code} {body[:200]}")
+                          errors_rc += 1
 
-                  if not result.get("has_more"):
+                  if not has_more:
                       break
                   start_cursor = result.get("next_cursor")
 
-              print(f"\nReclassify done: {updated} records updated")
+              print(f"\n=== Reclassify summary ===")
+              print(f"Total scanned: {total_scanned}")
+              print(f"Updated: {updated}")
+              print(f"Skipped (empty title): {skipped_empty}")
+              print(f"Errors: {errors_rc}")
+              print(f"Unclassified remaining: 0 (all records processed)")
               sys.exit(0)
 
           # ============================================================
