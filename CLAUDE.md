@@ -193,3 +193,22 @@ blog/ guide/ の変更を含む push / PR で GitHub Actions が禁止語チェ�
 ローカル hook をすり抜けた場合（hook 未設置、`--no-verify` 使用等）でも CI で検出される。
 
 チェック体制: **ローカル pre-commit hook + CI の二重チェック**
+
+---
+
+## Agent 委譲ルール
+
+### 優先する repo 固有 agent
+
+| agent | 担当ファイル | 担当内容 |
+|-------|-------------|---------|
+| **navi-site-builder** | `*.html`, `static/`, `blog/`, `clinic/`, `pref/`, `guide/`, `sitemap.xml`, `data/` | ページ構造・SEO・内部リンク・コンテンツ管理 |
+
+### 委譲判断
+
+- HTML/CSS/JS の編集、SEO改善、内部リンク、コンテンツ追加 → **navi-site-builder**
+- テンプレート由来の広域変更、データ生成ロジック → MyPython の **data-pipeline** が担当（このrepoではなく MyPython 側で作業する）
+- 会員管理・決済 → zaitaku-members が担当（このrepoでは触らない）
+- 上記に当てはまらない変更（tools/、hook設定等） → **implementer**（global）
+- 複数ステップの作業分解 → **orchestrator**（global）
+- 成果物のレビュー → **reviewer**（global）
