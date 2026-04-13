@@ -266,3 +266,22 @@ houmonshinsatsu-navi では以下を **保存優先度高め** として扱う�
 - `NEXT_ACTIONS:`
 
 `SAVE_CATEGORY` は houmonshinsatsu-navi では `decision`（中立性・SEO方針判断）と `strategy`（横展開できるテンプレ設計）が中心になる想定。
+
+---
+
+## Agent 委譲ルール
+
+### 優先する repo 固有 agent
+
+| agent | 担当ファイル | 担当内容 |
+|-------|-------------|---------|
+| **navi-site-builder** | `*.html`, `static/`, `blog/`, `clinic/`, `pref/`, `guide/`, `sitemap.xml`, `data/` | ページ構造・SEO・内部リンク・コンテンツ管理 |
+
+### 委譲判断
+
+- HTML/CSS/JS の編集、SEO改善、内部リンク、コンテンツ追加 → **navi-site-builder**
+- テンプレート由来の広域変更、データ生成ロジック → MyPython の **data-pipeline** が担当（このrepoではなく MyPython 側で作業する）
+- 会員管理・決済 → zaitaku-members が担当（このrepoでは触らない）
+- 上記に当てはまらない変更（tools/、hook設定等） → **implementer**（global）
+- 複数ステップの作業分解 → **orchestrator**（global）
+- 成果物のレビュー → **reviewer**（global）
