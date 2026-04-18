@@ -11,7 +11,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://zaitakuclinic-navi.com/register-free.html">
   <meta property="og:image" content="https://zaitakuclinic-navi.com/static/ogp.png">
-  <meta property="og:site_name" content="訪問診療所ナビ">
+  <meta property="og:site_name" content="在宅クリニックナビ">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="掲載情報の修正・新規掲載申請 | 在宅クリニックナビ">
@@ -26,6 +26,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-NQVHSM2K67');
+    function gev(name, params){gtag('event', name, params||{});}
   </script>
 
 </head>
@@ -36,6 +37,10 @@
       <div class="site-subtitle">全国の在宅医療クリニック検索</div>
     </div>
     <div class="header-right">
+      <a href="/guide/" style="color:#fff;text-decoration:none;font-size:0.85em;">患者さん・ご家族の方へ</a>
+      <span style="margin:0 6px;opacity:0.5;">|</span>
+      <a href="/for-clinics.html" style="color:#fff;text-decoration:none;font-size:0.85em;">医療機関の方へ</a>
+      <span style="margin:0 6px;opacity:0.5;">|</span>
       <a href="/about.html" style="color:#fff;text-decoration:none;font-size:0.85em;">運営者情報</a>
     </div>
   </div>
@@ -72,11 +77,11 @@
 
   <!-- フロー選択カード -->
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;">
-    <div id="card-existing" onclick="showSection('existing')" style="background:white;border:2px solid #1a6e3c;border-radius:10px;padding:24px;box-shadow:0 2px 6px rgba(0,0,0,0.08);cursor:pointer;">
+    <div id="card-existing" onclick="showSection('existing');gev('start_free_edit',{form_type:'existing'})" style="background:white;border:2px solid #1a6e3c;border-radius:10px;padding:24px;box-shadow:0 2px 6px rgba(0,0,0,0.08);cursor:pointer;">
       <div style="font-size:13px;color:#888;margin-bottom:6px;">すでに掲載されている医療機関の方</div>
       <div style="font-weight:bold;color:#1a6e3c;font-size:16px;">掲載情報の修正・追加はこちら &rarr;</div>
     </div>
-    <div id="card-new" onclick="showSection('new')" style="background:white;border:2px solid #ccc;border-radius:10px;padding:24px;box-shadow:0 2px 6px rgba(0,0,0,0.08);cursor:pointer;">
+    <div id="card-new" onclick="showSection('new');gev('start_free_edit',{form_type:'new'})" style="background:white;border:2px solid #ccc;border-radius:10px;padding:24px;box-shadow:0 2px 6px rgba(0,0,0,0.08);cursor:pointer;">
       <div style="font-size:13px;color:#888;margin-bottom:6px;">まだ掲載されていない医療機関の方</div>
       <div style="font-weight:bold;color:#555;font-size:16px;">新規掲載のお申し込みはこちら &rarr;</div>
     </div>
@@ -164,7 +169,7 @@
       </div>
       <h3 style="font-size:16px;margin-bottom:16px;">修正・追加内容をご記入ください</h3>
 
-      <form action="https://formspree.io/f/xreyyene" method="POST" id="editForm">
+      <form action="#" method="POST" id="editForm" data-api="https://zaitaku-members.vercel.app/api/registration">
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         <input type="hidden" name="type" value="existing_update">
         <input type="hidden" name="kikan_cd" id="hidden-kikan-cd" value="">
@@ -184,7 +189,7 @@
 
         <!-- 2. 役職 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">役職</label>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">役職 <span style="font-weight:normal;color:#999;font-size:13px;">任意</span></label>
           <select name="role" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;">
             <option value="">選択してください</option>
             <option value="director">院長</option>
@@ -198,8 +203,8 @@
 
         <!-- 3. 訪問エリア -->
         <div style="margin-bottom:20px;" id="area-picker-edit">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">訪問エリア</label>
-          <p style="font-size:12px;color:#888;margin-bottom:8px;">実際に訪問可能な市区町村を選択してください（複数選択可）。入力するとケアマネジャーからの検索で見つかりやすくなります。</p>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">訪問エリア <span style="font-weight:normal;color:#999;font-size:13px;">任意・おすすめ</span></label>
+          <p style="font-size:12px;color:#888;margin-bottom:8px;">訪問可能な市区町村を選択してください（複数選択可）。患者様・ケアマネジャー様からの検索で見つかりやすくなります。</p>
           <select class="area-pref-select" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;margin-bottom:8px;">
             <option value="">都道府県を選択</option>
           </select>
@@ -212,7 +217,7 @@
 
         <!-- 4. 対応疾患 -->
         <div style="margin-bottom:20px;">
-          <label style="display:block;font-weight:bold;margin-bottom:8px;">対応疾患（複数選択可）</label>
+          <label style="display:block;font-weight:bold;margin-bottom:8px;">対応疾患 <span style="font-weight:normal;color:#999;font-size:13px;">任意・複数選択可</span></label>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;">
             <label style="font-size:14px;cursor:pointer;padding:4px 0;"><input type="checkbox" name="diseases" value="がん・緩和ケア" style="margin-right:6px;">がん・緩和ケア</label>
             <label style="font-size:14px;cursor:pointer;padding:4px 0;"><input type="checkbox" name="diseases" value="認知症" style="margin-right:6px;">認知症</label>
@@ -231,7 +236,7 @@
 
         <!-- 5. 医療処置 -->
         <div style="margin-bottom:20px;">
-          <label style="display:block;font-weight:bold;margin-bottom:8px;">対応可能な医療処置（複数選択可）</label>
+          <label style="display:block;font-weight:bold;margin-bottom:8px;">対応可能な医療処置 <span style="font-weight:normal;color:#999;font-size:13px;">任意・複数選択可</span></label>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;">
             <label style="font-size:14px;cursor:pointer;padding:4px 0;"><input type="checkbox" name="procedures" value="点滴" style="margin-right:6px;">点滴</label>
             <label style="font-size:14px;cursor:pointer;padding:4px 0;"><input type="checkbox" name="procedures" value="胃ろう" style="margin-right:6px;">胃ろう</label>
@@ -257,20 +262,21 @@
 
         <!-- 6. 特徴・強み -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">特徴・強み（80字以内）</label>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">特徴・強み <span style="font-weight:normal;color:#999;font-size:13px;">任意・80字以内</span></label>
           <input type="text" name="feature" maxlength="80" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;" placeholder="例: 緩和ケアと看取り対応に力を入れています">
-          <p style="font-size:12px;color:#888;margin-top:4px;">一覧ページで表示される短い紹介文です。</p>
+          <p style="font-size:12px;color:#888;margin-top:4px;">一覧ページのクリニック名の下に表示されます。</p>
         </div>
 
         <!-- 7. その他修正内容 -->
         <div style="margin-bottom:24px;">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;color:#666;">その他修正内容（上記に当てはまらない内容があればご記入ください）</label>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;color:#666;">その他 <span style="font-weight:normal;color:#999;font-size:13px;">任意</span></label>
+          <p style="font-size:12px;color:#888;margin-bottom:4px;">上記に当てはまらない修正内容や、医療機関番号がわからない場合のご連絡にご利用ください。</p>
           <textarea name="other_changes" rows="2" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;" placeholder=""></textarea>
         </div>
 
         <p style="font-size:12px;color:#888;margin-bottom:12px;">ご入力いただいた個人情報は、掲載情報の整備および当サービスに関するご連絡のみに使用し、第三者に提供することはありません。<a href="/about.html">運営者情報</a></p>
 
-        <button type="submit" style="background:#1a6e3c;color:#fff;border:none;padding:14px 48px;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;">修正申請を送信する</button>
+        <button type="submit" style="background:#1a6e3c;color:#fff;border:none;padding:14px 48px;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;" onclick="gev('submit_free_edit',{form_type:'existing'})">修正申請を送信する</button>
       </form>
     </div>
   </div>
@@ -280,17 +286,29 @@
     <h2 style="font-size:20px;color:#2a5a8c;margin-bottom:16px;">新規掲載のお申し込み</h2>
     <div style="background:white;border-radius:10px;padding:24px;box-shadow:0 2px 6px rgba(0,0,0,0.08);">
 
-      <form action="https://formspree.io/f/xreyyene" method="POST" id="newForm">
+      <form action="#" method="POST" id="newForm" data-api="https://zaitaku-members.vercel.app/api/registration">
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         <input type="hidden" name="type" value="new_registration">
 
-        <!-- 1. 医療機関番号（必須） -->
+        <!-- 1. 医療機関番号 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">医療機関番号（10桁） <span style="color:#c00;">*</span></label>
-          <input type="text" name="official_kikan_cd" id="new-kikan-cd" required pattern="[0-9]{10}" maxlength="10"
-            style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;" placeholder="例: 1413810991">
-          <p style="font-size:12px;color:#888;margin-top:4px;">保険医療機関コード10桁を入力してください。診療報酬の請求書類や地方厚生局の指定一覧で確認できます。</p>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">保険医療機関コード（10桁） <span style="font-weight:normal;color:#999;font-size:13px;">任意・わかる範囲で</span></label>
+          <input type="text" name="official_kikan_cd" id="new-kikan-cd" pattern="[0-9]{10}" maxlength="10"
+            style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;" placeholder="例: 1413810991" inputmode="numeric">
           <div id="kikan-cd-check" style="margin-top:6px;font-size:13px;"></div>
+          <details style="margin-top:8px;font-size:13px;color:#666;">
+            <summary style="cursor:pointer;color:#1a6e3c;">保険医療機関コードとは？／わからない場合</summary>
+            <div style="margin-top:8px;padding:12px;background:#f9f9f9;border-radius:6px;line-height:1.8;">
+              <p style="margin:0 0 8px;">保険医療機関コード（機関番号）は、保険診療を行う医療機関に付与される10桁の番号です。</p>
+              <p style="margin:0 0 8px;"><strong>確認方法:</strong></p>
+              <ul style="margin:0 0 8px;padding-left:20px;">
+                <li>レセプト（診療報酬請求書）の左上</li>
+                <li><a href="https://www.iryou.teikyouseido.mhlw.go.jp/znk-web/" target="_blank" rel="noopener" style="color:#1a6e3c;">介護サービス情報公表システム</a>でクリニック名を検索</li>
+                <li>各地方厚生局の保険医療機関一覧</li>
+              </ul>
+              <p style="margin:0;color:#888;">どうしてもわからない場合は空欄のまま送信し、下の備考欄にその旨をご記入ください。事務局にて確認いたします。</p>
+            </div>
+          </details>
         </div>
 
         <!-- 2. クリニック名・電話番号 -->
@@ -315,7 +333,7 @@
 
         <!-- 4. 役職 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">役職</label>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">役職 <span style="font-weight:normal;color:#999;font-size:13px;">任意</span></label>
           <select name="role" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;">
             <option value="">選択してください</option>
             <option value="director">院長</option>
@@ -329,8 +347,8 @@
 
         <!-- 5. 訪問エリア -->
         <div style="margin-bottom:20px;" id="area-picker-new">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">訪問エリア</label>
-          <p style="font-size:12px;color:#888;margin-bottom:8px;">実際に訪問可能な市区町村を選択してください（複数選択可）。入力するとケアマネジャーからの検索で見つかりやすくなります。</p>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">訪問エリア <span style="font-weight:normal;color:#999;font-size:13px;">任意・おすすめ</span></label>
+          <p style="font-size:12px;color:#888;margin-bottom:8px;">訪問可能な市区町村を選択してください（複数選択可）。患者様・ケアマネジャー様からの検索で見つかりやすくなります。</p>
           <select class="area-pref-select" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;margin-bottom:8px;">
             <option value="">都道府県を選択</option>
           </select>
@@ -343,7 +361,7 @@
 
         <!-- 6. 対応疾患 -->
         <div style="margin-bottom:20px;">
-          <label style="display:block;font-weight:bold;margin-bottom:8px;">対応疾患（複数選択可）</label>
+          <label style="display:block;font-weight:bold;margin-bottom:8px;">対応疾患 <span style="font-weight:normal;color:#999;font-size:13px;">任意・複数選択可</span></label>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;">
             <label style="font-size:14px;cursor:pointer;padding:4px 0;"><input type="checkbox" name="diseases" value="がん・緩和ケア" style="margin-right:6px;">がん・緩和ケア</label>
             <label style="font-size:14px;cursor:pointer;padding:4px 0;"><input type="checkbox" name="diseases" value="認知症" style="margin-right:6px;">認知症</label>
@@ -362,7 +380,7 @@
 
         <!-- 7. 医療処置 -->
         <div style="margin-bottom:20px;">
-          <label style="display:block;font-weight:bold;margin-bottom:8px;">対応可能な医療処置（複数選択可）</label>
+          <label style="display:block;font-weight:bold;margin-bottom:8px;">対応可能な医療処置 <span style="font-weight:normal;color:#999;font-size:13px;">任意・複数選択可</span></label>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;">
             <label style="font-size:14px;cursor:pointer;padding:4px 0;"><input type="checkbox" name="procedures" value="点滴" style="margin-right:6px;">点滴</label>
             <label style="font-size:14px;cursor:pointer;padding:4px 0;"><input type="checkbox" name="procedures" value="胃ろう" style="margin-right:6px;">胃ろう</label>
@@ -388,20 +406,21 @@
 
         <!-- 8. 特徴・強み -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">特徴・強み（80字以内）</label>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">特徴・強み <span style="font-weight:normal;color:#999;font-size:13px;">任意・80字以内</span></label>
           <input type="text" name="feature" maxlength="80" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;" placeholder="例: 神経難病や医療依存度の高い患者さんにも対応しています">
-          <p style="font-size:12px;color:#888;margin-top:4px;">一覧ページで表示される短い紹介文です。</p>
+          <p style="font-size:12px;color:#888;margin-top:4px;">一覧ページのクリニック名の下に表示されます。</p>
         </div>
 
         <!-- 9. その他 -->
         <div style="margin-bottom:24px;">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;color:#666;">その他（上記に当てはまらない内容があればご記入ください）</label>
-          <textarea name="note" rows="2" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;" placeholder=""></textarea>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;color:#666;">その他 <span style="font-weight:normal;color:#999;font-size:13px;">任意</span></label>
+          <p style="font-size:12px;color:#888;margin-bottom:4px;">保険医療機関コードがわからない場合や、その他ご連絡事項があればこちらにご記入ください。</p>
+          <textarea name="note" rows="2" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;" placeholder="例: 医療機関番号がわかりません / 開業準備中です"></textarea>
         </div>
 
         <p style="font-size:12px;color:#888;margin-bottom:12px;">ご入力いただいた個人情報は、掲載情報の整備および当サービスに関するご連絡のみに使用し、第三者に提供することはありません。<a href="/about.html">運営者情報</a></p>
 
-        <button type="submit" style="background:#2a5a8c;color:#fff;border:none;padding:14px 48px;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;">新規掲載を申し込む</button>
+        <button type="submit" style="background:#2a5a8c;color:#fff;border:none;padding:14px 48px;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;" onclick="gev('submit_free_edit',{form_type:'new'})">新規掲載を申し込む</button>
       </form>
     </div>
   </div>
@@ -537,34 +556,30 @@ initAreaPicker('area-picker-new', 'visit_area_new');
   window.showSection = showSection;
 
   // --- Clinic search ---
-  var allClinics = null;
+  // 都道府県別に分割されたJSONをfetch（スクレイピング対策）
+  var clinicCache = {};
 
-  function loadClinics(cb) {
-    if (allClinics !== null) { cb(allClinics); return; }
-    fetch('/data/clinics_search.json')
-      .then(function(r) { return r.json(); })
-      .then(function(data) { allClinics = data; cb(allClinics); })
+  function loadClinicsByPref(prefCode, cb) {
+    if (clinicCache[prefCode]) { cb(clinicCache[prefCode]); return; }
+    fetch('/data/search/' + prefCode + '.json')
+      .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(data) { clinicCache[prefCode] = data; cb(data); })
       .catch(function() { cb([]); });
   }
 
   function searchClinics() {
     var pref = document.getElementById('search-pref').value;
     var query = document.getElementById('search-query').value.trim();
-    if (!pref && !query) {
-      alert('都道府県を選択するか、クリニック名を入力してください。');
+    if (!pref) {
+      alert('都道府県を選択してください。');
       return;
     }
     var resultsDiv = document.getElementById('search-results');
     var listDiv = document.getElementById('results-list');
-    listDiv.innerHTML = '<p style="color:#888;font-size:14px;">検索中...（データを読み込んでいます）</p>';
+    listDiv.innerHTML = '<p style="color:#888;font-size:14px;">検索中...</p>';
     resultsDiv.style.display = 'block';
-    loadClinics(function(clinics) {
+    loadClinicsByPref(pref, function(clinics) {
       var filtered = clinics;
-      if (pref) {
-        filtered = filtered.filter(function(c) {
-          return String(c.pc) === String(pref);
-        });
-      }
       if (query) {
         var q = query.toLowerCase();
         filtered = filtered.filter(function(c) {
@@ -631,23 +646,47 @@ initAreaPicker('area-picker-new', 'visit_area_new');
   }
   window.clearSelection = clearSelection;
 
-  // --- Form submit: edit ---
-  function handleFormSubmit(formId, btnDefaultText) {
-    var form = document.getElementById(formId);
+  // --- Form submit: Supabase API 経由で保存 ---
+  var API_URL = 'https://zaitaku-members.vercel.app/api/registration';
+
+  function collectFormData(form, requestType) {
+    var fd = new FormData(form);
+    var obj = { request_type: requestType };
+    fd.forEach(function(v, k) {
+      if (k === 'diseases' || k === 'procedures') {
+        if (!obj[k]) obj[k] = [];
+        obj[k].push(v);
+      } else {
+        obj[k] = v;
+      }
+    });
+    // rename form fields to API fields
+    obj.contact_name = obj.name || '';
+    obj.contact_email = obj.email || '';
+    obj.contact_role = obj.role || '';
+    if (requestType === 'edit') {
+      obj.visit_areas = obj.visit_area_edit || '';
+    } else {
+      obj.visit_areas = obj.visit_area_new || '';
+    }
+    return obj;
+  }
+
+  function submitToAPI(form, requestType, btnDefaultText) {
     if (!form) return;
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       var btn = form.querySelector('button[type="submit"]');
       btn.disabled = true;
       btn.textContent = '送信中...';
-      var data = new FormData(form);
-      fetch(form.action, {
+      var payload = collectFormData(form, requestType);
+      fetch(API_URL, {
         method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       }).then(function(res) {
         if (res.ok) {
-          window.location.href = '/register-thanks.html';
+          window.location.href = '/register-thanks.html?type=' + requestType;
         } else {
           btn.disabled = false;
           btn.textContent = btnDefaultText;
@@ -661,7 +700,7 @@ initAreaPicker('area-picker-new', 'visit_area_new');
     });
   }
 
-  handleFormSubmit('editForm', '修正申請を送信する');
+  submitToAPI(document.getElementById('editForm'), 'edit', '修正申請を送信する');
 
   // --- 新規掲載: 医療機関番号の重複チェック ---
   var kikanInput = document.getElementById('new-kikan-cd');
@@ -695,27 +734,26 @@ initAreaPicker('area-picker-new', 'visit_area_new');
     });
   }
 
-  // 新規フォーム: 重複時は送信ブロック
+  // 新規フォーム: 重複時は送信ブロック + API送信
   var newForm = document.getElementById('newForm');
   if (newForm) {
     newForm.addEventListener('submit', function(e) {
+      e.preventDefault();
       if (kikanDuplicate) {
-        e.preventDefault();
         alert('この医療機関番号は既に掲載されています。掲載情報の修正は「既に掲載されている医療機関の方」からお手続きください。');
         return;
       }
-      e.preventDefault();
       var btn = newForm.querySelector('button[type="submit"]');
       btn.disabled = true;
       btn.textContent = '送信中...';
-      var data = new FormData(newForm);
-      fetch(newForm.action, {
+      var payload = collectFormData(newForm, 'new');
+      fetch(API_URL, {
         method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       }).then(function(res) {
         if (res.ok) {
-          window.location.href = '/register-thanks.html';
+          window.location.href = '/register-thanks.html?type=new';
         } else {
           btn.disabled = false;
           btn.textContent = '新規掲載を申し込む';
@@ -728,27 +766,28 @@ initAreaPicker('area-picker-new', 'visit_area_new');
       });
     });
   }
-
-  handleFormSubmit('editForm', '修正申請を送信する');
 })();
 </script>
 <footer>
   <div class="footer-inner">
-    <div>
-      <strong>在宅クリニックナビ</strong><br>
-      全国の訪問診療所・在宅医療クリニックのディレクトリサービス<br>
-      <small>情報源: 公開情報および各医療機関からの提供情報</small>
+    <div class="footer-about">
+      <div class="footer-site-name">在宅クリニックナビ</div>
+      <p>全国の訪問診療クリニックを検索できるポータルサイトです。</p>
     </div>
-    <div>
-      <a href="/">トップ</a> |
-      <a href="/blog/">ブログ</a> |
-      <a href="/contact.html">お問い合わせ</a> |
-      <a href="/about.html">運営者情報</a><br>
-      <a href="/tokushoho.html">特定商取引法に基づく表記</a> |
-      <a href="/terms.html">利用規約</a> |
-      <a href="/for-clinics.html">医療機関の方へ</a><br>
-      <small>&copy; 2025 在宅クリニックナビ</small>
+    <div class="footer-nav">
+      <a href="/">トップ</a>
+      <a href="/guide/">患者さん・ご家族の方へ</a>
+      <a href="/for-clinics.html">医療機関の方へ</a>
+      <a href="/about.html">運営者情報</a>
+      <a href="/contact.html">お問い合わせ</a>
     </div>
+  </div>
+  <div class="footer-pref-links"><div class="footer-pref-title">都道府県から探す</div><div class="footer-pref-region"><span class="footer-pref-label">北海道・東北</span><span class="footer-pref-item"><a href="/pref/hokkaido.html">北海道(274)</a></span><span class="footer-pref-item"><a href="/pref/aomori.html">青森県(127)</a></span><span class="footer-pref-item"><a href="/pref/iwate.html">岩手県(117)</a></span><span class="footer-pref-item"><a href="/pref/miyagi.html">宮城県(325)</a></span><span class="footer-pref-item"><a href="/pref/akita.html">秋田県(158)</a></span><span class="footer-pref-item"><a href="/pref/yamagata.html">山形県(211)</a></span><span class="footer-pref-item"><a href="/pref/fukushima.html">福島県(225)</a></span></div><div class="footer-pref-region"><span class="footer-pref-label">関東</span><span class="footer-pref-item"><a href="/pref/ibaraki.html">茨城県(288)</a></span><span class="footer-pref-item"><a href="/pref/tochigi.html">栃木県(359)</a></span><span class="footer-pref-item"><a href="/pref/gunma.html">群馬県(206)</a></span><span class="footer-pref-item"><a href="/pref/saitama.html">埼玉県(576)</a></span><span class="footer-pref-item"><a href="/pref/chiba.html">千葉県(463)</a></span><span class="footer-pref-item"><a href="/pref/tokyo.html">東京都(1229)</a></span><span class="footer-pref-item"><a href="/pref/kanagawa.html">神奈川県(855)</a></span><span class="footer-pref-item"><a href="/pref/niigata.html">新潟県(224)</a></span></div><div class="footer-pref-region"><span class="footer-pref-label">中部</span><span class="footer-pref-item"><a href="/pref/toyama.html">富山県(275)</a></span><span class="footer-pref-item"><a href="/pref/ishikawa.html">石川県(205)</a></span><span class="footer-pref-item"><a href="/pref/fukui.html">福井県(169)</a></span><span class="footer-pref-item"><a href="/pref/yamanashi.html">山梨県(189)</a></span><span class="footer-pref-item"><a href="/pref/nagano.html">長野県(365)</a></span><span class="footer-pref-item"><a href="/pref/gifu.html">岐阜県(448)</a></span><span class="footer-pref-item"><a href="/pref/shizuoka.html">静岡県(492)</a></span><span class="footer-pref-item"><a href="/pref/aichi.html">愛知県(531)</a></span><span class="footer-pref-item"><a href="/pref/mie.html">三重県(416)</a></span></div><div class="footer-pref-region"><span class="footer-pref-label">近畿</span><span class="footer-pref-item"><a href="/pref/shiga.html">滋賀県(130)</a></span><span class="footer-pref-item"><a href="/pref/kyoto.html">京都府(240)</a></span><span class="footer-pref-item"><a href="/pref/osaka.html">大阪府(1166)</a></span><span class="footer-pref-item"><a href="/pref/hyogo.html">兵庫県(568)</a></span><span class="footer-pref-item"><a href="/pref/nara.html">奈良県(277)</a></span><span class="footer-pref-item"><a href="/pref/wakayama.html">和歌山県(295)</a></span></div><div class="footer-pref-region"><span class="footer-pref-label">中国・四国</span><span class="footer-pref-item"><a href="/pref/tottori.html">鳥取県(54)</a></span><span class="footer-pref-item"><a href="/pref/shimane.html">島根県(125)</a></span><span class="footer-pref-item"><a href="/pref/okayama.html">岡山県(241)</a></span><span class="footer-pref-item"><a href="/pref/hiroshima.html">広島県(290)</a></span><span class="footer-pref-item"><a href="/pref/yamaguchi.html">山口県(286)</a></span><span class="footer-pref-item"><a href="/pref/tokushima.html">徳島県(227)</a></span><span class="footer-pref-item"><a href="/pref/kagawa.html">香川県(195)</a></span><span class="footer-pref-item"><a href="/pref/ehime.html">愛媛県(351)</a></span><span class="footer-pref-item"><a href="/pref/kochi.html">高知県(113)</a></span></div><div class="footer-pref-region"><span class="footer-pref-label">九州・沖縄</span><span class="footer-pref-item"><a href="/pref/fukuoka.html">福岡県(539)</a></span><span class="footer-pref-item"><a href="/pref/saga.html">佐賀県(152)</a></span><span class="footer-pref-item"><a href="/pref/nagasaki.html">長崎県(403)</a></span><span class="footer-pref-item"><a href="/pref/kumamoto.html">熊本県(542)</a></span><span class="footer-pref-item"><a href="/pref/oita.html">大分県(277)</a></span><span class="footer-pref-item"><a href="/pref/miyazaki.html">宮崎県(192)</a></span><span class="footer-pref-item"><a href="/pref/kagoshima.html">鹿児島県(297)</a></span><span class="footer-pref-item"><a href="/pref/okinawa.html">沖縄県(72)</a></span></div></div>
+  <div class="footer-bottom">
+    <span class="footer-legal">
+      <a href="/terms.html">利用規約</a><a href="/tokushoho.html">特定商取引法に基づく表記</a><a href="/sitemap-html.html">サイトマップ</a>
+    </span>
+    <span class="footer-copyright">&copy; 2025 在宅クリニックナビ</span>
   </div>
 </footer>
 <script src="/static/search.js"></script>
