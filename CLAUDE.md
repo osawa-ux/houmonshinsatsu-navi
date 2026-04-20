@@ -198,74 +198,21 @@ blog/ guide/ の変更を含む push / PR で GitHub Actions が禁止語チェ�
 
 ## Obsidian 連携の最小ルール
 
-共通ルール・保存判断基準・出力フォーマットは `~/.claude/CLAUDE.md`（グローバル）を参照。
-ここには **この repo 固有の補足だけ** を書く。
+共通方針: `~/.claude/CLAUDE.md`（グローバル）と Obsidian Vault の `_Vault運用方針.md` を参照。
+ここには **この repo 固有の参照先だけ** を置く。
 
-repo: `houmonshinsatsu-navi`
-project: `clinic`
+vault path: `C:\Users\Motoi\R8.4 Obsidian`
 
-### いつ Obsidian を読むか
+### この repo で優先参照する Obsidian ノート
 
-- 文言修正・軽微な静的修正・既存記事の typo 修正では **不要**
-- 影響範囲が大きいタスクでは、実装前に relevant notes を確認する
-- 特に以下では読むことを **優先する**:
-  - canonical / robots / sitemap / JSON-LD の方針変更
-  - 県ページ / 市区町村ページの構造変更
-  - CTA・プラン訴求・問い合わせ導線の見せ方変更
-  - 中立性ルールの拡張・例外判断
-  - MyPython 側との責任分界が絡む判断
-  - 久しぶりに再開するタスク
+- `70_SOP/seo/SEO_GSC再観測手順.md` — デプロイ前後のGSC比較フロー（active）
+- `20_Projects/houmonshinsatsu-navi/index.md` — プロジェクト現在地・直近デプロイ・残課題
 
-### 読む候補ノート
+### 保存の扱い
 
-- `02_Projects/clinic/index.md` — 現在地・重要論点・次アクション
-- `03_Strategy/seo/SEO共通方針.md` — 構造化データ・内部リンク・地域ページ変更時
-- `03_Strategy/domain/ドメイン戦略.md` — サブドメイン移行・URL構造変更時
-- `03_Strategy/data-platform/共通基盤設計.md` — MyPython 側を含む横断設計時
-- `04_Decisions/` 配下の関連ノート（特に `2026-04-12-サブドメイン方式採用.md`）
-- 必要なら当日の `01_Daily/YYYY-MM-DD.md`
-
-vault path: `C:\Users\volzs\Obsidian`
-
-### 保存優先度（この repo 特有）
-
-houmonshinsatsu-navi では以下を **保存優先度高め** として扱う。
-いずれも「kango/shika/care/welfare に横展開する」または「過去の判断を後で参照する必要が出る」テーマ。
-
-1. **MyPython側 vs このrepo直接 の判断パターン**
-   どんな修正をどちら側で行ったか、その理由。同じ判断を何度も繰り返すため、典型ケースは保存対象。
-2. **canonical / robots / sitemap / JSON-LD の方針変更**
-   SEO 根幹に関わり、変更理由と影響範囲を後から辿れる必要がある。姉妹サイトにも適用される。
-3. **中立性ルールの拡張・例外判断**
-   禁止語リスト追加・新しい中立性論点・YMYL対策の判断。法務・医療広告リスクの判断ログとして保存。
-4. **プラン訴求・CTA・問い合わせ導線の設計判断**
-   有料プラン獲得導線の改善判断。A/B 結果や根拠を残す。
-5. **構造化データ・パンくず設計**
-   `MedicalBusiness` / `BreadcrumbList` / `ItemList` などのテンプレ設計。kango/shika/care/welfare で再利用される共通資産。
-6. **サブドメイン移行（zaitakuclinic-navi → clinic.zaitaku-navi）に関わる判断**
-   301 リダイレクト方針、GSC プロパティ並走、SEO 資産継承の手順。横断的・不可逆性が高い。
-
-### 保存しないもの（この repo の例）
-
-- typo 修正・文言の軽微差し替え
-- alt 属性・title 属性の追加
-- 単発の HTML フォーマット整形
-- 既に Decision ノートに残してある内容の重複メモ
-
-ただし、小修正でも上記6テーマのいずれかに波及する知見があれば保存候補にしてよい。
-
-### 保存判断の出力
-
-重要作業の最後には、必要に応じて以下を出力する（フォーマットはグローバル `CLAUDE.md` に準拠）。
-
-- `SAVE_DECISION: yes / no`
-- `SAVE_REASON:`
-- `SAVE_CATEGORY:` project / strategy / decision / consultation / prompt / daily
-- `SAVE_TITLE:`
-- `SAVE_SUMMARY:`
-- `NEXT_ACTIONS:`
-
-`SAVE_CATEGORY` は houmonshinsatsu-navi では `decision`（中立性・SEO方針判断）と `strategy`（横展開できるテンプレ設計）が中心になる想定。
+- 自動で Obsidian に追記しない
+- 保存すべきと判断したら **保存候補として提案する**（タイトル案・配置先案・要約の3点）
+- ユーザーの明示指示があったときだけ Obsidian に追記する
 
 ---
 
