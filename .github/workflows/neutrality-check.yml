@@ -1,0 +1,44 @@
+name: Neutrality Check
+
+on:
+  push:
+    paths:
+      - 'blog/**'
+      - 'guide/**'
+  pull_request:
+    paths:
+      - 'blog/**'
+      - 'guide/**'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check banned words in blog/ and guide/
+        run: |
+          echo "=== ポータル中立性チェック ==="
+          BANNED="横浜ホームクリニック|yokohama-home\.clinic|大澤基"
+          FOUND=0
+
+          for dir in blog guide; do
+            if [ -d "$dir" ]; then
+              while IFS= read -r file; do
+                matches=$(grep -nE "$BANNED" "$file" 2>/dev/null || true)
+                if [ -n "$matches" ]; then
+                  echo "!! 禁止語検出: $file"
+                  echo "$matches"
+                  FOUND=1
+                fi
+              done < <(find "$dir" -name '*.html' -type f)
+            fi
+          done
+
+          if [ "$FOUND" -eq 1 ]; then
+            echo ""
+            echo "禁止語が検出されました。修正してから再pushしてください。"
+            exit 1
+          fi
+
+          echo "OK: 禁止語なし -- 中立性チェック合格"
