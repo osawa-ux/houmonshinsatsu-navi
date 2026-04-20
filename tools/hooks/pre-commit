@@ -1,0 +1,12 @@
+#!/bin/bash
+# ポータル中立性チェック: blog/ guide/ の変更時に禁止語を検査
+CHANGED=$(git diff --cached --name-only | grep -E '^(blog/|guide/)' | head -1)
+if [ -n "$CHANGED" ]; then
+  echo "[pre-commit] blog/guide の変更を検出 — 中立性チェック実行中..."
+  python3 "$HOME/MyPython/check_neutrality.py" --site "$(git rev-parse --show-toplevel)" 2>/dev/null
+  if [ $? -ne 0 ]; then
+    echo "[pre-commit] 禁止語が検出されました。修正してから再コミットしてください。"
+    exit 1
+  fi
+  echo "[pre-commit] 中立性チェック合格"
+fi
