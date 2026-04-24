@@ -17,9 +17,9 @@ nav.breadcrumb { background: #eee; padding: 8px 16px; font-size: 0.85em; }
 nav.breadcrumb a { color: #555; }
 
 /* メインコンテンツ */
-.container { max-width: 1100px; margin: 0 auto; padding: 24px 16px; }
-h1 { font-size: 1.5em; color: #1a6e3c; margin-bottom: 20px; line-height: 1.3; }
-h2 { font-size: 1.15em; color: #333; margin: 32px 0 14px; border-left: 4px solid #1a6e3c; padding-left: 10px; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px 16px; }
+h1 { font-size: 1.5em; color: #1a6e3c; margin-bottom: 16px; line-height: 1.3; }
+h2 { font-size: 1.15em; color: #333; margin: 24px 0 12px; border-left: 4px solid #1a6e3c; padding-left: 10px; }
 
 /* CTA（今すぐ相談）セクション */
 .cta-section { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 10px; padding: 20px; margin-bottom: 24px; text-align: center; }
@@ -34,9 +34,8 @@ h2 { font-size: 1.15em; color: #333; margin: 32px 0 14px; border-left: 4px solid
 .search-box input:focus { outline: none; border-color: #1a6e3c; box-shadow: 0 0 0 2px rgba(26,110,60,0.2); }
 
 /* 都道府県グリッド */
-.region-section { margin-bottom: 28px; }
-.region-section h2 { margin-top: 0; margin-bottom: 12px; }
-.pref-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.region-section { margin-bottom: 20px; }
+.pref-grid { display: flex; flex-wrap: wrap; gap: 8px; }
 .pref-link { display: inline-block; padding: 10px 16px; background: white; border: 1px solid #ccc; border-radius: 8px; font-size: 0.95em; transition: all 0.2s; min-height: 44px; line-height: 1.4; }
 .pref-link:hover, .pref-link:active { background: #1a6e3c; color: white; border-color: #1a6e3c; text-decoration: none; }
 .pref-link small { display: block; font-size: 0.75em; color: #888; }
@@ -85,39 +84,14 @@ h2 { font-size: 1.15em; color: #333; margin: 32px 0 14px; border-left: 4px solid
 
 /* ブログカード */
 .blog-list { display: grid; gap: 16px; }
-.blog-card { background: white; border-radius: 8px; padding: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); position: relative; cursor: pointer; transition: box-shadow 0.2s; }
-.blog-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-.blog-card:focus-within { box-shadow: 0 0 0 3px rgba(26,110,60,0.3); }
+.blog-card { background: white; border-radius: 8px; padding: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
 .blog-title { font-size: 1em; font-weight: bold; color: #1a6e3c; margin-bottom: 6px; }
-.blog-title a::after { content: ''; position: absolute; inset: 0; }
 .blog-desc { font-size: 0.9em; color: #555; }
 
 /* フッター */
-footer { background: #2d2d2d; color: #aaa; padding: 40px 16px 0; margin-top: 48px; font-size: 0.85em; line-height: 1.7; }
-footer a { color: #aaa; text-decoration: none; }
-footer a:hover { color: #ddd; }
-.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; padding-bottom: 28px; }
-.footer-about { flex-shrink: 0; }
-.footer-site-name { font-size: 1.15em; font-weight: bold; color: #eee; margin-bottom: 6px; }
-.footer-about p { color: #888; font-size: 0.9em; margin: 0; }
-.footer-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0; font-size: 0.9em; }
-.footer-nav a { padding: 4px 0; }
-.footer-nav a + a::before { content: '|'; color: #555; margin: 0 14px; font-size: 0.8em; }
-.footer-pref-links { max-width: 1100px; margin: 0 auto; padding: 20px 0; border-top: 1px solid #444; }
-.footer-pref-title { color: #999; margin-bottom: 10px; font-size: 0.85em; font-weight: normal; }
-.footer-pref-region { margin-bottom: 6px; line-height: 2; font-size: 0.82em; }
-.footer-pref-label { display: inline-block; color: #777; font-size: 0.85em; margin-right: 6px; min-width: 65px; }
-.footer-pref-item { white-space: nowrap; }
-.footer-pref-item::after { content: '|'; color: #555; margin: 0 5px; }
-.footer-pref-item:last-child::after { content: ''; margin: 0; }
-.footer-pref-item a { color: #888; }
-.footer-pref-item a:hover { color: #ccc; }
-.footer-bottom { max-width: 1100px; margin: 0 auto; padding: 16px 0 80px; border-top: 1px solid #444; text-align: center; font-size: 0.8em; color: #666; }
-.footer-legal { display: block; margin-bottom: 8px; }
-.footer-legal a { color: #777; }
-.footer-legal a + a::before { content: '·'; margin: 0 12px; color: #555; }
-.footer-legal a:hover { color: #bbb; }
-.footer-copyright { color: #666; }
+footer { background: #333; color: #ccc; padding: 24px 16px; margin-top: 40px; font-size: 0.85em; padding-bottom: 80px; }
+footer a { color: #aaa; }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 20px; }
 
 /* 固定CTAバー */
 .fixed-cta { position: fixed; bottom: 0; left: 0; right: 0; background: #1a6e3c; padding: 10px 16px; display: flex; justify-content: center; gap: 12px; z-index: 1000; box-shadow: 0 -2px 8px rgba(0,0,0,0.15); }
@@ -125,108 +99,18 @@ footer a:hover { color: #ddd; }
 .fixed-cta .fc-tel { background: #e67e22; }
 .fixed-cta .fc-web { background: rgba(255,255,255,0.15); }
 
-/* ガイドページ */
-.guide-article { max-width: 800px; margin: 0 auto; }
-.guide-article p { margin: 12px 0; line-height: 1.8; }
-.guide-article ul, .guide-article ol { margin: 12px 0 12px 24px; line-height: 1.8; }
-.guide-article li { margin-bottom: 6px; }
-.guide-article h2 { margin-top: 32px; }
-.guide-article h3 { font-size: 1.05em; color: #1a6e3c; margin: 20px 0 8px; }
-.guide-lead { font-size: 1.05em; color: #555; margin-bottom: 24px; line-height: 1.8; }
-.guide-toc { background: #f0f7f2; border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; }
-.guide-toc p { font-weight: bold; margin-bottom: 8px; font-size: 0.95em; }
-.guide-toc ol { margin: 0 0 0 20px; font-size: 0.9em; }
-.guide-toc li { margin-bottom: 4px; }
-.guide-toc a { color: #1a6e3c; }
-.guide-cta { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 10px; padding: 20px; margin: 28px 0; text-align: center; }
-.guide-cta p { margin-bottom: 10px; font-size: 0.95em; }
-.guide-cta .cta-btn { font-size: 1em; }
-.guide-disclaimer { background: #f5f5f5; border-radius: 8px; padding: 20px 24px; margin-top: 32px; font-size: 0.85em; color: #666; line-height: 1.8; }
-.guide-disclaimer p { margin: 0 0 10px; }
-.guide-disclaimer p:last-child { margin-bottom: 0; }
-.guide-disclaimer strong { color: #555; }
-.guide-meta { font-size: 0.85em; color: #888; margin-bottom: 20px; }
-.guide-cards { display: grid; gap: 16px; margin: 20px 0; }
-.guide-card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); border-left: 4px solid #1a6e3c; transition: box-shadow 0.2s; position: relative; cursor: pointer; }
-.guide-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-.guide-card:focus-within { box-shadow: 0 0 0 3px rgba(26,110,60,0.3); }
-.guide-card h3 { margin: 0 0 6px; font-size: 1.05em; }
-.guide-card h3 a { color: #1a6e3c; }
-.guide-card h3 a::after { content: ''; position: absolute; inset: 0; }
-.guide-card p { font-size: 0.9em; color: #555; margin: 0; }
-.guide-related { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); margin-top: 24px; }
-.guide-related h2 { margin-top: 0; }
-.guide-related ul { margin: 8px 0 0 20px; }
-.guide-related li { margin-bottom: 6px; }
-.guide-area-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
-.guide-area-links a { display: inline-block; padding: 8px 16px; background: white; border: 1px solid #1a6e3c; border-radius: 20px; font-size: 0.9em; color: #1a6e3c; transition: all 0.2s; }
-.guide-area-links a:hover { background: #1a6e3c; color: white; text-decoration: none; }
-/* FAQ */
-.guide-faq dt { font-weight: bold; font-size: 1em; margin-top: 0; padding: 0 0 0 32px; position: relative; line-height: 1.6; color: #222; }
-.guide-faq dt::before { content: 'Q.'; position: absolute; left: 0; color: #1a6e3c; font-weight: bold; font-size: 1.05em; }
-.guide-faq dd { margin: 8px 0 0 0; padding: 0 0 0 32px; position: relative; line-height: 1.8; color: #444; }
-.guide-faq dd::before { content: 'A.'; position: absolute; left: 0; color: #e67e22; font-weight: bold; font-size: 1.05em; }
-.guide-faq .faq-item, .guide-faq dt + dd { margin-bottom: 0; }
-/* 各Q&Aセットの区切り: dtの前にスペース＋線 */
-.guide-faq dt ~ dt { margin-top: 20px; padding-top: 20px; border-top: 1px solid #e8e8e8; }
-/* 最初のdtには上線を入れない — dt ~ dt で2個目以降のみ対象 */
-
-/* トップ: ヒーロー */
-.top-hero { text-align: center; margin-bottom: 28px; }
-.top-hero h1 { color: #1a6e3c; line-height: 1.5; }
-.top-hero-sub { font-size: 0.95em; color: #555; margin-top: 12px; line-height: 1.8; }
-
-/* トップ: まず確認 */
-.top-check { margin-bottom: 32px; }
-.top-check h2 { font-size: 1.1em; }
-.top-check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
-.top-check-item { display: flex; align-items: center; gap: 10px; padding: 14px 16px; background: white; border: 1px solid #ccc; border-radius: 10px; font-size: 0.95em; color: #333; text-decoration: none; transition: all 0.2s; min-height: 56px; }
-.top-check-item:hover { border-color: #1a6e3c; background: #f0f7f2; text-decoration: none; }
-.top-check-icon { font-size: 1.3em; flex-shrink: 0; }
-.top-check-note { font-size: 0.85em; color: #888; margin-top: 12px; line-height: 1.7; }
-
-/* トップ: 状況から探す */
-.top-journey { margin-bottom: 32px; }
-.top-journey h2 { font-size: 1.1em; }
-.top-journey-grid { display: grid; gap: 14px; margin-top: 14px; }
-.top-journey-card { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 20px; background: white; border-radius: 10px; border-left: 4px solid #1a6e3c; box-shadow: 0 2px 6px rgba(0,0,0,0.08); text-decoration: none; color: #333; transition: box-shadow 0.2s, transform 0.15s; }
-.top-journey-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.15); transform: translateY(-1px); text-decoration: none; }
-.top-journey-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-.top-journey-card strong { font-size: 1.05em; color: #1a6e3c; }
-.top-journey-desc { font-size: 0.85em; color: #888; line-height: 1.5; }
-.top-journey-arrow { font-size: 1.2em; color: #1a6e3c; flex-shrink: 0; opacity: 0.6; transition: opacity 0.2s; }
-.top-journey-card:hover .top-journey-arrow { opacity: 1; }
-
-/* トップ: 検索導線 */
-.top-search-section { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 12px; padding: 24px 20px; margin-bottom: 28px; text-align: center; }
-.top-search-section h2 { border-left: none; text-align: center; font-size: 1.1em; margin: 0 0 10px; }
-.top-search-desc { font-size: 0.9em; color: #555; margin-bottom: 16px; }
-
-/* トップ: FAQ */
-.top-faq-section { margin-top: 32px; background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
-.top-faq-section h2 { margin-top: 0; }
-.top-faq-section dd a { margin-left: 6px; font-size: 0.9em; }
-
-/* トップ: 免責 */
-.top-disclaimer { font-size: 0.8em; color: #888; margin-top: 24px; padding: 12px 16px; background: #f5f5f5; border-radius: 6px; line-height: 1.7; }
-
 /* === レスポンシブ: スマホ（デフォルト〜768px）=== */
 @media (max-width: 768px) {
     .header-inner { flex-direction: column; text-align: center; gap: 4px; }
     .header-right { text-align: center; }
     h1 { font-size: 1.2em; }
-    .region-section { margin-bottom: 24px; }
-    .pref-grid { gap: 8px; }
-    .pref-link { padding: 10px 12px; font-size: 0.9em; flex: 1 1 calc(50% - 8px); text-align: center; }
+    .pref-grid { gap: 6px; }
+    .pref-link { padding: 10px 12px; font-size: 0.9em; flex: 1 1 calc(50% - 6px); text-align: center; }
     .clinic-card { flex-direction: column; }
     .clinic-photo { width: 100%; height: 200px; }
     .clinic-tel a { display: block; text-align: center; padding: 12px; font-size: 1.05em; }
     .cta-btn { display: block; width: 100%; margin: 6px 0; }
-    .guide-card { padding: 16px; }
-    .footer-inner { flex-direction: column; gap: 16px; }
-    .footer-nav a + a::before { margin: 0 10px; }
-    .top-check-grid { grid-template-columns: 1fr; }
-    .top-hero h1 { font-size: 1.15em; }
+    .footer-inner { grid-template-columns: 1fr; }
 }
 
 /* === レスポンシブ: タブレット・PC（769px〜）=== */
@@ -235,8 +119,6 @@ footer a:hover { color: #ddd; }
     h1 { font-size: 1.6em; }
     .pref-link { padding: 8px 18px; }
     .clinic-list { grid-template-columns: 1fr; }
-    .footer-nav { justify-content: flex-end; }
+    .footer-inner { grid-template-columns: 2fr 1fr 1fr; }
     .fixed-cta { display: none; }
-    .top-journey-grid { grid-template-columns: 1fr 1fr; }
-    .top-hero h1 { font-size: 1.5em; }
 }
