@@ -2,21 +2,66 @@
 
 在宅クリニックナビ（zaitakuclinic-navi.com）の静的サイト本体。GitHub Pages でホスティング。
 
-このリポジトリは主に **静的出力物の配置先** であり、サイト生成の主処理は `MyPython/build_site.py` が担う。
+このリポジトリは主に **静的出力物の配置先（生成物 repo）** であり、サイト生成の主処理と正本ロジックは `~/MyPython/` が担う。
 
 ---
 
-## このリポジトリの位置づけ
+## このリポジトリの位置づけ（MyPython との責任境界）
 
-- このリポジトリは GitHub Pages 公開用の静的サイト本体
-- HTML / sitemap / data などの多くは `MyPython/build_site.py` により生成される
-- したがって、**再生成で上書きされる変更** を安易に直接このリポジトリへ入れないこと
-- まず「生成元（MyPython側）を直すべきか」「このrepoを直接直すべきか」を判断すること
+- このリポジトリは **GitHub Pages 公開用の静的サイト本体**（生成物 repo）
+- サイト生成の **正本ロジックは MyPython 側**（`build_site.py` / `check_neutrality.py` / `audit_*.py` / `site_config*.json` 等）
+- HTML / sitemap / data の多くは `~/MyPython/build_site.py` が生成する
+- **恒久修正は原則 MyPython 側**。このrepo直接編集は緊急 hotfix または確認用途に限定する
 
-### 原則
-- 横断的・テンプレート的な修正 → **MyPython 側を優先**
-- 単発の静的修正、緊急の軽微修正、手作業ページ修正 → **このrepo直接編集も可**
-- 判断に迷う場合は、両案を比較して **より再現性が高い方** を提案すること
+### 責任境界の原則
+
+| 作業の種類 | 作業先 | 備考 |
+|-----------|-------|------|
+| テンプレート・生成ロジック・SEO骨格・データ変換の恒久修正 | **MyPython** | 原則こちら。再生成で再現される |
+| 緊急 hotfix（公開後のタイポ・一時文言修正等） | このrepo直接編集 OK | **後日 MyPython 側へ反映が必要か要確認** |
+| 確認用の一時編集・実験 | このrepo直接編集 OK | 本番反映前に整合を確認 |
+| 再生成で上書きされる変更（テンプレ由来と思われる広域変更） | **MyPython 経由** | このrepo直接は避ける |
+
+### 直接編集後のフォローアップ
+
+- このrepoを直接編集した変更は、次回の `build_site.py` 実行で **消える可能性がある**
+- 直接編集が恒久的に残るべき内容なら、**MyPython 側の生成ロジック・テンプレ・data に同等の変更を反映** させる
+- 判断に迷う場合は、両案を比較して「より再現性が高い方」を提案する
+
+---
+
+## 生成物 clone 分岐リスク（本番反映前の注意）
+
+deploy 経路上、houmonshinsatsu-navi の実体は **複数の clone として存在しうる**：
+
+| パス | 用途 |
+|------|------|
+| `~/houmonshinsatsu-navi/` | 日常作業用 clone（通常のチェックアウト先） |
+| `~/MyPython/site/` | `deploy_github.py` 側が保持する deploy 用 clone（MyPython から build 結果を push する経路） |
+
+### リスク
+
+- 片方で commit / push した変更が、もう片方にまだ反映されていない状態で次の作業を始めると、本番（`origin/gh-pages`）と手元 2 つのどちらとも食い違う
+- `deploy_github.py` 側の clone が古いまま build 結果を push すると、意図しない差分（古い状態への巻き戻し等）が本番に出る
+
+### 運用注意
+
+- 本番反映前（特に `deploy_github.py` 実行前）に、両 clone と `origin` の同期状態を確認する
+- 推奨確認: `git fetch origin && git log --oneline HEAD..origin/<branch>` で差分を見る
+- 大きな差分がある場合はデプロイを止め、**どちらの状態が正か**を確認してから進める
+
+---
+
+## 起動時ルーチン（毎セッション最初）
+
+本repoで作業を始めるとき、Claude Code は以下を最初に確認する。
+
+1. **git 状態の確認**: `git status -sb` で作業ツリー・ブランチ・upstream との差分を把握する
+2. **MyPython 側で対応できないか判断**: HTML を直接編集する前に「これは `~/MyPython/build_site.py` の生成元（テンプレ / data / site_config）修正で対応できないか」を考える
+3. **影響範囲の把握**: 変更が sitemap / noindex / canonical / 中立性 / 内部リンク / JSON-LD に及ぶかを確認する
+4. **本番反映前チェック**: デプロイ前に build 結果（HTML 件数・sitemap 件数・検索JSON 件数の整合）と `origin/gh-pages`（および `~/MyPython/site/` 側 clone）の同期状態を確認する（global CLAUDE.md の Pre-Deploy Validation に従う）
+
+この4点を飛ばして直接編集を始めない。
 
 ---
 
@@ -29,6 +74,20 @@ Obsidian Vault の `30_Areas/能力カタログ.md` を更新する（必須）�
 - 各能力に最低限: **状態 / 実行レベル / 前提条件 / entrypoint**
 - 既存能力で実現可能な依頼は、再実装せずカタログ記載の entrypoint を呼ぶ
 - 本repoは静的出力物なので、**生成ロジック側（MyPython）に能力がある場合はそちらを先に更新する**
+
+### このrepo周辺で扱う能力領域
+
+本repoは主に **配置済み成果物の修正・確認** を担う。正式な能力 ID は Obsidian 能力カタログ側で採番・管理する（本 CLAUDE.md で仮 ID を新設しない）。本repo 周辺で関連する能力領域は以下：
+
+| 領域 | 正本 repo | 内容 |
+|------|----------|------|
+| サイトビルド（SITE-BUILD 系） | MyPython | `build_site.py` による HTML / JSON / sitemap 生成 |
+| デプロイ（SITE-DEPLOY 系） | MyPython | `deploy_github.py` による gh-pages への反映 |
+| ポータル中立性チェック（PORTAL-NEUTRALITY 系） | MyPython | `check_neutrality.py` による禁止語検査 |
+| SEO / GSC 観測（SEO-GSC 系） | MyPython / houmonshinsatsu-navi | デプロイ前後の GSC 比較フロー |
+| sitemap 監査（SITEMAP-AUDIT 系） | MyPython | sitemap.xml と個別ページ数・検索JSON の整合確認 |
+
+※ 実装本体は MyPython 側に集約されているため、機能追加・修正は原則 MyPython 側で行い、能力カタログ側の entrypoint 表記もそちらに合わせる。
 
 ---
 
@@ -59,25 +118,53 @@ secret / token / API key が必要なとき、いきなり新規発行を提案�
 
 在宅クリニックナビは中立的なポータルサイトであり、特定クリニックの宣伝サイトではない。
 
-### 禁止事項
-- `/blog/` `/guide/` 配下で特定クリニック名（横浜ホームクリニック等）を出さない
-- 特定クリニックの電話番号・公式サイトURLを記事内に掲載しない
-- JSON-LD の author/publisher に特定クリニック名を入れない
-- canonical を外部ドメイン（yokohama-home.clinic 等）に向けない
+### 方針（避けるべき表現）
+
+- 自院名（運営者が関係する特定クリニック名）を記事本文・メタ情報・JSON-LD に出さない
+- 運営者の個人名を記事に出さない
+- 一人称表現（`当院`、`当クリニック` 等）を使わない
+- 外部ドメイン（運営者が関係する特定クリニックの公式サイト等）を canonical や記事リンクに向けない
+- 特定病院名・関連施設名を個別に強調しない
+
+### 代表例
+
+以下は避ける対象の代表例（実際の禁止語は後述の正本側で管理）：
+
+- 自院名の例: `横浜ホームクリニック`
+- 外部ドメインの例: `yokohama-home.clinic`
+- 一人称表現: `当院`、`当クリニック`
+
+### 禁止語の正本（single source of truth）
+
+禁止語リスト本体は **`~/MyPython/check_neutrality.py` の `BANNED_WORDS` 定義が正本**。
+
+- 追加・変更は `check_neutrality.py` 側で行う
+- 本 CLAUDE.md には **方針と代表例のみ** を残し、詳細な禁止語リストは複製しない
+- 理由: CLAUDE.md と実装側で二重管理すると drift する。実装側に一本化する
+
+### 禁止事項（適用範囲）
+
+- `/blog/` `/guide/` 配下の本文・メタ情報で上記方針に反する表記をしない
+- JSON-LD の `author` / `publisher` に特定クリニック名を入れない
+- `canonical` を外部ドメインに向けない
+- 記事内に特定クリニックの電話番号・公式サイト URL を掲載しない
 
 ### 許可される表記
-- 運営者情報ページ（about.html）での運営主体の明示
-- クリニック個別ページ（/clinic/）での各クリニック情報の掲載
+
+- 運営者情報ページ（`about.html`）での運営主体の明示
+- クリニック個別ページ（`/clinic/`）での各クリニック情報の掲載（中立性チェックの対象外ディレクトリ）
 
 ### 記事の著者・監修表記
+
 - `在宅クリニックナビ編集部` または `在宅クリニックナビ` を使う
 - 個人名を監修者として入れない（YMYL対策で必要になった場合は別途検討）
 
 ### チェック手順
-- 記事作成・更新時: `python check_neutrality.py --all` を実行
-- build_site.py 実行時: 禁止語が含まれていると自動でビルドが停止する
-- git commit 時: pre-commit hook が自動で検査する
-- 禁止語リスト: `横浜ホームクリニック`, `yokohama-home.clinic`, `大澤基`, `当院`, `当クリニック`, `昭和大学横浜市北部病院`
+
+- 記事作成・更新時: `python ~/MyPython/check_neutrality.py --site .` を実行（cwd がこの repo の場合）
+- MyPython 側から両方検査: `python ~/MyPython/check_neutrality.py --all`
+- `build_site.py` 実行時: 禁止語が含まれていると自動でビルドが停止する
+- git commit 時: pre-commit hook が自動で `~/MyPython/check_neutrality.py` を呼ぶ（`tools/hooks/pre-commit`）
 
 ---
 
@@ -180,7 +267,9 @@ secret / token / API key が必要なとき、いきなり新規発行を提案�
 必要に応じて以下も実行すること。
 
 ```bash
-python check_neutrality.py --all
+python ~/MyPython/check_neutrality.py --site .   # この repo 側を検査
+# または
+python ~/MyPython/check_neutrality.py --all      # MyPython + このrepo の両方を検査
 ```
 
 ---
@@ -213,7 +302,7 @@ blog/ guide/ の変更を含む push / PR で GitHub Actions が禁止語チェ�
 共通方針: `~/.claude/CLAUDE.md`（グローバル）と Obsidian Vault の `_Vault運用方針.md` を参照。
 ここには **この repo 固有の参照先だけ** を置く。
 
-vault path: `C:\Users\Motoi\R8.4 Obsidian`
+vault path: 動的解決 — `python ~/.claude/skills/_shared/resolve_vault.py` で取得（別PC・vault移動にも追従）
 
 ### この repo で優先参照する Obsidian ノート
 
