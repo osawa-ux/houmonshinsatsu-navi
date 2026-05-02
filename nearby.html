@@ -151,6 +151,15 @@
     if (c.rc) meta += ' <span class="clinic-reviews">(' + c.rc + '件の口コミ)</span>';
     meta += statusBadge(c.bs || '');
     if (meta) meta = '<div class="clinic-meta">' + meta + '</div>';
+    // \u8A2A\u554F\u5BFE\u5FDC\u30A8\u30EA\u30A2\uFF08\u6700\u59273\u4EF6 + \u307B\u304BN\u4EF6\u3001\u7A7A\u306A\u3089\u51FA\u3055\u306A\u3044\uFF09
+    var vaHtml = '';
+    if (c.va && c.va.length > 0) {
+      var shown = c.va.slice(0, 3);
+      var rest = c.va.length - shown.length;
+      var listStr = shown.map(esc).join('\u3001');
+      var moreStr = rest > 0 ? '<span class="visit-areas-more">\u307B\u304B' + rest + '\u4EF6</span>' : '';
+      vaHtml = '<div class="visit-areas"><span class="visit-areas-label">\u8A2A\u554F\u5BFE\u5FDC\u30A8\u30EA\u30A2:</span><span class="visit-areas-list">' + listStr + '</span>' + moreStr + '</div>';
+    }
     var tel = '';
     var dist = '<span class="clinic-badge">\uD83D\uDCCD ' + c._dist.toFixed(1) + 'km</span>';
     return '<div class="clinic-card">' + photo +
@@ -158,6 +167,7 @@
       '<div class="clinic-name"><a href="/clinic/' + esc(c.id) + '.html">' + esc(c.n) + '</a></div>' +
       meta +
       '<div class="clinic-address">' + esc(c.a) + ' ' + dist + '</div>' +
+      vaHtml +
       tel +
       '</div></div>';
   }
@@ -216,11 +226,17 @@
         }
 
         // Step 5: 表示順ソート
-        // priority 2: 有料プラン かつ 掲載情報確認済み (pd=1 && iv=1)
-        // priority 1: 有料プラン (pd=1)
-        // priority 0: その他
-        // 同priority内は距離昇順
+        // 1) 訪問対応エリア登録ありを最優先（has_visit_areas）
+        //    施設側が訪問対象エリアを明示している＝ユーザー価値が高い情報源のため
+        // 2) 次点で有料プラン priority（既存ロジック維持）
+        //    priority 2: 有料プラン かつ 掲載情報確認済み (pd=1 && iv=1)
+        //    priority 1: 有料プラン (pd=1)
+        //    priority 0: その他
+        // 3) 最後に距離昇順
         display.sort(function(a, b) {
+          var hA = (a.va && a.va.length > 0) ? 1 : 0;
+          var hB = (b.va && b.va.length > 0) ? 1 : 0;
+          if (hA !== hB) return hB - hA;   // 訪問対応エリア登録あり優先
           var pA = a.pd ? (a.iv ? 2 : 1) : 0;
           var pB = b.pd ? (b.iv ? 2 : 1) : 0;
           if (pA !== pB) return pB - pA;   // priority降順

@@ -51,6 +51,19 @@ h2 { font-size: 1.15em; color: #333; margin: 24px 0 12px; border-left: 4px solid
 .clinic-photo--placeholder { object-fit: contain; padding: 12px; background: #f0f7f2; }
 .clinic-hero-photo { display: block; width: 100%; max-width: 400px; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; margin-bottom: 16px; background: #f0f0f0; font-size: 0; color: transparent; overflow: hidden; }
 .clinic-hero-photo--placeholder { object-fit: contain; padding: 24px; background: #f0f7f2; }
+
+/* 訪問対応エリア（カード内・小さめ） */
+.visit-areas { font-size: 0.78em; color: #555; margin: 6px 0 0; line-height: 1.5; }
+.visit-areas-label { font-weight: bold; color: #1a6e3c; margin-right: 6px; }
+.visit-areas-list { color: #444; }
+.visit-areas-more { color: #888; margin-left: 4px; }
+
+/* 訪問対応エリア（クリニック詳細セクション） */
+.visit-areas-section { background: #f0f7f2; border-left: 4px solid #1a6e3c; padding: 14px 16px; border-radius: 8px; margin: 16px 0; }
+.visit-areas-section-title { font-weight: bold; color: #1a6e3c; margin-bottom: 10px; font-size: 0.95em; }
+.visit-areas-section-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.visit-areas-section-item { background: white; border: 1px solid #d0e0d5; padding: 4px 10px; border-radius: 12px; font-size: 0.85em; color: #2a5a8c; }
+.visit-areas-section-more { color: #666; font-size: 0.85em; margin-top: 8px; display: block; }
 .clinic-info { flex: 1; min-width: 0; }
 .clinic-name { font-size: 1.05em; font-weight: bold; color: #1a6e3c; margin-bottom: 4px; }
 .clinic-name a { color: #1a6e3c; }
