@@ -63,7 +63,7 @@
   </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年04月30日　｜　📋 出典: 公開情報および各医療機関からの提供情報
+    📅 最終更新: 2026年05月02日　｜　📋 出典: 公開情報および各医療機関からの提供情報
   </div>
 
   <p style="margin-top:16px;"><a href="/">← トップページに戻る</a></p>
@@ -122,8 +122,21 @@
 
   function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
 
+  // 画像取得失敗時に placeholder へフォールバック（raw string 内のエスケープ回避のためグローバル関数化）
+  window.handleClinicPhotoError = function(img) {
+    img.onerror = null;
+    img.src = '/static/no-image.svg';
+    img.classList.add('clinic-photo--placeholder');
+  };
+
   function renderCard(c) {
-    var photo = c.p ? '<img src="' + esc(c.p) + '" alt="' + esc(c.n) + '" class="clinic-photo" loading="lazy">' : '';
+    var photo;
+    if (c.p) {
+      photo = '<img src="' + esc(c.p) + '" alt="" aria-hidden="true" class="clinic-photo" loading="lazy"'
+        + ' onerror="handleClinicPhotoError(this)">';
+    } else {
+      photo = '<img src="/static/no-image.svg" alt="" aria-hidden="true" class="clinic-photo clinic-photo--placeholder" loading="lazy">';
+    }
     var meta = '';
     // 有料プランバッジ表示（pd=有料 かつ iv=確認済みの場合のみ）
     if (c.pd && c.iv) {

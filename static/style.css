@@ -47,7 +47,10 @@ h2 { font-size: 1.15em; color: #333; margin: 24px 0 12px; border-left: 4px solid
 .clinic-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 .clinic-name a::after { content: ''; position: absolute; inset: 0; }
 .clinic-tel a, .clinic-card a[href^="http"] { position: relative; z-index: 1; }
-.clinic-photo { flex-shrink: 0; width: 140px; height: 105px; border-radius: 6px; object-fit: cover; background: #f0f0f0; }
+.clinic-photo { flex-shrink: 0; width: 140px; height: 105px; border-radius: 6px; object-fit: cover; background: #f0f0f0; font-size: 0; color: transparent; overflow: hidden; }
+.clinic-photo--placeholder { object-fit: contain; padding: 12px; background: #f0f7f2; }
+.clinic-hero-photo { display: block; width: 100%; max-width: 400px; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; margin-bottom: 16px; background: #f0f0f0; font-size: 0; color: transparent; overflow: hidden; }
+.clinic-hero-photo--placeholder { object-fit: contain; padding: 24px; background: #f0f7f2; }
 .clinic-info { flex: 1; min-width: 0; }
 .clinic-name { font-size: 1.05em; font-weight: bold; color: #1a6e3c; margin-bottom: 4px; }
 .clinic-name a { color: #1a6e3c; }
@@ -108,6 +111,7 @@ footer a { color: #aaa; }
     .pref-link { padding: 10px 12px; font-size: 0.9em; flex: 1 1 calc(50% - 6px); text-align: center; }
     .clinic-card { flex-direction: column; }
     .clinic-photo { width: 100%; height: 200px; }
+    .clinic-photo--placeholder { padding: 16px; }
     .clinic-tel a { display: block; text-align: center; padding: 12px; font-size: 1.05em; }
     .cta-btn { display: block; width: 100%; margin: 6px 0; }
     .footer-inner { grid-template-columns: 1fr; }
