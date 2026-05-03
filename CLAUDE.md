@@ -339,3 +339,37 @@ vault path: 動的解決 — `python ~/.claude/skills/_shared/resolve_vault.py` 
 - 上記に当てはまらない変更（tools/、hook設定等） → **implementer**（global）
 - 複数ステップの作業分解 → **orchestrator**（global）
 - 成果物のレビュー → **reviewer**（global）
+
+---
+
+## Pre-Deploy Validation 詳細（在宅クリニックナビ gh-pages）
+
+デプロイ前に必ず以下を確認する（global CLAUDE.md の原則を具体化したもの）。
+
+### チェック項目
+
+- build後の総件数（検索JSON）
+- 都道府県ページの件数（例：神奈川県）
+- 特定市区町村の件数（例：横浜市都筑区）
+- 個別ページ数と検索JSONの一致
+
+### 確認方法
+
+- grep / カウントスクリプト
+- spot check（3〜5件の個別ページ目視確認）
+- 前回 build との差分確認
+
+### 異常の目安
+
+- 総件数が前回比で数百件以上減少（意図しない場合）
+- 特定エリアで急激な減少（例：都筑区 24→8 など）
+- 個別ページ数と検索JSON件数の不一致
+
+### 異常があれば
+
+- git push / デプロイを中止
+- 原因を特定してから再 build
+
+### 原則
+
+「デプロイ成功」ではなく「データが正しい状態で公開されている」ことを成功とする。
