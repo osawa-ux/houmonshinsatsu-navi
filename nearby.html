@@ -63,7 +63,7 @@
   </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月02日　｜　📋 出典: 公開情報および各医療機関からの提供情報
+    📅 最終更新: 2026年05月04日　｜　📋 出典: 公開情報および各医療機関からの提供情報
   </div>
 
   <p style="margin-top:16px;"><a href="/">← トップページに戻る</a></p>
@@ -160,6 +160,15 @@
       var moreStr = rest > 0 ? '<span class="visit-areas-more">\u307B\u304B' + rest + '\u4EF6</span>' : '';
       vaHtml = '<div class="visit-areas"><span class="visit-areas-label">\u8A2A\u554F\u5BFE\u5FDC\u30A8\u30EA\u30A2:</span><span class="visit-areas-list">' + listStr + '</span>' + moreStr + '</div>';
     }
+    // \u76F8\u8AC7\u5BFE\u5FDC\u30A8\u30EA\u30A2\uFF08\u6700\u59273\u4EF6 + \u307B\u304BN\u4EF6\u3001\u7A7A\u306A\u3089\u51FA\u3055\u306A\u3044\uFF09
+    var caHtml = '';
+    if (c.ca && c.ca.length > 0) {
+      var caShown = c.ca.slice(0, 3);
+      var caRest = c.ca.length - caShown.length;
+      var caListStr = caShown.map(esc).join('\u3001');
+      var caMoreStr = caRest > 0 ? '<span class="consult-areas-more">\u307B\u304B' + caRest + '\u4EF6</span>' : '';
+      caHtml = '<div class="consult-areas"><span class="consult-areas-label">\u76F8\u8AC7\u5BFE\u5FDC\u30A8\u30EA\u30A2:</span><span class="consult-areas-list">' + caListStr + '</span>' + caMoreStr + '</div>';
+    }
     var tel = '';
     var dist = '<span class="clinic-badge">\uD83D\uDCCD ' + c._dist.toFixed(1) + 'km</span>';
     return '<div class="clinic-card">' + photo +
@@ -168,6 +177,7 @@
       meta +
       '<div class="clinic-address">' + esc(c.a) + ' ' + dist + '</div>' +
       vaHtml +
+      caHtml +
       tel +
       '</div></div>';
   }
@@ -226,17 +236,18 @@
         }
 
         // Step 5: 表示順ソート
-        // 1) 訪問対応エリア登録ありを最優先（has_visit_areas）
-        //    施設側が訪問対象エリアを明示している＝ユーザー価値が高い情報源のため
-        // 2) 次点で有料プラン priority（既存ロジック維持）
+        // 1) 訪問対応エリア登録あり（priority 2）: visit_areas 明示 = 最高信頼度
+        // 2) 相談対応エリア登録あり（priority 1）: consult_areas のみ登録
+        //    visit_areas なしの consult_areas-only は visit_areas あり施設より下
+        // 3) 次点で有料プラン priority（既存ロジック維持）
         //    priority 2: 有料プラン かつ 掲載情報確認済み (pd=1 && iv=1)
         //    priority 1: 有料プラン (pd=1)
         //    priority 0: その他
-        // 3) 最後に距離昇順
+        // 4) 最後に距離昇順
         display.sort(function(a, b) {
-          var hA = (a.va && a.va.length > 0) ? 1 : 0;
-          var hB = (b.va && b.va.length > 0) ? 1 : 0;
-          if (hA !== hB) return hB - hA;   // 訪問対応エリア登録あり優先
+          var hA = (a.va && a.va.length > 0) ? 2 : ((a.ca && a.ca.length > 0) ? 1 : 0);
+          var hB = (b.va && b.va.length > 0) ? 2 : ((b.ca && b.ca.length > 0) ? 1 : 0);
+          if (hA !== hB) return hB - hA;   // 訪問/相談エリア登録あり優先
           var pA = a.pd ? (a.iv ? 2 : 1) : 0;
           var pB = b.pd ? (b.iv ? 2 : 1) : 0;
           if (pA !== pB) return pB - pA;   // priority降順

@@ -202,9 +202,10 @@
         </div>
 
         <!-- 3. 訪問エリア -->
+        <!-- 訪問対応エリア -->
         <div style="margin-bottom:20px;" id="area-picker-edit">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">訪問エリア <span style="font-weight:normal;color:#999;font-size:13px;">任意・おすすめ</span></label>
-          <p style="font-size:12px;color:#888;margin-bottom:8px;">訪問可能な市区町村を選択してください（複数選択可）。患者様・ケアマネジャー様からの検索で見つかりやすくなります。</p>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">訪問対応エリア <span style="font-weight:normal;color:#999;font-size:13px;">任意・おすすめ</span></label>
+          <p style="font-size:12px;color:#888;margin-bottom:8px;">実際に訪問可能な市区町村を選択してください（複数選択可）。患者様・ケアマネジャー様からの検索で見つかりやすくなります。</p>
           <select class="area-pref-select" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;margin-bottom:8px;">
             <option value="">都道府県を選択</option>
           </select>
@@ -212,7 +213,21 @@
           <div class="area-selected" style="min-height:32px;padding:4px 0;">
             <span style="color:#999;font-size:13px;">選択されたエリアはありません</span>
           </div>
-          <input type="hidden" name="visit_area_edit" value="">
+          <input type="hidden" name="visit_areas" value="">
+        </div>
+
+        <!-- 相談対応エリア -->
+        <div style="margin-bottom:20px;" id="area-picker-edit-consult">
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">相談対応エリア <span style="font-weight:normal;color:#999;font-size:13px;">任意</span></label>
+          <p style="font-size:12px;color:#888;margin-bottom:8px;">条件により訪問相談が可能な市区町村を選択してください（複数選択可）。訪問対応エリアに選択済みの市区町村は選択できません。</p>
+          <select class="area-pref-select" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;margin-bottom:8px;">
+            <option value="">都道府県を選択</option>
+          </select>
+          <div class="area-city-list" style="display:none;max-height:200px;overflow-y:auto;padding:8px;border:1px solid #eee;border-radius:6px;margin-bottom:8px;background:#fafafa;"></div>
+          <div class="area-selected" style="min-height:32px;padding:4px 0;">
+            <span style="color:#999;font-size:13px;">選択されたエリアはありません</span>
+          </div>
+          <input type="hidden" name="consult_areas" value="">
         </div>
 
         <!-- 4. 対応疾患 -->
@@ -346,9 +361,10 @@
         </div>
 
         <!-- 5. 訪問エリア -->
+        <!-- 訪問対応エリア -->
         <div style="margin-bottom:20px;" id="area-picker-new">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">訪問エリア <span style="font-weight:normal;color:#999;font-size:13px;">任意・おすすめ</span></label>
-          <p style="font-size:12px;color:#888;margin-bottom:8px;">訪問可能な市区町村を選択してください（複数選択可）。患者様・ケアマネジャー様からの検索で見つかりやすくなります。</p>
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">訪問対応エリア <span style="font-weight:normal;color:#999;font-size:13px;">任意・おすすめ</span></label>
+          <p style="font-size:12px;color:#888;margin-bottom:8px;">実際に訪問可能な市区町村を選択してください（複数選択可）。患者様・ケアマネジャー様からの検索で見つかりやすくなります。</p>
           <select class="area-pref-select" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;margin-bottom:8px;">
             <option value="">都道府県を選択</option>
           </select>
@@ -356,7 +372,21 @@
           <div class="area-selected" style="min-height:32px;padding:4px 0;">
             <span style="color:#999;font-size:13px;">選択されたエリアはありません</span>
           </div>
-          <input type="hidden" name="visit_area_new" value="">
+          <input type="hidden" name="visit_areas" value="">
+        </div>
+
+        <!-- 相談対応エリア -->
+        <div style="margin-bottom:20px;" id="area-picker-new-consult">
+          <label style="display:block;font-weight:bold;margin-bottom:4px;">相談対応エリア <span style="font-weight:normal;color:#999;font-size:13px;">任意</span></label>
+          <p style="font-size:12px;color:#888;margin-bottom:8px;">条件により訪問相談が可能な市区町村を選択してください（複数選択可）。訪問対応エリアに選択済みの市区町村は選択できません。</p>
+          <select class="area-pref-select" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;margin-bottom:8px;">
+            <option value="">都道府県を選択</option>
+          </select>
+          <div class="area-city-list" style="display:none;max-height:200px;overflow-y:auto;padding:8px;border:1px solid #eee;border-radius:6px;margin-bottom:8px;background:#fafafa;"></div>
+          <div class="area-selected" style="min-height:32px;padding:4px 0;">
+            <span style="color:#999;font-size:13px;">選択されたエリアはありません</span>
+          </div>
+          <input type="hidden" name="consult_areas" value="">
         </div>
 
         <!-- 6. 対応疾患 -->
@@ -433,15 +463,29 @@
   var masterUrl = '/data/area_master.json';
   var masterData = null;
 
-  function initAreaPicker(containerId, hiddenInputName) {
+  // picker インスタンスを id で管理（複数 picker の連携に使う）
+  var _pickers = {};
+
+  // options: { visitPickerId: string|null }
+  //   visitPickerId: このpickerから visit側の選択済み市区町村を取得して disabled にする
+  //   （consult picker に visitPickerId を渡す）
+  function initAreaPicker(containerId, hiddenInputName, options) {
     var container = document.getElementById(containerId);
     if (!container) return;
+    var opts = options || {};
 
     var prefSelect = container.querySelector('.area-pref-select');
     var cityList = container.querySelector('.area-city-list');
     var selectedArea = container.querySelector('.area-selected');
     var hiddenInput = container.querySelector('input[name="' + hiddenInputName + '"]');
     var selected = [];
+
+    // このpickerの公開インターフェース（連携先から参照される）
+    var self = {
+      getSelected: function() { return selected; },
+      refreshCities: function() { updateCities(); }
+    };
+    _pickers[containerId] = self;
 
     function loadMaster(cb) {
       if (masterData) return cb(masterData);
@@ -451,10 +495,32 @@
       });
     }
 
+    // visit側でselect変化したらconsult側に通知（visitPickerIdを持つpickerを探す）
+    function notifyConsult() {
+      Object.keys(_pickers).forEach(function(pid) {
+        if (pid !== containerId && _pickers[pid]._visitPickerId === containerId) {
+          _pickers[pid].refreshCities();
+        }
+      });
+    }
+    self._visitPickerId = opts.visitPickerId || null;
+
+    // consult側: visit側で選択済みの市区町村キーセットを返す
+    function getExcludeKeys() {
+      var exc = {};
+      if (opts.visitPickerId && _pickers[opts.visitPickerId]) {
+        _pickers[opts.visitPickerId].getSelected().forEach(function(s) {
+          exc[s.pref_code + ':' + s.city] = true;
+        });
+      }
+      return exc;
+    }
+
     function render() {
       selectedArea.innerHTML = '';
       if (selected.length === 0) {
-        selectedArea.innerHTML = '<span style="color:#999;font-size:13px;">選択されたエリアはありません</span>';
+        selectedArea.innerHTML = '<span style="color:#999;font-size:13px;">' +
+          '選択されたエリアはありません</span>';
       } else {
         selected.forEach(function(item, i) {
           var tag = document.createElement('span');
@@ -468,13 +534,22 @@
               selected.splice(idx, 1);
               render();
               updateCities();
+              notifyConsult();
             };
           })(i);
           tag.appendChild(x);
           selectedArea.appendChild(tag);
         });
       }
-      hiddenInput.value = selected.map(function(s){return s.pref_code + ':' + s.pref + ':' + s.city}).join('|');
+      // Set で重複排除してから hidden input に格納
+      var seen = {};
+      var deduped = selected.filter(function(s) {
+        var k = s.pref_code + ':' + s.city;
+        if (seen[k]) return false;
+        seen[k] = true;
+        return true;
+      });
+      hiddenInput.value = deduped.map(function(s){return s.pref_code + ':' + s.pref + ':' + s.city}).join('|');
     }
 
     function updateCities() {
@@ -487,22 +562,37 @@
       cityList.style.display = 'block';
       var pname = masterData[pc].name;
       var cities = masterData[pc].cities;
+      // consult側: visit側で選択済みの市区町村をdisabled表示
+      var excludeKeys = getExcludeKeys();
       cities.forEach(function(city) {
+        var key = pc + ':' + city;
         var alreadySelected = selected.some(function(s){return s.pref_code===pc && s.city===city});
+        var isExcluded = !!excludeKeys[key];
         var label = document.createElement('label');
-        label.style.cssText = 'display:inline-block;padding:6px 12px;margin:3px;border-radius:16px;font-size:13px;cursor:pointer;border:1px solid #ccc;user-select:none;' + (alreadySelected ? 'background:#1a6e3c;color:white;border-color:#1a6e3c;' : 'background:white;color:#333;');
+        var baseStyle = 'display:inline-block;padding:6px 12px;margin:3px;border-radius:16px;font-size:13px;border:1px solid #ccc;user-select:none;';
+        if (isExcluded) {
+          label.style.cssText = baseStyle + 'background:#f0f0f0;color:#aaa;border-color:#ddd;cursor:not-allowed;';
+          label.title = '訪問対応エリアに選択済みのため選択できません';
+        } else if (alreadySelected) {
+          label.style.cssText = baseStyle + 'background:#2a5a8c;color:white;border-color:#2a5a8c;cursor:pointer;';
+        } else {
+          label.style.cssText = baseStyle + 'background:white;color:#333;cursor:pointer;';
+        }
         label.textContent = city;
-        label.onclick = (function(c, already) {
-          return function() {
-            if (already) {
-              selected = selected.filter(function(s){return !(s.pref_code===pc && s.city===c)});
-            } else {
-              selected.push({pref_code: pc, pref: pname, city: c});
-            }
-            render();
-            updateCities();
-          };
-        })(city, alreadySelected);
+        if (!isExcluded) {
+          label.onclick = (function(c, already) {
+            return function() {
+              if (already) {
+                selected = selected.filter(function(s){return !(s.pref_code===pc && s.city===c)});
+              } else {
+                selected.push({pref_code: pc, pref: pname, city: c});
+              }
+              render();
+              updateCities();
+              notifyConsult();
+            };
+          })(city, alreadySelected);
+        }
         cityList.appendChild(label);
       });
     }
@@ -526,8 +616,10 @@
 </script>
 
 <script>
-initAreaPicker('area-picker-edit', 'visit_area_edit');
-initAreaPicker('area-picker-new', 'visit_area_new');
+initAreaPicker('area-picker-edit', 'visit_areas');
+initAreaPicker('area-picker-edit-consult', 'consult_areas', {visitPickerId: 'area-picker-edit'});
+initAreaPicker('area-picker-new', 'visit_areas');
+initAreaPicker('area-picker-new-consult', 'consult_areas', {visitPickerId: 'area-picker-new'});
 </script>
 <script>
 (function() {
@@ -664,11 +756,9 @@ initAreaPicker('area-picker-new', 'visit_area_new');
     obj.contact_name = obj.name || '';
     obj.contact_email = obj.email || '';
     obj.contact_role = obj.role || '';
-    if (requestType === 'edit') {
-      obj.visit_areas = obj.visit_area_edit || '';
-    } else {
-      obj.visit_areas = obj.visit_area_new || '';
-    }
+    // visit_areas / consult_areas は hidden input から直接取得（フォームのname属性で一致）
+    obj.visit_areas = obj.visit_areas || '';
+    obj.consult_areas = obj.consult_areas || '';
     return obj;
   }
 

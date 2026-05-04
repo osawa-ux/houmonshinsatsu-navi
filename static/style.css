@@ -64,6 +64,19 @@ h2 { font-size: 1.15em; color: #333; margin: 24px 0 12px; border-left: 4px solid
 .visit-areas-section-list { display: flex; flex-wrap: wrap; gap: 6px; }
 .visit-areas-section-item { background: white; border: 1px solid #d0e0d5; padding: 4px 10px; border-radius: 12px; font-size: 0.85em; color: #2a5a8c; }
 .visit-areas-section-more { color: #666; font-size: 0.85em; margin-top: 8px; display: block; }
+
+/* 相談対応エリア（カード内・小さめ）：visit-areas と配色を揃えつつ区別 */
+.consult-areas { font-size: 0.78em; color: #555; margin: 4px 0 0; line-height: 1.5; }
+.consult-areas-label { font-weight: bold; color: #2a5a8c; margin-right: 6px; }
+.consult-areas-list { color: #444; }
+.consult-areas-more { color: #888; margin-left: 4px; }
+
+/* 相談対応エリア（クリニック詳細セクション） */
+.consult-areas-section { background: #f0f4f9; border-left: 4px solid #2a5a8c; padding: 14px 16px; border-radius: 8px; margin: 16px 0; }
+.consult-areas-section-title { font-weight: bold; color: #2a5a8c; margin-bottom: 10px; font-size: 0.95em; }
+.consult-areas-section-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.consult-areas-section-item { background: white; border: 1px solid #c0d0e5; padding: 4px 10px; border-radius: 12px; font-size: 0.85em; color: #2a5a8c; }
+.consult-areas-section-more { color: #666; font-size: 0.85em; margin-top: 8px; display: block; }
 .clinic-info { flex: 1; min-width: 0; }
 .clinic-name { font-size: 1.05em; font-weight: bold; color: #1a6e3c; margin-bottom: 4px; }
 .clinic-name a { color: #1a6e3c; }
