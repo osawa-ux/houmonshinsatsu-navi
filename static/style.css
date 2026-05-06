@@ -92,10 +92,38 @@ h2 { font-size: 1.15em; color: #333; margin: 24px 0 12px; border-left: 4px solid
 .clinic-tel a { color: #0066cc; display: inline-block; padding: 6px 14px; background: #e3f2fd; border-radius: 20px; font-weight: bold; }
 .clinic-badge { display: inline-block; background: #e8f5e9; color: #1a6e3c; font-size: 0.75em; padding: 2px 8px; border-radius: 10px; margin: 4px 2px 0; }
 
-/* 有料カード差分 */
+/* 有料カード差分（スタンダード: 左ボーダー＋シャドウ） */
 .card--premium { border-left: 4px solid #2a5a8c; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
 .card--premium .clinic-name a { color: #2a5a8c; }
 .card--premium a[href*="contact"] { position: relative; z-index: 1; }
+
+/* プレミアムプラス強調カード（listing_plan=premium_plus）
+   スタンダードより目立つ枠線・背景・上部リボン。
+   PRバッジは .premium-plus-badge として別途カード冒頭に挿入される。
+   医療広告基準上、品質保証ではなく「掲載強化」であることをトーンで示す。 */
+.card--premium-plus {
+  border: 2px solid #2a5a8c;
+  border-top: 4px solid #2a5a8c;
+  box-shadow: 0 4px 12px rgba(42,90,140,0.15);
+  position: relative;
+  background: linear-gradient(to bottom, #f0f5fb 0%, #ffffff 48px);
+}
+.card--premium-plus .clinic-name a { color: #2a5a8c; }
+.card--premium-plus a[href*="contact"] { position: relative; z-index: 1; }
+.premium-plus-badge {
+  display: inline-block;
+  background: #2a5a8c;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 0 0 6px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
 
 /* フィルターバー */
 .filter-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 16px; padding: 10px 14px; background: white; border-radius: 8px; border: 1px solid #e5e7eb; }

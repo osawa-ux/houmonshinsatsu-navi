@@ -28,6 +28,8 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
+  <script src="/static/event_tracker.js" defer></script>
 
 </head>
 <header>
@@ -62,7 +64,7 @@
       </tr>
       <tr style="border-bottom:1px solid #eee;">
         <th style="padding:12px 16px;text-align:left;background:#f9f9f9;vertical-align:top;">所在地</th>
-        <td style="padding:12px 16px;">請求があった場合に遅滞なく開示いたします。</td>
+        <td style="padding:12px 16px;">神奈川県横浜市都筑区川和町2330-2</td>
       </tr>
       <tr style="border-bottom:1px solid #eee;">
         <th style="padding:12px 16px;text-align:left;background:#f9f9f9;vertical-align:top;">電話番号</th>
