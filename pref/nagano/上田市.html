@@ -28,6 +28,8 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
+  <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "長野県", "item": "https://zaitakuclinic-navi.com/pref/nagano.html"}, {"@type": "ListItem", "position": 3, "name": "上田市", "item": "https://zaitakuclinic-navi.com/pref/nagano/上田市.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "上田市の訪問診療クリニック一覧（30件）｜在宅医療・往診対応を地域で探す【在宅クリニックナビ】", "description": "上田市で訪問診療・在宅医療に対応するクリニック30件を一覧で確認できます。通院が難しい方の在宅療養について、所在地や連絡先、対応情報を比較しながら探せます。", "url": "https://zaitakuclinic-navi.com/pref/nagano/上田市.html", "numberOfItems": 30}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "訪問診療と往診の違いは何ですか？", "acceptedAnswer": {"@type": "Answer", "text": "訪問診療は、計画的に自宅や施設へ訪問して継続的に診療する仕組みです。往診は、急な体調変化などに応じて臨時で医師が訪問する診療を指すことが一般的です。実際の対応可否は医療機関ごとに異なります。"}}, {"@type": "Question", "name": "訪問診療は誰が利用できますか？", "acceptedAnswer": {"@type": "Answer", "text": "病気や障害、加齢などにより通院が難しい方が対象になることがあります。利用条件や受け入れ可否は患者さんの状態や医療機関の体制によって異なるため、各医療機関へ確認してください。"}}, {"@type": "Question", "name": "どの地域まで訪問してもらえますか？", "acceptedAnswer": {"@type": "Answer", "text": "訪問可能エリアはクリニックごとに異なります。同じ市区町村内でも対応範囲が分かれる場合があるため、住所や施設所在地を伝えて確認してください。"}}]}</script>
@@ -75,12 +77,13 @@
   </div>
 
   <div class="clinic-list">
-    <div class="clinic-card" data-order="0" itemscope itemtype="https://schema.org/MedicalClinic">
+    <div class="clinic-card" data-order="0" data-clinic-id="2205317190" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweoBoRl9nboEgMwGV8DdS67VHY8mL1VevmbWoFOwycnNFnleuXFozR83rKNlRatPZ3DE8WQXEBjeFKGz6J9S5BBiNKIftUtGdOQXTcdHP-31FttEmfwLQC53AP6mkKgTyr5qFDSV=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205317190.html">医療法人芳栄会　甲田クリニック</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★★☆</span> 4.3</span> <span class="clinic-reviews">(62件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★★☆</span> 4.3</span> <span class="clinic-reviews">(62件のレビュー（参考）)</span></div>
     
     
     
@@ -91,12 +94,13 @@
     <div style="font-size:0.85em;margin-top:4px;"><a href="https://www.kohda-clinic.com" target="_blank" rel="noopener">🌐 公式サイト →</a></div>
     
   </div>
-</div><div class="clinic-card" data-order="1" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="1" data-clinic-id="2205324010" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweobjgXMXmWz-RIALXEdWdriH_19WKvMZHRhxIUlbf1grPDN2sei_4yaGBmdE8YFpZJlyR-qGVF0WF-S6WjGQPybPrFP8FDSPccE6i97r9Ruz9PmS9Nwcu4fR4idicPPgA1mcB8n1A=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205324010.html">塚原醫院</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★★☆</span> 4.1</span> <span class="clinic-reviews">(17件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★★☆</span> 4.1</span> <span class="clinic-reviews">(17件のレビュー（参考）)</span></div>
     
     
     
@@ -107,12 +111,13 @@
     <div style="font-size:0.85em;margin-top:4px;"><a href="https://tsukahara-iin.jp" target="_blank" rel="noopener">🌐 公式サイト →</a></div>
     
   </div>
-</div><div class="clinic-card" data-order="2" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="2" data-clinic-id="2205311260" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="/static/no-image.svg" alt="" aria-hidden="true" class="clinic-photo clinic-photo--placeholder" loading="lazy">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205311260.html">医療法人社団真征会　池田クリニック</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.5</span> <span class="clinic-reviews">(26件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.5</span> <span class="clinic-reviews">(26件のレビュー（参考）)</span></div>
     
     
     
@@ -123,12 +128,13 @@
     
     
   </div>
-</div><div class="clinic-card" data-order="3" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="3" data-clinic-id="2205313440" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweosOG9mD_tZlyvECqqGC9nyq-T9VxQw_qUTncIPpgbJjwTvyu8RB6Q9j5CCfsrsA3gB7JV37YyotZpg-OnXgmar37VV1zCZNmbiaU1kPNXzFAsASS5XnNArDVli67kTyHyP3dQg=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205313440.html">上田生協診療所</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.3</span> <span class="clinic-reviews">(32件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.3</span> <span class="clinic-reviews">(32件のレビュー（参考）)</span></div>
     
     
     
@@ -139,12 +145,13 @@
     <div style="font-size:0.85em;margin-top:4px;"><a href="http://www.toshin-iryou.com" target="_blank" rel="noopener">🌐 公式サイト →</a></div>
     
   </div>
-</div><div class="clinic-card" data-order="4" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="4" data-clinic-id="2205311680" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/places/ANXAkqGRYhn5iYDUAHV4-yIkgENPHrIfTkdwKfelK5B3cQ7XxX1Ew-yGH0qUz0ZTv9-x-MF_W8KY80X1RaZ5sPhBfWUlWtfYJYpe76U=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205311680.html">のどか内科クリニック</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3</span> <span class="clinic-reviews">(34件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3</span> <span class="clinic-reviews">(34件のレビュー（参考）)</span></div>
     
     
     
@@ -155,12 +162,13 @@
     <div style="font-size:0.85em;margin-top:4px;"><a href="https://nodoka-naika.clinic" target="_blank" rel="noopener">🌐 公式サイト →</a></div>
     
   </div>
-</div><div class="clinic-card" data-order="5" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="5" data-clinic-id="2205315330" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwep2ySn4xuSO5neFF7lkYlbSa68_EZl4Q5oy3r2lIEnsF3ezuo5LEAmXmpHeTHIvJH9hImfFxdtgTUtfZy4bvkUUMLX_isQ3pan7xY2dXc1ejzFj1qZSqasBbNAlCut-1mactmQ=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205315330.html">医療法人日新会　日新堂医院</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.4</span> <span class="clinic-reviews">(19件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.4</span> <span class="clinic-reviews">(19件のレビュー（参考）)</span></div>
     
     
     
@@ -171,12 +179,13 @@
     <div style="font-size:0.85em;margin-top:4px;"><a href="http://nttbj.itp.ne.jp/0268220558/index.html" target="_blank" rel="noopener">🌐 公式サイト →</a></div>
     
   </div>
-</div><div class="clinic-card" data-order="6" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="6" data-clinic-id="2205312300" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwerlr0cINVTOA9PB-Lgf2n7xS9ZT8ebHZxMTEUf9H2cfqye79R0jX2kbMww_UvJKZIhOTGzPNPqVNqP9An8VDqWqj_svs-gVpYx1ZwrNUpJv5X0dUvyHdf1Wkz58WRXTtZIGZAVw=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205312300.html">上田腎臓クリニック</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.3</span> <span class="clinic-reviews">(20件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.3</span> <span class="clinic-reviews">(20件のレビュー（参考）)</span></div>
     
     
     
@@ -187,12 +196,13 @@
     <div style="font-size:0.85em;margin-top:4px;"><a href="http://www.jishyukai.or.jp" target="_blank" rel="noopener">🌐 公式サイト →</a></div>
     
   </div>
-</div><div class="clinic-card" data-order="7" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="7" data-clinic-id="2205308000" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwep9eBBkjfIG8h48CPysi0NLOuE8qHDNVTjnV-rn7b3xNJJUpsC13VvGK0xpZMODv2y0Cmx83Mkzkm7272wSRjYtErBF-HLts-EIm-MwQGZUwiOLHBxmDui0Bz5oZ4N6V6XEfhW0=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205308000.html">医療法人秀栄会　岸医院</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.3</span> <span class="clinic-reviews">(18件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.3</span> <span class="clinic-reviews">(18件のレビュー（参考）)</span></div>
     
     
     
@@ -203,12 +213,13 @@
     
     
   </div>
-</div><div class="clinic-card" data-order="8" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="8" data-clinic-id="2205322110" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweoheQby6KHJ7gGdtaqN2IoUyz5Up_bXqVKOI4BINc35edLUHLZAdwda-jWEYhnMwR_GEcja-7xiK3msWXdvYPP8PxYEWwppTa9BQWIMADvR7pPCizNnkRrIM6zEVCac_bpDY0Tx=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205322110.html">医療法人光仁会　川西医院</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.6</span> <span class="clinic-reviews">(13件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.6</span> <span class="clinic-reviews">(13件のレビュー（参考）)</span></div>
     
     
     
@@ -219,12 +230,13 @@
     <div style="font-size:0.85em;margin-top:4px;"><a href="http://www.koujin-kai.or.jp" target="_blank" rel="noopener">🌐 公式サイト →</a></div>
     
   </div>
-</div><div class="clinic-card" data-order="9" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="9" data-clinic-id="2205303210" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqyZFeOPFlMf7E4KYUo8T1N5NM0_VGRFxBrdRzTkjd7J17Z-0Bs7MbbH8bDGb-Qko83Q5UCTzotEeyfHvE2tgzHAgmQNk0j3O9ftvyaS7daMHSzUf_clBS2H3CQXkHnvP6YTA2B=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205303210.html">橋本医院</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.5</span> <span class="clinic-reviews">(13件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.5</span> <span class="clinic-reviews">(13件のレビュー（参考）)</span></div>
     
     
     
@@ -235,12 +247,13 @@
     
     
   </div>
-</div><div class="clinic-card" data-order="10" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="10" data-clinic-id="2205326600" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwerIzwAkjoJITd2C6vLcrRW_sjTCI8skH3rQBqWCAv8QjdkaJG-zG9gCbBwRYfek_q3nvd_YlKVHzM4bGm_6daVIhKDyIktfuY2OV4UlfrWQkQVmAldkOk0Mqvd36PPsoBhNDM-K=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205326600.html">本原クリニック</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3</span> <span class="clinic-reviews">(21件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3</span> <span class="clinic-reviews">(21件のレビュー（参考）)</span></div>
     
     
     
@@ -251,12 +264,13 @@
     <div style="font-size:0.85em;margin-top:4px;"><a href="http://motohara-clinic.jp/" target="_blank" rel="noopener">🌐 公式サイト →</a></div>
     
   </div>
-</div><div class="clinic-card" data-order="11" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="11" data-clinic-id="2205311390" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweq3HFZLWhyeHMpG1n97v-lIxCg6KkVNxBBdZqwXLfS5rq9B1XXZNnYDhJesEJ83yB1ekei8ouKQJj1ffhuKyAQpAgYTTjnCX2UK38rh-24bLG1zlx2vg9qcJOK4BI26F842mkno=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205311390.html">大谷外科・眼科</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3</span> <span class="clinic-reviews">(20件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3</span> <span class="clinic-reviews">(20件のレビュー（参考）)</span></div>
     
     
     
@@ -267,12 +281,13 @@
     <div style="font-size:0.85em;margin-top:4px;"><a href="http://otani-gekaganka.com" target="_blank" rel="noopener">🌐 公式サイト →</a></div>
     
   </div>
-</div><div class="clinic-card" data-order="12" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="12" data-clinic-id="2205317220" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwepQVlnZaCiwd11ziOBJp2LadWb72j7renqtfBP7v5LH57hV9ECKITGh0T4Wb7xGkM2_tvCCklMiJH4-PQSoWjN0vHMLHA8HhP_omNB5hsGokfAMz5mx3K8PapW7H6cBCjlXLuyC=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205317220.html">飯田整形ペインクリニック</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★☆☆☆</span> 2.2</span> <span class="clinic-reviews">(57件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★☆☆☆</span> 2.2</span> <span class="clinic-reviews">(57件のレビュー（参考）)</span></div>
     
     
     
@@ -283,12 +298,13 @@
     
     
   </div>
-</div><div class="clinic-card" data-order="13" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="13" data-clinic-id="2205321360" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="/static/no-image.svg" alt="" aria-hidden="true" class="clinic-photo clinic-photo--placeholder" loading="lazy">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205321360.html">医療法人貴誠堂　大久保医院</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.4</span> <span class="clinic-reviews">(11件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.4</span> <span class="clinic-reviews">(11件のレビュー（参考）)</span></div>
     
     
     
@@ -299,12 +315,13 @@
     
     
   </div>
-</div><div class="clinic-card" data-order="14" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="14" data-clinic-id="2205326150" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="/static/no-image.svg" alt="" aria-hidden="true" class="clinic-photo clinic-photo--placeholder" loading="lazy">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205326150.html">城南医院</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.4</span> <span class="clinic-reviews">(9件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.4</span> <span class="clinic-reviews">(9件のレビュー（参考）)</span></div>
     
     
     
@@ -315,12 +332,13 @@
     <div style="font-size:0.85em;margin-top:4px;"><a href="https://www.ikiikinet.com/clinicn/5373/%E5%9F%8E%E5%8D%97%E5%8C%BB%E9%99%A2" target="_blank" rel="noopener">🌐 公式サイト →</a></div>
     
   </div>
-</div><div class="clinic-card" data-order="15" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="15" data-clinic-id="2205307090" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweoagUOY3xLyBBgNDwn1z9Xzr4jmJb5syQUzqOY5fpffebQmTKg6pghwnr1RAAYVsNRbGv58OEuRLG-PFNk7vuhAgmPk8-WDa6hFEFX7pN45Xzwsk0M0rUT47GZwfTHXaEyrkyq0=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205307090.html">わかた内科</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.8</span> <span class="clinic-reviews">(6件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.8</span> <span class="clinic-reviews">(6件のレビュー（参考）)</span></div>
     
     
     
@@ -331,12 +349,13 @@
     
     
   </div>
-</div><div class="clinic-card" data-order="16" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="16" data-clinic-id="2205316630" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwepOUMb3_1Ffx0wH8pp3LqQZOqBWM1nt6GurmD56tmZGqFZ9oZU08Jy6fMu4Qu8n0cx4XERXUlAos3E2eDJqyIufNdYj6iZ0Z1SQlvy-hd9_eCClhCKzmEgZnWkIwgPB8TixrbE=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205316630.html">医療法人　かんがわクリニック</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★☆☆☆</span> 2.9</span> <span class="clinic-reviews">(13件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★☆☆☆</span> 2.9</span> <span class="clinic-reviews">(13件のレビュー（参考）)</span></div>
     
     
     
@@ -347,12 +366,13 @@
     
     
   </div>
-</div><div class="clinic-card" data-order="17" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="17" data-clinic-id="2205325430" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="/static/no-image.svg" alt="" aria-hidden="true" class="clinic-photo clinic-photo--placeholder" loading="lazy">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205325430.html">つかはらクリニック</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★☆☆☆</span> 2.1</span> <span class="clinic-reviews">(36件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★☆☆☆</span> 2.1</span> <span class="clinic-reviews">(36件のレビュー（参考）)</span></div>
     
     
     
@@ -363,12 +383,13 @@
     <div style="font-size:0.85em;margin-top:4px;"><a href="http://tsukahara-clinic.jp" target="_blank" rel="noopener">🌐 公式サイト →</a></div>
     
   </div>
-</div><div class="clinic-card" data-order="18" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="18" data-clinic-id="2205317350" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwepaVuys19WiuOZcyK44z71cMmkpDjGN5-ud3HaZxFHVtBG6Hma7mePs-xxD8I2nspG0gM4akL5aQ56upNkdDIKdipPazi2JpycbKVU4bQ5aJFS24_A2lCxFRrWonUKSMJj7q_US7w=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205317350.html">社会医療法人恵仁会　さなだクリニック</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.3</span> <span class="clinic-reviews">(7件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.3</span> <span class="clinic-reviews">(7件のレビュー（参考）)</span></div>
     
     
     
@@ -379,12 +400,13 @@
     <div style="font-size:0.85em;margin-top:4px;"><a href="http://www.keijinnet.or.jp/" target="_blank" rel="noopener">🌐 公式サイト →</a></div>
     
   </div>
-</div><div class="clinic-card" data-order="19" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="19" data-clinic-id="2205315750" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwerzUySWunlKGCoQ7DFjE7H5J0_01m0fqU89WrVqmVkJWxM-d1Vkg8dzfJ7g0yvvs5Yo-kwWe9BK6oq07GOoM280Hdt-2TVZl71hKTbB7ss6dCpCpLlZim-D9Zu5FXw3k8hREyc8=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205315750.html">い内科クリニック</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★☆☆☆</span> 2.3</span> <span class="clinic-reviews">(18件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★☆☆☆</span> 2.3</span> <span class="clinic-reviews">(18件のレビュー（参考）)</span></div>
     
     
     
@@ -395,12 +417,13 @@
     
     
   </div>
-</div><div class="clinic-card" data-order="20" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="20" data-clinic-id="2205311550" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwerveY_-Do5yG_ebJ7Ibeln_wvojsCKFbrW78EQDv05vqFhSQ-GwH5uWkckovNSUb-L0sJ8DAFgaB7aAs1_MUe_9mjTABhOsQyBeo44F7cY_hZvthcDMMZ6PgqEH-MsoUye1xJ4=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205311550.html">医療法人小林会　小林医院</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★☆☆☆</span> 2.8</span> <span class="clinic-reviews">(9件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★☆☆☆</span> 2.8</span> <span class="clinic-reviews">(9件のレビュー（参考）)</span></div>
     
     
     
@@ -411,12 +434,13 @@
     
     
   </div>
-</div><div class="clinic-card" data-order="21" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="21" data-clinic-id="2205319370" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweoF4T6elgD1nQjohUaaF2HloKRZPSxjJ-q9J01veVL07EsjvRBgG_7VyoPeFPbVypaKWwuuh5K_gWjoxtOPQs94GHPGh5YYx35nWRkptVGrjinrX9XhdyJNDVzdRAl20YmUnZN3=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205319370.html">長野県厚生農業協同組合連合会　鹿教湯三才山リハビリテーションセンター　鹿教湯病院附属豊殿診療所</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★☆☆☆</span> 2.7</span> <span class="clinic-reviews">(10件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★☆☆☆</span> 2.7</span> <span class="clinic-reviews">(10件のレビュー（参考）)</span></div>
     
     
     
@@ -427,12 +451,13 @@
     <div style="font-size:0.85em;margin-top:4px;"><a href="http://km-rehacenter.jp/" target="_blank" rel="noopener">🌐 公式サイト →</a></div>
     
   </div>
-</div><div class="clinic-card" data-order="22" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="22" data-clinic-id="2205318780" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwepxR_lUG7B7R-p4dxY499a-Q1Gg5OEc0-bvPQRc5DPmlp_M1zZJOGSY4kD2Anc0X4X-CXTA-5U8Li6DUhmOfZphqZ2zc7796bIQIPm3QXfPGJF4HXoxjEqw09TLFq8o_sOsx-s=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205318780.html">医療法人あさま会　リサーチパーククリニック</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.4</span> <span class="clinic-reviews">(5件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3.4</span> <span class="clinic-reviews">(5件のレビュー（参考）)</span></div>
     
     
     
@@ -443,12 +468,13 @@
     <div style="font-size:0.85em;margin-top:4px;"><a href="http://asamakai.com" target="_blank" rel="noopener">🌐 公式サイト →</a></div>
     
   </div>
-</div><div class="clinic-card" data-order="23" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="23" data-clinic-id="2205301900" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="/static/no-image.svg" alt="" aria-hidden="true" class="clinic-photo clinic-photo--placeholder" loading="lazy">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205301900.html">村上医院</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★☆☆☆</span> 2.7</span> <span class="clinic-reviews">(7件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★☆☆☆</span> 2.7</span> <span class="clinic-reviews">(7件のレビュー（参考）)</span></div>
     
     
     
@@ -459,12 +485,13 @@
     
     
   </div>
-</div><div class="clinic-card" data-order="24" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="24" data-clinic-id="2205311970" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="/static/no-image.svg" alt="" aria-hidden="true" class="clinic-photo clinic-photo--placeholder" loading="lazy">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205311970.html">上田市武石診療所</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★★☆</span> 4</span> <span class="clinic-reviews">(2件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★★☆</span> 4</span> <span class="clinic-reviews">(2件のレビュー（参考）)</span></div>
     
     
     
@@ -475,12 +502,13 @@
     <div style="font-size:0.85em;margin-top:4px;"><a href="https://www.city.ueda.nagano.jp/soshiki/tsimin/1228.html" target="_blank" rel="noopener">🌐 公式サイト →</a></div>
     
   </div>
-</div><div class="clinic-card" data-order="25" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="25" data-clinic-id="2205331460" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqETbLoj-VDXFSUsczKwCuIm3xkpCKDan1Jn1QYYvsKIVT8B7BeBIOTESfEiDna72-8qjiwZu8pNHeU004CeXw4sVxAE_dP2ltb1UUypdAeDYPGqpvdyFdnHvysaz_4OCVUF-Dccg=s1600-w400" alt="" aria-hidden="true" class="clinic-photo" loading="lazy" onerror="this.onerror=null;this.src='/static/no-image.svg';this.classList.add('clinic-photo--placeholder');">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205331460.html">室賀診療所</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★★★</span> 5</span> <span class="clinic-reviews">(1件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★★★</span> 5</span> <span class="clinic-reviews">(1件のレビュー（参考）)</span></div>
     
     
     
@@ -491,12 +519,13 @@
     
     
   </div>
-</div><div class="clinic-card" data-order="26" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="26" data-clinic-id="2205316760" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="/static/no-image.svg" alt="" aria-hidden="true" class="clinic-photo clinic-photo--placeholder" loading="lazy">
   <div class="clinic-info">
     <div class="clinic-name" itemprop="name"><a href="/clinic/2205316760.html">社会医療法人恵仁会菅平高原クリニック</a></div>
-    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3</span> <span class="clinic-reviews">(4件の口コミ)</span></div>
+    <div class="clinic-meta"><span class="clinic-rating"><span class="stars">★★★☆☆</span> 3</span> <span class="clinic-reviews">(4件のレビュー（参考）)</span></div>
     
     
     
@@ -507,7 +536,8 @@
     <div style="font-size:0.85em;margin-top:4px;"><a href="http://www.keijinnet.or.jp/" target="_blank" rel="noopener">🌐 公式サイト →</a></div>
     
   </div>
-</div><div class="clinic-card" data-order="27" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="27" data-clinic-id="EXPABA2836866" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="/static/no-image.svg" alt="" aria-hidden="true" class="clinic-photo clinic-photo--placeholder" loading="lazy">
   <div class="clinic-info">
@@ -523,7 +553,8 @@
     
     
   </div>
-</div><div class="clinic-card" data-order="28" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="28" data-clinic-id="EXP0A01B44BC1" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="/static/no-image.svg" alt="" aria-hidden="true" class="clinic-photo clinic-photo--placeholder" loading="lazy">
   <div class="clinic-info">
@@ -539,7 +570,8 @@
     
     
   </div>
-</div><div class="clinic-card" data-order="29" itemscope itemtype="https://schema.org/MedicalClinic">
+</div><div class="clinic-card" data-order="29" data-clinic-id="EXPD0ADC92928" itemscope itemtype="https://schema.org/MedicalClinic">
+  
   
   <img src="/static/no-image.svg" alt="" aria-hidden="true" class="clinic-photo clinic-photo--placeholder" loading="lazy">
   <div class="clinic-info">
@@ -565,7 +597,7 @@
   <details style="margin:16px 0;"><summary style="cursor:pointer;font-weight:bold;color:#1a6e3c;padding:8px 0;">長野県の他の市区町村一覧</summary><p style="font-size:0.85em;line-height:2;padding:8px 0;"><a href="/pref/nagano/長野市.html">長野市（87件）</a> | <a href="/pref/nagano/松本市.html">松本市（37件）</a> | <a href="/pref/nagano/安曇野市.html">安曇野市（29件）</a> | <a href="/pref/nagano/飯田市.html">飯田市（15件）</a> | <a href="/pref/nagano/須坂市.html">須坂市（14件）</a> | <a href="/pref/nagano/中野市.html">中野市（13件）</a> | <a href="/pref/nagano/小諸市.html">小諸市（13件）</a> | <a href="/pref/nagano/千曲市.html">千曲市（12件）</a> | <a href="/pref/nagano/佐久市.html">佐久市（12件）</a> | <a href="/pref/nagano/大町市.html">大町市（8件）</a> | <a href="/pref/nagano/伊那市.html">伊那市（6件）</a> | <a href="/pref/nagano/東御市.html">東御市（6件）</a> | <a href="/pref/nagano/駒ケ根市.html">駒ケ根市（6件）</a> | <a href="/pref/nagano/埴科郡坂城町.html">埴科郡坂城町（5件）</a> | <a href="/pref/nagano/飯山市.html">飯山市（5件）</a> | <a href="/pref/nagano/北安曇郡白馬村.html">北安曇郡白馬村（5件）</a> | <a href="/pref/nagano/諏訪郡原村.html">諏訪郡原村（4件）</a> | <a href="/pref/nagano/上高井郡小布施町.html">上高井郡小布施町（4件）</a> | <a href="/pref/nagano/北安曇郡松川村.html">北安曇郡松川村（4件）</a> | <a href="/pref/nagano/諏訪市.html">諏訪市（4件）</a> | <a href="/pref/nagano/下高井郡山ノ内町.html">下高井郡山ノ内町（3件）</a> | <a href="/pref/nagano/北安曇郡池田町.html">北安曇郡池田町（3件）</a> | <a href="/pref/nagano/北佐久郡御代田町.html">北佐久郡御代田町（3件）</a> | <a href="/pref/nagano/南佐久郡南牧村.html">南佐久郡南牧村（2件）</a> | <a href="/pref/nagano/諏訪郡富士見町.html">諏訪郡富士見町（2件）</a> | <a href="/pref/nagano/下高井郡木島平村.html">下高井郡木島平村（2件）</a> | <a href="/pref/nagano/東筑摩郡筑北村.html">東筑摩郡筑北村（2件）</a> | <a href="/pref/nagano/岡谷市.html">岡谷市（2件）</a> | <a href="/pref/nagano/茅野市.html">茅野市（2件）</a> | <a href="/pref/nagano/下伊那郡松川町.html">下伊那郡松川町（2件）</a> | <a href="/pref/nagano/東筑摩郡山形村.html">東筑摩郡山形村（2件）</a> | <a href="/pref/nagano/南佐久郡川上村.html">南佐久郡川上村（1件）</a> | <a href="/pref/nagano/南佐久郡南相木村.html">南佐久郡南相木村（1件）</a> | <a href="/pref/nagano/南佐久郡北相木村.html">南佐久郡北相木村（1件）</a> | <a href="/pref/nagano/南佐久郡小海町.html">南佐久郡小海町（1件）</a> | <a href="/pref/nagano/下伊那郡大鹿村.html">下伊那郡大鹿村（1件）</a> | <a href="/pref/nagano/上水内郡飯綱町.html">上水内郡飯綱町（1件）</a> | <a href="/pref/nagano/上高井郡高山村.html">上高井郡高山村（1件）</a> | <a href="/pref/nagano/上水内郡小川村.html">上水内郡小川村（1件）</a> | <a href="/pref/nagano/東筑摩郡麻績村.html">東筑摩郡麻績村（1件）</a> | <a href="/pref/nagano/北安曇郡小谷村.html">北安曇郡小谷村（1件）</a> | <a href="/pref/nagano/小県郡青木村.html">小県郡青木村（1件）</a> | <a href="/pref/nagano/東筑摩郡生坂村.html">東筑摩郡生坂村（1件）</a> | <a href="/pref/nagano/小県郡長和町.html">小県郡長和町（1件）</a> | <a href="/pref/nagano/北佐久郡立科町.html">北佐久郡立科町（1件）</a> | <a href="/pref/nagano/下水内郡栄村.html">下水内郡栄村（1件）</a> | <a href="/pref/nagano/北佐久郡軽井沢町.html">北佐久郡軽井沢町（1件）</a> | <a href="/pref/nagano/上伊那郡宮田村.html">上伊那郡宮田村（1件）</a> | <a href="/pref/nagano/上伊那郡中川村.html">上伊那郡中川村（1件）</a> | <a href="/pref/nagano/下伊那郡喬木村.html">下伊那郡喬木村（1件）</a> | <a href="/pref/nagano/下伊那郡高森町.html">下伊那郡高森町（1件）</a> | <a href="/pref/nagano/下伊那郡天龍村.html">下伊那郡天龍村（1件）</a></p></details>
 
   <div class="data-source">
-    最終更新: 2026年05月06日　｜　出典: 公開情報および各医療機関からの提供情報
+    最終更新: 2026年05月11日　｜　出典: 公開情報および各医療機関からの提供情報
   </div>
 
   <p style="margin-top:16px;"><a href="/pref/nagano.html">長野県の訪問診療クリニック一覧に戻る</a></p>
@@ -583,13 +615,13 @@
       <a href="/about.html">運営者情報</a>
       <a href="/contact.html">お問い合わせ</a>
     </div>
-  </div>
-  <div class="footer-pref-links"><div class="footer-pref-title">都道府県から探す</div><div class="footer-pref-region"><span class="footer-pref-label">北海道・東北</span><span class="footer-pref-item"><a href="/pref/hokkaido.html">北海道(274)</a></span><span class="footer-pref-item"><a href="/pref/aomori.html">青森県(127)</a></span><span class="footer-pref-item"><a href="/pref/iwate.html">岩手県(117)</a></span><span class="footer-pref-item"><a href="/pref/miyagi.html">宮城県(325)</a></span><span class="footer-pref-item"><a href="/pref/akita.html">秋田県(158)</a></span><span class="footer-pref-item"><a href="/pref/yamagata.html">山形県(211)</a></span><span class="footer-pref-item"><a href="/pref/fukushima.html">福島県(225)</a></span></div><div class="footer-pref-region"><span class="footer-pref-label">関東</span><span class="footer-pref-item"><a href="/pref/ibaraki.html">茨城県(288)</a></span><span class="footer-pref-item"><a href="/pref/tochigi.html">栃木県(359)</a></span><span class="footer-pref-item"><a href="/pref/gunma.html">群馬県(206)</a></span><span class="footer-pref-item"><a href="/pref/saitama.html">埼玉県(576)</a></span><span class="footer-pref-item"><a href="/pref/chiba.html">千葉県(463)</a></span><span class="footer-pref-item"><a href="/pref/tokyo.html">東京都(1229)</a></span><span class="footer-pref-item"><a href="/pref/kanagawa.html">神奈川県(855)</a></span><span class="footer-pref-item"><a href="/pref/niigata.html">新潟県(224)</a></span></div><div class="footer-pref-region"><span class="footer-pref-label">中部</span><span class="footer-pref-item"><a href="/pref/toyama.html">富山県(275)</a></span><span class="footer-pref-item"><a href="/pref/ishikawa.html">石川県(205)</a></span><span class="footer-pref-item"><a href="/pref/fukui.html">福井県(169)</a></span><span class="footer-pref-item"><a href="/pref/yamanashi.html">山梨県(189)</a></span><span class="footer-pref-item"><a href="/pref/nagano.html">長野県(365)</a></span><span class="footer-pref-item"><a href="/pref/gifu.html">岐阜県(448)</a></span><span class="footer-pref-item"><a href="/pref/shizuoka.html">静岡県(492)</a></span><span class="footer-pref-item"><a href="/pref/aichi.html">愛知県(531)</a></span><span class="footer-pref-item"><a href="/pref/mie.html">三重県(416)</a></span></div><div class="footer-pref-region"><span class="footer-pref-label">近畿</span><span class="footer-pref-item"><a href="/pref/shiga.html">滋賀県(130)</a></span><span class="footer-pref-item"><a href="/pref/kyoto.html">京都府(240)</a></span><span class="footer-pref-item"><a href="/pref/osaka.html">大阪府(1166)</a></span><span class="footer-pref-item"><a href="/pref/hyogo.html">兵庫県(568)</a></span><span class="footer-pref-item"><a href="/pref/nara.html">奈良県(277)</a></span><span class="footer-pref-item"><a href="/pref/wakayama.html">和歌山県(295)</a></span></div><div class="footer-pref-region"><span class="footer-pref-label">中国・四国</span><span class="footer-pref-item"><a href="/pref/tottori.html">鳥取県(54)</a></span><span class="footer-pref-item"><a href="/pref/shimane.html">島根県(125)</a></span><span class="footer-pref-item"><a href="/pref/okayama.html">岡山県(241)</a></span><span class="footer-pref-item"><a href="/pref/hiroshima.html">広島県(290)</a></span><span class="footer-pref-item"><a href="/pref/yamaguchi.html">山口県(286)</a></span><span class="footer-pref-item"><a href="/pref/tokushima.html">徳島県(227)</a></span><span class="footer-pref-item"><a href="/pref/kagawa.html">香川県(195)</a></span><span class="footer-pref-item"><a href="/pref/ehime.html">愛媛県(351)</a></span><span class="footer-pref-item"><a href="/pref/kochi.html">高知県(113)</a></span></div><div class="footer-pref-region"><span class="footer-pref-label">九州・沖縄</span><span class="footer-pref-item"><a href="/pref/fukuoka.html">福岡県(539)</a></span><span class="footer-pref-item"><a href="/pref/saga.html">佐賀県(152)</a></span><span class="footer-pref-item"><a href="/pref/nagasaki.html">長崎県(403)</a></span><span class="footer-pref-item"><a href="/pref/kumamoto.html">熊本県(542)</a></span><span class="footer-pref-item"><a href="/pref/oita.html">大分県(277)</a></span><span class="footer-pref-item"><a href="/pref/miyazaki.html">宮崎県(192)</a></span><span class="footer-pref-item"><a href="/pref/kagoshima.html">鹿児島県(297)</a></span><span class="footer-pref-item"><a href="/pref/okinawa.html">沖縄県(72)</a></span></div></div>
-  <div class="footer-bottom">
-    <span class="footer-legal">
-      <a href="/terms.html">利用規約</a><a href="/privacy.html">個人情報保護方針</a><a href="/tokushoho.html">特定商取引法に基づく表記</a><a href="/sitemap-html.html">サイトマップ</a>
-    </span>
-    <span class="footer-copyright">&copy; 2025 在宅クリニックナビ</span>
+    <div class="footer-pref-links"><div class="footer-pref-title">都道府県から探す</div><div class="footer-pref-region"><span class="footer-pref-label">北海道・東北</span><span class="footer-pref-item"><a href="/pref/hokkaido.html">北海道(274)</a></span><span class="footer-pref-item"><a href="/pref/aomori.html">青森県(127)</a></span><span class="footer-pref-item"><a href="/pref/iwate.html">岩手県(117)</a></span><span class="footer-pref-item"><a href="/pref/miyagi.html">宮城県(325)</a></span><span class="footer-pref-item"><a href="/pref/akita.html">秋田県(158)</a></span><span class="footer-pref-item"><a href="/pref/yamagata.html">山形県(211)</a></span><span class="footer-pref-item"><a href="/pref/fukushima.html">福島県(225)</a></span></div><div class="footer-pref-region"><span class="footer-pref-label">関東</span><span class="footer-pref-item"><a href="/pref/ibaraki.html">茨城県(288)</a></span><span class="footer-pref-item"><a href="/pref/tochigi.html">栃木県(359)</a></span><span class="footer-pref-item"><a href="/pref/gunma.html">群馬県(206)</a></span><span class="footer-pref-item"><a href="/pref/saitama.html">埼玉県(576)</a></span><span class="footer-pref-item"><a href="/pref/chiba.html">千葉県(463)</a></span><span class="footer-pref-item"><a href="/pref/tokyo.html">東京都(1229)</a></span><span class="footer-pref-item"><a href="/pref/kanagawa.html">神奈川県(855)</a></span><span class="footer-pref-item"><a href="/pref/niigata.html">新潟県(224)</a></span></div><div class="footer-pref-region"><span class="footer-pref-label">中部</span><span class="footer-pref-item"><a href="/pref/toyama.html">富山県(275)</a></span><span class="footer-pref-item"><a href="/pref/ishikawa.html">石川県(205)</a></span><span class="footer-pref-item"><a href="/pref/fukui.html">福井県(169)</a></span><span class="footer-pref-item"><a href="/pref/yamanashi.html">山梨県(189)</a></span><span class="footer-pref-item"><a href="/pref/nagano.html">長野県(365)</a></span><span class="footer-pref-item"><a href="/pref/gifu.html">岐阜県(448)</a></span><span class="footer-pref-item"><a href="/pref/shizuoka.html">静岡県(492)</a></span><span class="footer-pref-item"><a href="/pref/aichi.html">愛知県(531)</a></span><span class="footer-pref-item"><a href="/pref/mie.html">三重県(416)</a></span></div><div class="footer-pref-region"><span class="footer-pref-label">近畿</span><span class="footer-pref-item"><a href="/pref/shiga.html">滋賀県(130)</a></span><span class="footer-pref-item"><a href="/pref/kyoto.html">京都府(240)</a></span><span class="footer-pref-item"><a href="/pref/osaka.html">大阪府(1166)</a></span><span class="footer-pref-item"><a href="/pref/hyogo.html">兵庫県(568)</a></span><span class="footer-pref-item"><a href="/pref/nara.html">奈良県(277)</a></span><span class="footer-pref-item"><a href="/pref/wakayama.html">和歌山県(295)</a></span></div><div class="footer-pref-region"><span class="footer-pref-label">中国・四国</span><span class="footer-pref-item"><a href="/pref/tottori.html">鳥取県(54)</a></span><span class="footer-pref-item"><a href="/pref/shimane.html">島根県(125)</a></span><span class="footer-pref-item"><a href="/pref/okayama.html">岡山県(241)</a></span><span class="footer-pref-item"><a href="/pref/hiroshima.html">広島県(290)</a></span><span class="footer-pref-item"><a href="/pref/yamaguchi.html">山口県(286)</a></span><span class="footer-pref-item"><a href="/pref/tokushima.html">徳島県(227)</a></span><span class="footer-pref-item"><a href="/pref/kagawa.html">香川県(195)</a></span><span class="footer-pref-item"><a href="/pref/ehime.html">愛媛県(351)</a></span><span class="footer-pref-item"><a href="/pref/kochi.html">高知県(113)</a></span></div><div class="footer-pref-region"><span class="footer-pref-label">九州・沖縄</span><span class="footer-pref-item"><a href="/pref/fukuoka.html">福岡県(539)</a></span><span class="footer-pref-item"><a href="/pref/saga.html">佐賀県(152)</a></span><span class="footer-pref-item"><a href="/pref/nagasaki.html">長崎県(403)</a></span><span class="footer-pref-item"><a href="/pref/kumamoto.html">熊本県(542)</a></span><span class="footer-pref-item"><a href="/pref/oita.html">大分県(277)</a></span><span class="footer-pref-item"><a href="/pref/miyazaki.html">宮崎県(192)</a></span><span class="footer-pref-item"><a href="/pref/kagoshima.html">鹿児島県(297)</a></span><span class="footer-pref-item"><a href="/pref/okinawa.html">沖縄県(72)</a></span></div></div>
+    <div class="footer-bottom">
+      <span class="footer-legal">
+        <a href="/terms.html">利用規約</a><a href="/privacy.html">個人情報保護方針</a><a href="/tokushoho.html">特定商取引法に基づく表記</a><a href="/sitemap-html.html">サイトマップ</a>
+      </span>
+      <span class="footer-copyright">&copy; 2025 在宅クリニックナビ</span>
+    </div>
   </div>
 </footer>
 <script src="/static/search.js"></script>

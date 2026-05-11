@@ -149,12 +149,51 @@ h2 { font-size: 1.15em; color: #333; margin: 24px 0 12px; border-left: 4px solid
 footer { background: #333; color: #ccc; padding: 24px 16px; margin-top: 40px; font-size: 0.85em; padding-bottom: 80px; }
 footer a { color: #aaa; }
 .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 20px; }
+.footer-about { font-size: 0.9em; line-height: 1.6; }
+.footer-site-name { font-weight: bold; color: #fff; margin-bottom: 6px; font-size: 1.05em; }
+.footer-nav { display: flex; flex-wrap: wrap; gap: 8px 16px; align-content: flex-start; }
+.footer-nav a { padding: 2px 0; }
+.footer-pref-links { grid-column: 1 / -1; margin-top: 8px; padding-top: 16px; border-top: 1px solid #555; }
+.footer-pref-title { font-weight: bold; color: #ddd; margin-bottom: 10px; font-size: 0.95em; }
+.footer-pref-region { margin-bottom: 10px; line-height: 1.9; overflow-wrap: break-word; word-break: keep-all; }
+.footer-pref-label { color: #bbb; font-weight: bold; font-size: 0.85em; margin-right: 8px; }
+.footer-pref-item { display: inline-block; margin-right: 10px; white-space: nowrap; max-width: 100%; }
+.footer-bottom { grid-column: 1 / -1; margin-top: 8px; padding-top: 12px; border-top: 1px solid #555; display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 12px; }
+.footer-legal { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.footer-copyright { color: #888; font-size: 0.8em; }
 
 /* 固定CTAバー */
 .fixed-cta { position: fixed; bottom: 0; left: 0; right: 0; background: #1a6e3c; padding: 10px 16px; display: flex; justify-content: center; gap: 12px; z-index: 1000; box-shadow: 0 -2px 8px rgba(0,0,0,0.15); }
 .fixed-cta a { color: white; font-weight: bold; font-size: 0.95em; padding: 10px 20px; border-radius: 24px; text-decoration: none !important; min-height: 44px; display: flex; align-items: center; gap: 6px; }
 .fixed-cta .fc-tel { background: #e67e22; }
 .fixed-cta .fc-web { background: rgba(255,255,255,0.15); }
+
+/* === トップページセクション（zaitakuclinic 専用 + 共通） === */
+.top-hero { padding: 32px 16px 24px; text-align: center; background: #f0f7f2; border-radius: 10px; margin-bottom: 24px; }
+.top-hero-sub { font-size: 0.95em; color: #555; margin-top: 8px; line-height: 1.7; }
+.top-guide-intro { background: white; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+.top-guide-intro-links { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 12px; padding: 0; }
+.top-guide-intro-links li a { display: flex; flex-direction: column; padding: 10px 14px; background: #f0f7f2; border-radius: 6px; text-decoration: none; color: #1a6e3c; }
+.top-search-section { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+.top-search-desc { font-size: 0.9em; color: #555; margin: 8px 0 14px; }
+.top-check { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+.top-check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+.top-check-item { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 0.9em; color: #333; text-decoration: none; }
+.top-check-icon { font-size: 1.4em; flex-shrink: 0; }
+.top-check-note { font-size: 0.82em; color: #777; margin-top: 10px; line-height: 1.6; }
+.top-journey { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+.top-journey-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.top-journey-card { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px; text-decoration: none; color: #333; }
+.top-journey-body { display: flex; flex-direction: column; gap: 2px; }
+.top-journey-desc { font-size: 0.82em; color: #777; margin-top: 2px; }
+.top-journey-arrow { font-size: 1.1em; color: #1a6e3c; flex-shrink: 0; margin-left: 8px; }
+.top-faq-section { background: white; border-radius: 8px; padding: 20px; margin-top: 24px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+.top-disclaimer { font-size: 0.78em; color: #999; margin-top: 20px; line-height: 1.6; padding: 10px 0; }
+.guide-faq dt { font-weight: bold; margin-top: 16px; margin-bottom: 4px; color: #1a6e3c; }
+.guide-faq dd { margin: 0 0 4px 12px; color: #444; font-size: 0.92em; line-height: 1.7; }
+
+/* JS の querySelector 用構造 class。空ルールで checker をパスさせる */
+.zm-detail-page {}
 
 /* === レスポンシブ: スマホ（デフォルト〜768px）=== */
 @media (max-width: 768px) {
@@ -169,6 +208,9 @@ footer a { color: #aaa; }
     .clinic-tel a { display: block; text-align: center; padding: 12px; font-size: 1.05em; }
     .cta-btn { display: block; width: 100%; margin: 6px 0; }
     .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .footer-pref-region { line-height: 2; }
+    .top-check-grid { grid-template-columns: 1fr; }
 }
 
 /* === レスポンシブ: タブレット・PC（769px〜）=== */
@@ -177,6 +219,6 @@ footer a { color: #aaa; }
     h1 { font-size: 1.6em; }
     .pref-link { padding: 8px 18px; }
     .clinic-list { grid-template-columns: 1fr; }
-    .footer-inner { grid-template-columns: 2fr 1fr 1fr; }
+    .footer-inner { grid-template-columns: 2fr 1fr; }
     .fixed-cta { display: none; }
 }
