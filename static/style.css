@@ -1,6 +1,6 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif; font-size: 16px; color: #333; background: #f9f9f9; line-height: 1.7; }
+body { font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif; font-size: 17px; color: #333; background: #f9f9f9; line-height: 1.7; }
 a { color: #0066cc; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
@@ -9,7 +9,7 @@ header { background: #1a6e3c; color: white; padding: 0; }
 header a { color: white; }
 .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; max-width: 1100px; margin: 0 auto; }
 .site-title { font-size: 1.2em; font-weight: bold; }
-.site-subtitle { font-size: 0.8em; opacity: 0.85; margin-top: 2px; }
+.site-subtitle { font-size: 0.8em; color: rgba(255,255,255,0.95); margin-top: 2px; }
 .header-right { font-size: 0.85em; text-align: right; }
 
 /* ナビ */
@@ -31,7 +31,24 @@ h2 { font-size: 1.15em; color: #333; margin: 24px 0 12px; border-left: 4px solid
 /* 検索ボックス */
 .search-box { background: white; border: 2px solid #1a6e3c; border-radius: 8px; padding: 16px; margin-bottom: 24px; }
 .search-box input { width: 100%; padding: 14px; font-size: 1.05em; border: 1px solid #ccc; border-radius: 6px; -webkit-appearance: none; }
-.search-box input:focus { outline: none; border-color: #1a6e3c; box-shadow: 0 0 0 2px rgba(26,110,60,0.2); }
+.search-box input:focus { border-color: #1a6e3c; box-shadow: 0 0 0 2px rgba(26,110,60,0.2); }
+
+/* アクセシビリティ: キーボードフォーカス表示（WCAG 2.4.7 対応）
+   :focus-visible はキーボード操作時のみフォーカスリングを表示し、マウスクリック時は非表示。
+   2026-05-11 Phase 0 で outline: none の削除 + 明示的 focus 表示を追加。 */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible {
+  outline: 2px solid #1a6e3c;
+  outline-offset: 2px;
+}
+
+/* スキップリンク（キーボード/スクリーンリーダー利用者向け） */
+.skip-link { position: absolute; top: -40px; left: 0; padding: 8px 16px; background: #1a6e3c; color: #fff; z-index: 1001; text-decoration: none; }
+.skip-link:focus { top: 0; }
+
+/* クリニック詳細ページ: 連絡先(tel/url)が両方ない場合の代替CTA */
+.clinic-fallback-cta { margin: 16px 0; padding: 14px 16px; background: #fff7e8; border-left: 4px solid #e8a735; border-radius: 8px; }
+.clinic-fallback-cta p { margin: 0 0 8px; font-size: 14px; color: #555; }
+.clinic-fallback-cta a { color: #1a6e3c; font-size: 14px; }
 
 /* 都道府県グリッド */
 .region-section { margin-bottom: 20px; }
@@ -43,7 +60,7 @@ h2 { font-size: 1.15em; color: #333; margin: 24px 0 12px; border-left: 4px solid
 
 /* クリニックカード */
 .clinic-list { display: grid; gap: 16px; }
-.clinic-card { background: white; border-radius: 10px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); border-left: 4px solid #1a6e3c; display: flex; gap: 14px; position: relative; cursor: pointer; transition: box-shadow 0.2s; }
+.clinic-card { background: white; border-radius: 16px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #1a6e3c; display: flex; gap: 14px; position: relative; cursor: pointer; transition: box-shadow 0.2s; }
 .clinic-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 .clinic-name a::after { content: ''; position: absolute; inset: 0; }
 .clinic-tel a, .clinic-card a[href^="http"] { position: relative; z-index: 1; }
@@ -84,13 +101,39 @@ h2 { font-size: 1.15em; color: #333; margin: 24px 0 12px; border-left: 4px solid
 .clinic-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 6px; }
 .clinic-rating { font-size: 0.9em; color: #e67e22; font-weight: bold; }
 .clinic-rating .stars { letter-spacing: 1px; }
-.clinic-reviews { font-size: 0.8em; color: #888; }
+.clinic-reviews { font-size: 0.8em; color: #666; }
 .clinic-status { font-size: 0.75em; padding: 2px 8px; border-radius: 10px; }
 .clinic-status-open { background: #e8f5e9; color: #1a6e3c; }
 .clinic-status-closed { background: #fce4ec; color: #c62828; }
 .clinic-tel { font-size: 0.95em; color: #333; }
 .clinic-tel a { color: #0066cc; display: inline-block; padding: 6px 14px; background: #e3f2fd; border-radius: 20px; font-weight: bold; }
 .clinic-badge { display: inline-block; background: #e8f5e9; color: #1a6e3c; font-size: 0.75em; padding: 2px 8px; border-radius: 10px; margin: 4px 2px 0; }
+
+/* Phase A: 対応条件バッジ（クリニック詳細ページ ファーストビュー）
+   .clinic-badges コンテナ内では .clinic-badge を上書きして、badge-* サブクラスで配色を切替える。
+   既存の単独 .clinic-badge（カード内サブ表示）には影響しない。 */
+.clinic-badges { display: flex; flex-wrap: wrap; gap: 6px 8px; margin: 12px 0; }
+.clinic-badges .clinic-badge { display: inline-flex; align-items: center; gap: 4px; padding: 5px 12px; border-radius: 14px; font-size: 0.82em; font-weight: 600; white-space: nowrap; background: #e8f5e9; color: #1a6e3c; margin: 0; }
+.clinic-badges .badge-accept { background: #e8f5e9; color: #1a6e3c; }
+.clinic-badges .badge-24h { background: #fff3e0; color: #c0630a; }
+.clinic-badges .badge-terminal { background: #f3e5f5; color: #6a1b9a; }
+.clinic-badges .badge-kyoka1 { background: #e3f2fd; color: #0d47a1; }
+.clinic-badges .badge-kyoka2 { background: #e3f2fd; color: #0d47a1; }
+.clinic-badges .badge-kyoka3 { background: #e1f5fe; color: #01579b; }
+
+/* Phase A: 対応疾患・対応機器タグ（クリニック詳細ページ） */
+.clinic-tags { display: flex; flex-wrap: wrap; gap: 4px 6px; margin: 8px 0 16px; }
+.clinic-tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.78em; background: #eceff1; color: #455a64; }
+
+/* Phase A: 都道府県/市区町村ページの追加フィルター chip（既存 .filter-bar / .filter-item と共存）。
+   spec の .clinic-filter / .clinic-filter-chip は新規導入せず、既存システムを拡張する形に統一。
+   ただし将来の chip 風 UI 移行に備えてクラス定義のみ追加しておく（未使用でも CSS checker 通過）。 */
+.clinic-filter { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin: 16px 0; padding: 12px 16px; background: #f9f9f9; border-radius: 10px; }
+.clinic-filter-label { font-weight: 600; color: #555; font-size: 0.92em; }
+.clinic-filter-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: white; border: 1px solid #ddd; border-radius: 16px; font-size: 0.88em; cursor: pointer; user-select: none; transition: background 0.15s, border-color 0.15s; }
+.clinic-filter-chip:has(input:checked) { background: #e8f5e9; border-color: #1a6e3c; color: #1a6e3c; font-weight: 600; }
+.clinic-filter-count { margin-left: auto; color: #666; font-size: 0.88em; }
+.clinic-card.hidden-by-filter { display: none; }
 
 /* 有料カード差分（スタンダード: 左ボーダー＋シャドウ） */
 .card--premium { border-left: 4px solid #2a5a8c; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
@@ -132,7 +175,7 @@ h2 { font-size: 1.15em; color: #333; margin: 24px 0 12px; border-left: 4px solid
 .filter-item input[type="checkbox"] { accent-color: #1a6e3c; }
 
 /* 出典・更新日 */
-.data-source { font-size: 0.8em; color: #888; margin: 16px 0; padding: 10px; background: #f5f5f5; border-radius: 6px; }
+.data-source { font-size: 0.8em; color: #666; margin: 16px 0; padding: 10px; background: #f5f5f5; border-radius: 6px; }
 
 /* ページネーション */
 .pagination { margin: 24px 0; text-align: center; }
@@ -141,7 +184,7 @@ h2 { font-size: 1.15em; color: #333; margin: 24px 0 12px; border-left: 4px solid
 
 /* ブログカード */
 .blog-list { display: grid; gap: 16px; }
-.blog-card { background: white; border-radius: 8px; padding: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+.blog-card { background: white; border-radius: 16px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 .blog-title { font-size: 1em; font-weight: bold; color: #1a6e3c; margin-bottom: 6px; }
 .blog-desc { font-size: 0.9em; color: #555; }
 
@@ -160,7 +203,14 @@ footer a { color: #aaa; }
 .footer-pref-item { display: inline-block; margin-right: 10px; white-space: nowrap; max-width: 100%; }
 .footer-bottom { grid-column: 1 / -1; margin-top: 8px; padding-top: 12px; border-top: 1px solid #555; display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 12px; }
 .footer-legal { display: flex; flex-wrap: wrap; gap: 4px 12px; }
-.footer-copyright { color: #888; font-size: 0.8em; }
+.footer-copyright { color: #aaa; font-size: 0.8em; }
+.portal-network { grid-column: 1 / -1; margin-top: 8px; padding-top: 16px; border-top: 1px solid #555; }
+.portal-network h3 { font-weight: bold; color: #ddd; margin-bottom: 10px; font-size: 0.95em; }
+.portal-network ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.portal-network li { font-size: 0.88em; line-height: 1.5; }
+.portal-network li a { color: #aaa; }
+.portal-network li a:hover { color: #fff; }
+.portal-network-desc { color: #888; font-size: 0.9em; }
 
 /* 固定CTAバー */
 .fixed-cta { position: fixed; bottom: 0; left: 0; right: 0; background: #1a6e3c; padding: 10px 16px; display: flex; justify-content: center; gap: 12px; z-index: 1000; box-shadow: 0 -2px 8px rgba(0,0,0,0.15); }
@@ -169,25 +219,35 @@ footer a { color: #aaa; }
 .fixed-cta .fc-web { background: rgba(255,255,255,0.15); }
 
 /* === トップページセクション（zaitakuclinic 専用 + 共通） === */
-.top-hero { padding: 32px 16px 24px; text-align: center; background: #f0f7f2; border-radius: 10px; margin-bottom: 24px; }
+.top-hero { padding: 32px 16px 24px; text-align: center; background: #f0f7f2; border-radius: 16px; margin-bottom: 24px; }
 .top-hero-sub { font-size: 0.95em; color: #555; margin-top: 8px; line-height: 1.7; }
-.top-guide-intro { background: white; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+.top-hero-trust { display: flex; flex-wrap: wrap; gap: 8px 16px; justify-content: center; margin: 16px 0 20px; font-size: 0.92em; color: #444; }
+.top-hero-trust-item { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; background: rgba(26,110,60,0.08); border-radius: 16px; color: #1a6e3c; font-weight: 600; }
+.top-hero-trust-item::before { content: "✓"; font-weight: 700; }
+.top-hero-search { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; margin-top: 16px; }
+.top-hero-search select { padding: 12px 16px; font-size: 1em; border: 1px solid #1a6e3c; border-radius: 8px; background: white; color: #1a6e3c; font-weight: 600; min-height: 44px; min-width: 200px; cursor: pointer; }
+.top-hero-search .cta-btn { margin: 0; }
+.b2b-cta-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; padding: 14px 16px; margin: 0 0 24px; background: #f5f0e8; border-radius: 10px; font-size: 0.95em; }
+.b2b-cta-text { color: #555; font-weight: 600; }
+.b2b-cta-button { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; background: #1a6e3c; color: #fff !important; border-radius: 24px; text-decoration: none; font-weight: bold; transition: transform 0.15s, background 0.15s; min-height: 44px; }
+.b2b-cta-button:hover { background: #155a31; transform: translateY(-1px); text-decoration: none; }
+.top-guide-intro { background: white; border-radius: 16px; padding: 16px 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 .top-guide-intro-links { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 12px; padding: 0; }
 .top-guide-intro-links li a { display: flex; flex-direction: column; padding: 10px 14px; background: #f0f7f2; border-radius: 6px; text-decoration: none; color: #1a6e3c; }
-.top-search-section { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+.top-search-section { background: white; border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 .top-search-desc { font-size: 0.9em; color: #555; margin: 8px 0 14px; }
-.top-check { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+.top-check { background: white; border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 .top-check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
-.top-check-item { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 0.9em; color: #333; text-decoration: none; }
+.top-check-item { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 12px; font-size: 0.9em; color: #333; text-decoration: none; }
 .top-check-icon { font-size: 1.4em; flex-shrink: 0; }
 .top-check-note { font-size: 0.82em; color: #777; margin-top: 10px; line-height: 1.6; }
-.top-journey { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+.top-journey { background: white; border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 .top-journey-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
-.top-journey-card { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px; text-decoration: none; color: #333; }
+.top-journey-card { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 12px; text-decoration: none; color: #333; }
 .top-journey-body { display: flex; flex-direction: column; gap: 2px; }
 .top-journey-desc { font-size: 0.82em; color: #777; margin-top: 2px; }
 .top-journey-arrow { font-size: 1.1em; color: #1a6e3c; flex-shrink: 0; margin-left: 8px; }
-.top-faq-section { background: white; border-radius: 8px; padding: 20px; margin-top: 24px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+.top-faq-section { background: white; border-radius: 16px; padding: 20px; margin-top: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 .top-disclaimer { font-size: 0.78em; color: #999; margin-top: 20px; line-height: 1.6; padding: 10px 0; }
 .guide-faq dt { font-weight: bold; margin-top: 16px; margin-bottom: 4px; color: #1a6e3c; }
 .guide-faq dd { margin: 0 0 4px 12px; color: #444; font-size: 0.92em; line-height: 1.7; }
@@ -203,6 +263,8 @@ footer a { color: #aaa; }
     .pref-grid { gap: 6px; }
     .pref-link { padding: 10px 12px; font-size: 0.9em; flex: 1 1 calc(50% - 6px); text-align: center; }
     .clinic-card { flex-direction: column; }
+    .top-hero-search { flex-direction: column; align-items: stretch; }
+    .top-hero-search select { width: 100%; }
     .clinic-photo { width: 100%; height: 200px; }
     .clinic-photo--placeholder { padding: 16px; }
     .clinic-tel a { display: block; text-align: center; padding: 12px; font-size: 1.05em; }
