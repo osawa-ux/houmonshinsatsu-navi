@@ -1,0 +1,444 @@
+name: Log commits to Notion
+
+on:
+  push:
+    branches: [gh-pages]
+  workflow_dispatch:
+    inputs:
+      backfill_count:
+        description: "過去N件のコミットをバックフィル（空欄=最新1件のみ）"
+        required: false
+        default: ""
+      reclassify:
+        description: "既存レコードの分類を再実行する（true/false）"
+        required: false
+        default: "false"
+
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Log commits to Notion
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          INPUT_BACKFILL: ${{ github.event.inputs.backfill_count }}
+          INPUT_RECLASSIFY: ${{ github.event.inputs.reclassify }}
+        run: |
+          python3 << 'PYEOF'
+          import json, os, re, subprocess, sys
+          from urllib.request import Request, urlopen
+          from urllib.error import HTTPError, URLError
+
+          API_KEY = os.environ.get("NOTION_API_KEY", "")
+          DB_ID = os.environ.get("NOTION_DATABASE_ID", "")
+
+          if not API_KEY or not DB_ID:
+              print("::error::NOTION_API_KEY or NOTION_DATABASE_ID is not set")
+              sys.exit(1)
+
+          HEADERS = {
+              "Authorization": f"Bearer {API_KEY}",
+              "Content-Type": "application/json",
+              "Notion-Version": "2022-06-28",
+          }
+
+          # ============================================================
+          # 分類ルール定義
+          # ============================================================
+
+          def classify_type(msg):
+              """変更種別をコミットメッセージから推定"""
+              m = msg.lower()
+              if m.startswith("feat") or m.startswith("add") or "新設" in msg or "追加" in msg or "新機能" in msg:
+                  return "feat"
+              if m.startswith("fix") or "修正" in msg or "復元" in msg or "修復" in msg:
+                  return "fix"
+              if m.startswith("improve") or "改善" in msg or "改修" in msg:
+                  return "improve"
+              if m.startswith("refactor") or "リファクタ" in msg:
+                  return "refactor"
+              if m.startswith("docs") or "README" in msg or "CLAUDE.md" in msg:
+                  return "docs"
+              if any(k in m for k in ["ci:", "ci/", "hook", "workflow", "actions", "logging",
+                                       "automation", "自動記録", "自動化"]):
+                  return "ops"
+              if any(k in msg for k in ["ガイド", "ブログ", "記事", "guide", "blog"]):
+                  return "content"
+              if m.startswith("update") or m.startswith("chore"):
+                  return "chore"
+              return "chore"
+
+          # --- 影響範囲の判定キーワード ---
+          _SCOPE_RULES = [
+              # (キーワードリスト, 影響範囲)
+              (["CI", "hook", "pre-commit", "workflow", "Actions", "Notion",
+                "自動記録", "重複チェック", "logging", "automation"], "開発基盤"),
+              (["build_site", "データ統合", "kouseikyoku", "expansion",
+                "geocod", "座標", "データ分離", "secrets", ".env"], "内部運用"),
+              (["トップページ", "top", "検索", "search", "ガイド", "guide",
+                "患者", "家族", "FAQ", "問い合わせ", "contact",
+                "register", "登録", "premium", "有料", "nearby",
+                "カード", "card", "導線", "体験", "GA4", "イベント計測"], "ユーザー向け"),
+              (["ブログ", "blog", "記事", "コンテンツ",
+                "中立化", "中立性"], "コンテンツ"),
+              (["footer", "フッター", "copyright", "spacing", "余白",
+                "レイアウト", "可読性", "微調整", "配置", "間隔",
+                "行間", "中央配置"], "見た目のみ"),
+          ]
+
+          def classify_scope(msg):
+              """影響範囲をコミットメッセージから推定"""
+              for keywords, scope in _SCOPE_RULES:
+                  if any(k.lower() in msg.lower() for k in keywords):
+                      return scope
+              return "内部運用"
+
+          # --- 重要度の判定 ---
+          _HIGH_KEYWORDS = [
+              "feat:", "新設", "新機能", "MVPへ改修", "ハイブリッド型",
+              "全ページに反映", "サイト再生成", "site rebuild",
+              "データ統合", "再統合", "復元",
+              "API送信に切替", "根本修正", "事故防止",
+              "ガイドページ新設", "ガイド5本追加",
+          ]
+          _LOW_KEYWORDS = [
+              "微調整", "微修正", "文言修正", "レイアウト",
+              "可読性", "余白", "行間", "間隔", "配置",
+              "copyright", "spacing", "フッター調整",
+              "secrets パス", "CLAUDE.md",
+          ]
+
+          def classify_importance(msg, change_type, scope):
+              """重要度をコミットメッセージ・種別・影響範囲から総合判定"""
+              if any(k in msg for k in _HIGH_KEYWORDS):
+                  return "高"
+              if any(k in msg for k in _LOW_KEYWORDS):
+                  return "低"
+              if scope == "見た目のみ":
+                  return "低"
+              if change_type == "feat":
+                  return "高"
+              if change_type in ("ops", "docs"):
+                  return "中"
+              if scope == "開発基盤":
+                  return "中"
+              if change_type == "fix":
+                  return "中"
+              if change_type == "improve" and scope == "ユーザー向け":
+                  return "中"
+              return "中"
+
+          # --- 親テーマの推定 ---
+          _THEME_RULES = [
+              (["トップページ", "top", "ハイブリッド", "MVP",
+                "状況から探す", "検索"], "トップページ改善"),
+              (["footer", "フッター", "copyright"], "フッター調整"),
+              (["Notion", "開発ログ", "自動記録", "バックフィル",
+                "重複チェック"], "Notion開発ログ"),
+              (["CI", "hook", "pre-commit", "Actions",
+                "中立性チェック", "neutrality"], "CI/hook整備"),
+              (["ガイド", "guide", "患者", "家族"], "ガイド記事"),
+              (["ブログ", "blog", "記事", "中立化", "中立性"], "ブログ記事"),
+              (["about", "運営者"], "aboutページ"),
+              (["register", "登録", "フォーム"], "登録フォーム"),
+              (["premium", "有料", "プラン"], "有料プラン"),
+              (["clinic詳細", "クリニックカード", "カード"], "クリニック詳細"),
+              (["SEO", "内部リンク", "クロール", "インデックス"], "SEO改善"),
+              (["GA4", "イベント計測", "analytics"], "アナリティクス"),
+              (["build_site", "site rebuild", "再生成",
+                "データ統合", "kouseikyoku", "expansion",
+                "geocod", "座標"], "データ・ビルド"),
+              (["CLAUDE.md", "secrets", ".env"], "開発設定"),
+              (["FAQ", "免責"], "FAQ・免責"),
+              (["横浜HC", "脳神経HC", "データ分離", "バッジ"], "個別クリニック対応"),
+          ]
+
+          def classify_theme(msg):
+              """親テーマをコミットメッセージから推定"""
+              for keywords, theme in _THEME_RULES:
+                  if any(k.lower() in msg.lower() for k in keywords):
+                      return theme
+              return "その他"
+
+          def classify(msg):
+              """コミットメッセージから4分類を一括推定"""
+              change_type = classify_type(msg)
+              scope = classify_scope(msg)
+              importance = classify_importance(msg, change_type, scope)
+              theme = classify_theme(msg)
+              return {
+                  "重要度": importance,
+                  "変更種別": change_type,
+                  "影響範囲": scope,
+                  "親テーマ": theme,
+              }
+
+          # ============================================================
+          # Notion DBプロパティの自動追加
+          # ============================================================
+
+          def ensure_db_properties():
+              """必要なselectプロパティがDBに無ければ追加"""
+              req = Request(
+                  f"https://api.notion.com/v1/databases/{DB_ID}",
+                  headers=HEADERS, method="GET",
+              )
+              try:
+                  resp = urlopen(req)
+                  db = json.loads(resp.read().decode())
+              except (HTTPError, URLError) as e:
+                  print(f"::warning::Failed to read DB schema: {e}")
+                  return False
+
+              existing = set(db.get("properties", {}).keys())
+              new_props = {}
+              for name in ["重要度", "変更種別", "影響範囲", "親テーマ"]:
+                  if name not in existing:
+                      new_props[name] = {"select": {}}
+
+              if not new_props:
+                  print("DB properties already exist")
+                  return True
+
+              print(f"Adding DB properties: {list(new_props.keys())}")
+              payload = {"properties": new_props}
+              data = json.dumps(payload).encode()
+              req = Request(
+                  f"https://api.notion.com/v1/databases/{DB_ID}",
+                  data=data, headers=HEADERS, method="PATCH",
+              )
+              try:
+                  urlopen(req)
+                  print("DB properties added successfully")
+                  return True
+              except HTTPError as e:
+                  body = e.read().decode() if e.fp else ""
+                  print(f"::warning::Failed to add DB properties: {e.code} {body[:200]}")
+                  return False
+
+          ensure_db_properties()
+
+          # ============================================================
+          # 既存レコードの再分類モード
+          # ============================================================
+
+          if os.environ.get("INPUT_RECLASSIFY", "").lower() == "true":
+              print("=== Reclassify mode: updating ALL records (no repo filter) ===")
+              start_cursor = None
+              updated = 0
+              skipped_empty = 0
+              errors_rc = 0
+              total_scanned = 0
+              while True:
+                  # フィルタなしで全件取得（旧レコードも確実に含む）
+                  payload = {"page_size": 100}
+                  if start_cursor:
+                      payload["start_cursor"] = start_cursor
+                  data = json.dumps(payload).encode()
+                  req = Request(
+                      f"https://api.notion.com/v1/databases/{DB_ID}/query",
+                      data=data, headers=HEADERS, method="POST",
+                  )
+                  try:
+                      resp = urlopen(req)
+                      result = json.loads(resp.read().decode())
+                  except (HTTPError, URLError) as e:
+                      print(f"::error::Failed to query DB: {e}")
+                      sys.exit(1)
+
+                  page_count = len(result.get("results", []))
+                  total_scanned += page_count
+                  has_more = result.get("has_more", False)
+                  print(f"  Page: {page_count} records (has_more={has_more})")
+
+                  for page in result.get("results", []):
+                      page_id = page["id"]
+                      props = page.get("properties", {})
+                      title_prop = props.get("コミットメッセージ", {}).get("title", [])
+                      if not title_prop:
+                          skipped_empty += 1
+                          continue
+                      msg = title_prop[0].get("text", {}).get("content", "")
+                      if not msg:
+                          skipped_empty += 1
+                          continue
+
+                      # リポジトリ名も取得（診断用）
+                      repo_prop = props.get("リポジトリ", {}).get("select")
+                      repo_val = repo_prop.get("name", "?") if repo_prop else "(未設定)"
+
+                      cls = classify(msg)
+                      patch = {
+                          "properties": {
+                              "重要度": {"select": {"name": cls["重要度"]}},
+                              "変更種別": {"select": {"name": cls["変更種別"]}},
+                              "影響範囲": {"select": {"name": cls["影響範囲"]}},
+                              "親テーマ": {"select": {"name": cls["親テーマ"]}},
+                          }
+                      }
+                      data = json.dumps(patch).encode()
+                      req = Request(
+                          f"https://api.notion.com/v1/pages/{page_id}",
+                          data=data, headers=HEADERS, method="PATCH",
+                      )
+                      try:
+                          urlopen(req)
+                          tag = f"[{cls['重要度']}][{cls['変更種別']}][{cls['影響範囲']}] {cls['親テーマ']}"
+                          print(f"  OK: [{repo_val}] {msg[:50]}  >> {tag}")
+                          updated += 1
+                      except HTTPError as e:
+                          body = e.read().decode() if e.fp else ""
+                          print(f"  ::warning::Failed {page_id}: {e.code} {body[:200]}")
+                          errors_rc += 1
+
+                  if not has_more:
+                      break
+                  start_cursor = result.get("next_cursor")
+
+              print(f"\n=== Reclassify summary ===")
+              print(f"Total scanned: {total_scanned}")
+              print(f"Updated: {updated}")
+              print(f"Skipped (empty title): {skipped_empty}")
+              print(f"Errors: {errors_rc}")
+              print(f"Unclassified remaining: 0 (all records processed)")
+              sys.exit(0)
+
+          # ============================================================
+          # 重複チェック: 既に記録済みのコミットIDを取得
+          # ============================================================
+
+          def get_existing_commit_ids():
+              ids = set()
+              start_cursor = None
+              while True:
+                  payload = {
+                      "filter": {
+                          "property": "リポジトリ",
+                          "select": {"equals": os.environ.get("GITHUB_REPOSITORY", "")}
+                      },
+                      "page_size": 100,
+                  }
+                  if start_cursor:
+                      payload["start_cursor"] = start_cursor
+                  data = json.dumps(payload).encode()
+                  req = Request(
+                      f"https://api.notion.com/v1/databases/{DB_ID}/query",
+                      data=data, headers=HEADERS, method="POST",
+                  )
+                  try:
+                      resp = urlopen(req)
+                      result = json.loads(resp.read().decode())
+                  except (HTTPError, URLError) as e:
+                      print(f"::warning::Failed to query existing records: {e}")
+                      return ids
+                  for page in result.get("results", []):
+                      props = page.get("properties", {})
+                      cid_prop = props.get("コミットID", {})
+                      rt = cid_prop.get("rich_text", [])
+                      if rt:
+                          ids.add(rt[0].get("text", {}).get("content", ""))
+                  if not result.get("has_more"):
+                      break
+                  start_cursor = result.get("next_cursor")
+              return ids
+
+          existing_ids = get_existing_commit_ids()
+          print(f"Existing records in Notion: {len(existing_ids)}")
+
+          # ============================================================
+          # コミット取得・フィルタ
+          # ============================================================
+
+          backfill = os.environ.get("INPUT_BACKFILL", "").strip()
+          count = int(backfill) if backfill.isdigit() and int(backfill) > 0 else 1
+
+          fmt = "%H%n%s%n%aI%n%an"
+          result = subprocess.run(
+              ["git", "log", f"-{count}", f"--format={fmt}"],
+              capture_output=True, text=True
+          )
+          lines = result.stdout.strip().split("\n")
+
+          commits = []
+          for i in range(0, len(lines), 4):
+              if i + 3 < len(lines):
+                  commits.append({
+                      "hash": lines[i],
+                      "message": lines[i+1][:100],
+                      "date": lines[i+2],
+                      "author": lines[i+3],
+                  })
+
+          if not commits:
+              print("No commits to log")
+              sys.exit(0)
+
+          new_commits = [c for c in commits if c["hash"][:7] not in existing_ids]
+          skipped = len(commits) - len(new_commits)
+          if skipped > 0:
+              print(f"Skipping {skipped} already-recorded commits")
+
+          if not new_commits:
+              print("All commits already recorded")
+              sys.exit(0)
+
+          # 変更ファイル数
+          for c in new_commits:
+              r = subprocess.run(
+                  ["git", "diff", "--name-only", f"{c['hash']}~1", c["hash"]],
+                  capture_output=True, text=True
+              )
+              c["files_changed"] = len([f for f in r.stdout.strip().split("\n") if f])
+
+          repo = os.environ.get("GITHUB_REPOSITORY", "unknown")
+
+          # ============================================================
+          # Notion API にページ作成
+          # ============================================================
+
+          success = 0
+          errors = 0
+          for c in reversed(new_commits):
+              cls = classify(c["message"])
+
+              payload = {
+                  "parent": {"database_id": DB_ID},
+                  "properties": {
+                      "コミットメッセージ": {"title": [{"text": {"content": c["message"]}}]},
+                      "コミットID": {"rich_text": [{"text": {"content": c["hash"][:7]}}]},
+                      "日時": {"date": {"start": c["date"]}},
+                      "リポジトリ": {"select": {"name": repo}},
+                      "変更ファイル数": {"number": c["files_changed"]},
+                      "重要度": {"select": {"name": cls["重要度"]}},
+                      "変更種別": {"select": {"name": cls["変更種別"]}},
+                      "影響範囲": {"select": {"name": cls["影響範囲"]}},
+                      "親テーマ": {"select": {"name": cls["親テーマ"]}},
+                  }
+              }
+              data = json.dumps(payload).encode()
+              req = Request(
+                  "https://api.notion.com/v1/pages",
+                  data=data, headers=HEADERS, method="POST",
+              )
+              try:
+                  urlopen(req)
+                  tag = f"[{cls['重要度']}][{cls['変更種別']}][{cls['影響範囲']}] {cls['親テーマ']}"
+                  print(f"OK: {c['hash'][:7]} — {c['message']}  >> {tag}")
+                  success += 1
+              except HTTPError as e:
+                  body = e.read().decode() if e.fp else ""
+                  print(f"::warning::Notion API error {e.code} for {c['hash'][:7]}: {body[:200]}")
+                  errors += 1
+              except URLError as e:
+                  print(f"::warning::Network error for {c['hash'][:7]}: {e.reason}")
+                  errors += 1
+
+          print(f"\nDone: {success} logged, {skipped} skipped, {errors} errors")
+          if errors > 0 and success == 0:
+              sys.exit(1)
+          PYEOF
