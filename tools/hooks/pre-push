@@ -1,0 +1,38 @@
+#!/bin/bash
+# zaitakuclinic-navi SEO regression test hook
+# 都道府県名削除等の partial rollback を push 前に検知する
+#
+# bypass: SEO_REGRESSION_SKIP=1 git push
+
+if [ "${SEO_REGRESSION_SKIP:-0}" = "1" ]; then
+  echo "[pre-push] SEO regression check skipped (SEO_REGRESSION_SKIP=1)"
+  exit 0
+fi
+
+AUDIT_SCRIPT="$HOME/MyPython/audit_seo.py"
+SITE_DIR="$HOME/MyPython/site"
+
+if [ ! -f "$AUDIT_SCRIPT" ]; then
+  echo "[pre-push] WARN: audit_seo.py が存在しない: $AUDIT_SCRIPT"
+  exit 0  # script 不在は skip（PC 間で MyPython 配置がない場合あり）
+fi
+
+if [ ! -d "$SITE_DIR" ]; then
+  echo "[pre-push] WARN: site/ が存在しない: $SITE_DIR"
+  exit 0  # build されていない PC では skip
+fi
+
+echo "[pre-push] SEO regression check 実行中..."
+python "$AUDIT_SCRIPT" --strict
+RC=$?
+
+if [ $RC -ne 0 ]; then
+  echo ""
+  echo "[pre-push] FAIL: SEO regression 検知。push を中断します。"
+  echo "[pre-push]   対応: 都道府県名・件数・サイト名の欠落がないか build を確認"
+  echo "[pre-push]   bypass: SEO_REGRESSION_SKIP=1 git push origin <branch>"
+  exit 1
+fi
+
+echo "[pre-push] PASS: SEO regression check OK"
+exit 0
