@@ -188,6 +188,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .blog-title { font-size: 1em; font-weight: bold; color: #1a6e3c; margin-bottom: 6px; }
 .blog-desc { font-size: 0.9em; color: #555; }
 
+/* ブログ記事本文（個別ページ）リーダビリティ改善 */
+.blog-article { max-width: 800px; margin: 0 auto; padding: 24px 20px; }
+.blog-article h2 { margin-top: 2.5em; margin-bottom: 0.8em; }
+.blog-article h3 { margin-top: 2em; margin-bottom: 0.6em; }
+.blog-article p { margin-bottom: 1.3em; line-height: 1.85; }
+.blog-article ul, .blog-article ol { margin-bottom: 1.3em; line-height: 1.85; padding-left: 1.5em; }
+@media (max-width: 768px) {
+  .blog-article { padding: 16px; }
+}
+
 /* フッター */
 footer { background: #333; color: #ccc; padding: 24px 16px; margin-top: 40px; font-size: 0.85em; padding-bottom: 80px; }
 footer a { color: #aaa; }
