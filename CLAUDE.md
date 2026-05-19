@@ -297,29 +297,14 @@ blog/ guide/ の変更を含む push / PR で GitHub Actions が禁止語チェ�
 
 ---
 
-## Obsidian 連携の最小ルール
+## Obsidian 連携
 
-共通方針: `~/.claude/CLAUDE.md`（グローバル）と Obsidian Vault の `_Vault運用方針.md` を参照。
-ここには **この repo 固有の参照先だけ** を置く。
+共通方針は global `~/.claude/CLAUDE.md`。vault path は `python ~/.claude/skills/_shared/resolve_vault.py` で動的解決。
 
-vault path: 動的解決 — `python ~/.claude/skills/_shared/resolve_vault.py` で取得（別PC・vault移動にも追従）
+### この repo で優先参照するノート
 
-### この repo で優先参照する Obsidian ノート
-
-- `70_SOP/seo/SEO_GSC再観測手順.md` — デプロイ前後のGSC比較フロー（active）
+- `70_SOP/seo/SEO_GSC再観測手順.md` — デプロイ前後の GSC 比較フロー
 - `20_Projects/houmonshinsatsu-navi/index.md` — プロジェクト現在地・直近デプロイ・残課題
-
-### 保存の扱い
-
-- **一次保存の主役は Daily**: `10_Daily/YYYY-MM-DD.md`（通常はここ）
-- **Inbox は未分類メモの一時置き場のみ**: `00_Inbox/`（常用しない、最小限）
-- **節目のみ Project ログ**: `20_Projects/houmonshinsatsu-navi/index.md` のログ欄（デプロイ / 重要決定 / KPI節目 等）
-- **恒久保存は明示指示 or レビュー採択時のみ**: `70_SOP/` / `30_Areas/` / `50_Research/` / Project index の恒久要約欄
-- 自動保存は 3〜6行の短い要約（何をした / 何が決まった / 次の宿題）
-- **push-pc は作業の締め処理**: 直前に日次レビュー（30秒〜3分）。必要なら Daily に一次保存、Project ログ昇格 / SOP化候補を軽く判断してから push-pc
-- 月次レビューは補助（日々の取りこぼし棚卸し・昇格・Archive 判断）
-- 作業完了時は「追記先 + 要約 + 日次レビュー判断」または「保存判断 + 理由」を簡潔に報告
-- 詳細は Vault の `_Vault運用方針.md` 末尾「Claude Code による自動記録ルール」参照
 
 ---
 
