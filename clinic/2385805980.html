@@ -32,7 +32,7 @@
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "愛媛県", "item": "https://zaitakuclinic-navi.com/pref/ehime.html"}, {"@type": "ListItem", "position": 3, "name": "伊予市", "item": "https://zaitakuclinic-navi.com/pref/ehime/伊予市.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人真幸会中山クリニック", "item": "https://zaitakuclinic-navi.com/clinic/2385805980.html"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人真幸会中山クリニック", "url": "https://zaitakuclinic-navi.com/clinic/2385805980.html", "address": {"@type": "PostalAddress", "postalCode": "791-3203", "streetAddress": "愛媛県伊予市中山町出渕２番耕地２８番－３", "addressLocality": "伊予市", "addressRegion": "愛媛県", "addressCountry": "JP"}, "telephone": "089-967-1278"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人真幸会中山クリニック", "url": "https://zaitakuclinic-navi.com/clinic/2385805980.html", "address": {"@type": "PostalAddress", "postalCode": "791-3203", "streetAddress": "愛媛県伊予市中山町出渕２番耕地２８番－３", "addressLocality": "伊予市", "addressRegion": "愛媛県", "addressCountry": "JP"}, "telephone": "089-967-1278", "geo": {"@type": "GeoCoordinates", "latitude": 33.636059, "longitude": 132.729843}}</script>
 </head>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
@@ -77,7 +77,10 @@
   <div style="margin:16px 0;"><a href="tel:0899671278" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2385805980',page_type:'detail'})">📞 089-967-1278 に電話する</a></div>
   
   
-  
+  <div style="margin:16px 0;">
+  <h2>アクセス・地図</h2>
+  <iframe src="https://maps.google.com/maps?q=33.636059,132.729843&z=15&output=embed" width="100%" height="300" style="border:0;border-radius:8px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
 
   <div class="data-source">
     📅 最終更新: 2026年05月20日　｜　📋 出典: 公開情報および各医療機関からの提供情報
