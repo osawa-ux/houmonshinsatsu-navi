@@ -304,7 +304,7 @@ blog/ guide/ の変更を含む push / PR で GitHub Actions が禁止語チェ�
 ### この repo で優先参照するノート
 
 - `70_SOP/seo/SEO_GSC再観測手順.md` — デプロイ前後の GSC 比較フロー
-- `20_Projects/houmonshinsatsu-navi/index.md` — プロジェクト現在地・直近デプロイ・残課題
+- `20_Projects/zaitakuclinic-navi/index.md` — プロジェクト現在地・直近デプロイ・残課題（在宅クリニックナビ project note の正本）
 
 ---
 
