@@ -151,6 +151,32 @@ clone または別PC での作業開始時に一度だけ hook を設置する�
 
 ---
 
+## 直接編集 commit の管理（hotfix-direct prefix）
+
+本 repo の HTML を **MyPython の build_site.py 経由ではなく直接編集** する場合（緊急 hotfix・部分 fix 等）、commit message の先頭に `hotfix-direct:` prefix を付ける。理由: 直接編集と MyPython 再ビルド commit が並走する運用では、次回ビルド時に直接編集の差分が上書きされる可能性があり、過去に「5/27 deploy 漏れ分の補完（commit 20c798f69b）」のような反映漏れ事例が実際に発生している。
+
+ルール:
+- 本 repo の `*.html` / `clinic/` / `pref/` / `blog/` / `guide/` 等を **直接編集** した commit → `hotfix-direct: <内容>` を付ける
+- MyPython の再ビルド出力をそのまま反映した commit（典型的に `Update site data` や build_site.py 実行後の commit） → prefix なし
+- `hotfix-direct:` prefix が付いた commit が `Update site data` 系 commit より新しい状態で次回 build_site.py を実行する前に、MyPython 側の template / data / `site_config*.json` に同等修正が入っているかを確認する
+
+確認手順:
+1. `git log --oneline --grep='^hotfix-direct:'` で直接編集 commit の一覧を取得
+2. 各 commit の修正内容が MyPython 側に反映済みかを確認
+3. 未反映があれば MyPython 側に反映してから次回ビルドを実行
+
+## pre-commit hook の動作仕様
+
+`tools/hooks/pre-commit` は **MyPython の `check_neutrality.py` への依存**を持つ。
+
+- MyPython が配置されている PC: pre-commit hook は blog/guide 変更時に check_neutrality.py を実行し、禁止語があれば commit を中止する
+- MyPython 未配置 / Windows PowerShell-only 環境: pre-commit hook は WARNING を stderr に出力した上で exit 0 する。**この場合 CI（`.github/workflows/neutrality-check.yml`）が唯一の防衛線**となる
+- `--no-verify` で hook を bypass しても CI が同じ検査を実行する（二重チェック体制）
+
+つまり「ローカル pre-commit による即時停止」は MyPython 配置 PC の **best effort** であり、信頼の根拠は **CI（GitHub Actions）** に置く設計。新 PC / clone 直後で MyPython を取得していない状態でも blog/guide の変更 commit は可能だが、CI が push 時に検査する。
+
+---
+
 ## Pre-Deploy Validation 詳細（在宅クリニックナビ gh-pages）
 
 デプロイ前に必ず確認する（global CLAUDE.md の原則を具体化）。zaitaku-deploy skill 経由が前提（skill が件数監査を処理フローに組込み済）。
