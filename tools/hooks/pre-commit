@@ -2,13 +2,31 @@
 # ポータル中立性チェック: blog/ guide/ の変更時に禁止語を検査
 CHANGED=$(git diff --cached --name-only | grep -E '^(blog/|guide/)' | head -1)
 if [ -n "$CHANGED" ]; then
-  CHECK_SCRIPT="$HOME/MyPython/check_neutrality.py"
-  if [ ! -f "$CHECK_SCRIPT" ]; then
-    echo "[pre-commit] WARNING: $CHECK_SCRIPT not found. Skipping local neutrality check. CI will validate on push." 1>&2
+  # MyPython の配置 path を candidate 探索 (PC 間で $HOME/MyPython / $HOME/projects/MyPython の差がある)
+  CHECK_SCRIPT=""
+  for candidate in "$HOME/projects/MyPython/check_neutrality.py" "$HOME/MyPython/check_neutrality.py"; do
+    if [ -f "$candidate" ]; then
+      CHECK_SCRIPT="$candidate"
+      break
+    fi
+  done
+  if [ -z "$CHECK_SCRIPT" ]; then
+    echo "[pre-commit] WARNING: check_neutrality.py が \$HOME/projects/MyPython/ にも \$HOME/MyPython/ にも見つかりません。Skip。CI will validate on push." 1>&2
+    exit 0
+  fi
+  # Python 実行コマンドを動的判定 (Windows: python3 が MS Store リダイレクトになるため python を優先試行)
+  PYTHON_CMD=""
+  if command -v python >/dev/null 2>&1 && python -c "import sys; sys.exit(0 if sys.version_info[0]==3 else 1)" 2>/dev/null; then
+    PYTHON_CMD="python"
+  elif command -v python3 >/dev/null 2>&1; then
+    PYTHON_CMD="python3"
+  fi
+  if [ -z "$PYTHON_CMD" ]; then
+    echo "[pre-commit] WARNING: Python 3 が見つかりません。中立性チェックを skip。CI will validate on push." 1>&2
     exit 0
   fi
   echo "[pre-commit] blog/guide の変更を検出 — 中立性チェック実行中..."
-  python3 "$CHECK_SCRIPT" --site "$(git rev-parse --show-toplevel)"
+  "$PYTHON_CMD" "$CHECK_SCRIPT" --site "$(git rev-parse --show-toplevel)"
   if [ $? -ne 0 ]; then
     echo "[pre-commit] 禁止語が検出されました。修正してから再コミットしてください。"
     exit 1

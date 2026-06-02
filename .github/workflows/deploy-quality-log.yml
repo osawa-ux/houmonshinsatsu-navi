@@ -1,0 +1,81 @@
+name: Deploy Quality Log
+
+on:
+  push:
+    branches:
+      - gh-pages
+
+permissions:
+  contents: read
+
+jobs:
+  count_stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 2
+
+      - name: Count current stats
+        id: current
+        run: |
+          SITEMAP_URLS=$(grep -c '<url>' sitemap.xml 2>/dev/null || echo 0)
+          CLINIC_FILES=$(find clinic -name '*.html' 2>/dev/null | wc -l)
+          PREF_FILES=$(find pref -name '*.html' 2>/dev/null | wc -l)
+          BLOG_FILES=$(find blog -name '*.html' 2>/dev/null | wc -l)
+          GUIDE_FILES=$(find guide -name '*.html' 2>/dev/null | wc -l)
+
+          echo "sitemap_urls=$SITEMAP_URLS" >> "$GITHUB_OUTPUT"
+          echo "clinic_files=$CLINIC_FILES" >> "$GITHUB_OUTPUT"
+          echo "pref_files=$PREF_FILES" >> "$GITHUB_OUTPUT"
+          echo "blog_files=$BLOG_FILES" >> "$GITHUB_OUTPUT"
+          echo "guide_files=$GUIDE_FILES" >> "$GITHUB_OUTPUT"
+
+          echo "## Deploy Quality Stats" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| 項目 | 件数 |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|------|------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Sitemap URLs | $SITEMAP_URLS |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Clinic HTML files | $CLINIC_FILES |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Pref HTML files | $PREF_FILES |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Blog HTML files | $BLOG_FILES |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Guide HTML files | $GUIDE_FILES |" >> "$GITHUB_STEP_SUMMARY"
+
+          echo "[deploy-quality-log] sitemap=$SITEMAP_URLS clinic=$CLINIC_FILES pref=$PREF_FILES blog=$BLOG_FILES guide=$GUIDE_FILES"
+
+      - name: Compare with previous commit
+        if: github.event.before != '0000000000000000000000000000000000000000'
+        run: |
+          git fetch origin ${{ github.event.before }} --depth 1 2>/dev/null || true
+
+          PREV_SITEMAP=$(git show ${{ github.event.before }}:sitemap.xml 2>/dev/null | grep -c '<url>' || echo 0)
+          PREV_CLINIC=$(git show ${{ github.event.before }}:. 2>/dev/null | true; git ls-tree -r ${{ github.event.before }} --name-only 2>/dev/null | grep '^clinic/.*\.html$' | wc -l || echo 0)
+          CUR_SITEMAP=${{ steps.current.outputs.sitemap_urls }}
+          CUR_CLINIC=${{ steps.current.outputs.clinic_files }}
+
+          SITEMAP_DIFF=$((CUR_SITEMAP - PREV_SITEMAP))
+          CLINIC_DIFF=$((CUR_CLINIC - PREV_CLINIC))
+
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "## 前回 push との差分" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| 項目 | 前回 | 今回 | 差分 |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|------|------|------|------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Sitemap URLs | $PREV_SITEMAP | $CUR_SITEMAP | $SITEMAP_DIFF |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Clinic HTML files | $PREV_CLINIC | $CUR_CLINIC | $CLINIC_DIFF |" >> "$GITHUB_STEP_SUMMARY"
+
+          # 5% 超の減少なら warning
+          if [ "$PREV_SITEMAP" -gt 0 ]; then
+            THRESHOLD=$((PREV_SITEMAP / 20))
+            if [ "$SITEMAP_DIFF" -lt "-$THRESHOLD" ]; then
+              echo "::warning::Sitemap URL count decreased by $((-SITEMAP_DIFF)) (more than 5% of previous $PREV_SITEMAP). Investigate before confirming deploy."
+            fi
+          fi
+
+          if [ "$PREV_CLINIC" -gt 0 ]; then
+            THRESHOLD=$((PREV_CLINIC / 20))
+            if [ "$CLINIC_DIFF" -lt "-$THRESHOLD" ]; then
+              echo "::warning::Clinic HTML file count decreased by $((-CLINIC_DIFF)) (more than 5% of previous $PREV_CLINIC). Investigate before confirming deploy."
+            fi
+          fi
