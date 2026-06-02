@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '1403413100'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '1403413100'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "神奈川県", "item": "https://zaitakuclinic-navi.com/pref/kanagawa.html"}, {"@type": "ListItem", "position": 3, "name": "横浜市神奈川区", "item": "https://zaitakuclinic-navi.com/pref/kanagawa/横浜市神奈川区.html"}, {"@type": "ListItem", "position": 4, "name": "有田内科クリニック", "item": "https://zaitakuclinic-navi.com/clinic/1403413100.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "有田内科クリニック", "url": "https://zaitakuclinic-navi.com/clinic/1403413100.html", "address": {"@type": "PostalAddress", "postalCode": "221-0003", "streetAddress": "神奈川県横浜市神奈川区大口仲町", "addressLocality": "横浜市神奈川区", "addressRegion": "神奈川県", "addressCountry": "JP"}, "telephone": "045-423-8813", "sameAs": "http://www.myclinic.ne.jp/ari_cli/pc/", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweo5Y8RDglCUpN37YiimiWOKWb3CRvwL2B4XnMNa6Ev_rOJpk5PulFkMONRgV3i2_hbcAiskpMajd1uS6ejtFfgpxDrjCkaVhSYTL6c4sI87cnWMonW5tMDDK84qktLhrv1T0E9v=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 35.4908967, "longitude": 139.6422937}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0454238813" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'1403413100',page_type:'detail'})">📞 045-423-8813 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0454238813" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'1403413100',page_type:'detail'})">📞 045-423-8813 に電話する</a></div>
   <p style="margin:8px 0;"><a href="http://www.myclinic.ne.jp/ari_cli/pc/" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

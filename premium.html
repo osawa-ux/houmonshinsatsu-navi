@@ -33,6 +33,7 @@
   <script src="/static/event_tracker.js" defer></script>
 
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -58,7 +59,7 @@
   <p style="margin-bottom:28px;color:#444;">在宅クリニックナビでは、基本情報の掲載は<strong>フリープラン</strong>（0円）で始められます。<br>受入状況の公開や優先通知が必要な医療機関には<strong>スタンダードプラン</strong>を、地域内でさらに目立たせたい医療機関には<strong>プレミアムプラン</strong>をご用意しています。</p>
 
   <!-- B2B 成果可視化 (GA4 直近30日) -->
-  <section class="b2b-metrics" aria-label="掲載ポータルの実績"><h2 class="b2b-metrics-title">プレミアム掲載で得られるもの</h2><div class="b2b-metrics-grid"><div class="b2b-metric-item"><span class="b2b-metric-value">1,858</span><span class="b2b-metric-label">月間ページビュー</span></div><div class="b2b-metric-item"><span class="b2b-metric-value">15,759</span><span class="b2b-metric-label">掲載クリニック数</span></div></div><p class="b2b-metrics-footnote">GA4 計測（2026-04-12 〜 2026-05-12）。プレミアム掲載は地域・診療科別の特集枠で表示されます。</p></section>
+  <section class="b2b-metrics" aria-label="掲載ポータルの実績"><h2 class="b2b-metrics-title">プレミアム掲載で得られるもの</h2><div class="b2b-metrics-grid"><div class="b2b-metric-item"><span class="b2b-metric-value">2,807</span><span class="b2b-metric-label">月間ページビュー</span></div><div class="b2b-metric-item"><span class="b2b-metric-value">15,759</span><span class="b2b-metric-label">掲載クリニック数</span></div></div><p class="b2b-metrics-footnote">GA4 計測（2026-05-03 〜 2026-06-02）。プレミアム掲載は地域・診療科別の特集枠で表示されます。</p></section>
 
   <!-- フリープランでできること -->
   <h2>フリープランでできること</h2>
@@ -251,7 +252,7 @@
         <td style="padding:10px 12px;">中途解約時の日割り返金は、当社が別途認める場合を除き行いません。 当社都合でサービス提供が困難となった場合は、未経過期間分について返金または代替措置を行います。</td>
       </tr>
     </table>
-    <p style="margin-top:12px;font-size:12px;color:#888;">詳細は<a href="/tokushoho.html">特定商取引法に基づく表記</a>および<a href="/terms.html">利用規約</a>をご確認ください。</p>
+    <p style="margin-top:12px;font-size:12px;color:#888;">詳細は<a href="/tokushoho.html">特定商取引法に基づく表記</a>・<a href="/terms.html">利用規約</a>・<a href="/listing-terms.html">医療機関向け掲載規約</a>をご確認ください。</p>
   </div>
 
   <!-- FAQ -->
@@ -290,6 +291,7 @@
   <form class="apply-form apply-form-step1" action="https://formspree.io/f/maqppend" method="POST" id="premiumForm">
     <h3 class="apply-form-title">仮申込フォーム</h3>
     <p class="apply-form-subtitle">下記 3 項目のみで仮申込いただけます。詳細情報（受入状況・対応体制・訪問エリア等）は、事務局からのご連絡後、会員管理ページから後ほど入力いただけます。</p>
+    <p style="font-size:12px;color:#666;margin-bottom:4px;">仮申込には<a href="/listing-terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;">医療機関向け掲載規約</a>・<a href="/terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;">利用規約</a>・<a href="/privacy.html" target="_blank" rel="noopener" style="color:#1a6e3c;">個人情報保護方針</a>への同意が必要です。</p>
 
     <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
     <input type="hidden" name="type" value="paid_plan_application_step1">
@@ -318,7 +320,7 @@
       <div style="background:#fafafa;border:1px solid #eee;border-radius:8px;padding:12px 16px;margin:16px 0;">
         <label style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:#333;cursor:pointer;">
           <input type="checkbox" name="consent" value="agreed" required style="margin-top:3px;flex-shrink:0;">
-          <span><a href="/privacy.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">個人情報保護方針</a>・<a href="/terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">利用規約</a>に同意のうえ、上記内容で仮申込します。<span style="color:#c00;">※必須</span></span>
+          <span><a href="/privacy.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">個人情報保護方針</a>・<a href="/terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">利用規約</a>・<a href="/listing-terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">掲載規約</a>に同意のうえ、上記内容で仮申込します。<span style="color:#c00;">※必須</span></span>
         </label>
       </div>
 
@@ -389,4 +391,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

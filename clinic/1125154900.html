@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '1125154900'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '1125154900'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "埼玉県", "item": "https://zaitakuclinic-navi.com/pref/saitama.html"}, {"@type": "ListItem", "position": 3, "name": "さいたま市見沼区", "item": "https://zaitakuclinic-navi.com/pref/saitama/さいたま市見沼区.html"}, {"@type": "ListItem", "position": 4, "name": "まつざきファミリークリニック", "item": "https://zaitakuclinic-navi.com/clinic/1125154900.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "まつざきファミリークリニック", "url": "https://zaitakuclinic-navi.com/clinic/1125154900.html", "address": {"@type": "PostalAddress", "postalCode": "337-0032", "streetAddress": "埼玉県さいたま市見沼区東新井", "addressLocality": "さいたま市見沼区", "addressRegion": "埼玉県", "addressCountry": "JP"}, "telephone": "048-688-9191", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerrGXAyZ9Bjq9PKLlyEGk5ww1UNCm5TgTlP2mSdxdl2mPhYcaVv5UZx_BiPhF5pJM71tGG7M7j3Gv1VoR5k7dVs9LY2V4Im9YYFZj8M_THjwzQw3IvyxPCTbhu2tI9JQdY0iaU0_g=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 35.9088082, "longitude": 139.6689272}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0486889191" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'1125154900',page_type:'detail'})">📞 048-688-9191 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0486889191" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'1125154900',page_type:'detail'})">📞 048-688-9191 に電話する</a></div>
   
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

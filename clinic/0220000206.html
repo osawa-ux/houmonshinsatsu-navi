@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '0220000206'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '0220000206'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "青森県", "item": "https://zaitakuclinic-navi.com/pref/aomori.html"}, {"@type": "ListItem", "position": 3, "name": "青森市", "item": "https://zaitakuclinic-navi.com/pref/aomori/青森市.html"}, {"@type": "ListItem", "position": 4, "name": "ふくし耳鼻科", "item": "https://zaitakuclinic-navi.com/clinic/0220000206.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "ふくし耳鼻科", "url": "https://zaitakuclinic-navi.com/clinic/0220000206.html", "address": {"@type": "PostalAddress", "postalCode": "030-0813", "streetAddress": "青森県青森市松原３－１２－１５", "addressLocality": "青森市", "addressRegion": "青森県", "addressCountry": "JP"}, "telephone": "017-734-1176", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepZgQwdGb4Qgtqyh_z6WysID9uWuikiA8o_wOgWX9uKfUxFBdpt4QIyARQVdkQ-fIJ2cYi_KfOB1K2lUBot9zzIUai_6Wze6xkYGq381K-1wogOOxRlcvYs9THDS_Bxxd67dpJQJA=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 40.818012, "longitude": 140.7634391}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0177341176" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'0220000206',page_type:'detail'})">📞 017-734-1176 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0177341176" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'0220000206',page_type:'detail'})">📞 017-734-1176 に電話する</a></div>
   
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

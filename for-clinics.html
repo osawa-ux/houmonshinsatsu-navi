@@ -32,6 +32,7 @@
   <script src="/static/event_tracker.js" defer></script>
 
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -57,12 +58,13 @@
   <p style="margin-bottom:28px;color:#444;">在宅クリニックナビは、全国47都道府県・約15,759件の訪問診療所を掲載する在宅医療ポータルです。ケアマネジャー・患者ご家族に訪問診療クリニックを届ける検索サービスとして、月額¥55,000〜の有料プラン（詳細はプラン一覧をご参照ください）で継続的な掲載導線を整えます。<br>掲載はフリープラン（0円）から始められます。</p>
 
   <!-- B2B 成果可視化 (GA4 直近30日) -->
-  <section class="b2b-metrics" aria-label="掲載ポータルの実績"><h2 class="b2b-metrics-title">在宅クリニックナビの現在地</h2><div class="b2b-metrics-grid"><div class="b2b-metric-item"><span class="b2b-metric-value">1,858</span><span class="b2b-metric-label">月間ページビュー</span></div><div class="b2b-metric-item"><span class="b2b-metric-value">709</span><span class="b2b-metric-label">月間ユニークユーザー</span></div><div class="b2b-metric-item"><span class="b2b-metric-value">15,759</span><span class="b2b-metric-label">全国掲載クリニック数</span></div></div><p class="b2b-metrics-footnote">GA4 計測。集計期間 2026-04-12 〜 2026-05-12。ケアマネジャー・地域連携室・ご家族からのアクセスが中心です。</p></section>
+  <section class="b2b-metrics" aria-label="掲載ポータルの実績"><h2 class="b2b-metrics-title">在宅クリニックナビの現在地</h2><div class="b2b-metrics-grid"><div class="b2b-metric-item"><span class="b2b-metric-value">2,807</span><span class="b2b-metric-label">月間ページビュー</span></div><div class="b2b-metric-item"><span class="b2b-metric-value">1,265</span><span class="b2b-metric-label">月間ユニークユーザー</span></div><div class="b2b-metric-item"><span class="b2b-metric-value">15,759</span><span class="b2b-metric-label">全国掲載クリニック数</span></div></div><p class="b2b-metrics-footnote">GA4 計測。集計期間 2026-05-03 〜 2026-06-02。ケアマネジャー・地域連携室・ご家族からのアクセスが中心です。</p></section>
 
   <!-- I3: 仮申込フォーム（2段階化 Step 1: クリニック名+メール+プラン のみ） -->
   <form class="apply-form apply-form-step1" action="https://formspree.io/f/xreyyene" method="POST" id="forClinicsStep1Form">
     <h3 class="apply-form-title">仮申込フォーム</h3>
     <p class="apply-form-subtitle">下記 3 項目のみで仮申込いただけます。詳細情報は事務局からのご連絡後、会員管理ページから後ほど入力いただけます。</p>
+    <p style="font-size:12px;color:#666;margin-bottom:4px;">仮申込には<a href="/listing-terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;">医療機関向け掲載規約</a>・<a href="/terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;">利用規約</a>・<a href="/privacy.html" target="_blank" rel="noopener" style="color:#1a6e3c;">個人情報保護方針</a>への同意が必要です。</p>
 
     <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
     <input type="hidden" name="type" value="for_clinics_step1">
@@ -91,7 +93,7 @@
       <div style="background:#fafafa;border:1px solid #eee;border-radius:8px;padding:12px 16px;margin:16px 0;">
         <label style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:#333;cursor:pointer;">
           <input type="checkbox" name="consent" value="agreed" required style="margin-top:3px;flex-shrink:0;">
-          <span><a href="/privacy.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">個人情報保護方針</a>・<a href="/terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">利用規約</a>に同意のうえ、上記内容で仮申込します。<span style="color:#c00;">※必須</span></span>
+          <span><a href="/privacy.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">個人情報保護方針</a>・<a href="/terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">利用規約</a>・<a href="/listing-terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">掲載規約</a>に同意のうえ、上記内容で仮申込します。<span style="color:#c00;">※必須</span></span>
         </label>
       </div>
 
@@ -151,6 +153,92 @@
       <p style="margin:8px 0 0 16px;font-size:14px;color:#555;">公開情報に基づき自動的に掲載されている場合があります。掲載情報の充実や修正は<a href="/register-free.html">こちら</a>からお申し込みいただけます。</p>
     </details>
   </div>
+
+  <!-- プラン比較表 (Q-5) -->
+  <h2>掲載プランの比較</h2>
+  <p style="font-size:14px;color:#555;margin-bottom:16px;">基本掲載情報はどのプランでも同じです。スタンダードプラン・プレミアムプランでは対応状況の詳細表示や問い合わせ機能、検索結果での露出強化が追加されます。</p>
+  <div style="overflow-x:auto;margin-bottom:8px;">
+    <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:560px;">
+      <thead>
+        <tr style="background:#1a6e3c;color:#fff;">
+          <th style="padding:12px 14px;text-align:left;">機能</th>
+          <th style="padding:12px 10px;text-align:center;">フリープラン<br><span style="font-weight:normal;font-size:12px;">0円</span></th>
+          <th style="padding:12px 10px;text-align:center;">スタンダードプラン<br><span style="font-weight:normal;font-size:12px;">月額 55,000円（税込）<br>年額 550,000円（税込）</span></th>
+          <th style="padding:12px 10px;text-align:center;background:#2a5a8c;">プレミアムプラン<br><span style="font-weight:normal;font-size:12px;">月額 110,000円（税込）<br>年額 1,100,000円（税込）</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:white;border-bottom:1px solid #eee;">
+          <td style="padding:10px 14px;">クリニック名・住所・電話番号</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+        </tr>
+        <tr style="background:#fafafa;border-bottom:1px solid #eee;">
+          <td style="padding:10px 14px;">訪問エリア・対応疾患</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+        </tr>
+        <tr style="background:white;border-bottom:1px solid #eee;">
+          <td style="padding:10px 14px;">クリニック紹介文・院長名・写真</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+        </tr>
+        <tr style="background:#fafafa;border-bottom:1px solid #eee;">
+          <td style="padding:10px 14px;">問い合わせ受信</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+        </tr>
+        <tr style="background:white;border-bottom:1px solid #eee;">
+          <td style="padding:10px 14px;">新規受入状況の公開</td>
+          <td style="padding:10px 14px;text-align:center;color:#ccc;font-weight:bold;">&#x2014;</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+        </tr>
+        <tr style="background:#fafafa;border-bottom:1px solid #eee;">
+          <td style="padding:10px 14px;">問い合わせ通知の優先対応</td>
+          <td style="padding:10px 14px;text-align:center;color:#ccc;font-weight:bold;">&#x2014;</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+        </tr>
+        <tr style="background:white;border-bottom:1px solid #eee;">
+          <td style="padding:10px 14px;">24時間訪問診療体制の表示</td>
+          <td style="padding:10px 14px;text-align:center;color:#ccc;font-weight:bold;">&#x2014;</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+        </tr>
+        <tr style="background:#fafafa;border-bottom:1px solid #eee;">
+          <td style="padding:10px 14px;">看取り・緩和ケア対応の表示</td>
+          <td style="padding:10px 14px;text-align:center;color:#ccc;font-weight:bold;">&#x2014;</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+        </tr>
+        <tr style="background:white;border-bottom:1px solid #eee;">
+          <td style="padding:10px 14px;">掲載情報確認済みバッジ</td>
+          <td style="padding:10px 14px;text-align:center;color:#ccc;font-weight:bold;">&#x2014;</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
+        </tr>
+        <tr style="background:#fafafa;border-bottom:1px solid #eee;">
+          <td style="padding:10px 14px;">検索結果の優先表示</td>
+          <td style="padding:10px 14px;text-align:center;color:#ccc;font-weight:bold;">&#x2014;</td>
+          <td style="padding:10px 14px;text-align:center;color:#ccc;font-weight:bold;">&#x2014;</td>
+          <td style="padding:10px 14px;text-align:center;color:#2a5a8c;font-weight:bold;">&#x25cb;</td>
+        </tr>
+        <tr style="background:white;">
+          <td style="padding:10px 14px;">特集枠掲載</td>
+          <td style="padding:10px 14px;text-align:center;color:#ccc;font-weight:bold;">&#x2014;</td>
+          <td style="padding:10px 14px;text-align:center;color:#ccc;font-weight:bold;">&#x2014;</td>
+          <td style="padding:10px 14px;text-align:center;color:#2a5a8c;font-weight:bold;">&#x25cb;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:12px;color:#888;margin-bottom:8px;">※「24時間訪問診療体制」「看取り・緩和ケア対応」「掲載情報確認済み」は、掲載申請内容および事務局確認に基づき表示します。</p>
+  <p style="font-size:12px;color:#888;margin-bottom:24px;">年額契約は月額10か月分の料金で12か月ご利用いただけます。支払方法はクレジットカード決済。詳細は<a href="/premium.html" style="color:#1a6e3c;" onclick="gev('click_paid_plan',{{source:'for_clinics_plan_table'}})">プランページ</a>・<a href="/tokushoho.html" style="color:#1a6e3c;">特定商取引法に基づく表記</a>をご確認ください。</p>
 
   <!-- スタンダード/プレミアムプランのご案内（ソフトなトーン） -->
   <div style="background:white;border-radius:10px;padding:24px;box-shadow:0 2px 6px rgba(0,0,0,0.08);margin-bottom:24px;border-left:4px solid #2a5a8c;">
@@ -234,4 +322,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

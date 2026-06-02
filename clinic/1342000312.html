@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '1342000312'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '1342000312'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "岐阜県", "item": "https://zaitakuclinic-navi.com/pref/gifu.html"}, {"@type": "ListItem", "position": 3, "name": "岐阜市", "item": "https://zaitakuclinic-navi.com/pref/gifu/岐阜市.html"}, {"@type": "ListItem", "position": 4, "name": "江崎耳鼻咽喉科", "item": "https://zaitakuclinic-navi.com/clinic/1342000312.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "江崎耳鼻咽喉科", "url": "https://zaitakuclinic-navi.com/clinic/1342000312.html", "address": {"@type": "PostalAddress", "postalCode": "500-8074", "streetAddress": "岐阜県岐阜市七軒町２２", "addressLocality": "岐阜市", "addressRegion": "岐阜県", "addressCountry": "JP"}, "telephone": "058-262-4396", "sameAs": "http://nttbj.itp.ne.jp/0582624396/index.html", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqD3qI0QnSTPpjaIpfqmDoAbxwpda1xx91lD-8nko4fBuS37xukHD6NltoitSiz0vD29mBlr0mrvs-lJMahndelCIBzgT7rlvri9qnVn6WnJjG9TrQSXF1ZVwcYf_B_w9YCmqAq=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 35.4261615, "longitude": 136.7622644}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0582624396" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'1342000312',page_type:'detail'})">📞 058-262-4396 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0582624396" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'1342000312',page_type:'detail'})">📞 058-262-4396 に電話する</a></div>
   <p style="margin:8px 0;"><a href="http://nttbj.itp.ne.jp/0582624396/index.html" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

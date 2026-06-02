@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '2135900110'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '2135900110'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "東京都", "item": "https://zaitakuclinic-navi.com/pref/tokyo.html"}, {"@type": "ListItem", "position": 3, "name": "板橋区", "item": "https://zaitakuclinic-navi.com/pref/tokyo/板橋区.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人社団　西台耳鼻咽喉科医院", "item": "https://zaitakuclinic-navi.com/clinic/2135900110.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人社団　西台耳鼻咽喉科医院", "url": "https://zaitakuclinic-navi.com/clinic/2135900110.html", "address": {"@type": "PostalAddress", "postalCode": "175-0082", "streetAddress": "東京都板橋区高島平１－８１－１２　ＰＥＡＣＥ西台２Ｆ", "addressLocality": "板橋区", "addressRegion": "東京都", "addressCountry": "JP"}, "telephone": "03-3937-1187", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoyIIlyfNF-L8N7pnwPHF2atXxpfOr-17F3C44NDeSQcdFLeikfjbuW2lOFT5Oqb2woVtDYE10anbScHVUs9m7CxaG363n4i4g4ImV8f-7S-ivAOCABFqP3jfKMG0U2G7NuZbBv=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 35.7867896, "longitude": 139.6721487}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0339371187" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2135900110',page_type:'detail'})">📞 03-3937-1187 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0339371187" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'2135900110',page_type:'detail'})">📞 03-3937-1187 に電話する</a></div>
   
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

@@ -30,11 +30,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': 'EXPCDE1B5CB02'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': 'EXPCDE1B5CB02'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "埼玉県", "item": "https://zaitakuclinic-navi.com/pref/saitama.html"}, {"@type": "ListItem", "position": 3, "name": "行田市", "item": "https://zaitakuclinic-navi.com/pref/saitama/行田市.html"}, {"@type": "ListItem", "position": 4, "name": "行田協立診療所", "item": "https://zaitakuclinic-navi.com/clinic/EXPCDE1B5CB02.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "行田協立診療所", "url": "https://zaitakuclinic-navi.com/clinic/EXPCDE1B5CB02.html", "address": {"@type": "PostalAddress", "postalCode": "361-0052", "streetAddress": "行田市本丸18-3", "addressLocality": "行田市", "addressRegion": "埼玉県", "addressCountry": "JP"}, "geo": {"@type": "GeoCoordinates", "latitude": 36.1370234, "longitude": 139.4541564}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -83,6 +91,7 @@
   
   
   
+  
   <div class="clinic-fallback-cta"><p>このクリニックへの直接連絡先が取得できていません。</p><a href="/contact.html?ref=clinic_no_contact&amp;clinic_id=EXPCDE1B5CB02">情報修正をリクエストする</a> ・ <a href="https://www.google.com/search?q=%E8%A1%8C%E7%94%B0%E5%8D%94%E7%AB%8B%E8%A8%BA%E7%99%82%E6%89%80+%E8%A8%AA%E5%95%8F%E8%A8%BA%E7%99%82" target="_blank" rel="noopener">Google で検索</a></div>
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>
@@ -90,7 +99,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -141,4 +150,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

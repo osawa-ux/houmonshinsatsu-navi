@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '2190000479'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '2190000479'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "山梨県", "item": "https://zaitakuclinic-navi.com/pref/yamanashi.html"}, {"@type": "ListItem", "position": 3, "name": "南都留郡富士河口湖町", "item": "https://zaitakuclinic-navi.com/pref/yamanashi/南都留郡富士河口湖町.html"}, {"@type": "ListItem", "position": 4, "name": "外川医院", "item": "https://zaitakuclinic-navi.com/clinic/2190000479.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "外川医院", "url": "https://zaitakuclinic-navi.com/clinic/2190000479.html", "address": {"@type": "PostalAddress", "postalCode": "401-0301", "streetAddress": "山梨県南都留郡富士河口湖町船津３４２５", "addressLocality": "南都留郡富士河口湖町", "addressRegion": "山梨県", "addressCountry": "JP"}, "telephone": "0555-73-2858", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwers388qDr5KVwH0Xjd7v48PF9lYHEju4gWjmTPUinEFGyfIXhp6tdJW2MaMjLezsOc3nbG-yTOm7Wtlw89nAQUZRlIMvnJUzweqlLtHREgAxtY-T7mfct_ru7-hVuOxe0EbMuM=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 35.497264, "longitude": 138.764822}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0555732858" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2190000479',page_type:'detail'})">📞 0555-73-2858 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0555732858" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'2190000479',page_type:'detail'})">📞 0555-73-2858 に電話する</a></div>
   
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

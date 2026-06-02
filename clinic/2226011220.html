@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '2226011220'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '2226011220'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "静岡県", "item": "https://zaitakuclinic-navi.com/pref/shizuoka.html"}, {"@type": "ListItem", "position": 3, "name": "静岡市清水区", "item": "https://zaitakuclinic-navi.com/pref/shizuoka/静岡市清水区.html"}, {"@type": "ListItem", "position": 4, "name": "高良眼科医院", "item": "https://zaitakuclinic-navi.com/clinic/2226011220.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "高良眼科医院", "url": "https://zaitakuclinic-navi.com/clinic/2226011220.html", "address": {"@type": "PostalAddress", "postalCode": "424-0833", "streetAddress": "静岡県静岡市清水区新富町８－２３", "addressLocality": "静岡市清水区", "addressRegion": "静岡県", "addressCountry": "JP"}, "telephone": "054-364-1093", "sameAs": "https://kora-eye.jp/", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepnUdkwHlM4lrk_ouaeo2HlHPdCv81-jSbE1hX4JBSDj3-8BEooo_xVJSkY7lO95GGo7Qv-wUHKllAuZfP2bcwpo4D0OUaDMtafn34S4MphQTi_cB9tk0gvUq9rbqglCg1UhO8b=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 35.0166834, "longitude": 138.4814242}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0543641093" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2226011220',page_type:'detail'})">📞 054-364-1093 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0543641093" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'2226011220',page_type:'detail'})">📞 054-364-1093 に電話する</a></div>
   <p style="margin:8px 0;"><a href="https://kora-eye.jp/" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

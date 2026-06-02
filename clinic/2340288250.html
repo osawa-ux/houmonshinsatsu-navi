@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '2340288250'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '2340288250'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "広島県", "item": "https://zaitakuclinic-navi.com/pref/hiroshima.html"}, {"@type": "ListItem", "position": 3, "name": "広島市中区", "item": "https://zaitakuclinic-navi.com/pref/hiroshima/広島市中区.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人　咸宜会　よしだハートクリニック", "item": "https://zaitakuclinic-navi.com/clinic/2340288250.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人　咸宜会　よしだハートクリニック", "url": "https://zaitakuclinic-navi.com/clinic/2340288250.html", "address": {"@type": "PostalAddress", "postalCode": "730-0051", "streetAddress": "広島県広島市中区大手町３－１３－８　本逕寺ビル２Ｆ", "addressLocality": "広島市中区", "addressRegion": "広島県", "addressCountry": "JP"}, "telephone": "082-246-4133", "sameAs": "https://yoshida-heart.sakura.ne.jp", "image": "https://lh3.googleusercontent.com/places/ANXAkqHhoXS0YpuD8g0X-DDDC0ftikWOo-eA-omKnUyTlFV1C9UF2d4ypdNjz5pDh9vw5bDja_2eCFd7mi1oD8TCWLFqa5_R2kXD9kI=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 34.3863152, "longitude": 132.4539066}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0822464133" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2340288250',page_type:'detail'})">📞 082-246-4133 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0822464133" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'2340288250',page_type:'detail'})">📞 082-246-4133 に電話する</a></div>
   <p style="margin:8px 0;"><a href="https://yoshida-heart.sakura.ne.jp" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

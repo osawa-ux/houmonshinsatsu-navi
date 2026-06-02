@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '705272'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '705272'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "宮城県", "item": "https://zaitakuclinic-navi.com/pref/miyagi.html"}, {"@type": "ListItem", "position": 3, "name": "亘理郡山元町", "item": "https://zaitakuclinic-navi.com/pref/miyagi/亘理郡山元町.html"}, {"@type": "ListItem", "position": 4, "name": "浅生原クリニック", "item": "https://zaitakuclinic-navi.com/clinic/705272.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "浅生原クリニック", "url": "https://zaitakuclinic-navi.com/clinic/705272.html", "address": {"@type": "PostalAddress", "postalCode": "989-2203", "streetAddress": "宮城県亘理郡山元町浅生原字日向２０－２", "addressLocality": "亘理郡山元町", "addressRegion": "宮城県", "addressCountry": "JP"}, "telephone": "0223-23-0345", "sameAs": "http://asouhara-cl.jp", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepWhczqKkCT7M-V0qi1SufMRVzTZ_7P7i-1SFHAe3gy7lTiJnqgP1NhPZDpHCCTnk4ZFynYrkLmuAQ6y3BBKCs7k0Cd_gmpk3IVKCCjEo61iyv1zmHWHSyAAV-ErqFcOSGKd6l8JA=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 37.9599647, "longitude": 140.8816573}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0223230345" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'705272',page_type:'detail'})">📞 0223-23-0345 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0223230345" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'705272',page_type:'detail'})">📞 0223-23-0345 に電話する</a></div>
   <p style="margin:8px 0;"><a href="http://asouhara-cl.jp" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

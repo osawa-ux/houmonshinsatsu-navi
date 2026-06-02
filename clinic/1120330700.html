@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '1120330700'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '1120330700'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "埼玉県", "item": "https://zaitakuclinic-navi.com/pref/saitama.html"}, {"@type": "ListItem", "position": 3, "name": "川口市", "item": "https://zaitakuclinic-navi.com/pref/saitama/川口市.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人水谷会東浦和内科外科クリニック", "item": "https://zaitakuclinic-navi.com/clinic/1120330700.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人水谷会東浦和内科外科クリニック", "url": "https://zaitakuclinic-navi.com/clinic/1120330700.html", "address": {"@type": "PostalAddress", "postalCode": "333-0861", "streetAddress": "埼玉県川口市柳崎４ー２８ー３２", "addressLocality": "川口市", "addressRegion": "埼玉県", "addressCountry": "JP"}, "telephone": "048-487-7755", "sameAs": "http://www.higashi-urawa-naika-geka.com", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwer2W_9eyGAV1nLGJyvYLNztIzzW7bOWjmhGD_ItKEf4gvb7uBV6RIYUmN_uNhatwvbloZPjj8NdB2W4S9eJThGBPmw8Z8cNS6L72rOL6zoabzytU3r3T8klfy4Z0jP4lceB42Jc7A=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 35.8611223, "longitude": 139.7024601}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0484877755" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'1120330700',page_type:'detail'})">📞 048-487-7755 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0484877755" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'1120330700',page_type:'detail'})">📞 048-487-7755 に電話する</a></div>
   <p style="margin:8px 0;"><a href="http://www.higashi-urawa-naika-geka.com" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

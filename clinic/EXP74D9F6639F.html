@@ -30,11 +30,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': 'EXP74D9F6639F'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': 'EXP74D9F6639F'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "京都府", "item": "https://zaitakuclinic-navi.com/pref/kyoto.html"}, {"@type": "ListItem", "position": 3, "name": "京都市下京区", "item": "https://zaitakuclinic-navi.com/pref/kyoto/京都市下京区.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人 祥風会 烏丸五条みどりクリニック", "item": "https://zaitakuclinic-navi.com/clinic/EXP74D9F6639F.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人 祥風会 烏丸五条みどりクリニック", "url": "https://zaitakuclinic-navi.com/clinic/EXP74D9F6639F.html", "address": {"@type": "PostalAddress", "postalCode": "600-8428", "streetAddress": "京都市下京区諏訪町通松原下る弁財天町328番地 ヴァン青雲1階", "addressLocality": "京都市下京区", "addressRegion": "京都府", "addressCountry": "JP"}, "geo": {"@type": "GeoCoordinates", "latitude": 34.9983427, "longitude": 135.7586616}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -83,6 +91,7 @@
   
   
   
+  
   <div class="clinic-fallback-cta"><p>このクリニックへの直接連絡先が取得できていません。</p><a href="/contact.html?ref=clinic_no_contact&amp;clinic_id=EXP74D9F6639F">情報修正をリクエストする</a> ・ <a href="https://www.google.com/search?q=%E5%8C%BB%E7%99%82%E6%B3%95%E4%BA%BA+%E7%A5%A5%E9%A2%A8%E4%BC%9A+%E7%83%8F%E4%B8%B8%E4%BA%94%E6%9D%A1%E3%81%BF%E3%81%A9%E3%82%8A%E3%82%AF%E3%83%AA%E3%83%8B%E3%83%83%E3%82%AF+%E8%A8%AA%E5%95%8F%E8%A8%BA%E7%99%82" target="_blank" rel="noopener">Google で検索</a></div>
   <div style="margin:16px 0;">
   <h2>アクセス・地図</h2>
@@ -90,7 +99,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -141,4 +150,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

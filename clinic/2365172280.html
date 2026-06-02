@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '2365172280'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '2365172280'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "徳島県", "item": "https://zaitakuclinic-navi.com/pref/tokushima.html"}, {"@type": "ListItem", "position": 3, "name": "徳島市", "item": "https://zaitakuclinic-navi.com/pref/tokushima/徳島市.html"}, {"@type": "ListItem", "position": 4, "name": "三河循環器科内科", "item": "https://zaitakuclinic-navi.com/clinic/2365172280.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "三河循環器科内科", "url": "https://zaitakuclinic-navi.com/clinic/2365172280.html", "address": {"@type": "PostalAddress", "postalCode": "770-0846", "streetAddress": "徳島県徳島市南内町１丁目４１", "addressLocality": "徳島市", "addressRegion": "徳島県", "addressCountry": "JP"}, "telephone": "088-652-7376", "sameAs": "http://mikawaclinic.net/", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerjiuyh39DGHKVn2gT4UvMXuhkhI4X7QPODCTMUJrWkTfGP8QrwEWrTBN3oB8sBcO2Wki1aRulPJuUlX4mHXYNEApo2UbEy9MjvPyLzMJNQFdlL9e9h-eehjr0kGePPOLWZfrPj=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 34.0690981, "longitude": 134.5531698}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0886527376" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2365172280',page_type:'detail'})">📞 088-652-7376 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0886527376" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'2365172280',page_type:'detail'})">📞 088-652-7376 に電話する</a></div>
   <p style="margin:8px 0;"><a href="http://mikawaclinic.net/" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

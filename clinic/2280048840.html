@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '2280048840'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '2280048840'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "兵庫県", "item": "https://zaitakuclinic-navi.com/pref/hyogo.html"}, {"@type": "ListItem", "position": 3, "name": "洲本市", "item": "https://zaitakuclinic-navi.com/pref/hyogo/洲本市.html"}, {"@type": "ListItem", "position": 4, "name": "洲本市国民健康保険五色診療所", "item": "https://zaitakuclinic-navi.com/clinic/2280048840.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "洲本市国民健康保険五色診療所", "url": "https://zaitakuclinic-navi.com/clinic/2280048840.html", "address": {"@type": "PostalAddress", "postalCode": "656-1331", "streetAddress": "兵庫県洲本市五色町都志大日７０７", "addressLocality": "洲本市", "addressRegion": "兵庫県", "addressCountry": "JP"}, "telephone": "0799-33-0597", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwer0piBxoMda4-2oCrWh4YHIZfIyMo4Hhdqk6-mqfsRZMe1fCjWmBX3h7xoC0Y9phKpuXOaJwTYf8ROg65WNLnJBb0-Rmb1IjuxEafwxBH8yNb_KK529MApOs1OTWL_gsRM45AGf=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 34.4047127, "longitude": 134.7888813}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0799330597" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2280048840',page_type:'detail'})">📞 0799-33-0597 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0799330597" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'2280048840',page_type:'detail'})">📞 0799-33-0597 に電話する</a></div>
   
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

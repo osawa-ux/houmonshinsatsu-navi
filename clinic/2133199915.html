@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '2133199915'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '2133199915'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "東京都", "item": "https://zaitakuclinic-navi.com/pref/tokyo.html"}, {"@type": "ListItem", "position": 3, "name": "渋谷区", "item": "https://zaitakuclinic-navi.com/pref/tokyo/渋谷区.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人社団仁愛会　仁愛内科", "item": "https://zaitakuclinic-navi.com/clinic/2133199915.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人社団仁愛会　仁愛内科", "url": "https://zaitakuclinic-navi.com/clinic/2133199915.html", "address": {"@type": "PostalAddress", "postalCode": "150-0042", "streetAddress": "東京都渋谷区宇田川町３－７　ヒューリック渋谷公園通りビルＢ１階", "addressLocality": "渋谷区", "addressRegion": "東京都", "addressCountry": "JP"}, "telephone": "03-6906-8553", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoggbjVoBAgY2EZWmApyLK0EJqLH0IQ1c5WlfkVL90Qb81VOeWWtc0bzQ1peozxoshB13VyS8SJZb1Rkfu11HNveEPtWarixpWKxvtPYP57IOj3Gq1ilVGmmswux75Frb3s-uH6eQ=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 35.6625033, "longitude": 139.6990288}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0369068553" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2133199915',page_type:'detail'})">📞 03-6906-8553 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0369068553" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'2133199915',page_type:'detail'})">📞 03-6906-8553 に電話する</a></div>
   
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

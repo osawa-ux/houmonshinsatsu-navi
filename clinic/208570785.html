@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '208570785'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '208570785'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "茨城県", "item": "https://zaitakuclinic-navi.com/pref/ibaraki.html"}, {"@type": "ListItem", "position": 3, "name": "鹿嶋市", "item": "https://zaitakuclinic-navi.com/pref/ibaraki/鹿嶋市.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人鹿神会大野診療所", "item": "https://zaitakuclinic-navi.com/clinic/208570785.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人鹿神会大野診療所", "url": "https://zaitakuclinic-navi.com/clinic/208570785.html", "address": {"@type": "PostalAddress", "postalCode": "311-2215", "streetAddress": "茨城県鹿嶋市和８２４－１", "addressLocality": "鹿嶋市", "addressRegion": "茨城県", "addressCountry": "JP"}, "telephone": "0299-69-4724", "sameAs": "http://kashimashi.info/oonoshinryojyo/", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqXa6nIIQTRdcHb0ga6afyFvIaaxlbZHqIJ2qEGygpQ5FkcAm9MycIv2X_2Xj9Y9PTzZkBIj8K_4FsBeXA6vtzjj-ePcE13QuXKTOfgEHCYbZj_Pi2-YN1y5Ls__xHT1gSVLdWbsg=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 36.040028, "longitude": 140.611665}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0299694724" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'208570785',page_type:'detail'})">📞 0299-69-4724 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0299694724" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'208570785',page_type:'detail'})">📞 0299-69-4724 に電話する</a></div>
   <p style="margin:8px 0;"><a href="http://kashimashi.info/oonoshinryojyo/" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

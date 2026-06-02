@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '2250001740'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '2250001740'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "滋賀県", "item": "https://zaitakuclinic-navi.com/pref/shiga.html"}, {"@type": "ListItem", "position": 3, "name": "大津市", "item": "https://zaitakuclinic-navi.com/pref/shiga/大津市.html"}, {"@type": "ListItem", "position": 4, "name": "西山医院", "item": "https://zaitakuclinic-navi.com/clinic/2250001740.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "西山医院", "url": "https://zaitakuclinic-navi.com/clinic/2250001740.html", "address": {"@type": "PostalAddress", "postalCode": "520-0025", "streetAddress": "滋賀県大津市皇子が丘２丁目２番１２号", "addressLocality": "大津市", "addressRegion": "滋賀県", "addressCountry": "JP"}, "telephone": "077-523-2234", "sameAs": "http://www.nishiyama-iin.com", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq0s_mH2I0XJ0HtLXVZK_KFMmNgrRrUos2Eb2_ab3-55DLN6slloYjt3HOPsNQKGaNUrLJI6qLbmsyF3Fh9VjgMp6qKII-v0cF-E2nGgwXppk8pBP34tzEWDraIJ8uLHxf5og-H=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 35.0228034, "longitude": 135.8578131}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0775232234" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2250001740',page_type:'detail'})">📞 077-523-2234 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0775232234" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'2250001740',page_type:'detail'})">📞 077-523-2234 に電話する</a></div>
   <p style="margin:8px 0;"><a href="http://www.nishiyama-iin.com" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

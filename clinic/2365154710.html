@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '2365154710'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '2365154710'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "徳島県", "item": "https://zaitakuclinic-navi.com/pref/tokushima.html"}, {"@type": "ListItem", "position": 3, "name": "徳島市", "item": "https://zaitakuclinic-navi.com/pref/tokushima/徳島市.html"}, {"@type": "ListItem", "position": 4, "name": "金沢クリニック", "item": "https://zaitakuclinic-navi.com/clinic/2365154710.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "金沢クリニック", "url": "https://zaitakuclinic-navi.com/clinic/2365154710.html", "address": {"@type": "PostalAddress", "postalCode": "770-0871", "streetAddress": "徳島県徳島市金沢２丁目２番５５号", "addressLocality": "徳島市", "addressRegion": "徳島県", "addressCountry": "JP"}, "telephone": "088-664-6644", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepXRZa7aAIBZOAb6ozFslXMvaHv5Ph1T-sFM9ALUjXg8rZMeOUio79dxK3GBEnSBSBfLXIvZBCFUaA2N3bjd5H7mJa-1r8YEOdf6dU3MBTz33SqBk86GgeZrhejZ9E_uawQMLA=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 34.0716068, "longitude": 134.5863878}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0886646644" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2365154710',page_type:'detail'})">📞 088-664-6644 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0886646644" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'2365154710',page_type:'detail'})">📞 088-664-6644 に電話する</a></div>
   
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

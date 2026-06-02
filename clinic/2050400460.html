@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '2050400460'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '2050400460'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "秋田県", "item": "https://zaitakuclinic-navi.com/pref/akita.html"}, {"@type": "ListItem", "position": 3, "name": "南秋田郡五城目町", "item": "https://zaitakuclinic-navi.com/pref/akita/南秋田郡五城目町.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人智徳会　ささき内科クリニック", "item": "https://zaitakuclinic-navi.com/clinic/2050400460.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人智徳会　ささき内科クリニック", "url": "https://zaitakuclinic-navi.com/clinic/2050400460.html", "address": {"@type": "PostalAddress", "postalCode": "018-1722", "streetAddress": "秋田県南秋田郡五城目町鵜ノ木９０－１", "addressLocality": "南秋田郡五城目町", "addressRegion": "秋田県", "addressCountry": "JP"}, "telephone": "018-855-1182", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepKyomPesVQN3T8rlCJokKqF86NbRSHIeqm_ggka6nU8-9nUddwy8CMFKUcJpFKvcJhVKbsAhzt15NgwCo7GMcrF50FEj8Fplm_sfF6loC-ClmsXI9Ms6Ex4iozsyhtBdyJTpX5TQ=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 39.9442003, "longitude": 140.1163778}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0188551182" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2050400460',page_type:'detail'})">📞 018-855-1182 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0188551182" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'2050400460',page_type:'detail'})">📞 018-855-1182 に電話する</a></div>
   
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '1405392600'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '1405392600'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "神奈川県", "item": "https://zaitakuclinic-navi.com/pref/kanagawa.html"}, {"@type": "ListItem", "position": 3, "name": "横浜市磯子区", "item": "https://zaitakuclinic-navi.com/pref/kanagawa/横浜市磯子区.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人社団永井医院", "item": "https://zaitakuclinic-navi.com/clinic/1405392600.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人社団永井医院", "url": "https://zaitakuclinic-navi.com/clinic/1405392600.html", "address": {"@type": "PostalAddress", "postalCode": "235-0045", "streetAddress": "神奈川県横浜市磯子区洋光台１－７－２５", "addressLocality": "横浜市磯子区", "addressRegion": "神奈川県", "addressCountry": "JP"}, "telephone": "045-833-0720", "sameAs": "http://www.nagai-iin.com", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoCztQGX3jxMRkJjW0-kFLycM4lXS8N7g1StvoFRMq_qFsoUDZGRMzNju342asIRsSzJhYaUnf20Q8h19ejQt9LKHwQUgc8dJuDyPP0ndTJhFhbmImY9ZJSyszR10924osUY6V5=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 35.3862237, "longitude": 139.5961772}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0458330720" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'1405392600',page_type:'detail'})">📞 045-833-0720 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0458330720" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'1405392600',page_type:'detail'})">📞 045-833-0720 に電話する</a></div>
   <p style="margin:8px 0;"><a href="http://www.nagai-iin.com" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

@@ -102,6 +102,8 @@
       card.addEventListener('click', function(e) {
         // カード内リンクのクリックも捕捉
         trackEvent(cid, 'city_card_click', window.location.pathname, {});
+        // GA4 へも送信（clinic_id は city ページでは個別クリニック不要のため省略）
+        (window.gev||function(){})('city_card_click', {});
       }, true);
     });
   });

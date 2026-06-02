@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '2270142630'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '2270142630'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "大阪府", "item": "https://zaitakuclinic-navi.com/pref/osaka.html"}, {"@type": "ListItem", "position": 3, "name": "泉佐野市", "item": "https://zaitakuclinic-navi.com/pref/osaka/泉佐野市.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人友徳会　石井クリニック", "item": "https://zaitakuclinic-navi.com/clinic/2270142630.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人友徳会　石井クリニック", "url": "https://zaitakuclinic-navi.com/clinic/2270142630.html", "address": {"@type": "PostalAddress", "postalCode": "598-0046", "streetAddress": "大阪府泉佐野市羽倉崎二丁目５－１５　ＴＲビル２階", "addressLocality": "泉佐野市", "addressRegion": "大阪府", "addressCountry": "JP"}, "telephone": "072-447-5565", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwep8iX9Gk29xW5gG8M0n52LC9NeVgmpxo3OOAxpF0GwpFuQQdoCqwzaO3jbka9aG2iIil-4jWTgE9OfC2RRn21NJ7gLOAnFsVYkbOZjH29yheC9E3L-dsXrPz9sVbiCwcVDC14c=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 34.399254, "longitude": 135.2988014}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0724475565" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2270142630',page_type:'detail'})">📞 072-447-5565 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0724475565" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'2270142630',page_type:'detail'})">📞 072-447-5565 に電話する</a></div>
   
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

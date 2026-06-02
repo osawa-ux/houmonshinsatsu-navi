@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '1205953600'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '1205953600'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "千葉県", "item": "https://zaitakuclinic-navi.com/pref/chiba.html"}, {"@type": "ListItem", "position": 3, "name": "千葉市中央区", "item": "https://zaitakuclinic-navi.com/pref/chiba/千葉市中央区.html"}, {"@type": "ListItem", "position": 4, "name": "亘内科医院", "item": "https://zaitakuclinic-navi.com/clinic/1205953600.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "亘内科医院", "url": "https://zaitakuclinic-navi.com/clinic/1205953600.html", "address": {"@type": "PostalAddress", "postalCode": "260-0011", "streetAddress": "千葉県千葉市中央区亀井町１２－１５", "addressLocality": "千葉市中央区", "addressRegion": "千葉県", "addressCountry": "JP"}, "telephone": "043-222-6578", "sameAs": "http://www.watarinaika.dr-clinic.jp/", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq3MiASubRNURx-Wdx2GaVaPIyl5vdrXwsg4BkGeFvuEl42eoWT6l_NE5zYSNZeg6ajxToFDRSObapidtyiJk-_3UpVU4U1xA_1vumn3UKznRPLkZFCn-8UDU6iWaiudvbaaK-U=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 35.6065422, "longitude": 140.1305634}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0432226578" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'1205953600',page_type:'detail'})">📞 043-222-6578 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0432226578" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'1205953600',page_type:'detail'})">📞 043-222-6578 に電話する</a></div>
   <p style="margin:8px 0;"><a href="http://www.watarinaika.dr-clinic.jp/" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

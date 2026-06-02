@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '2232409590'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '2232409590'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "愛知県", "item": "https://zaitakuclinic-navi.com/pref/aichi.html"}, {"@type": "ListItem", "position": 3, "name": "名古屋市東区", "item": "https://zaitakuclinic-navi.com/pref/aichi/名古屋市東区.html"}, {"@type": "ListItem", "position": 4, "name": "もくれんクリニック", "item": "https://zaitakuclinic-navi.com/clinic/2232409590.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "もくれんクリニック", "url": "https://zaitakuclinic-navi.com/clinic/2232409590.html", "address": {"@type": "PostalAddress", "postalCode": "461-0001", "streetAddress": "愛知県名古屋市東区泉二丁目２１－２５　高岳院ビル７階", "addressLocality": "名古屋市東区", "addressRegion": "愛知県", "addressCountry": "JP"}, "telephone": "052-934-7132", "sameAs": "https://mokurenclinic.jp/access.html", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerHpfke0h7pbL4HBm4SRuZP9P9wYo3tXch4iQDXqn8_DWKGU-B7yQX7T9liqdTNbo1oT7NTMzKdjhdMePCunmMawuXeQ6NGK5so_CDzn3m6N8M168KTsYFVGC-PT5RKBTGBgT8=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 35.1756636, "longitude": 136.9146997}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0529347132" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2232409590',page_type:'detail'})">📞 052-934-7132 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0529347132" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'2232409590',page_type:'detail'})">📞 052-934-7132 に電話する</a></div>
   <p style="margin:8px 0;"><a href="https://mokurenclinic.jp/access.html" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

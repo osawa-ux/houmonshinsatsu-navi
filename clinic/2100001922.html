@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '2100001922'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '2100001922'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "群馬県", "item": "https://zaitakuclinic-navi.com/pref/gunma.html"}, {"@type": "ListItem", "position": 3, "name": "前橋市", "item": "https://zaitakuclinic-navi.com/pref/gunma/前橋市.html"}, {"@type": "ListItem", "position": 4, "name": "はしづめ胃腸と内科のクリニック", "item": "https://zaitakuclinic-navi.com/clinic/2100001922.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "はしづめ胃腸と内科のクリニック", "url": "https://zaitakuclinic-navi.com/clinic/2100001922.html", "address": {"@type": "PostalAddress", "postalCode": "371-0811", "streetAddress": "群馬県前橋市朝倉町３－３４－６", "addressLocality": "前橋市", "addressRegion": "群馬県", "addressCountry": "JP"}, "telephone": "027-257-0546", "image": "https://lh3.googleusercontent.com/places/ANXAkqEnnZtixqNZh_1AagyuBbKJ_zf5-dt5LYmWY5g23JjFKwQfRFGAxYCkfwbzSKPAt183KFHnj7dWiznZ4h6Sv9YXSgmFOY5iYlU=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 36.3679034, "longitude": 139.0952709}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0272570546" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2100001922',page_type:'detail'})">📞 027-257-0546 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0272570546" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'2100001922',page_type:'detail'})">📞 027-257-0546 に電話する</a></div>
   
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

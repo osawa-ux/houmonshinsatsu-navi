@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '2133616680'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '2133616680'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "東京都", "item": "https://zaitakuclinic-navi.com/pref/tokyo.html"}, {"@type": "ListItem", "position": 3, "name": "杉並区", "item": "https://zaitakuclinic-navi.com/pref/tokyo/杉並区.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人社団　阿佐谷クリニック", "item": "https://zaitakuclinic-navi.com/clinic/2133616680.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人社団　阿佐谷クリニック", "url": "https://zaitakuclinic-navi.com/clinic/2133616680.html", "address": {"@type": "PostalAddress", "postalCode": "166-0001", "streetAddress": "東京都杉並区阿佐谷北１－４１－５", "addressLocality": "杉並区", "addressRegion": "東京都", "addressCountry": "JP"}, "telephone": "03-3338-5016", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerIbXZlqvOcNwo5MRyqcN2XMJCoT0YGdQ7fOBswdqNCnE5dek8RF_Z3qnr9Hx9JjXLqodKus6f2zsF9fntuCko7R58Ooo0bNjuQ9hpuSOz5gbBc_sySvsNV-W7bOr-QjkIZtu6M3w=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 35.7093827, "longitude": 139.6365077}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0333385016" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2133616680',page_type:'detail'})">📞 03-3338-5016 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0333385016" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'2133616680',page_type:'detail'})">📞 03-3338-5016 に電話する</a></div>
   
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

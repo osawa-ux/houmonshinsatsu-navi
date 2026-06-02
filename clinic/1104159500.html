@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '1104159500'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '1104159500'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "埼玉県", "item": "https://zaitakuclinic-navi.com/pref/saitama.html"}, {"@type": "ListItem", "position": 3, "name": "さいたま市大宮区", "item": "https://zaitakuclinic-navi.com/pref/saitama/さいたま市大宮区.html"}, {"@type": "ListItem", "position": 4, "name": "田原整形外科医院", "item": "https://zaitakuclinic-navi.com/clinic/1104159500.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "田原整形外科医院", "url": "https://zaitakuclinic-navi.com/clinic/1104159500.html", "address": {"@type": "PostalAddress", "postalCode": "330-0841", "streetAddress": "埼玉県さいたま市大宮区東町１ー２２３ー４", "addressLocality": "さいたま市大宮区", "addressRegion": "埼玉県", "addressCountry": "JP"}, "telephone": "048-641-0633", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepeoWU-nGpkbASFJaSZg-Cn93UZwA3dpdq4DUrck8s4yfgTGxj6HIFB4hwc3GasPOgZMWvvuqGP0wp6hxW9RTyl7bOB1rkm6K89q7w7w5Qfw2kWT5H5GblNl_4ojqfi9X_g909374p3VqRK=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 35.9056623, "longitude": 139.6346438}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0486410633" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'1104159500',page_type:'detail'})">📞 048-641-0633 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0486410633" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'1104159500',page_type:'detail'})">📞 048-641-0633 に電話する</a></div>
   
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

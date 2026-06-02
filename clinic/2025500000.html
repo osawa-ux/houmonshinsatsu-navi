@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '2025500000'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '2025500000'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "奈良県", "item": "https://zaitakuclinic-navi.com/pref/nara.html"}, {"@type": "ListItem", "position": 3, "name": "奈良市", "item": "https://zaitakuclinic-navi.com/pref/nara/奈良市.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人北寿会　登美ヶ丘クリニック", "item": "https://zaitakuclinic-navi.com/clinic/2025500000.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人北寿会　登美ヶ丘クリニック", "url": "https://zaitakuclinic-navi.com/clinic/2025500000.html", "address": {"@type": "PostalAddress", "postalCode": "631-0003", "streetAddress": "奈良県奈良市中登美ケ丘四丁目三番", "addressLocality": "奈良市", "addressRegion": "奈良県", "addressCountry": "JP"}, "telephone": "0742-41-6355", "sameAs": "https://hokujyukai.or.jp/clinic/", "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerD0VSd9qKDzk0Ijnm9vV5a7Bjnw2ZI7zbgZOEwuHGWCRV1-e7N3PXGN72Y0rQiBMAUhWpoNdBkmZp6_AmRJxxB5qyVuXEI2fmno0OBYhxG1XVGfhmk9NTmIAV1gqBk7NmvDcYERg=s1600-w400", "geo": {"@type": "GeoCoordinates", "latitude": 34.7216738, "longitude": 135.7446249}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0742416355" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2025500000',page_type:'detail'})">📞 0742-41-6355 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0742416355" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'2025500000',page_type:'detail'})">📞 0742-41-6355 に電話する</a></div>
   <p style="margin:8px 0;"><a href="https://hokujyukai.or.jp/clinic/" target="_blank" rel="noopener">🌐 公式サイトを見る →</a></p>
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>

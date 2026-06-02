@@ -29,11 +29,19 @@
     gtag('config', 'G-NQVHSM2K67');
     function gev(name, params){gtag('event', name, params||{});}
   </script>
+  <script>
+    gtag('config', 'G-NQVHSM2K67', {'custom_map': {'dimension1': 'clinic_id'}});
+    gtag('set', {'clinic_id': '2270017780'});
+    document.addEventListener('DOMContentLoaded', function() {
+      gtag('event', 'clinic_profile_view', {'clinic_id': '2270017780'});
+    });
+  </script>
   <!-- イベント計測（GA4に加えた第2層計測。個人情報は送信しない。MEMBERS_API_URL未設定サイトでは出力しない） -->
   <script src="/static/event_tracker.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zaitakuclinic-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "大阪府", "item": "https://zaitakuclinic-navi.com/pref/osaka.html"}, {"@type": "ListItem", "position": 3, "name": "大阪市生野区", "item": "https://zaitakuclinic-navi.com/pref/osaka/大阪市生野区.html"}, {"@type": "ListItem", "position": 4, "name": "医療法人　杉村内科クリニック", "item": "https://zaitakuclinic-navi.com/clinic/2270017780.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "医療法人　杉村内科クリニック", "url": "https://zaitakuclinic-navi.com/clinic/2270017780.html", "address": {"@type": "PostalAddress", "postalCode": "544-0003", "streetAddress": "大阪府大阪市生野区小路東３－３－７", "addressLocality": "大阪市生野区", "addressRegion": "大阪府", "addressCountry": "JP"}, "telephone": "06-6751-0644", "geo": {"@type": "GeoCoordinates", "latitude": 34.6606457, "longitude": 135.5598859}}</script>
 </head>
+<body>
 <a href="#main-content" class="skip-link">本文へスキップ</a>
 <header>
   <div class="header-inner">
@@ -80,7 +88,8 @@
   
   
   
-  <div style="margin:16px 0;"><a href="tel:0667510644" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('click_phone',{clinic_id:'2270017780',page_type:'detail'})">📞 06-6751-0644 に電話する</a></div>
+  
+  <div style="margin:16px 0;"><a href="tel:0667510644" class="cta-btn cta-btn-primary" style="font-size:1em;" onclick="gev('phone_click',{clinic_id:'2270017780',page_type:'detail'})">📞 06-6751-0644 に電話する</a></div>
   
   
   <div style="margin:16px 0;">
@@ -89,7 +98,7 @@
 </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年05月29日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年06月02日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <!-- 医療機関向け修正導線 -->
@@ -140,4 +149,4 @@
   </div>
 </footer>
 <script src="/static/search.js" defer></script>
-</html>
+</body></html>
