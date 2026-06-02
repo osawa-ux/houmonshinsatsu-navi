@@ -8,6 +8,11 @@ on:
 permissions:
   contents: read
 
+# 運用上の注意:
+# - 本 workflow は ::warning:: を発火するのみで、Slack / mail / PR comment への配信は行わない
+# - 警告検知は GitHub Actions の Summary または Run ログを手動確認する運用が前提
+# - 物理ブロックが必要な場合は別 workflow + branch protection 設定を別タスクで検討
+
 jobs:
   count_stats:
     runs-on: ubuntu-latest
@@ -15,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: gh-pages
-          fetch-depth: 2
+          fetch-depth: 0
 
       - name: Count current stats
         id: current
@@ -50,7 +55,7 @@ jobs:
           git fetch origin ${{ github.event.before }} --depth 1 2>/dev/null || true
 
           PREV_SITEMAP=$(git show ${{ github.event.before }}:sitemap.xml 2>/dev/null | grep -c '<url>' || echo 0)
-          PREV_CLINIC=$(git show ${{ github.event.before }}:. 2>/dev/null | true; git ls-tree -r ${{ github.event.before }} --name-only 2>/dev/null | grep '^clinic/.*\.html$' | wc -l || echo 0)
+          PREV_CLINIC=$(git ls-tree -r ${{ github.event.before }} --name-only 2>/dev/null | grep '^clinic/.*\.html$' | wc -l || echo 0)
           CUR_SITEMAP=${{ steps.current.outputs.sitemap_urls }}
           CUR_CLINIC=${{ steps.current.outputs.clinic_files }}
 
@@ -66,6 +71,9 @@ jobs:
           echo "| Clinic HTML files | $PREV_CLINIC | $CUR_CLINIC | $CLINIC_DIFF |" >> "$GITHUB_STEP_SUMMARY"
 
           # 5% 超の減少なら warning
+          # 5% 閾値の根拠: repo-review-20260602-01.md P0-2 に基づく。
+          # 約 13,000 URL に対する 5% = 650 URL の急減を異常とみなす。
+          # 細かい欠損は MyPython 側 Pre-Build Validation (audit_data_quality.py) で別途検出する設計。
           if [ "$PREV_SITEMAP" -gt 0 ]; then
             THRESHOLD=$((PREV_SITEMAP / 20))
             if [ "$SITEMAP_DIFF" -lt "-$THRESHOLD" ]; then
