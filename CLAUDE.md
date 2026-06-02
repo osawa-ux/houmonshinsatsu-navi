@@ -32,23 +32,11 @@
 
 ## 生成物 clone 分岐リスク（本番反映前の注意）
 
-deploy 経路上、houmonshinsatsu-navi の実体は **複数の clone として存在しうる**：
+deploy 経路上、houmonshinsatsu-navi の実体は `~/houmonshinsatsu-navi/`（日常作業用）と `~/MyPython/site/`（deploy 用 clone）の 2 つとして存在しうる。片方で commit/push した変更がもう片方に反映されていない状態でデプロイすると意図しない巻き戻しが起きる。
 
-| パス | 用途 |
-|------|------|
-| `~/houmonshinsatsu-navi/` | 日常作業用 clone（通常のチェックアウト先） |
-| `~/MyPython/site/` | `deploy_github.py` 側が保持する deploy 用 clone（MyPython から build 結果を push する経路） |
+**停止条件**: 本番反映前に両 clone と `origin` の同期を確認する（`git fetch origin && git log --oneline HEAD..origin/<branch>` で差分確認）。大きな差分がある場合はデプロイを止め、どちらの状態が正かを確認してから進める。
 
-### リスク
-
-- 片方で commit / push した変更が、もう片方にまだ反映されていない状態で次の作業を始めると、本番（`origin/gh-pages`）と手元 2 つのどちらとも食い違う
-- `deploy_github.py` 側の clone が古いまま build 結果を push すると、意図しない差分（古い状態への巻き戻し等）が本番に出る
-
-### 運用注意
-
-- 本番反映前（特に `deploy_github.py` 実行前）に、両 clone と `origin` の同期状態を確認する
-- 推奨確認: `git fetch origin && git log --oneline HEAD..origin/<branch>` で差分を見る
-- 大きな差分がある場合はデプロイを止め、**どちらの状態が正か**を確認してから進める
+詳細: `20_Projects/zaitakuclinic-navi/gh-pages-branch-policy.md` 原則6（複数 clone の HEAD 同期）/ `70_SOP/incident-response/gh-pages-stale-clone-deploy.md`（stale clone 事故 RCA）
 
 ---
 
@@ -67,27 +55,7 @@ deploy 経路上、houmonshinsatsu-navi の実体は **複数の clone として
 
 ## 能力カタログ連携
 
-再利用可能な機能・外部サービス連携・自動化手順を **新規実装・拡張・廃止** したら、
-Obsidian Vault の `30_Areas/能力カタログ.md` を更新する（必須）。
-
-- 粒度は「1動詞+1目的語」（例: 「中立性違反語を検知できる」「内部リンクブロックを自動挿入できる」）
-- 各能力に最低限: **状態 / 実行レベル / 前提条件 / entrypoint**
-- 既存能力で実現可能な依頼は、再実装せずカタログ記載の entrypoint を呼ぶ
-- 本repoは静的出力物なので、**生成ロジック側（MyPython）に能力がある場合はそちらを先に更新する**
-
-### このrepo周辺で扱う能力領域
-
-本repoは主に **配置済み成果物の修正・確認** を担う。正式な能力 ID は Obsidian 能力カタログ側で採番・管理する（本 CLAUDE.md で仮 ID を新設しない）。本repo 周辺で関連する能力領域は以下：
-
-| 領域 | 正本 repo | 内容 |
-|------|----------|------|
-| サイトビルド（SITE-BUILD 系） | MyPython | `build_site.py` による HTML / JSON / sitemap 生成 |
-| デプロイ（SITE-DEPLOY 系） | MyPython | `deploy_github.py` による gh-pages への反映 |
-| ポータル中立性チェック（PORTAL-NEUTRALITY 系） | MyPython | `check_neutrality.py` による禁止語検査 |
-| SEO / GSC 観測（SEO-GSC 系） | MyPython / houmonshinsatsu-navi | デプロイ前後の GSC 比較フロー |
-| sitemap 監査（SITEMAP-AUDIT 系） | MyPython | sitemap.xml と個別ページ数・検索JSON の整合確認 |
-
-※ 実装本体は MyPython 側に集約されているため、機能追加・修正は原則 MyPython 側で行い、能力カタログ側の entrypoint 表記もそちらに合わせる。
+再利用可能な機能を新規実装・拡張・廃止したら Obsidian Vault の `30_Areas/能力カタログ.md` を更新する（必須）。能力 ID の正本は Obsidian 能力カタログ側で採番・管理する（本 CLAUDE.md で仮 ID を新設しない）。本repo は生成物配置のため能力本体は MyPython 側に集約されており、機能追加・修正は原則 MyPython 側で行い能力カタログの entrypoint 表記もそちらに合わせる。
 
 ---
 
@@ -128,19 +96,11 @@ secret / token / API key が必要なとき、いきなり新規発行を提案�
 
 ### 代表例
 
-以下は避ける対象の代表例（実際の禁止語は後述の正本側で管理）：
-
 - 自院名の例: `横浜ホームクリニック`
 - 外部ドメインの例: `yokohama-home.clinic`
 - 一人称表現: `当院`、`当クリニック`
 
-### 禁止語の正本（single source of truth）
-
-禁止語リスト本体は **`~/MyPython/check_neutrality.py` の `BANNED_WORDS` 定義が正本**。
-
-- 追加・変更は `check_neutrality.py` 側で行う
-- 本 CLAUDE.md には **方針と代表例のみ** を残し、詳細な禁止語リストは複製しない
-- 理由: CLAUDE.md と実装側で二重管理すると drift する。実装側に一本化する
+**禁止語の正本は `check_neutrality.py` の `BANNED_WORDS`**（追加・変更は実装側で行う。本 CLAUDE.md に詳細リストは複製しない）。
 
 ### 禁止事項（適用範囲）
 
@@ -157,68 +117,13 @@ secret / token / API key が必要なとき、いきなり新規発行を提案�
 ### 記事の著者・監修表記
 
 - `在宅クリニックナビ編集部` または `在宅クリニックナビ` を使う
-- 個人名を監修者として入れない（YMYL対策で必要になった場合は別途検討）
+- 個人名を監修者として入れない
 
 ### チェック手順
 
-- 記事作成・更新時: `python ~/MyPython/check_neutrality.py --site .` を実行（cwd がこの repo の場合）
+- 記事作成・更新時: `python ~/MyPython/check_neutrality.py --site .` を実行
 - MyPython 側から両方検査: `python ~/MyPython/check_neutrality.py --all`
 - `build_site.py` 実行時: 禁止語が含まれていると自動でビルドが停止する
-- git commit 時: pre-commit hook が自動で `~/MyPython/check_neutrality.py` を呼ぶ（`tools/hooks/pre-commit`）
-
----
-
-## 作業方針
-
-### 基本姿勢
-- 小さく安全な変更を優先する
-- 関連のない修正を混ぜない
-- 1タスク1成果物を原則とする
-- 不明点があれば勝手に拡大解釈せず、保守的に進める
-- 「勝手に完成させる」より、「安全に前進し、人が判断しやすい状態を作る」ことを優先する
-
-### 作業前に必ず整理すること
-着手前に以下を短く明示すること。
-
-1. 目的
-2. 対象ファイル
-3. 実施内容
-4. 実施しない内容
-5. 完了条件
-6. リスク
-7. この変更を **MyPython側でやるべきか / このrepoで直接やるべきか** の判断
-
----
-
-## このrepoで自走してよい作業
-
-- 静的文言の軽微修正
-- 手作業管理ページの微修正
-- メタタグ、OGP、構造化データの軽微修正
-- 内部リンク改善
-- 軽微なUI崩れ修正
-- 画像alt、title、説明文の整理
-- sitemap / robots / canonical の**軽微な確認と提案**
-- 記事ページの追加・修正（中立性ルール厳守）
-- 既存ファイルの整形、重複除去、可読性改善
-- チェック用スクリプト・hook・CI設定の軽微改善
-
----
-
-## 提案までに留める作業
-
-以下は勝手に広範囲へ変更せず、まず提案・差分案・影響範囲整理を出すこと。
-
-- トップページ導線変更
-- 県ページ / 市区町村ページの構造変更
-- CTA変更
-- 問い合わせ導線変更
-- プラン訴求の見せ方変更
-- canonical / robots / sitemap の方針変更
-- JSON-LD の大幅な設計変更
-- パンくず構造の大幅変更
-- ファイル大量生成を伴う変更
-- テンプレート由来と思われる広域変更
 
 ---
 
@@ -240,60 +145,23 @@ secret / token / API key が必要なとき、いきなり新規発行を提案�
 
 ---
 
-## 実装ルール
+## pre-commit hook / CI
 
-- 既存の命名・トーン・構造を尊重する
-- ハードコードを増やしすぎない
-- 再生成で消える変更を無自覚に入れない
-- コメントは必要最小限にする
-- 無関係な整形だけの変更を混ぜない
-- 「ついで修正」はしない
-- generated と source of truth のズレを生む変更は避ける
+clone または別PC での作業開始時に一度だけ hook を設置する（`bash tools/install_hooks.sh`、PowerShell では `powershell tools/install_hooks.ps1`）。hook 本体は repo 管理済み。hook 未設置・`--no-verify` 使用時も CI（GitHub Actions）が禁止語を自動検出する（二重チェック体制）。
 
 ---
 
-## 確認ルール
+## Pre-Deploy Validation 詳細（在宅クリニックナビ gh-pages）
 
-変更後は可能な範囲で以下を確認すること。
+デプロイ前に必ず確認する（global CLAUDE.md の原則を具体化）。zaitaku-deploy skill 経由が前提（skill が件数監査を処理フローに組込み済）。
 
-- 影響ファイル一覧
-- 影響ページ一覧
-- 中立性ルール違反の有無
-- リンク切れの有無
-- メタタグ / JSON-LD / canonical の破綻有無
-- 生成物repo直接修正として妥当かどうか
-- 再生成時に消える変更でないか
+### 異常の目安と停止条件
 
-必要に応じて以下も実行すること。
+- 総件数が前回比で数百件以上減少（意図しない場合）
+- 特定エリアで急激な減少（例：都筑区 24→8 など）
+- 個別ページ数と検索 JSON 件数の不一致
 
-```bash
-python ~/MyPython/check_neutrality.py --site .   # この repo 側を検査
-# または
-python ~/MyPython/check_neutrality.py --all      # MyPython + このrepo の両方を検査
-```
-
----
-
-## pre-commit hook セットアップ
-
-clone / 別PC で作業を始めるときに一度だけ実行する:
-
-```bash
-bash tools/install_hooks.sh      # Git Bash / WSL
-# または
-powershell tools/install_hooks.ps1   # PowerShell
-```
-
-hook 本体は `tools/hooks/pre-commit` にリポジトリ管理されている。
-
----
-
-## CI（GitHub Actions）
-
-blog/ guide/ の変更を含む push / PR で GitHub Actions が禁止語チェックを自動実行する。
-ローカル hook をすり抜けた場合（hook 未設置、`--no-verify` 使用等）でも CI で検出される。
-
-チェック体制: **ローカル pre-commit hook + CI の二重チェック**
+異常があれば git push / デプロイを中止し、原因を特定してから再 build する。「デプロイ成功」ではなく「データが正しい状態で公開されている」ことを成功とする。
 
 ---
 
@@ -324,37 +192,3 @@ blog/ guide/ の変更を含む push / PR で GitHub Actions が禁止語チェ�
 - 上記に当てはまらない変更（tools/、hook設定等） → **implementer**（global）
 - 複数ステップの作業分解 → **orchestrator**（global）
 - 成果物のレビュー → **reviewer**（global）
-
----
-
-## Pre-Deploy Validation 詳細（在宅クリニックナビ gh-pages）
-
-デプロイ前に必ず以下を確認する（global CLAUDE.md の原則を具体化したもの）。
-
-### チェック項目
-
-- build後の総件数（検索JSON）
-- 都道府県ページの件数（例：神奈川県）
-- 特定市区町村の件数（例：横浜市都筑区）
-- 個別ページ数と検索JSONの一致
-
-### 確認方法
-
-- grep / カウントスクリプト
-- spot check（3〜5件の個別ページ目視確認）
-- 前回 build との差分確認
-
-### 異常の目安
-
-- 総件数が前回比で数百件以上減少（意図しない場合）
-- 特定エリアで急激な減少（例：都筑区 24→8 など）
-- 個別ページ数と検索JSON件数の不一致
-
-### 異常があれば
-
-- git push / デプロイを中止
-- 原因を特定してから再 build
-
-### 原則
-
-「デプロイ成功」ではなく「データが正しい状態で公開されている」ことを成功とする。
