@@ -325,3 +325,13 @@ footer a { color: #aaa; }
 .apply-form-alt-link { display: block; text-align: center; margin-top: 12px; font-size: 0.88em; color: #555; }
 .apply-form-free-link { font-size: 0.85em; color: #555; margin-top: 12px; padding: 10px 14px; background: #fafafa; border-left: 3px solid #1a6e3c; border-radius: 6px; }
 .apply-form-free-link a { color: #1a6e3c; font-weight: 600; }
+
+/* === 特集 PR 枠（広告、中立検索結果と独立。営業前監査 B-001 対応 2026-06-06） === */
+.pr-spot-section { background: #fffdf5; border: 2px solid #f9c95c; border-radius: 12px; padding: 16px; margin: 16px 0 24px 0; }
+.pr-spot-header { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px dashed #f9c95c; }
+.pr-spot-badge { background: #d97706; color: white; font-weight: bold; padding: 2px 10px; border-radius: 4px; font-size: 13px; }
+.pr-spot-title { font-weight: bold; color: #92400e; font-size: 15px; }
+.pr-spot-note { font-size: 12px; color: #92400e; width: 100%; }
+.pr-spot-cards { display: grid; grid-template-columns: 1fr; gap: 8px; }
+.pr-spot-card { background: #fff; border: 1px solid #f9c95c; }
+
