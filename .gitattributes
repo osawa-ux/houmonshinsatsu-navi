@@ -1,0 +1,23 @@
+# .gitattributes — houmonshinsatsu-navi
+# B-012/git: HTML等をテキストとして明示し、diffビューア(VS Code/GitHub)の「Bin」誤判定を抑止する。
+# 追加背景: build_site.py が毎回全ファイル再生成するため長大行(Google Maps photo URL等)を含むHTMLが
+# 大量diff対象になり、.gitattributes 未設定 + 長大行の組み合わせでビューアが「Bin」と表示していた。
+# core git はテキスト扱いであり、本設定はビューア誤判定の是正が目的。
+
+*.html  text eol=lf diff=html
+*.css   text eol=lf
+*.js    text eol=lf
+*.json  text eol=lf
+*.svg   text eol=lf
+*.xml   text eol=lf
+*.txt   text eol=lf
+*.md    text eol=lf
+
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.webp  binary
+*.ico   binary
+*.gif   binary
+*.woff  binary
+*.woff2 binary
