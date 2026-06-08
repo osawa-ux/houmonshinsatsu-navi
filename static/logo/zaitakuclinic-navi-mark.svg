@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="在宅クリニックナビ シンボルマーク">
+  <title>在宅クリニックナビ Mark</title>
+  <g transform="translate(15, 15)">
+    <path d="M65 5 L125 55 L125 125 L5 125 L5 55 Z"
+          fill="#1a6e3c" stroke="#1a6e3c" stroke-width="2" stroke-linejoin="round"/>
+    <g transform="translate(65, 90)">
+      <rect x="-9" y="-28" width="18" height="56" fill="#ffffff" rx="2"/>
+      <rect x="-28" y="-9" width="56" height="18" fill="#ffffff" rx="2"/>
+    </g>
+  </g>
+</svg>

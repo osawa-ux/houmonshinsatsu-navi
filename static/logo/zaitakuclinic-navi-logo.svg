@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 200" width="880" height="200" role="img" aria-label="在宅クリニックナビ 全国の在宅医療クリニック検索">
+  <title>在宅クリニックナビ</title>
+  <desc>Official logo: 在宅クリニックナビ - 全国の在宅医療クリニック検索</desc>
+
+  <!-- Icon: 家+医療クロス -->
+  <g transform="translate(20, 30)">
+    <!-- house outline -->
+    <path d="M70 10 L130 60 L130 130 L10 130 L10 60 Z"
+          fill="#1a6e3c" stroke="#1a6e3c" stroke-width="2" stroke-linejoin="round"/>
+    <!-- house roof highlight -->
+    <path d="M70 10 L130 60 L10 60 Z" fill="#1a6e3c"/>
+    <!-- medical cross (white, inside house) -->
+    <g transform="translate(70, 95)">
+      <rect x="-8" y="-26" width="16" height="52" fill="#ffffff" rx="2"/>
+      <rect x="-26" y="-8" width="52" height="16" fill="#ffffff" rx="2"/>
+    </g>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(180, 0)" font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif">
+    <text x="0" y="100" font-size="64" font-weight="700" fill="#1a6e3c" letter-spacing="2">
+      在宅クリニックナビ
+    </text>
+    <text x="2" y="140" font-size="22" font-weight="400" fill="#3a3a3a" letter-spacing="3">
+      全国の在宅医療クリニック検索
+    </text>
+  </g>
+</svg>
