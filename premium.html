@@ -94,10 +94,6 @@
       <div style="font-size:13px;color:#555;">患者さんご家族・ケアマネジャーからの問い合わせを受信できます。問い合わせ通知の優先メール配信機能は順次提供予定です。</div>
     </div>
     <div style="background:white;border-radius:10px;padding:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-top:4px solid #1a6e3c;">
-      <div style="font-weight:bold;color:#1a6e3c;margin-bottom:8px;">24時間訪問診療体制の表示</div>
-      <div style="font-size:13px;color:#555;">夜間・休日を含む訪問診療体制の有無を分かりやすく表示できます。急変時の相談先として認識されやすくなります。</div>
-    </div>
-    <div style="background:white;border-radius:10px;padding:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-top:4px solid #1a6e3c;">
       <div style="font-weight:bold;color:#1a6e3c;margin-bottom:8px;">看取り・緩和ケア対応の表示</div>
       <div style="font-size:13px;color:#555;">看取り対応や緩和ケア対応の可否を掲載できます。終末期の支援を必要とする患者さんの相談につながりやすくなります。</div>
     </div>
@@ -172,12 +168,6 @@
         <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
         <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
       </tr>
-      <tr style="background:white;border-bottom:1px solid #eee;">
-        <td style="padding:10px 14px;">24時間訪問診療体制の表示</td>
-        <td style="padding:10px 14px;text-align:center;color:#ccc;font-weight:bold;">&#x2014;</td>
-        <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
-        <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
-      </tr>
       <tr style="background:#fafafa;border-bottom:1px solid #eee;">
         <td style="padding:10px 14px;">看取り・緩和ケア対応の表示</td>
         <td style="padding:10px 14px;text-align:center;color:#ccc;font-weight:bold;">&#x2014;</td>
@@ -222,7 +212,7 @@
       </tr>
     </tbody>
   </table>
-  <p style="font-size:12px;color:#888;margin-bottom:16px;">※「24時間訪問診療体制」「看取り・緩和ケア対応」「掲載情報確認済み」は、掲載申請内容および事務局確認に基づき表示します。</p>
+  <p style="font-size:12px;color:#888;margin-bottom:16px;">※「看取り・緩和ケア対応」「掲載情報確認済み」は、掲載申請内容および事務局確認に基づき表示します。</p>
   <div style="background:#f8f8f8;border-radius:8px;padding:14px 20px;margin-bottom:32px;font-size:13px;color:#666;">
     まずはフリープランで掲載を始めて、必要に応じてスタンダードプラン・プレミアムプランへ切り替えることもできます。<br>
     <a href="/register-free.html" style="color:#1a6e3c;">フリープランの申し込みはこちら →</a>
@@ -326,17 +316,17 @@
   </div>
 
   <!-- 申込フォーム（I3: 2段階化 Step 1 — クリニック名+メール+プラン のみ） -->
-  <h2 id="apply">スタンダードプラン / プレミアムプランの仮申込フォーム</h2>
+  <h2 id="apply">スタンダードプラン / プレミアムプランのお申し込みフォーム</h2>
   <script>gev('start_paid_application');</script>
 
   <form class="apply-form apply-form-step1" action="https://formspree.io/f/maqppend" method="POST" id="premiumForm">
-    <h3 class="apply-form-title">仮申込フォーム</h3>
-    <p class="apply-form-subtitle">下記 3 項目のみで仮申込いただけます。詳細情報（受入状況・対応体制・訪問エリア等）は、事務局からのご連絡後、会員管理ページから後ほど入力いただけます。</p>
-    <p style="font-size:12px;color:#666;margin-bottom:4px;">仮申込には<a href="/listing-terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;">医療機関向け掲載規約</a>・<a href="/terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;">利用規約</a>・<a href="/privacy.html" target="_blank" rel="noopener" style="color:#1a6e3c;">個人情報保護方針</a>への同意が必要です。</p>
+    <h3 class="apply-form-title">お申し込みフォーム</h3>
+    <p class="apply-form-subtitle">下記 3 項目のみでお申し込みいただけます。詳細情報（受入状況・対応体制・訪問エリア等）は、事務局からのご連絡後、会員管理ページから後ほど入力いただけます。</p>
+    <p style="font-size:12px;color:#666;margin-bottom:4px;">お申し込みには<a href="/listing-terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;">医療機関向け掲載規約</a>・<a href="/terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;">利用規約</a>・<a href="/privacy.html" target="_blank" rel="noopener" style="color:#1a6e3c;">個人情報保護方針</a>への同意が必要です。</p>
 
     <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
     <input type="hidden" name="type" value="paid_plan_application_step1">
-    <input type="hidden" name="_subject" value="【在宅クリニックナビ】有料プラン仮申込">
+    <input type="hidden" name="_subject" value="【在宅クリニックナビ】有料プラン申込">
 
     <label>
       <span class="form-label">クリニック名 <em>必須</em></span>
@@ -361,13 +351,13 @@
       <div style="background:#fafafa;border:1px solid #eee;border-radius:8px;padding:12px 16px;margin:16px 0;">
         <label style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:#333;cursor:pointer;">
           <input type="checkbox" name="consent" value="agreed" required style="margin-top:3px;flex-shrink:0;">
-          <span><a href="/privacy.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">個人情報保護方針</a>・<a href="/terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">利用規約</a>・<a href="/listing-terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">掲載規約</a>に同意のうえ、上記内容で仮申込します。<span style="color:#c00;">※必須</span></span>
+          <span><a href="/privacy.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">個人情報保護方針</a>・<a href="/terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">利用規約</a>・<a href="/listing-terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">掲載規約</a>に同意のうえ、上記内容で申し込みます。<span style="color:#c00;">※必須</span></span>
         </label>
       </div>
 
-    <button type="submit" class="apply-form-submit" onclick="gev('submit_paid_application',{step:1})">仮申込する</button>
+    <button type="submit" class="apply-form-submit" onclick="gev('submit_paid_application',{step:1})">申し込む</button>
 
-    <p class="apply-form-note">仮申込後、2〜3 営業日以内に事務局から確認メールをお送りします。料金請求は会員登録後の決済時のみ発生します。詳細情報（訪問エリア・対応疾患・受入状況等）は会員ページから後ほどご対応いただけます。</p>
+    <p class="apply-form-note">送信後、2〜3 営業日以内に事務局から確認メールをお送りします。料金請求は会員登録後の決済時のみ発生します。詳細情報（訪問エリア・対応疾患・受入状況等）は会員ページから後ほどご対応いただけます。</p>
   </form>
 
   <a class="apply-form-alt-link" href="/contact-clinic.html" onclick="gev('click_detailed_form',{source:'premium'})">詳細情報を最初から入力したい方はこちら →</a>
@@ -395,12 +385,12 @@
         window.location.href = '/premium-thanks.html';
       } else {
         btn.disabled = false;
-        btn.textContent = '仮申込する';
+        btn.textContent = '申し込む';
         alert('送信に失敗しました。しばらくしてから再度お試しください。');
       }
     }).catch(function() {
       btn.disabled = false;
-      btn.textContent = '仮申込する';
+      btn.textContent = '申し込む';
       alert('送信に失敗しました。ネットワーク接続をご確認ください。');
     });
   });

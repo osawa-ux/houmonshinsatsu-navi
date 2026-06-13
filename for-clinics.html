@@ -54,67 +54,26 @@
 
 <nav class="breadcrumb"><a href="/">トップ</a> &gt; 医療機関の方へ</nav>
 <div class="container">
-  <h1>訪問診療クリニックの掲載・情報修正をご希望の医療機関の方へ</h1>
-  <p style="margin-bottom:28px;color:#444;">在宅クリニックナビは、全国47都道府県・約15,759件の訪問診療所を掲載する在宅医療ポータルです。ケアマネジャー・患者ご家族に訪問診療クリニックを届ける検索サービスとして、月額¥55,000〜の有料プラン（詳細はプラン一覧をご参照ください）で継続的な掲載導線を整えます。<br>掲載はフリープラン（0円）から始められます。</p>
+  <h1>貴院の掲載情報を、無料で確認・充実できます</h1>
+  <p style="margin-bottom:28px;color:#444;">在宅クリニックナビは、全国47都道府県・約15,759件の訪問診療所を掲載する在宅医療ポータルです。貴院もすでに掲載されている場合があります。掲載内容の確認・修正・写真や紹介文の充実は、すべて無料です。ケアマネジャー・患者ご家族に貴院の情報を届けます。</p>
 
   <!-- B2B 成果可視化 (GA4 直近30日) -->
   <section class="b2b-metrics" aria-label="掲載ポータルの実績"><h2 class="b2b-metrics-title">在宅クリニックナビの現在地</h2><div class="b2b-metrics-grid"><div class="b2b-metric-item"><span class="b2b-metric-value">15,759</span><span class="b2b-metric-label">全国掲載クリニック数</span></div><div class="b2b-metric-item"><span class="b2b-metric-value">47都道府県</span><span class="b2b-metric-label">対応都道府県</span></div><div class="b2b-metric-item"><span class="b2b-metric-value">ケアマネジャー・地域連携室・ご家族</span><span class="b2b-metric-label">主な流入元</span></div></div><p class="b2b-metrics-footnote">掲載件数は厚生労働省地方厚生局公開データに基づく全国訪問診療所の収録数です。</p></section>
 
-  <!-- I3: 仮申込フォーム（2段階化 Step 1: クリニック名+メール+プラン のみ） -->
-  <form class="apply-form apply-form-step1" action="https://formspree.io/f/xreyyene" method="POST" id="forClinicsStep1Form">
-    <h3 class="apply-form-title">仮申込フォーム</h3>
-    <p class="apply-form-subtitle">下記 3 項目のみで仮申込いただけます。詳細情報は事務局からのご連絡後、会員管理ページから後ほど入力いただけます。</p>
-    <p style="font-size:12px;color:#666;margin-bottom:4px;">仮申込には<a href="/listing-terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;">医療機関向け掲載規約</a>・<a href="/terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;">利用規約</a>・<a href="/privacy.html" target="_blank" rel="noopener" style="color:#1a6e3c;">個人情報保護方針</a>への同意が必要です。</p>
-
-    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-    <input type="hidden" name="type" value="for_clinics_step1">
-    <input type="hidden" name="_subject" value="【在宅クリニックナビ】掲載仮申込（for-clinics）">
-
-    <label>
-      <span class="form-label">クリニック名 <em>必須</em></span>
-      <input type="text" name="clinic_name" required placeholder="例: ○○クリニック">
-    </label>
-
-    <label>
-      <span class="form-label">担当者メールアドレス <em>必須</em></span>
-      <input type="email" name="email" required placeholder="example@clinic.jp">
-    </label>
-
-    <label>
-      <span class="form-label">希望プラン <em>必須</em></span>
-      <select name="plan" required>
-        <option value="">選択してください</option>
-        <option value="standard">スタンダードプラン</option>
-        <option value="premium">プレミアムプラン</option>
-        <option value="undecided">まだ決めていない</option>
-      </select>
-    </label>
-
-      <div style="background:#fafafa;border:1px solid #eee;border-radius:8px;padding:12px 16px;margin:16px 0;">
-        <label style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:#333;cursor:pointer;">
-          <input type="checkbox" name="consent" value="agreed" required style="margin-top:3px;flex-shrink:0;">
-          <span><a href="/privacy.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">個人情報保護方針</a>・<a href="/terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">利用規約</a>・<a href="/listing-terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">掲載規約</a>に同意のうえ、上記内容で仮申込します。<span style="color:#c00;">※必須</span></span>
-        </label>
-      </div>
-
-    <button type="submit" class="apply-form-submit" onclick="gev('submit_for_clinics_step1')">仮申込する</button>
-
-    <p class="apply-form-note">仮申込後、2〜3 営業日以内に事務局から確認メールをお送りします。詳細情報（訪問エリア・対応疾患等）は会員ページから後ほどご対応いただけます。</p>
-
-    <p class="apply-form-free-link">
-      ※ 無料掲載をご希望の方は <a href="/register-free.html">無料掲載申請フォーム</a> からご登録ください（このフォームは有料プラン用です）。
-    </p>
-  </form>
-
-  <a class="apply-form-alt-link" href="/contact-clinic.html" onclick="gev('click_detailed_form',{source:'for_clinics'})">詳細情報を最初から入力したい方はこちら →</a>
-
+  <!-- 無料の第一CTAヒーロー（intro/メトリクス直後） -->
+  <div style="background:#f0f7f2;border:2px solid #1a6e3c;border-radius:12px;padding:28px;margin-bottom:32px;text-align:center;">
+    <h2 style="border:none;margin-top:0;color:#1a6e3c;">貴院はすでに掲載されているかもしれません</h2>
+    <p style="font-size:15px;color:#444;margin-bottom:20px;">在宅クリニックナビは公開情報をもとに全国の訪問診療クリニックを掲載しています。掲載内容の確認・修正、写真や紹介文の充実は、すべて<strong>無料</strong>です。</p>
+    <a href="/register-free.html" style="display:inline-block;background:#1a6e3c;color:#fff;padding:16px 40px;border-radius:8px;text-decoration:none;font-size:17px;font-weight:bold;" onclick="gev('click_free_register',{source:'for_clinics_hero'})">無料で掲載情報を確認・充実する →</a>
+    <p style="font-size:12px;color:#888;margin-top:12px;">費用は一切かかりません。入力は数分で完了します。</p>
+  </div>
 
   <!-- 掲載までの流れ（3ステップ） -->
   <h2>掲載までの流れ</h2>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px;">
     <div style="background:white;border-radius:10px;padding:24px;box-shadow:0 2px 6px rgba(0,0,0,0.08);text-align:center;">
       <div style="font-size:2em;color:#1a6e3c;margin-bottom:8px;">1</div>
-      <div style="font-weight:bold;color:#1a6e3c;margin-bottom:8px;">掲載申込</div>
+      <div style="font-weight:bold;color:#1a6e3c;margin-bottom:8px;">掲載の確認・申込</div>
       <div style="font-size:13px;color:#555;">掲載申込フォームから必要事項をご入力ください。</div>
     </div>
     <div style="background:white;border-radius:10px;padding:24px;box-shadow:0 2px 6px rgba(0,0,0,0.08);text-align:center;">
@@ -135,7 +94,7 @@
   <!-- 無料掲載の説明 -->
   <h2>無料掲載でできること</h2>
   <div style="background:white;border-radius:10px;padding:24px;box-shadow:0 2px 6px rgba(0,0,0,0.08);margin-bottom:32px;">
-    <p style="font-size:15px;color:#444;margin-bottom:12px;">公開情報に基づく基本的な掲載です。クリニック名・住所・電話番号・訪問エリア・対応疾患などが掲載されます。</p>
+    <p style="font-size:15px;color:#444;margin-bottom:12px;">公開情報に基づき、クリニック名・住所・電話番号・訪問エリア・対応疾患などを掲載しています。受入状況などのより詳しい情報の追加・修正も無料です。</p>
     <p style="font-size:14px;color:#555;margin-bottom:16px;">掲載情報の修正・写真追加・紹介文の充実も無料で申請いただけます。</p>
     <a href="/register-free.html" style="display:inline-block;background:#1a6e3c;color:white;padding:12px 28px;border-radius:6px;text-decoration:none;font-size:15px;font-weight:bold;">無料で掲載情報を充実させる</a>
   </div>
@@ -156,6 +115,10 @@
       <p style="margin:8px 0 0 16px;font-size:14px;color:#555;">公開情報に基づき自動的に掲載されている場合があります。掲載情報の充実や修正は<a href="/register-free.html">こちら</a>からお申し込みいただけます。</p>
     </details>
   </div>
+
+  <!-- さらに充実させたい方へ（有料プラン）セクション -->
+  <h2>さらに充実させたい方へ（有料プラン）</h2>
+  <p style="font-size:14px;color:#555;margin-bottom:16px;">掲載と情報の確認・充実は無料です。より目立たせたい・詳しく見せたい方には、スタンダード／プレミアムプランもご用意しています。</p>
 
   <!-- プラン比較表 (Q-5) -->
   <h2>掲載プランの比較</h2>
@@ -207,12 +170,6 @@
           <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
           <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
         </tr>
-        <tr style="background:white;border-bottom:1px solid #eee;">
-          <td style="padding:10px 14px;">24時間訪問診療体制の表示</td>
-          <td style="padding:10px 14px;text-align:center;color:#ccc;font-weight:bold;">&#x2014;</td>
-          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
-          <td style="padding:10px 14px;text-align:center;color:#1a6e3c;font-weight:bold;">&#x25cb;</td>
-        </tr>
         <tr style="background:#fafafa;border-bottom:1px solid #eee;">
           <td style="padding:10px 14px;">看取り・緩和ケア対応の表示</td>
           <td style="padding:10px 14px;text-align:center;color:#ccc;font-weight:bold;">&#x2014;</td>
@@ -258,8 +215,57 @@
       </tbody>
     </table>
   </div>
-  <p style="font-size:12px;color:#888;margin-bottom:8px;">※「24時間訪問診療体制」「看取り・緩和ケア対応」「掲載情報確認済み」は、掲載申請内容および事務局確認に基づき表示します。</p>
+  <p style="font-size:12px;color:#888;margin-bottom:8px;">※「看取り・緩和ケア対応」「掲載情報確認済み」は、掲載申請内容および事務局確認に基づき表示します。</p>
   <p style="font-size:12px;color:#888;margin-bottom:24px;">年額契約は月額10か月分の料金で12か月ご利用いただけます。支払方法はクレジットカード決済。詳細は<a href="/premium.html" style="color:#1a6e3c;" onclick="gev('click_paid_plan',{source:'for_clinics_plan_table'})">プランページ</a>・<a href="/tokushoho.html" style="color:#1a6e3c;">特定商取引法に基づく表記</a>をご確認ください。</p>
+
+  <!-- 有料プラン申込フォーム（比較表の直後・有料セクション内） -->
+  <form class="apply-form apply-form-step1" action="https://formspree.io/f/xreyyene" method="POST" id="forClinicsStep1Form">
+    <h3 class="apply-form-title">お申し込みフォーム</h3>
+    <p class="apply-form-subtitle">下記 3 項目のみでお申し込みいただけます。詳細情報は事務局からのご連絡後、会員管理ページから後ほど入力いただけます。</p>
+    <p style="font-size:12px;color:#666;margin-bottom:4px;">お申し込みには<a href="/listing-terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;">医療機関向け掲載規約</a>・<a href="/terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;">利用規約</a>・<a href="/privacy.html" target="_blank" rel="noopener" style="color:#1a6e3c;">個人情報保護方針</a>への同意が必要です。</p>
+
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+    <input type="hidden" name="type" value="for_clinics_step1">
+    <input type="hidden" name="_subject" value="【在宅クリニックナビ】掲載申込（for-clinics）">
+
+    <label>
+      <span class="form-label">クリニック名 <em>必須</em></span>
+      <input type="text" name="clinic_name" required placeholder="例: ○○クリニック">
+    </label>
+
+    <label>
+      <span class="form-label">担当者メールアドレス <em>必須</em></span>
+      <input type="email" name="email" required placeholder="example@clinic.jp">
+    </label>
+
+    <label>
+      <span class="form-label">希望プラン <em>必須</em></span>
+      <select name="plan" required>
+        <option value="">選択してください</option>
+        <option value="standard">スタンダードプラン</option>
+        <option value="premium">プレミアムプラン</option>
+        <option value="undecided">まだ決めていない</option>
+      </select>
+    </label>
+
+      <div style="background:#fafafa;border:1px solid #eee;border-radius:8px;padding:12px 16px;margin:16px 0;">
+        <label style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:#333;cursor:pointer;">
+          <input type="checkbox" name="consent" value="agreed" required style="margin-top:3px;flex-shrink:0;">
+          <span><a href="/privacy.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">個人情報保護方針</a>・<a href="/terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">利用規約</a>・<a href="/listing-terms.html" target="_blank" rel="noopener" style="color:#1a6e3c;text-decoration:underline;">掲載規約</a>に同意のうえ、上記内容で申し込みます。<span style="color:#c00;">※必須</span></span>
+        </label>
+      </div>
+
+    <button type="submit" class="apply-form-submit" onclick="gev('submit_for_clinics_step1')">申し込む</button>
+
+    <p class="apply-form-note">送信後、2〜3 営業日以内に事務局から確認メールをお送りします。料金請求は会員登録後の決済時のみ発生します。詳細情報（訪問エリア・対応疾患等）は会員ページから後ほどご対応いただけます。</p>
+
+    <p class="apply-form-free-link">
+      ※ 無料掲載をご希望の方は <a href="/register-free.html">無料掲載申請フォーム</a> からご登録ください（このフォームは有料プラン用です）。
+    </p>
+  </form>
+
+  <a class="apply-form-alt-link" href="/contact-clinic.html" onclick="gev('click_detailed_form',{source:'for_clinics'})">詳細情報を最初から入力したい方はこちら →</a>
+
 
   <!-- スタンダード/プレミアムプランのご案内（ソフトなトーン） -->
   <div style="background:white;border-radius:10px;padding:24px;box-shadow:0 2px 6px rgba(0,0,0,0.08);margin-bottom:24px;border-left:4px solid #2a5a8c;">
@@ -268,7 +274,6 @@
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
       <span style="background:#f0f3f7;color:#555;padding:4px 12px;border-radius:16px;font-size:13px;">新規受入状況の公開</span>
       <span style="background:#f0f3f7;color:#555;padding:4px 12px;border-radius:16px;font-size:13px;">問い合わせ優先通知</span>
-      <span style="background:#f0f3f7;color:#555;padding:4px 12px;border-radius:16px;font-size:13px;">24時間訪問診療</span>
       <span style="background:#f0f3f7;color:#555;padding:4px 12px;border-radius:16px;font-size:13px;">確認済みバッジ</span>
       <span style="background:#f0f3f7;color:#555;padding:4px 12px;border-radius:16px;font-size:13px;">月次集患レポート PDF</span>
       <span style="background:#f0f3f7;color:#555;padding:4px 12px;border-radius:16px;font-size:13px;">ケアマネ向け配布資料 PDF</span>
@@ -305,15 +310,15 @@
       headers: { 'Accept': 'application/json' }
     }).then(function(res) {
       if (res.ok) {
-        window.location.href = '/premium-thanks.html';  // T1: 有料プラン仮申込フォームのリダイレクト先を修正（premium-thanks に統一）
+        window.location.href = '/premium-thanks.html';  // T1: 有料プラン申込フォームのリダイレクト先を修正（premium-thanks に統一）
       } else {
         btn.disabled = false;
-        btn.textContent = '仮申込する';
+        btn.textContent = '申し込む';
         alert('送信に失敗しました。しばらくしてから再度お試しください。');
       }
     }).catch(function() {
       btn.disabled = false;
-      btn.textContent = '仮申込する';
+      btn.textContent = '申し込む';
       alert('送信に失敗しました。ネットワーク接続をご確認ください。');
     });
   });

@@ -120,6 +120,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .clinic-badges .badge-kyoka1 { background: #e3f2fd; color: #0d47a1; }
 .clinic-badges .badge-kyoka2 { background: #e3f2fd; color: #0d47a1; }
 .clinic-badges .badge-kyoka3 { background: #e1f5fe; color: #01579b; }
+.clinic-badges .badge-24h-zaishi { background: #fffbeb; color: #92600a; border: 1px solid #f59e0b; }
 
 /* Phase A: 対応疾患・対応機器タグ（クリニック詳細ページ） */
 .clinic-tags { display: flex; flex-wrap: wrap; gap: 4px 6px; margin: 8px 0 16px; }
