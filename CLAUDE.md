@@ -6,6 +6,12 @@
 
 ---
 
+## 反復実装ループ（loop-engineering）
+
+ポータルの**反復/一気通貫の実装・改修指示**を受けたら、まず vault `70_SOP/loop-engineering.md` を Read しその型に従う（§0.5 開始前提ゲート → 各周 入口/実装/検証/止血/引き継ぎ/報告 → 人間確認キューは Project index に永続 → §5 不可逆ライン〔本番 deploy・外部送信〕でのみ停止し院長 go。UI は design-base.md＋各サイト第2層 design.md を参照）。**ただし恒久的な実装の正本は MyPython 側**（本 repo は生成物）。本 repo 直接の反復実装は緊急 hotfix に限る。
+
+---
+
 ## このリポジトリの位置づけ（MyPython との責任境界）
 
 - このリポジトリは **GitHub Pages 公開用の静的サイト本体**（生成物 repo）
