@@ -216,6 +216,7 @@ footer a { color: #aaa; }
 .footer-legal { display: flex; flex-wrap: wrap; gap: 4px 12px; }
 .footer-copyright { color: #aaa; font-size: 0.8em; }
 .portal-network { grid-column: 1 / -1; margin-top: 8px; padding-top: 16px; border-top: 1px solid #555; }
+.nearby-search-heading { font-size: 1.05em; color: #444; font-weight: normal; margin: 4px 0 12px; border: none; padding: 0; }
 .portal-network h3 { font-weight: bold; color: #ddd; margin-bottom: 10px; font-size: 0.95em; }
 .portal-network ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
 .portal-network li { font-size: 0.88em; line-height: 1.5; }
