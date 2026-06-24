@@ -15,6 +15,11 @@ header a { color: white; }
 /* ナビ */
 nav.breadcrumb { background: #eee; padding: 8px 16px; font-size: 0.85em; }
 nav.breadcrumb a { color: #555; }
+/* a11y: link-in-text-block 対応 — パンくず・テーブル内リンクは persistent 下線で色以外のシグナルを付与。
+   listing カードの .clinic-name a / .clinic-tel a / .pref-link chip・ヘッダー(header a)・CTA ボタン(.cta-btn)には波及しない（class セレクタが別系統 / .cta-btn は text-decoration:none !important）。
+   一方、clinic 詳細「基本情報」テーブルの素の td a（電話 tel: / 公式サイト / 都道府県リンク）には table td a で意図的に下線を付与する（本物の機能リンクのため a11y 上望ましい）。 */
+nav.breadcrumb a { text-decoration: underline; }
+table td a { text-decoration: underline; }
 
 /* メインコンテンツ */
 .container { max-width: 1100px; margin: 0 auto; padding: 20px 16px; }
