@@ -74,6 +74,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .clinic-hero-photo { display: block; width: 100%; max-width: 400px; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; margin-bottom: 16px; background: #f0f0f0; font-size: 0; color: transparent; overflow: hidden; }
 .clinic-hero-photo--placeholder { object-fit: contain; padding: 24px; background: #f0f7f2; }
 
+/* 案A（2026-07-04 院長採用決定）: 写真なしカードは画像枠を撤去しコンパクトな横組みに。
+   modifier class は生成側（make_clinic_card）で photo の有無に応じて付与する（:has() 非依存）。
+   写真ありカードは本ルールの対象外＝従来のサムネイル付きレイアウトを維持。 */
+.clinic-card--noimg { flex-direction: column; gap: 4px; padding: 14px 18px; }
+.clinic-card--noimg .clinic-photo--placeholder { display: none; }
+.clinic-card--noimg .clinic-info { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 14px; row-gap: 4px; }
+.clinic-card--noimg .clinic-name { font-size: 1.02em; margin: 0; flex: 1 1 auto; min-width: 160px; }
+.clinic-card--noimg .clinic-meta { margin: 0; gap: 6px; }
+.clinic-card--noimg .clinic-address { margin: 0; flex-basis: 100%; order: 3; }
+.clinic-card--noimg .visit-areas { margin: 0; flex-basis: 100%; order: 4; }
+.clinic-card--noimg .clinic-tel { margin: 0; }
+.clinic-card--noimg .clinic-tel a { padding: 4px 10px; font-size: 0.9em; }
+
 /* 訪問対応エリア（カード内・小さめ） */
 .visit-areas { font-size: 0.78em; color: #555; margin: 6px 0 0; line-height: 1.5; }
 .visit-areas-label { font-weight: bold; color: #1a6e3c; margin-right: 6px; }
@@ -284,6 +297,7 @@ footer a { color: #aaa; }
     .top-hero-search select { width: 100%; }
     .clinic-photo { width: 100%; height: 200px; }
     .clinic-photo--placeholder { padding: 16px; }
+    .clinic-card--noimg .clinic-name { flex-basis: 100%; }
     .clinic-tel a { display: block; text-align: center; padding: 12px; font-size: 1.05em; }
     .cta-btn { display: block; width: 100%; margin: 6px 0; }
     .footer-inner { grid-template-columns: 1fr; }
@@ -361,3 +375,9 @@ footer a { color: #aaa; }
 /* === データ件数注記 / 訪問エリア未登録状態フック === */
 .data-count-note { font-size: 0.85em; color: #666; margin: 4px 0 12px; }
 .visit-areas-section--empty { /* visit-areas-section の未登録状態 visual hook（現状 base と同値）。将来の差分スタイル追加に備える */ }
+
+/* 案B（2026-07-04 院長採用決定）: 詳細ページの「未公開」「未登録」を電話確認の行動導線に転化する際の muted 表現。
+   明度を落として消すのではなく装飾（bold・強調色）を弱めて表現し、WCAG AA コントラスト4.5:1を維持する
+   （#767676 は白背景で 4.54:1）。電話番号がある場合のみ適用し、番号が無いクリニックは従来の素の表示を維持する。 */
+.muted-row-label { color: #767676; font-weight: normal; }
+.muted-cta { color: #1a6e3c; font-weight: bold; display: inline-flex; align-items: center; min-height: 44px; padding: 4px 0; }
