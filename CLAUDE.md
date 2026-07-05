@@ -2,7 +2,7 @@
 
 在宅クリニックナビ（zaitakuclinic-navi.com）の静的サイト本体。GitHub Pages でホスティング。
 
-このリポジトリは主に **静的出力物の配置先（生成物 repo）** であり、サイト生成の主処理と正本ロジックは `~/MyPython/` が担う。
+このリポジトリは主に **静的出力物の配置先（生成物 repo）** であり、サイト生成の主処理と正本ロジックは `~/projects/MyPython/` が担う。
 
 ---
 
@@ -16,7 +16,7 @@
 
 - このリポジトリは **GitHub Pages 公開用の静的サイト本体**（生成物 repo）
 - サイト生成の **正本ロジックは MyPython 側**（`build_site.py` / `check_neutrality.py` / `audit_*.py` / `site_config*.json` 等）
-- HTML / sitemap / data の多くは `~/MyPython/build_site.py` が生成する
+- HTML / sitemap / data の多くは `~/projects/MyPython/build_site.py` が生成する
 - **恒久修正は原則 MyPython 側**。このrepo直接編集は緊急 hotfix または確認用途に限定する
 
 ### 責任境界の原則
@@ -38,7 +38,7 @@
 
 ## 生成物 clone 分岐リスク（本番反映前の注意）
 
-deploy 経路上、houmonshinsatsu-navi の実体は `~/houmonshinsatsu-navi/`（日常作業用）と `~/MyPython/site/`（deploy 用 clone）の 2 つとして存在しうる。片方で commit/push した変更がもう片方に反映されていない状態でデプロイすると意図しない巻き戻しが起きる。
+deploy 経路上、houmonshinsatsu-navi の実体は `~/projects/houmonshinsatsu-navi/`（日常作業用）と `~/projects/MyPython/site/`（deploy 用 clone）の 2 つとして存在しうる。片方で commit/push した変更がもう片方に反映されていない状態でデプロイすると意図しない巻き戻しが起きる。
 
 **停止条件**: 本番反映前に両 clone と `origin` の同期を確認する（`git fetch origin && git log --oneline HEAD..origin/<branch>` で差分確認）。大きな差分がある場合はデプロイを止め、どちらの状態が正かを確認してから進める。
 
@@ -51,9 +51,9 @@ deploy 経路上、houmonshinsatsu-navi の実体は `~/houmonshinsatsu-navi/`�
 本repoで作業を始めるとき、Claude Code は以下を最初に確認する。
 
 1. **git 状態の確認**: `git status -sb` で作業ツリー・ブランチ・upstream との差分を把握する
-2. **MyPython 側で対応できないか判断**: HTML を直接編集する前に「これは `~/MyPython/build_site.py` の生成元（テンプレ / data / site_config）修正で対応できないか」を考える
+2. **MyPython 側で対応できないか判断**: HTML を直接編集する前に「これは `~/projects/MyPython/build_site.py` の生成元（テンプレ / data / site_config）修正で対応できないか」を考える
 3. **影響範囲の把握**: 変更が sitemap / noindex / canonical / 中立性 / 内部リンク / JSON-LD に及ぶかを確認する
-4. **本番反映前チェック**: デプロイ前に build 結果（HTML 件数・sitemap 件数・検索JSON 件数の整合）と `origin/gh-pages`（および `~/MyPython/site/` 側 clone）の同期状態を確認する（global CLAUDE.md の Pre-Deploy Validation に従う）
+4. **本番反映前チェック**: デプロイ前に build 結果（HTML 件数・sitemap 件数・検索JSON 件数の整合）と `origin/gh-pages`（および `~/projects/MyPython/site/` 側 clone）の同期状態を確認する（global CLAUDE.md の Pre-Deploy Validation に従う）
 
 この4点を飛ばして直接編集を始めない。
 
@@ -127,8 +127,8 @@ secret / token / API key が必要なとき、いきなり新規発行を提案�
 
 ### チェック手順
 
-- 記事作成・更新時: `python ~/MyPython/check_neutrality.py --site .` を実行
-- MyPython 側から両方検査: `python ~/MyPython/check_neutrality.py --all`
+- 記事作成・更新時: `python ~/projects/MyPython/check_neutrality.py --site .` を実行
+- MyPython 側から両方検査: `python ~/projects/MyPython/check_neutrality.py --all`
 - `build_site.py` 実行時: 禁止語が含まれていると自動でビルドが停止する
 
 ---
