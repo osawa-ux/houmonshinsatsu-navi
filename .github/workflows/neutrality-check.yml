@@ -5,10 +5,15 @@ on:
     paths:
       - 'blog/**'
       - 'guide/**'
+      - 'tools/check_banned_words.py'
+      - '.github/workflows/neutrality-check.yml'
   pull_request:
     paths:
       - 'blog/**'
       - 'guide/**'
+      - 'tools/check_banned_words.py'
+      - '.github/workflows/neutrality-check.yml'
+  workflow_dispatch: {}
 
 jobs:
   check:
