@@ -2,36 +2,36 @@
 
 在宅クリニックナビ（zaitakuclinic-navi.com）の静的サイト本体。GitHub Pages でホスティング。
 
-このリポジトリは主に **静的出力物の配置先（生成物 repo）** であり、サイト生成の主処理と正本ロジックは `~/projects/MyPython/` が担う。
+このリポジトリは主に静的出力物の配置先（生成物 repo）であり、サイト生成の主処理と正本ロジックは `~/projects/MyPython/` が担う。
 
 ---
 
 ## 反復実装ループ（loop-engineering）
 
-ポータルの**反復/一気通貫の実装・改修指示**を受けたら、まず vault `70_SOP/loop-engineering.md` を Read しその型に従う（§0.5 開始前提ゲート → 各周 入口/実装/検証/止血/引き継ぎ/報告 → 人間確認キューは Project index に永続 → §5 不可逆ライン〔本番 deploy・外部送信〕でのみ停止し院長 go。UI は design-base.md＋各サイト第2層 design.md を参照）。**ただし恒久的な実装の正本は MyPython 側**（本 repo は生成物）。本 repo 直接の反復実装は緊急 hotfix に限る。
+ポータルの反復/一気通貫の実装・改修指示を受けたら、まず vault `70_SOP/loop-engineering.md` を Read しその型に従う（§0.5 開始前提ゲート → 各周 入口/実装/検証/止血/引き継ぎ/報告 → 人間確認キューは Project index に永続 → §5 不可逆ライン〔本番 deploy・外部送信〕でのみ停止し院長 go。UI は design-base.md＋各サイト第2層 design.md を参照）。ただし恒久的な実装の正本は MyPython 側（本 repo は生成物）。本 repo 直接の反復実装は緊急 hotfix に限る。
 
 ---
 
 ## このリポジトリの位置づけ（MyPython との責任境界）
 
-- このリポジトリは **GitHub Pages 公開用の静的サイト本体**（生成物 repo）
-- サイト生成の **正本ロジックは MyPython 側**（`build_site.py` / `check_neutrality.py` / `audit_*.py` / `site_config*.json` 等）
+- このリポジトリは GitHub Pages 公開用の静的サイト本体（生成物 repo）
+- サイト生成の正本ロジックは MyPython 側（`build_site.py` / `check_neutrality.py` / `audit_*.py` / `site_config*.json` 等）
 - HTML / sitemap / data の多くは `~/projects/MyPython/build_site.py` が生成する
-- **恒久修正は原則 MyPython 側**。このrepo直接編集は緊急 hotfix または確認用途に限定する
+- 恒久修正は原則 MyPython 側。このrepo直接編集は緊急 hotfix または確認用途に限定する
 
 ### 責任境界の原則
 
 | 作業の種類 | 作業先 | 備考 |
 |-----------|-------|------|
-| テンプレート・生成ロジック・SEO骨格・データ変換の恒久修正 | **MyPython** | 原則こちら。再生成で再現される |
-| 緊急 hotfix（公開後のタイポ・一時文言修正等） | このrepo直接編集 OK | **後日 MyPython 側へ反映が必要か要確認** |
+| テンプレート・生成ロジック・SEO骨格・データ変換の恒久修正 | MyPython | 原則こちら。再生成で再現される |
+| 緊急 hotfix（公開後のタイポ・一時文言修正等） | このrepo直接編集 OK | 後日 MyPython 側へ反映が必要か要確認 |
 | 確認用の一時編集・実験 | このrepo直接編集 OK | 本番反映前に整合を確認 |
-| 再生成で上書きされる変更（テンプレ由来と思われる広域変更） | **MyPython 経由** | このrepo直接は避ける |
+| 再生成で上書きされる変更（テンプレ由来と思われる広域変更） | MyPython 経由 | このrepo直接は避ける |
 
 ### 直接編集後のフォローアップ
 
-- このrepoを直接編集した変更は、次回の `build_site.py` 実行で **消える可能性がある**
-- 直接編集が恒久的に残るべき内容なら、**MyPython 側の生成ロジック・テンプレ・data に同等の変更を反映** させる
+- このrepoを直接編集した変更は、次回の `build_site.py` 実行で消える可能性がある
+- 直接編集が恒久的に残るべき内容なら、MyPython 側の生成ロジック・テンプレ・data に同等の変更を反映させる
 - 判断に迷う場合は、両案を比較して「より再現性が高い方」を提案する
 
 ---
@@ -40,7 +40,7 @@
 
 deploy 経路上、houmonshinsatsu-navi の実体は `~/projects/houmonshinsatsu-navi/`（日常作業用）と `~/projects/MyPython/site/`（deploy 用 clone）の 2 つとして存在しうる。片方で commit/push した変更がもう片方に反映されていない状態でデプロイすると意図しない巻き戻しが起きる。
 
-**停止条件**: 本番反映前に両 clone と `origin` の同期を確認する（`git fetch origin && git log --oneline HEAD..origin/<branch>` で差分確認）。大きな差分がある場合はデプロイを止め、どちらの状態が正かを確認してから進める。
+停止条件: 本番反映前に両 clone と `origin` の同期を確認する（`git fetch origin && git log --oneline HEAD..origin/<branch>` で差分確認）。大きな差分がある場合はデプロイを止め、どちらの状態が正かを確認してから進める。
 
 詳細: `20_Projects/zaitakuclinic-navi/gh-pages-branch-policy.md` 原則6（複数 clone の HEAD 同期）/ `70_SOP/incident-response/gh-pages-stale-clone-deploy.md`（stale clone 事故 RCA）
 
@@ -50,10 +50,10 @@ deploy 経路上、houmonshinsatsu-navi の実体は `~/projects/houmonshinsatsu
 
 本repoで作業を始めるとき、Claude Code は以下を最初に確認する。
 
-1. **git 状態の確認**: `git status -sb` で作業ツリー・ブランチ・upstream との差分を把握する
-2. **MyPython 側で対応できないか判断**: HTML を直接編集する前に「これは `~/projects/MyPython/build_site.py` の生成元（テンプレ / data / site_config）修正で対応できないか」を考える
-3. **影響範囲の把握**: 変更が sitemap / noindex / canonical / 中立性 / 内部リンク / JSON-LD に及ぶかを確認する
-4. **本番反映前チェック**: デプロイ前に build 結果（HTML 件数・sitemap 件数・検索JSON 件数の整合）と `origin/gh-pages`（および `~/projects/MyPython/site/` 側 clone）の同期状態を確認する（global CLAUDE.md の Pre-Deploy Validation に従う）
+1. git 状態の確認: `git status -sb` で作業ツリー・ブランチ・upstream との差分を把握する
+2. MyPython 側で対応できないか判断: HTML を直接編集する前に「これは `~/projects/MyPython/build_site.py` の生成元（テンプレ / data / site_config）修正で対応できないか」を考える
+3. 影響範囲の把握: 変更が sitemap / noindex / canonical / 中立性 / 内部リンク / JSON-LD に及ぶかを確認する
+4. 本番反映前チェック: デプロイ前に build 結果（HTML 件数・sitemap 件数・検索JSON 件数の整合）と `origin/gh-pages`（および `~/projects/MyPython/site/` 側 clone）の同期状態を確認する（global CLAUDE.md の Pre-Deploy Validation に従う）
 
 この4点を飛ばして直接編集を始めない。
 
@@ -100,7 +100,7 @@ deploy 経路上、houmonshinsatsu-navi の実体は `~/projects/houmonshinsatsu
 - 外部ドメインの例: `yokohama-home.clinic`
 - 一人称表現: `当院`、`当クリニック`
 
-**禁止語の正本は `check_neutrality.py` の `BANNED_WORDS`**（追加・変更は実装側で行う。本 CLAUDE.md に詳細リストは複製しない）。
+禁止語の正本は `check_neutrality.py` の `BANNED_WORDS`（追加・変更は実装側で行う。本 CLAUDE.md に詳細リストは複製しない）。
 
 ### 禁止事項（適用範囲）
 
@@ -153,10 +153,10 @@ clone または別PC での作業開始時に一度だけ hook を設置する�
 
 ## 直接編集 commit の管理（hotfix-direct prefix）
 
-本 repo の HTML を **MyPython の build_site.py 経由ではなく直接編集** する場合（緊急 hotfix・部分 fix 等）、commit message の先頭に `hotfix-direct:` prefix を付ける。理由: 直接編集と MyPython 再ビルド commit が並走する運用では、次回ビルド時に直接編集の差分が上書きされる可能性があり、過去に「5/27 deploy 漏れ分の補完（commit 20c798f69b）」のような反映漏れ事例が実際に発生している。
+本 repo の HTML を MyPython の build_site.py 経由ではなく直接編集する場合（緊急 hotfix・部分 fix 等）、commit message の先頭に `hotfix-direct:` prefix を付ける。理由: 直接編集と MyPython 再ビルド commit が並走する運用では、次回ビルド時に直接編集の差分が上書きされる可能性があり、過去に「5/27 deploy 漏れ分の補完（commit 20c798f69b）」のような反映漏れ事例が実際に発生している。
 
 ルール:
-- 本 repo の `*.html` / `clinic/` / `pref/` / `blog/` / `guide/` 等を **直接編集** した commit → `hotfix-direct: <内容>` を付ける
+- 本 repo の `*.html` / `clinic/` / `pref/` / `blog/` / `guide/` 等を直接編集した commit → `hotfix-direct: <内容>` を付ける
 - MyPython の再ビルド出力をそのまま反映した commit（典型的に `Update site data` や build_site.py 実行後の commit） → prefix なし
 - `hotfix-direct:` prefix が付いた commit が `Update site data` 系 commit より新しい状態で次回 build_site.py を実行する前に、MyPython 側の template / data / `site_config*.json` に同等修正が入っているかを確認する
 
@@ -211,16 +211,16 @@ clone または別PC での作業開始時に一度だけ hook を設置する�
 
 | agent | 担当ファイル | 担当内容 |
 |-------|-------------|---------|
-| **navi-site-builder** | `*.html`, `static/`, `blog/`, `clinic/`, `pref/`, `guide/`, `sitemap.xml`, `data/` | ページ構造・SEO・内部リンク・コンテンツ管理 |
+| navi-site-builder | `*.html`, `static/`, `blog/`, `clinic/`, `pref/`, `guide/`, `sitemap.xml`, `data/` | ページ構造・SEO・内部リンク・コンテンツ管理 |
 
 ### 委譲判断
 
-- HTML/CSS/JS の編集、SEO改善、内部リンク、コンテンツ追加 → **navi-site-builder**
-- テンプレート由来の広域変更、データ生成ロジック → MyPython の **data-pipeline** が担当（このrepoではなく MyPython 側で作業する）
+- HTML/CSS/JS の編集、SEO改善、内部リンク、コンテンツ追加 → navi-site-builder
+- テンプレート由来の広域変更、データ生成ロジック → MyPython の data-pipeline が担当（このrepoではなく MyPython 側で作業する）
 - 会員管理・決済 → zaitaku-members が担当（このrepoでは触らない）
-- 上記に当てはまらない変更（tools/、hook設定等） → **implementer**（global）
-- 複数ステップの作業分解 → **orchestrator**（global）
-- 成果物のレビュー → **reviewer**（global）
+- 上記に当てはまらない変更（tools/、hook設定等） → implementer（global）
+- 複数ステップの作業分解 → orchestrator（global）
+- 成果物のレビュー → reviewer（global）
 
 ---
 
