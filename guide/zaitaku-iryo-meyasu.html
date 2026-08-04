@@ -114,13 +114,13 @@
         <fieldset class="check-q">
           <legend>あてはまるものにチェックを入れてください</legend>
           <label class="check-list-item"><input type="checkbox" name="items" value="it1"> 通院が回を追うごとに大変になっている</label>
-          <label class="check-list-item"><input type="checkbox" name="items" value="it2"> 通院した日は疲れて寝込んでしまう</label>
-          <label class="check-list-item"><input type="checkbox" name="items" value="it3"> この1年で入退院を繰り返している</label>
-          <label class="check-list-item"><input type="checkbox" name="items" value="it4"> 食事の量や体重が減ってきた</label>
-          <label class="check-list-item"><input type="checkbox" name="items" value="it5"> 転ぶことが増えた</label>
-          <label class="check-list-item"><input type="checkbox" name="items" value="it6"> 飲み薬の管理が難しくなってきた</label>
-          <label class="check-list-item"><input type="checkbox" name="items" value="it7"> 介護をする家族の負担が大きくなっている</label>
-          <label class="check-list-item"><input type="checkbox" name="items" value="it8"> 主治医に「通院が大変」と相談したことがある</label>
+          <label class="check-list-item"><input type="checkbox" name="items" value="it2"> 通院した日は、疲れてしまう</label>
+          <label class="check-list-item"><input type="checkbox" name="items" value="it3"> この1年で臨時での受診や入院があった</label>
+          <label class="check-list-item"><input type="checkbox" name="items" value="it4"> 食事の量や体重が減り気味だ</label>
+          <label class="check-list-item"><input type="checkbox" name="items" value="it5"> 転んだり、ふらついたりすることがある</label>
+          <label class="check-list-item"><input type="checkbox" name="items" value="it6"> 飲み薬の管理に不安がある</label>
+          <label class="check-list-item"><input type="checkbox" name="items" value="it7"> 介護や通院の付き添いに、家族の負担を感じる</label>
+          <label class="check-list-item"><input type="checkbox" name="items" value="it8"> 「通院が大変」と感じたことがある</label>
         </fieldset>
         <button type="submit" class="check-submit-btn">チェックする</button>
       </form>
@@ -202,7 +202,7 @@
       if (tier === 'low') {
         resultBox.classList.add('check-result-low');
         html += '<p class="check-result-headline">今すぐの検討サインは多くないようです</p>';
-        html += '<p>状態に変化があったときに、また確認してみてください。1つでも気になる項目がある場合は、ケアマネジャーや主治医に相談して構いません。</p>';
+        html += '<p>状態に変化があったときに、また確認してみてください。少しでも気になる項目があれば、ケアマネジャーや主治医にいつでも相談していただいて構いません。</p>';
       } else if (tier === 'mid') {
         resultBox.classList.add('check-result-mid');
         html += '<p class="check-result-headline">在宅医療の検討を始める目安が見られます</p>';
