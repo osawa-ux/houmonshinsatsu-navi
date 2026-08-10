@@ -496,9 +496,23 @@
 
     function loadMaster(cb) {
       if (masterData) return cb(masterData);
-      fetch(masterUrl).then(function(r){return r.json()}).then(function(d){
+      fetch(masterUrl).then(function(r){
+        if (!r.ok) throw new Error(r.status);
+        return r.json();
+      }).then(function(d){
         masterData = d;
         cb(d);
+      }).catch(function(){
+        // 旧実装は catch が無く、失敗すると無言でハングしていた（2026-08-09 障害）。
+        // 利用者に「読み込めなかった」ことを見せる。
+        if (prefSelect) {
+          prefSelect.innerHTML = '<option value="">地域データを読み込めませんでした</option>';
+          prefSelect.disabled = true;
+        }
+        if (cityList) {
+          cityList.innerHTML = '<p style="color:#c62828;font-size:13px;">' +
+            '地域データの読み込みに失敗しました。お手数ですが、ページを再読み込みしてください。</p>';
+        }
       });
     }
 
@@ -663,7 +677,9 @@ initAreaPicker('area-picker-new-consult', 'consult_areas', {visitPickerId: 'area
     fetch('/clinic/data/search/' + prefCode + '.json')
       .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function(data) { clinicCache[prefCode] = data; cb(data); })
-      .catch(function() { cb([]); });
+      // 旧実装は cb([]) で「掲載が見つかりませんでした」と誤答していた（2026-08-09 障害）。
+      // 通信・取得の失敗は null を渡し、呼び出し側でエラー表示に分岐させる。
+      .catch(function() { cb(null); });
   }
 
   function searchClinics() {
@@ -678,6 +694,14 @@ initAreaPicker('area-picker-new-consult', 'consult_areas', {visitPickerId: 'area
     listDiv.innerHTML = '<p style="color:#888;font-size:14px;">検索中...</p>';
     resultsDiv.style.display = 'block';
     loadClinicsByPref(pref, function(clinics) {
+      if (clinics === null) {
+        // 通信・データ取得の失敗。「該当なし」と誤って伝えない（2026-08-09 障害）。
+        listDiv.innerHTML = '<p style="color:#c62828;font-size:14px;line-height:1.8;">' +
+          'データの読み込みに失敗しました。<br>' +
+          '<span style="font-size:13px;color:#888;">お手数ですが、ページを再読み込みのうえ再度お試しください。' +
+          '解消しない場合は<a href="/clinic/contact-clinic.html" style="color:#2a5a8c;">お問い合わせ</a>ください。</span></p>';
+        return;
+      }
       var filtered = clinics;
       if (query) {
         var q = query.toLowerCase();
@@ -823,6 +847,13 @@ initAreaPicker('area-picker-new-consult', 'consult_areas', {visitPickerId: 'area
         // clinic の id は内部キー、kango の id は介護保険事業所番号（別体系）のため
         // 真陽性はほぼ期待できない。真の重複判定は official_kikan_cd 投入後。
         // よって「見つからない＝未掲載」とは断定しない（重複の最終確認は事務局側）。
+        if (clinics === null) {
+          // 取得失敗。重複チェックが行えなかったことを明示し、申し込みは妨げない
+          // （loadClinicsByPref が失敗時に null を返す・2026-08-09 障害の再発防止）。
+          kikanCheck.innerHTML = '<span style="color:#888;">掲載状況を確認できませんでした。重複の有無は事務局で確認しますので、そのままお申し込みいただけます。</span>';
+          kikanDuplicate = false;
+          return;
+        }
         var found = clinics.find(function(c) { return c.ocd === val || c.id === val; });
         if (found) {
           kikanCheck.innerHTML = '<span style="color:#c00;">この医療機関番号は既に掲載されています: ' + escHtml(found.n) + '</span><br>' +
