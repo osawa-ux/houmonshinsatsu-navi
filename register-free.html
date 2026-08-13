@@ -284,9 +284,12 @@
 
         <!-- 6. 特徴・強み -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">特徴・強み <span style="font-weight:normal;color:#999;font-size:13px;">任意・80字以内</span></label>
-          <input type="text" name="feature" maxlength="80" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;" placeholder="例: 緩和ケアと看取り対応に力を入れています">
-          <p style="font-size:12px;color:#888;margin-top:4px;">一覧ページのクリニック名の下に表示されます。</p>
+          <label for="feature-edit" style="display:block;font-weight:bold;margin-bottom:4px;">特徴・強み <span style="font-weight:normal;color:#999;font-size:13px;">任意・80字以内</span></label>
+          <textarea id="feature-edit" name="feature" maxlength="80" rows="3" aria-describedby="feature-count-edit" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;line-height:1.6;resize:vertical;" placeholder="例: 緩和ケアと看取り対応に力を入れています"></textarea>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-top:4px;">
+            <p style="font-size:12px;color:#888;margin:0;">一覧ページのクリニック名の下に表示されます。</p>
+            <span id="feature-count-edit" aria-live="polite" style="font-size:12px;color:#888;white-space:nowrap;">0 / 80</span>
+          </div>
         </div>
 
         <!-- 7. その他修正内容 -->
@@ -443,9 +446,12 @@
 
         <!-- 8. 特徴・強み -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-weight:bold;margin-bottom:4px;">特徴・強み <span style="font-weight:normal;color:#999;font-size:13px;">任意・80字以内</span></label>
-          <input type="text" name="feature" maxlength="80" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;" placeholder="例: 神経難病や医療依存度の高い患者さんにも対応しています">
-          <p style="font-size:12px;color:#888;margin-top:4px;">一覧ページのクリニック名の下に表示されます。</p>
+          <label for="feature-new" style="display:block;font-weight:bold;margin-bottom:4px;">特徴・強み <span style="font-weight:normal;color:#999;font-size:13px;">任意・80字以内</span></label>
+          <textarea id="feature-new" name="feature" maxlength="80" rows="3" aria-describedby="feature-count-new" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px;line-height:1.6;resize:vertical;" placeholder="例: 神経難病や医療依存度の高い患者さんにも対応しています"></textarea>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-top:4px;">
+            <p style="font-size:12px;color:#888;margin:0;">一覧ページのクリニック名の下に表示されます。</p>
+            <span id="feature-count-new" aria-live="polite" style="font-size:12px;color:#888;white-space:nowrap;">0 / 80</span>
+          </div>
         </div>
 
         <!-- 9. その他 -->
@@ -637,6 +643,72 @@
 </script>
 
 <script>
+(function(){
+  var FEATURE_MAX = 80;
+  // 文末が助詞 = 文が途中で切れている可能性が高い。
+  var DANGLING_TAIL = /(?:から|より|は|が|を|に|へ|で|と|の|や|も)$/;
+  // ただし体言止めとして自然に終わる語尾は除外する（先に判定する）。
+  // 「小児から高齢者まで」「がん緩和ケアから看取りまで」は完成した文であり毎回警告が出ると
+  // 偽陽性で運用が荒れる。**単に「まで」を DANGLING_TAIL から抜くだけでは効かない**
+  // ことに注意: 「まで」は末尾が「で」なので DANGLING_TAIL の「で」側でマッチしてしまう
+  // （2026-08-11 のブラウザ実機で、抜いただけの版がなお発火することを実測）。
+  var NATURAL_TAIL = /(?:まで|など|ほか|他|等)$/;
+
+  // 前後の空白と連続空白（textarea の改行を含む）を 1 個の半角空白へ潰す。
+  // 特徴文は一覧ページの 1 行表示に使うため、改行をそのまま送らない。
+  window.znNormalizeFeature = function(v) {
+    return String(v == null ? '' : v).replace(/\s+/g, ' ').trim();
+  };
+
+  // 「書き直したい」= true を返す（呼び出し側は送信を中止する）。
+  window.znFeatureNeedsRewrite = function(form) {
+    if (!form) return false;
+    // 1 フォームにつき最大 1 回しか止めない（fail-open）。
+    // confirm() はブラウザの「このページでこれ以上ダイアログを表示しない」が
+    // 効いている環境や sandbox 文脈では**ダイアログを出さず即 false を返す**。
+    // 毎回止める実装だと、その環境では送信ボタンを押しても何も起きず、
+    // 申込がサイレントに消失する（＝この警告が原因で B2B のリードを失う）。
+    // 2 回目以降は必ず素通りさせることでその失敗モードを閉じる。
+    if (form.dataset.znFeatureAsked === '1') return false;
+    var el = form.querySelector('[name="feature"]');
+    if (!el) return false;
+    var v = window.znNormalizeFeature(el.value);
+    if (!v || NATURAL_TAIL.test(v) || !DANGLING_TAIL.test(v)) return false;
+    form.dataset.znFeatureAsked = '1';
+    var ok = window.confirm(
+      '「特徴・強み」が「' + v.slice(-10) + '」で終わっており、文が途中の可能性があります。'
+      + 'このまま送信してよろしいですか？　書き直す場合は「キャンセル」を押してください。'
+    );
+    if (!ok) { try { el.focus(); } catch (e) {} return true; }
+    return false;
+  };
+
+  function wireCounter(fieldId, countId) {
+    var el = document.getElementById(fieldId);
+    var out = document.getElementById(countId);
+    if (!el || !out) return;
+    function render() {
+      var n = el.value.length;
+      out.textContent = n + ' / ' + FEATURE_MAX;
+      out.style.color = (n >= FEATURE_MAX) ? '#c0392b' : '#888';
+    }
+    el.addEventListener('input', render);
+    render();
+  }
+
+  function init() {
+    wireCounter('feature-edit', 'feature-count-edit');
+    wireCounter('feature-new', 'feature-count-new');
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+<script>
 initAreaPicker('area-picker-edit', 'visit_areas');
 initAreaPicker('area-picker-edit-consult', 'consult_areas', {visitPickerId: 'area-picker-edit'});
 initAreaPicker('area-picker-new', 'visit_areas');
@@ -790,6 +862,10 @@ initAreaPicker('area-picker-new-consult', 'consult_areas', {visitPickerId: 'area
     // visit_areas / consult_areas は hidden input から直接取得（フォームのname属性で一致）
     obj.visit_areas = obj.visit_areas || '';
     obj.consult_areas = obj.consult_areas || '';
+    // 特徴文は textarea なので改行が入りうる。一覧ページは 1 行表示のため空白へ潰す。
+    if (obj.feature && window.znNormalizeFeature) {
+      obj.feature = window.znNormalizeFeature(obj.feature);
+    }
     return obj;
   }
 
@@ -797,6 +873,8 @@ initAreaPicker('area-picker-new-consult', 'consult_areas', {visitPickerId: 'area
     if (!form) return;
     form.addEventListener('submit', function(e) {
       e.preventDefault();
+      // 特徴文が助詞止まり（文の途中）なら一度だけ確認する。ブロックはしない。
+      if (window.znFeatureNeedsRewrite && window.znFeatureNeedsRewrite(form)) return;
       var btn = form.querySelector('button[type="submit"]');
       btn.disabled = true;
       btn.textContent = '送信中...';
@@ -878,6 +956,8 @@ initAreaPicker('area-picker-new-consult', 'consult_areas', {visitPickerId: 'area
         alert('この医療機関番号は既に掲載されています。掲載情報の修正は「既に掲載されている医療機関の方」からお手続きください。');
         return;
       }
+      // 特徴文が助詞止まり（文の途中）なら一度だけ確認する。ブロックはしない。
+      if (window.znFeatureNeedsRewrite && window.znFeatureNeedsRewrite(newForm)) return;
       var btn = newForm.querySelector('button[type="submit"]');
       btn.disabled = true;
       btn.textContent = '送信中...';
