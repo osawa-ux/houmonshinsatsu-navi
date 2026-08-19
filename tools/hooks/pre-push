@@ -12,9 +12,11 @@
 #   (tools/hooks/pre-commit) と同じパターンを踏襲する。
 #
 #   止める条件と止めない条件を分ける (2026-08-19):
-#     - MyPython 自体がこの PC に無い     -> skip (exit 0)。正常な構成差であり、
+#     - MyPython ディレクトリ自体が無い   -> skip (exit 0)。正常な構成差であり、
 #       ここで止めると hotfix push が毎回赤くなり SEO_REGRESSION_SKIP=1 が常態化して
-#       実質 fail-open へ退行する。
+#       実質 fail-open へ退行する。判定子は **ディレクトリの有無** で、
+#       audit_seo.py の有無ではない (下記の 1 つ下の条件と区別する)。
+#     - MyPython はあるが audit_seo.py が無い -> FAIL (exit 1)。改名・移動・削除。
 #     - MyPython はあるが site/ が無い     -> FAIL (exit 1)。真の設定不備 (未 build)。
 #     - Python3 が PATH に無い             -> FAIL (exit 1)。検査を実行できない。
 #     - audit が regression を検知         -> FAIL (exit 1)。
@@ -41,6 +43,35 @@ for c in "${AUDIT_CANDIDATES[@]}"; do
     break
   fi
 done
+
+# skip の判定子は「MyPython ディレクトリの有無」であって audit_seo.py の有無ではない。
+#   ファイルの有無で skip を決めると、MyPython はあるのに script が改名・移動・削除された
+#   ケースまで skip に落ち、2026-06-03 に fail-close 化した動機そのもの
+#   (「配置が変わると黙って skip される」) を作り直してしまう (2026-08-19 xrev C-1)。
+MYPY_DIRS=(
+  "$HOME/projects/MyPython"
+  "$HOME/MyPython"
+)
+MYPY_DIR_FOUND=""
+for d in "${MYPY_DIRS[@]}"; do
+  if [ -d "$d" ]; then
+    MYPY_DIR_FOUND="$d"
+    break
+  fi
+done
+
+if [ -z "$AUDIT_SCRIPT" ] && [ -n "$MYPY_DIR_FOUND" ]; then
+  echo ""
+  echo "[pre-push] FAIL: MyPython ($MYPY_DIR_FOUND) はあるのに audit_seo.py が見つかりません。"
+  echo "[pre-push]   探索した候補:"
+  for c in "${AUDIT_CANDIDATES[@]}"; do
+    echo "[pre-push]     - $c"
+  done
+  echo "[pre-push]   改名・移動・削除の可能性があります。ここで skip すると SEO regression を"
+  echo "[pre-push]   黙って見逃すため止めます。"
+  echo "[pre-push]   bypass (検査不要が確実な場合のみ): SEO_REGRESSION_SKIP=1 git push origin <branch>"
+  exit 1
+fi
 
 if [ -z "$AUDIT_SCRIPT" ]; then
   # MyPython 自体を持たない PC は「正常な構成差」なので skip する (2026-08-19 決定)。
