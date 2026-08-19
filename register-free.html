@@ -461,6 +461,24 @@
           <textarea name="note" rows="2" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;" placeholder="例: 医療機関番号がわかりません / 開業準備中です"></textarea>
         </div>
 
+        <!-- 10. 事業者区分（特商法26条1項1号の適用除外の前提「相手方が事業者であること」の取得） -->
+        <div style="margin-bottom:16px;">
+          <label style="display:block;font-weight:bold;margin-bottom:8px;">事業者区分 <span style="color:#c00;">*</span></label>
+          <div style="display:flex;gap:20px;flex-wrap:wrap;">
+            <label style="font-size:14px;cursor:pointer;"><input type="radio" name="business_type" value="corporation" required style="margin-right:6px;">法人</label>
+            <label style="font-size:14px;cursor:pointer;"><input type="radio" name="business_type" value="sole_proprietor" required style="margin-right:6px;">個人事業主</label>
+          </div>
+        </div>
+
+        <!-- 11. 掲載規約への同意 -->
+        <div style="margin-bottom:16px;">
+          <label style="font-size:14px;cursor:pointer;display:flex;align-items:flex-start;gap:8px;">
+            <input type="checkbox" id="terms-agree-new" required style="margin-top:3px;">
+            <span><a href="https://members.zaitakuclinic-navi.com/listing-terms" target="_blank" rel="noopener">医療機関向け掲載規約</a>を確認し、同意します <span style="color:#c00;">*</span></span>
+          </label>
+          <div id="consent-status-new" style="display:none;color:#c00;font-size:13px;margin-top:6px;"></div>
+        </div>
+
         <p style="font-size:12px;color:#888;margin-bottom:12px;">ご入力いただいた個人情報は、掲載情報の整備および当サービスに関するご連絡のみに使用し、第三者に提供することはありません。<a href="/about.html">運営者情報</a></p>
 
         <button type="submit" style="background:#2a5a8c;color:#fff;border:none;padding:14px 48px;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;" onclick="gev('submit_free_edit',{form_type:'new'})">新規掲載を申し込む</button>
@@ -952,6 +970,23 @@ initAreaPicker('area-picker-new-consult', 'consult_areas', {visitPickerId: 'area
   if (newForm) {
     newForm.addEventListener('submit', function(e) {
       e.preventDefault();
+      // 事業者区分・掲載規約同意（migration 20260818083826 対応）。
+      // HTML の required 属性（ラジオ2つ＋チェックボックス）に加え、JS 側でも
+      // 明示チェックしてステータス表示する（既存の kikan-cd-check 等の
+      // インラインエラー表示様式に合わせる）。
+      var consentStatus = document.getElementById('consent-status-new');
+      var businessTypeChecked = newForm.querySelector('input[name="business_type"]:checked');
+      var termsCheckbox = document.getElementById('terms-agree-new');
+      if (!businessTypeChecked || !termsCheckbox || !termsCheckbox.checked) {
+        if (consentStatus) {
+          consentStatus.style.display = 'block';
+          consentStatus.textContent = !businessTypeChecked
+            ? '事業者区分を選択してください。'
+            : '掲載規約への同意が必要です。';
+        }
+        return;
+      }
+      if (consentStatus) { consentStatus.style.display = 'none'; }
       if (kikanDuplicate) {
         alert('この医療機関番号は既に掲載されています。掲載情報の修正は「既に掲載されている医療機関の方」からお手続きください。');
         return;
@@ -962,6 +997,18 @@ initAreaPicker('area-picker-new-consult', 'consult_areas', {visitPickerId: 'area
       btn.disabled = true;
       btn.textContent = '送信中...';
       var payload = collectFormData(newForm, 'new');
+      // terms_agreed はサーバー側で now() として同意日時を確定する
+      // （route.ts: body.terms_agreed === true の厳密真偽判定のため文字列でなく
+      // boolean を明示的に送る。collectFormData の汎用ループは FormData 値を
+      // 文字列としてコピーするため、ここで上書きする）。
+      payload.terms_agreed = true;
+      // terms_version はサーバー側が正本（zaitaku-members PR #306: /api/registration
+      // route.ts が terms_agreed=true かつ terms_version 未指定/空文字のとき自身の
+      // LISTING_TERMS_VERSION で確定する）。PR #306 が master へ merge されれば、
+      // このクライアント側の送信行は削除可（送らなくてもサーバ側で正しい版が
+      // 記録されるようになるため）。同時 merge されない可能性を考慮し、当面は
+      // 明示送信を残す（PR #306 merge 前はサーバ側フォールバックが無いため）。
+      payload.terms_version = '2026-08-18-1';
       fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
