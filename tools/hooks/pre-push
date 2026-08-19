@@ -3,27 +3,90 @@
 # 都道府県名削除等の partial rollback を push 前に検知する
 #
 # bypass: SEO_REGRESSION_SKIP=1 git push
+#
+# fail-close 方針 (2026-06-03 / 2026-08-19 改訂):
+#   旧実装は単一 hardcode path ($HOME/MyPython/audit_seo.py) を見て不在なら通過して
+#   いたため、MyPython の配置が変わると SEO regression check が黙って skip されたまま
+#   push が成功していた (本 hook の存在意義が無効化されていた)。
+#   path candidate 探索 + python/python3 fallback は repo の pre-commit hook
+#   (tools/hooks/pre-commit) と同じパターンを踏襲する。
+#
+#   止める条件と止めない条件を分ける (2026-08-19):
+#     - MyPython 自体がこの PC に無い     -> skip (exit 0)。正常な構成差であり、
+#       ここで止めると hotfix push が毎回赤くなり SEO_REGRESSION_SKIP=1 が常態化して
+#       実質 fail-open へ退行する。
+#     - MyPython はあるが site/ が無い     -> FAIL (exit 1)。真の設定不備 (未 build)。
+#     - Python3 が PATH に無い             -> FAIL (exit 1)。検査を実行できない。
+#     - audit が regression を検知         -> FAIL (exit 1)。
 
 if [ "${SEO_REGRESSION_SKIP:-0}" = "1" ]; then
   echo "[pre-push] SEO regression check skipped (SEO_REGRESSION_SKIP=1)"
   exit 0
 fi
 
-AUDIT_SCRIPT="$HOME/MyPython/audit_seo.py"
-SITE_DIR="$HOME/MyPython/site"
+# --- audit_seo.py の候補 path 探索 ---
+# MyPython の配置は PC により ~/projects/MyPython または ~/MyPython。
+# 見つかった最初の audit_seo.py を採用する。
+# (audit_seo.py は自身の dir 基準で site/ を BASE/"site" として self-locate するため、
+#  ここでは script の発見のみ行えばよい)
+AUDIT_CANDIDATES=(
+  "$HOME/projects/MyPython/audit_seo.py"
+  "$HOME/MyPython/audit_seo.py"
+)
 
-if [ ! -f "$AUDIT_SCRIPT" ]; then
-  echo "[pre-push] WARN: audit_seo.py が存在しない: $AUDIT_SCRIPT"
-  exit 0  # script 不在は skip（PC 間で MyPython 配置がない場合あり）
+AUDIT_SCRIPT=""
+for c in "${AUDIT_CANDIDATES[@]}"; do
+  if [ -f "$c" ]; then
+    AUDIT_SCRIPT="$c"
+    break
+  fi
+done
+
+if [ -z "$AUDIT_SCRIPT" ]; then
+  # MyPython 自体を持たない PC は「正常な構成差」なので skip する (2026-08-19 決定)。
+  #   ここを exit 1 にすると、MyPython を持たない PC からの hotfix push が毎回止まり、
+  #   回避に SEO_REGRESSION_SKIP=1 が常態化する。同 bypass は本物の regression 検査も
+  #   同時に無効化するため、「常時赤 -> bypass 常態化 -> 実質 fail-open」へ退行する。
+  #   一方 "MyPython はあるのに site/ が無い" "Python3 が無い" は真の設定不備なので
+  #   下で fail-close のまま止める (この 2 つとは区別する)。
+  echo "[pre-push] SKIP: audit_seo.py がどの候補 path にも見つかりません。"
+  for c in "${AUDIT_CANDIDATES[@]}"; do
+    echo "[pre-push]   - $c"
+  done
+  echo "[pre-push]   この PC に MyPython が無い構成とみなし SEO regression check を skip します。"
+  echo "[pre-push]   MyPython を持つ PC では skip されません (site/ 未 build や Python3 不在は止めます)。"
+  exit 0
 fi
 
+# python 実行コマンドの解決 (python -> python3 の順。Windows の python3 MS Store
+# リダイレクト対策として、まず python が Python 3 かを確認する)
+PYTHON_BIN=""
+if command -v python >/dev/null 2>&1 && python -c "import sys; sys.exit(0 if sys.version_info[0]==3 else 1)" >/dev/null 2>&1; then
+  PYTHON_BIN="python"
+elif command -v python3 >/dev/null 2>&1; then
+  PYTHON_BIN="python3"
+fi
+if [ -z "$PYTHON_BIN" ]; then
+  echo "[pre-push] FAIL: Python 3 が PATH 上に見つかりません。SEO regression check を実行できません。"
+  echo "[pre-push]   bypass (検査不要が確実な場合のみ): SEO_REGRESSION_SKIP=1 git push origin <branch>"
+  exit 1
+fi
+
+# site/ は audit_seo.py が script dir 基準で self-locate する。
+# script と同階層に site/ が無い状態を分かりやすく止める。
+AUDIT_DIR="$(dirname "$AUDIT_SCRIPT")"
+SITE_DIR="$AUDIT_DIR/site"
 if [ ! -d "$SITE_DIR" ]; then
-  echo "[pre-push] WARN: site/ が存在しない: $SITE_DIR"
-  exit 0  # build されていない PC では skip
+  echo ""
+  echo "[pre-push] FAIL: build 出力 site/ が見つかりません: $SITE_DIR"
+  echo "[pre-push]   build されていない状態では SEO regression check を実行できません。"
+  echo "[pre-push]   対応: $AUDIT_DIR で python build_site.py を実行してから push してください。"
+  echo "[pre-push]   bypass (検査不要が確実な場合のみ): SEO_REGRESSION_SKIP=1 git push origin <branch>"
+  exit 1
 fi
 
-echo "[pre-push] SEO regression check 実行中..."
-python "$AUDIT_SCRIPT" --strict
+echo "[pre-push] SEO regression check 実行中... ($AUDIT_SCRIPT)"
+"$PYTHON_BIN" "$AUDIT_SCRIPT" --strict
 RC=$?
 
 if [ $RC -ne 0 ]; then
