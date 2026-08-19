@@ -8,10 +8,14 @@ on:
   push:
     paths:
       - 'tools/hooks/**'
+      - 'tools/install_hooks.sh'
+      - 'tools/install_hooks.ps1'
       - '.github/workflows/hooks-lint.yml'
   pull_request:
     paths:
       - 'tools/hooks/**'
+      - 'tools/install_hooks.sh'
+      - 'tools/install_hooks.ps1'
       - '.github/workflows/hooks-lint.yml'
   workflow_dispatch: {}
 
