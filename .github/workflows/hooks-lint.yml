@@ -1,0 +1,88 @@
+name: Hooks Lint
+
+# tools/hooks/** は git hook の正本。ここが fail-open に退行しても
+# 既存 workflow（deploy-quality-log / notion-commit-log は push:gh-pages のみ、
+# neutrality-check は paths が blog/** guide/** のみ）は一切発火しないため、
+# PR 時点で挙動を実測する経路が存在しなかった。
+on:
+  push:
+    paths:
+      - 'tools/hooks/**'
+      - '.github/workflows/hooks-lint.yml'
+  pull_request:
+    paths:
+      - 'tools/hooks/**'
+      - '.github/workflows/hooks-lint.yml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Syntax check (bash -n)
+        run: |
+          for f in tools/hooks/*; do
+            [ -f "$f" ] || continue
+            head -1 "$f" | grep -qE '^#!.*(bash|sh)' || continue
+            echo "[bash -n] $f"
+            bash -n "$f"
+          done
+
+      - name: pre-push exit-code matrix (fake HOME)
+        run: |
+          HOOK="$PWD/tools/hooks/pre-push"
+          SBX="$RUNNER_TEMP/sbx"
+          fail=0
+
+          # assert <名前> <偽HOME> <期待exit> [追加env...]
+          assert() {
+            name="$1"; home="$2"; want="$3"; shift 3
+            set +e
+            env -u SEO_REGRESSION_SKIP HOME="$home" "$@" bash "$HOOK" >/dev/null 2>&1
+            got=$?
+            set -e
+            if [ "$got" != "$want" ]; then
+              echo "::error::$name: expected exit $want, got $got"
+              fail=1
+            else
+              echo "OK   $name (exit $got)"
+            fi
+          }
+
+          # 1. MyPython 自体が無い -> skip（正常な構成差）
+          mkdir -p "$SBX/c1"
+          assert "no MyPython dir -> skip" "$SBX/c1" 0
+
+          # 2. MyPython はあるが audit_seo.py が無い -> FAIL（改名・移動・削除）
+          mkdir -p "$SBX/c2/MyPython"
+          assert "MyPython without audit_seo.py -> fail" "$SBX/c2" 1
+
+          # 3. projects/MyPython でも同様に FAIL
+          mkdir -p "$SBX/c3/projects/MyPython"
+          assert "projects/MyPython without audit_seo.py -> fail" "$SBX/c3" 1
+
+          # 4. script はあるが site/ が無い -> FAIL（未 build）
+          mkdir -p "$SBX/c4/MyPython"
+          printf 'import sys\nsys.exit(0)\n' > "$SBX/c4/MyPython/audit_seo.py"
+          assert "missing site/ -> fail" "$SBX/c4" 1
+
+          # 5. audit 成功 -> pass
+          mkdir -p "$SBX/c5/MyPython/site"
+          printf 'import sys\nsys.exit(0)\n' > "$SBX/c5/MyPython/audit_seo.py"
+          assert "audit passes -> pass" "$SBX/c5" 0
+
+          # 6. audit が regression 検知 -> FAIL（fail-close の本体）
+          mkdir -p "$SBX/c6/MyPython/site"
+          printf 'import sys\nsys.exit(3)\n' > "$SBX/c6/MyPython/audit_seo.py"
+          assert "audit regression -> fail" "$SBX/c6" 1
+
+          # 7. bypass が効くこと
+          assert "SEO_REGRESSION_SKIP=1 bypass" "$SBX/c6" 0 SEO_REGRESSION_SKIP=1
+
+          exit $fail
