@@ -71,7 +71,7 @@
   </div>
 
   <div class="data-source">
-    📅 最終更新: 2026年08月21日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
+    📅 最終更新: 2026年08月31日　｜　📋 出典: 厚生労働省 地方厚生局 公開データ・各医療機関からの提供情報　｜　<a href="/editorial-policy.html" style="color:#666;">データ更新方針</a>
   </div>
 
   <p style="margin-top:16px;"><a href="/">← トップページに戻る</a></p>
@@ -181,8 +181,11 @@
     }
     var tel = '';
     var dist = '<span class="clinic-badge">\uD83D\uDCCD ' + c._dist.toFixed(1) + 'km</span>';
+    // 広告ラベル。表示条件は display.sort の優先表示条件（c.pd）と厳密に一致させる。
+    // 一覧ページの make_clinic_card と同じ .premium-badge クラス・同じ「広告」1 語を使う。
+    var adLabel = c.pd ? '<span class="premium-badge">広告</span>' : '';
     return '<div class="clinic-card">' + photo +
-      '<div class="clinic-info">' +
+      '<div class="clinic-info">' + adLabel +
       '<div class="clinic-name"><a href="/clinic/clinic/' + esc(c.id) + '.html">' + esc(c.n) + '</a></div>' +
       meta +
       '<div class="clinic-address">' + esc(c.a) + ' ' + dist + '</div>' +

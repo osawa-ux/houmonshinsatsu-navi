@@ -179,57 +179,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .clinic-filter-count { margin-left: auto; color: #666; font-size: 0.88em; }
 .clinic-card.hidden-by-filter { display: none; }
 
-/* 有料カード差分（スタンダード: 左ボーダー＋シャドウ） */
-.card--premium { border-left: 4px solid #2a5a8c; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative; }
-.card--premium .clinic-name a { color: #2a5a8c; }
+/* 有料掲載カードの視覚差分は「広告」ラベルのみとする。
+   カード自体の装飾差分（左ボーダー色・シャドウ・名前リンク色・背景）は持たせない。
+   .card--premium / .card--premium-plus は識別用クラスとして残すが、見た目は
+   無料掲載カードと同一（クリック層の z-index 指定のみ機能上必要）。 */
 .card--premium a[href*="contact"] { position: relative; z-index: 1; }
-/* スタンダード有料カード用の明示バッジ（2026-08-18・利用規約v3.3対応）。
-   有料掲載プラン契約の有無を表示順位の要素として用いていることの開示。
-   premium-plus-badge より控えめなトーン（掲載強化の開示であり品質保証ではない）。
-   2026-08-19 是正: font-size を 10px→12px（カード本文相当の約13pxに近づけ、
-   ステマ告示運用基準の「明瞭性」＝文字の大きさ・対比を満たしやすくするため）。 */
-.premium-badge {
-  display: inline-block;
-  background: #5b7fa6;
-  color: #fff;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 3px 8px;
-  border-radius: 0 0 6px 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-}
-
-/* プレミアムプラス強調カード（listing_plan=premium_plus）
-   スタンダードより目立つ枠線・背景・上部リボン。
-   PRバッジは .premium-plus-badge として別途カード冒頭に挿入される。
-   医療広告基準上、品質保証ではなく「掲載強化」であることをトーンで示す。
-   2026-08-19 是正: .premium-badge と同じ理由で font-size を 10px→12px。 */
-.card--premium-plus {
-  border: 2px solid #2a5a8c;
-  border-top: 4px solid #2a5a8c;
-  box-shadow: 0 4px 12px rgba(42,90,140,0.15);
-  position: relative;
-  background: linear-gradient(to bottom, #f0f5fb 0%, #ffffff 48px);
-}
-.card--premium-plus .clinic-name a { color: #2a5a8c; }
 .card--premium-plus a[href*="contact"] { position: relative; z-index: 1; }
+
+/* 広告ラベル。クリニック名の直前にインライン表示する。
+   色 #555 は白背景に対しコントラスト比 7.4:1（WCAG AA 4.5:1 を満たす）。
+   文字サイズはステマ告示運用基準の明瞭性要件のため 12px を下限として維持する。
+   有料プランの種別で見た目を分けない（いずれも「広告」の 1 語）。 */
+.premium-badge,
 .premium-plus-badge {
   display: inline-block;
-  background: #2a5a8c;
-  color: #fff;
+  color: #555;
   font-size: 12px;
-  font-weight: bold;
-  padding: 3px 8px;
-  border-radius: 0 0 6px 0;
-  position: absolute;
-  top: 0;
-  left: 0;
+  font-weight: 700;
   letter-spacing: 0.02em;
   white-space: nowrap;
+  margin-right: 6px;
 }
 
 /* フィルターバー */
@@ -408,11 +377,11 @@ footer a { color: #aaa; }
    build_site.py COMMON_CSS に未反映のまま次回buildで消滅する hotfix-drift 状態だったため追加。
    使用クラス（markup側: build_city_page L2558-2585）: section/header/badge/title/note/cards の6クラス。
    .pr-spot-card (単数) は markup 未使用のため定義から除外。 */
-.pr-spot-section { background: #fffdf5; border: 2px solid #f9c95c; border-radius: 12px; padding: 16px; margin: 16px 0 24px 0; }
-.pr-spot-header { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px dashed #f9c95c; }
-.pr-spot-badge { background: #d97706; color: white; font-weight: bold; padding: 2px 10px; border-radius: 4px; font-size: 13px; }
-.pr-spot-title { font-weight: bold; color: #92400e; font-size: 15px; }
-.pr-spot-note { font-size: 12px; color: #92400e; width: 100%; }
+.pr-spot-section { margin: 16px 0 24px 0; }
+.pr-spot-header { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.pr-spot-badge { color: #555; font-size: 12px; font-weight: 700; letter-spacing: 0.02em; }
+.pr-spot-title { color: #555; font-size: 12px; }
+.pr-spot-note { font-size: 12px; color: #666; width: 100%; }
 .pr-spot-cards { display: grid; grid-template-columns: 1fr; gap: 8px; }
 
 /* === クリニック個別ページ: ギャラリー / 紹介文 / FAQ（inline style を class 定義へ昇格）
