@@ -4,6 +4,8 @@
 
 このリポジトリは主に静的出力物の配置先（生成物 repo）であり、サイト生成の主処理と正本ロジックは `~/projects/MyPython/` が担う。
 
+この repo に AGENTS.md は置かない。Codex は `project_doc_fallback_filenames` 経由でこの CLAUDE.md を直接読む（2026-09-13）。
+
 ---
 
 ## 反復実装ループ（loop-engineering）
@@ -79,6 +81,7 @@ deploy 経路上、houmonshinsatsu-navi の実体は `~/projects/houmonshinsatsu
 
 - secret の実値は表示しない
 - `.env`, `credentials*.json`, `token*.json`, `*.p12`, `*.pem` などの秘密情報は Git に入れない
+- PII（患者情報等の個人情報）の実値も secrets と同様に出力・log・commit しない
 
 ---
 
@@ -142,6 +145,8 @@ deploy 経路上、houmonshinsatsu-navi の実体は `~/projects/houmonshinsatsu
 - 外部サービスの本番設定値
 
 必要な場合は、下書き・提案・差分案提示に留めること。
+
+不確実な医療・算定・法務ロジックは確定情報として断定せず、要確認である旨を明示する。
 
 ---
 
